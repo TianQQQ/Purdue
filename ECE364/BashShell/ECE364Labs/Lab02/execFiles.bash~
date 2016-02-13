@@ -1,0 +1,8 @@
+#! /bin/bash
+#
+#   $Author: ee364d08 $
+#   $Date: 2015-09-08 15:22:43 -0400 (Tue, 08 Sep 2015) $
+#   $HeadURL: svn+ssh://ece364sv@ecegrid-thin1/home/ecegrid/a/ece364sv/svn/F15/students/ee364d08/Lab02/execFiles.bash~ $
+#   $Revision: 81652 $
+
+cd c-files

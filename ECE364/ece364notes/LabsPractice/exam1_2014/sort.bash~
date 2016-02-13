@@ -1,0 +1,27 @@
+#! /bin/bash
+#  $Author: ee364b13 $
+#  $Date: 2015-02-17 15:23:41 -0500 (Tue, 17 Feb 2015) $
+#  $HeadURL: svn+ssh://ece364sv@ecegrid-thin1/home/ecegrid/a/ece364sv/svn/S15/students/ee364b13/Lab05/sort.bash $
+#  $Revision: 75861 $
+
+
+if [[ $# < 3 ]]
+then
+    echo "Error: Insufficient information."
+    exit 1
+else
+    while getopts f:-: thisopt
+    do
+	case $thisopt in
+	    f)[[ ! -e $OPTARG ]] && echo "Error: File does not exist.";;
+	    -)colnum=$(echo $OPTARG | cut -d'=' -f2)
+	    val=$(cat $2 | sort -k$colnum)
+	    output=$2'.sorted'
+	    echo "File sorted."
+	    echo $(cat $2 | sort -k$colnum) > $output ;;
+	    *)echo "Error: Unknown option."
+		exit 1;;
+	esac
+    done
+    exit 0
+fi

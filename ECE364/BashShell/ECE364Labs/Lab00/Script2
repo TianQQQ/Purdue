@@ -1,0 +1,10 @@
+#! /bin/bash
+
+Num_Of_Param=$#
+Param_Values=$@
+for (( i=$Param_Values; i>=0; i--))
+do
+    #echo "$Param_Values"
+    echo "$i"
+done
+

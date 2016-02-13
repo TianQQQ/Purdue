@@ -1,0 +1,12 @@
+1. Declaring data structures and functions related to objects is called creating a class. Class is the definition of an object.
+
+2. Different from regular variable, member variable is only stored within class and can only be invoked by calling the object and related functions.
+
+3. Member functions are called within a class. Regular functions are called outside the class. 
+   Because self argument is reference to the object.
+
+4. IS-A relationship. HAS-A simply uses cariables that are references to other objects, but IS-A means " A is a B type of thing".
+
+5. Contructor is to create an instance of a class and initialize the state of an object.
+
+6. def __inif__(self, <var>, ...). This is called only once during the lifetime fo an object.

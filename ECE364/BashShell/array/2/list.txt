@@ -1,0 +1,7 @@
+2.sh
+comFile.txt
+folderContent13.txt
+inputParam.txt
+list.txt
+someTextFile.txt
+2.sh

@@ -1,0 +1,23 @@
+submit
+--This line, and those below, will be ignored--
+
+AM   2.sh
+AM   bad_sim.c
+AM   d.bash
+AM   dollarquestionmark.bash
+AM   dollarqustionmark.bash
+AM   gold_sim_out.txt
+AM   header
+AM   process_temps.bash
+AM   quick_sim
+AM   quick_sim.c
+AM   run.bash
+AM   sim_out.txt
+AM   sim.txt
+AM   stats.txt
+AM   tempsA
+AM   tempsB
+AM   warmup.bash
+AM   #yards.bash#
+AM   yards.bash
+AM   yards.bash~

@@ -1,0 +1,10 @@
+
+--This line, and those below, will be ignored--
+
+AM   ActivityLog.txt
+AM   analyzeActivity.py
+AM   lab04_tests.py
+AM   Permissions.txt
+A    __pycache__
+AM   Test Results - Unittests_in_lab04_tests.html
+AM   Users.txt

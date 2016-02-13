@@ -1,0 +1,88 @@
+#! /usr/bin/env python3.4
+
+import sys
+import os, math
+import glob
+import pprint
+
+def getTotalSpending():
+    dic = generateReportForAllUsers()
+    sum = 0
+    for key in dic:
+        sum += dic.get(key)[1]
+    return sum
+
+def getUsersWithoutReports():
+    dic = generateReportForAllUsers()
+    list = []
+    for key in dic:
+        info = dic.get(key)
+        if(info[0] == 0):
+            list.append(key)
+    set_list = set(list)
+    return set_list
+
+def generateReportForAllViruses():
+    files = glob.glob('reports/*.txt')
+    dic = {}
+    for file in files:
+        f = open(file,'r')
+        virus_list = f.readlines()
+        f.close()
+        sum = 0
+        cost = 0
+        for i in virus_list[4:]:
+            i = i.split()
+            if i[1] in dic:
+                values = dic.get(i[1])
+                values[0] += int(i[2])
+                values[1] += float(i[3][1:])
+                dic.update({i[1]:values})
+            else:
+                dic[i[1]] = [int(i[2]),float(i[3][1:])]
+    return dic
+def generateReportForAllUsers():
+    f = open('users.txt','r')
+    user_list = f.readlines()
+    f.close()
+    dic = {}
+    list_user_id = []
+    list_user_name = []
+    for i in user_list[2:]:
+        i = i.split()
+        name = i[1]+" "+ i[0][0:-1]
+        ID = i[3]
+        list_user_id.append(str(i[3]))
+        list_user_name.append(name)
+        dic.update({name:(0,0)})
+    files = glob.glob('reports/*.txt')
+    for file in files:
+        f = open(file,'r')
+        used_list = f.readlines()
+        f.close()
+        user_id = used_list[0][-12:-1]
+        user_index = list_user_id.index(user_id)
+        user_name = list_user_name[list_user_id.index(user_id)]
+        sum = 0
+        cost = 0
+        for i in used_list[4:]:
+            i = i.split()
+            sum += int(i[2])
+            cost += float(i[3][1:])  
+        if user_name in dic:
+            dic.update({user_name:(sum,cost)})
+    return dic
+
+def main():
+    a = generateReportForAllUsers()
+    #pprint.pprint(a)
+    b = generateReportForAllViruses()
+    #pprint.pprint(b)
+    c = getUsersWithoutReports()
+    #pprint.pprint(c)
+    d = getTotalSpending()
+    #pprint.pprint(d)
+    return 0
+
+if __name__ == "__main__":
+    main()

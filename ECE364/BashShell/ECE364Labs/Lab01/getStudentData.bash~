@@ -1,0 +1,33 @@
+#! /bin/bash
+#
+#$Author: ee364d08 $
+#$Date: 2015-09-01 15:22:46 -0400 (Tue, 01 Sep 2015) $
+#$HeadURL: svn+ssh://ece364sv@ecegrid-thin1/home/ecegrid/a/ece364sv/svn/F15/students/ee364d08/Lab01/getStudentData.bash~ $
+#$Revision: 81200 $
+cd gradebooks
+
+if (( $# != 1 ))
+then
+    echo "Usage: ./getStudentData.bash <course name>"
+    exit 1
+
+elif [[ $1 != "ece364" || $1 != "ece337" ]]
+then
+    echo "Error: cource <$@> is not a valid option."
+else 
+    while read line
+    do
+        ((counter++))
+        let grade=$(cut -f 2 -d ',' $1ine)
+        let sum=$grade+$sum
+    done < $1
+
+    echo $counter
+    echo $sum
+fi
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+#! /usr/bin/env python3.4
+
+import sys
+import os, math
+import glob
+import pprint
+
+def getLargestProduct():
+    f = open("Number Grid.txt","r")
+    numbers = f.readlines()
+    f.close()
+    
+    return numbers
+
+def main():
+    a = getLargestProduct()
+    pprint.pprint(a)
+if __name__ == "__main__":
+    main()

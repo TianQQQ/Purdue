@@ -1,0 +1,12 @@
+#! /bin/bash
+
+Num_Of_Param=$#
+Param_Values=$@
+for (( i=$Param_Values; i>=0; i--))
+do
+    if (($i % 3 == 0))
+    then
+        echo $i
+    fi
+done
+

@@ -1,0 +1,10 @@
+fin
+--This line, and those below, will be ignored--
+
+AM   88cb864c-2c34-438b-be4c-8a97f68a4e90.txt
+AM   lab07_results.html
+AM   lab07_tests.py
+A    __pycache__
+AM   Registration.py
+AM   school_data_source.txt
+AM   school_data_target.txt
