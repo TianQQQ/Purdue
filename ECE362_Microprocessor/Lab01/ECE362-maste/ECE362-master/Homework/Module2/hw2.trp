@@ -1,0 +1,118 @@
+
+Timing Report for STAMP
+
+//  Project = hw2
+//  Family  = lc5kve
+//  Device  = ispLSI5256VE
+//  Speed   = -165
+//  Voltage = 5.0
+//  Operating Condition = COM
+//  Data sheet version  = 2.0
+
+//  Pass Bidirection = OFF
+//  Pass S/R = OFF
+//  Pass Latch = OFF
+//  T_SU Endpoints D/T inputs = ON
+//  T_SU Endpoints CE inputs = OFF
+//  T_SU Endpoints S/R inputs = OFF
+//  T_SU Endpoints RAM gated = ON
+//  Fmax of CE = ON
+//  Fmax of RAM = ON
+
+//  Location(From => To)
+//    Pin number: numeric number preceded by "p", BGA number as is
+//    Macrocell number: Segment#,GLB#,Macrocell#
+//                      Segment#: starts from 0 (if applicable)
+//                      GLB#: starts from A..Z, AA..ZZ
+//                      Macrocell#: starts from 0 to 31
+
+
+Section IO
+  //DESTINATION NODES;
+  CS [out]
+  LA8 [out]
+  LA9 [out]
+  LA10 [out]
+  LA11 [out]
+  LA12 [out]
+  LA13 [out]
+  LA14 [out]
+  LA15 [out]
+  OE [out]
+  WE [out]
+  LA8.C [reg]
+  LA9.C [reg]
+  LA10.C [reg]
+  LA11.C [reg]
+  LA12.C [reg]
+  LA13.C [reg]
+  LA14.C [reg]
+  LA15.C [reg]
+  LA8.D [reg]
+  LA9.D [reg]
+  LA10.D [reg]
+  LA11.D [reg]
+  LA12.D [reg]
+  LA13.D [reg]
+  LA14.D [reg]
+  LA15.D [reg]
+
+  //SOURCE NODES;
+  ECLK [in]
+  PA0 [in]
+  PA1 [in]
+  PA2 [in]
+  PA3 [in]
+  PA4 [in]
+  PA5 [in]
+  PA6 [in]
+  PA7 [in]
+  RW [in]
+  LA8.Q [reg]
+  LA9.Q [reg]
+  LA10.Q [reg]
+  LA11.Q [reg]
+  LA12.Q [reg]
+  LA13.Q [reg]
+  LA14.Q [reg]
+  LA15.Q [reg]
+
+
+Section tSU
+
+  tSU,    tHD   Level   Location(From => To)    Source                        Destination                   Reference_Clock
+  ===========   =====   ====================    ======                        ===========                   ===============
+  5.50,  0.00     1     p44       =>  B5        PA0                           LA8.D                         ECLK
+  5.50,  0.00     1     p26       =>  A1        PA1                           LA9.D                         ECLK
+  5.50,  0.00     1     p2        =>  B7        PA2                           LA10.D                        ECLK
+  5.50,  0.00     1     p29       =>  A3        PA3                           LA11.D                        ECLK
+  5.50,  0.00     1     p3        =>  B9        PA4                           LA12.D                        ECLK
+  5.50,  0.00     1     p30       =>  A6        PA5                           LA13.D                        ECLK
+  5.50,  0.00     1     p4        =>  B12       PA6                           LA14.D                        ECLK
+  5.50,  0.00     1     p31       =>  A10       PA7                           LA15.D                        ECLK
+
+
+Section tPD
+
+  Delay         Level   Location(From => To)    Source                        Destination
+  =====         =====   ====================    ======                        ===========
+   8.00           1     p39       => p18        ECLK                          CS
+   8.00           1     p39       => p19        ECLK                          OE
+   8.00           1     p39       => p20        ECLK                          WE
+   8.00           1     p17       => p19        RW                            OE
+   8.00           1     p17       => p20        RW                            WE
+
+
+Section tCO
+
+    tCO         Level   Location(From => To)    Source                        Destination                   Register_Clock
+    ===         =====   ====================    ======                        ===========                   ==============
+   8.50           2     p39       => p18        ECLK                          CS                            LA15.C
+   3.50           1     p39       => p21        ECLK                          LA8                           LA8.C
+   3.50           1     p39       => p40        ECLK                          LA9                           LA9.C
+   3.50           1     p39       => p22        ECLK                          LA10                          LA10.C
+   3.50           1     p39       => p41        ECLK                          LA11                          LA11.C
+   3.50           1     p39       => p24        ECLK                          LA12                          LA12.C
+   3.50           1     p39       => p42        ECLK                          LA13                          LA13.C
+   3.50           1     p39       => p25        ECLK                          LA14                          LA14.C
+   3.50           1     p39       => p43        ECLK                          LA15                          LA15.C

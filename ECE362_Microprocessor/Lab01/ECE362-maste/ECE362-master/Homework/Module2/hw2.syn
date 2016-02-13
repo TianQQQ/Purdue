@@ -1,0 +1,9 @@
+JDF B
+// Created by Version 3.0 
+PROJECT Untitled
+DESIGN hw2 Normal
+DEVKIT LC4032B-25T44C
+ENTRY ABEL/Schematic
+MODULE mem9sc12.abl
+MODSTYLE mem9sc12 Normal
+SYNTHESIS_TOOL Exemplar

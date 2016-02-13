@@ -1,0 +1,158 @@
+ispLEVER Classic 1.7.00.05.28.13 Linked Equations File
+Copyright(C), 1992-2013, Lattice Semiconductor Corp.
+All Rights Reserved.
+
+Design lab6 created Tue Oct 14 17:04:07 2014
+
+Title: Lab 6 ABEL File
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   2/4        5        1    Pin   td 
+   5/8        6        1    Pin   md 
+   7/6        6        1    Pin-  a1 
+   9/6        6        1    Pin-  b1 
+   6/5        6        1    Pin-  c1 
+   9/7        6        1    Pin-  d1 
+   4/5        6        1    Pin   e1 
+   7/6        6        1    Pin-  f1 
+   8/5        6        1    Pin-  g1 
+=========
+  57/52         Best P-Term Total: 46
+                       Total Pins: 15
+                      Total Nodes: 0
+            Average P-Term/Output: 5
+
+
+Equations:
+
+td = (!pt4 & !pt3 & pt2
+     # !pt6 & !pt5 & !pt3 & pt2);
+
+md = (pt7 & !pt4 & pt3 & !pt2
+     # pt6 & !pt4 & pt3 & !pt2
+     # pt5 & !pt4 & pt3 & !pt2
+     # !pt6 & !pt5 & pt4 & pt3 & !pt2
+     # !pt7 & !pt6 & !pt5 & !pt4 & !pt3 & !pt2);
+
+a1 = (pt6 & !pt4 & !pt3
+     # pt6 & !pt4 & !pt2
+     # !pt6 & !pt5 & pt4 & !pt3
+     # pt7 & pt5 & !pt4 & !pt3
+     # !pt7 & !pt5 & !pt4 & !pt3
+     # !pt6 & !pt5 & pt4 & !pt2
+     # pt7 & pt5 & !pt4 & !pt2);
+
+b1 = (!pt6 & !pt5 & !pt3
+     # !pt5 & !pt4 & !pt3
+     # pt7 & pt6 & !pt4 & !pt3
+     # !pt7 & !pt6 & !pt4 & !pt3
+     # !pt6 & !pt5 & pt4 & !pt2
+     # pt7 & pt6 & !pt4 & !pt2
+     # pt7 & !pt5 & !pt4 & !pt2
+     # pt6 & !pt5 & !pt4 & !pt2
+     # !pt7 & !pt6 & pt5 & !pt4 & !pt2);
+
+c1 = (!pt6 & !pt5 & !pt3
+     # pt7 & !pt4 & !pt3
+     # pt5 & !pt4 & !pt3
+     # pt7 & !pt4 & !pt2
+     # pt5 & !pt4 & !pt2
+     # !pt6 & !pt5 & pt4 & !pt2);
+
+d1 = (!pt6 & !pt5 & pt4 & !pt3
+     # !pt7 & pt6 & !pt4 & !pt3
+     # !pt7 & !pt5 & !pt4 & !pt3
+     # pt6 & !pt5 & !pt4 & !pt3
+     # !pt6 & !pt5 & pt4 & !pt2
+     # !pt7 & pt6 & !pt4 & !pt2
+     # pt6 & !pt5 & !pt4 & !pt2
+     # pt7 & !pt6 & pt5 & !pt4 & !pt3
+     # pt7 & !pt6 & pt5 & !pt4 & !pt2);
+
+e1 = (!pt7 & !pt6 & !pt5 & !pt3
+     # !pt7 & pt6 & !pt4 & !pt3
+     # !pt7 & pt6 & !pt4 & !pt2
+     # !pt7 & !pt6 & !pt5 & pt4 & !pt2);
+
+f1 = (!pt6 & !pt5 & pt4 & !pt3
+     # !pt7 & !pt6 & !pt4 & !pt3
+     # !pt7 & pt5 & !pt4 & !pt3
+     # !pt6 & pt5 & !pt4 & !pt3
+     # !pt6 & !pt5 & pt4 & !pt2
+     # !pt7 & pt5 & !pt4 & !pt2
+     # !pt6 & pt5 & !pt4 & !pt2);
+
+g1 = (!pt6 & !pt5 & pt4 & !pt3
+     # !pt7 & pt6 & !pt4 & !pt3
+     # !pt6 & pt5 & !pt4 & !pt3
+     # pt6 & !pt5 & !pt4 & !pt3
+     # !pt6 & !pt5 & pt4 & !pt2
+     # !pt7 & pt6 & !pt4 & !pt2
+     # !pt6 & pt5 & !pt4 & !pt2
+     # pt6 & !pt5 & !pt4 & !pt2);
+
+
+Reverse-Polarity Equations:
+
+!td = (pt3
+     # !pt2
+     # pt6 & pt4
+     # pt5 & pt4);
+
+!md = (pt2
+     # pt6 & pt4
+     # pt5 & pt4
+     # pt7 & !pt3
+     # pt6 & !pt3
+     # pt5 & !pt3
+     # pt4 & !pt3
+     # !pt7 & !pt6 & !pt5 & !pt4 & pt3);
+
+!a1 = (pt6 & pt4
+     # pt5 & pt4
+     # pt3 & pt2
+     # !pt7 & !pt6 & pt5
+     # pt7 & !pt6 & !pt5 & !pt4
+     # !pt6 & !pt5 & !pt4 & pt3);
+
+!b1 = (pt6 & pt4
+     # pt5 & pt4
+     # pt3 & pt2
+     # !pt7 & pt6 & pt5
+     # pt7 & !pt6 & pt5
+     # !pt7 & !pt6 & !pt5 & !pt4 & pt3);
+
+!c1 = (pt6 & pt4
+     # pt5 & pt4
+     # pt3 & pt2
+     # !pt7 & pt6 & !pt5
+     # !pt7 & !pt5 & !pt4 & pt3);
+
+!d1 = (pt6 & pt4
+     # pt5 & pt4
+     # pt3 & pt2
+     # pt7 & pt6 & pt5
+     # !pt7 & !pt6 & pt5
+     # pt7 & !pt6 & !pt5 & !pt4
+     # !pt6 & !pt5 & !pt4 & pt3);
+
+!e1 = (pt7
+     # !pt6 & pt5
+     # pt6 & pt4
+     # pt3 & pt2
+     # !pt6 & !pt4 & pt3);
+
+!f1 = (pt7 & pt6
+     # pt6 & !pt5
+     # pt5 & pt4
+     # pt3 & pt2
+     # pt7 & !pt5 & !pt4
+     # !pt5 & !pt4 & pt3);
+
+!g1 = (pt6 & pt4
+     # pt5 & pt4
+     # pt3 & pt2
+     # pt7 & pt6 & pt5
+     # !pt6 & !pt5 & !pt4);
+

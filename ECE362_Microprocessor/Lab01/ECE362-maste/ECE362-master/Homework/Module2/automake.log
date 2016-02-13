@@ -1,0 +1,7 @@
+ispLEVER Auto-Make Log File
+---------------------------
+
+Updating: Timing Analysis
+
+Launching: 'C:\Program Files\ispTOOLS\ispcpld\bin\timing.exe -prj "hw2" -tti "hw2.tt4" -gui -dir "n:\362\homework\module2"'
+

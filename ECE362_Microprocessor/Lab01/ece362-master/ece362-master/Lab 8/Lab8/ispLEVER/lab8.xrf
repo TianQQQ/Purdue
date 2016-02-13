@@ -1,0 +1,17 @@
+ispLEVER Classic 1.7.00.05.28.13 Signal Name Cross Reference File
+Copyright(C), 1992-2013, Lattice Semiconductor Corp.
+All Rights Reserved.
+
+Design 'lab8' created Wed Nov 05 09:54:05 2014
+
+Title:  Lab 8 ABEL Code - 8 bit shift register
+
+ LEGEND:  '>'  Functional Block Port Separator
+          '/'  Hierarchy Path Separator
+          '@'  Automatically Generated Node
+
+
+Short Name                              Hierarchical Name
+----------                              -----------------
+
+ *** Shortened names not required for this design. ***

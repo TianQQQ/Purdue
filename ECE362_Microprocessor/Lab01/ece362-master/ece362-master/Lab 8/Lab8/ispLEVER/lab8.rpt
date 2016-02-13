@@ -1,0 +1,196 @@
+
+
+                                                                      Page 1
+ispLEVER Classic 1.7.00.05.28.13  -  Device Utilization Chart         Wed Nov 05 09:54:09 2014
+
+Lab 8 ABEL Code - 8 bit shift register
+
+
+
+--------------------------------------------------------------------------------
+
+Module                   : 'lab8'
+
+--------------------------------------------------------------------------------
+
+Input files:
+
+    ABEL PLA file        : lab8.tt3
+    Device library       : P22V10G.dev
+
+Output files:
+
+    Report file          : lab8.rpt
+    Programmer load file : lab8.jed
+
+--------------------------------------------------------------------------------
+
+
+                                                                      Page 2
+ispLEVER Classic 1.7.00.05.28.13  -  Device Utilization Chart         Wed Nov 05 09:54:09 2014
+
+Lab 8 ABEL Code - 8 bit shift register
+
+P22V10G Programmed Logic:
+--------------------------------------------------------------------------------
+
+
+
+q0.D   = (  serial_in ); " ISTYPE 'BUFFER'
+q0.C   = (  clock );
+
+q1.D   = (  q0.Q ); " ISTYPE 'BUFFER'
+q1.C   = (  clock );
+
+q2.D   = (  q1.Q ); " ISTYPE 'BUFFER'
+q2.C   = (  clock );
+
+q3.D   = (  q2.Q ); " ISTYPE 'BUFFER'
+q3.C   = (  clock );
+
+q4.D   = (  q3.Q ); " ISTYPE 'BUFFER'
+q4.C   = (  clock );
+
+q5.D   = (  q4.Q ); " ISTYPE 'BUFFER'
+q5.C   = (  clock );
+
+q6.D   = (  q5.Q ); " ISTYPE 'BUFFER'
+q6.C   = (  clock );
+
+q7.D   = (  q6.Q ); " ISTYPE 'BUFFER'
+q7.C   = (  clock );
+
+
+
+                                                                      Page 3
+ispLEVER Classic 1.7.00.05.28.13  -  Device Utilization Chart         Wed Nov 05 09:54:09 2014
+
+Lab 8 ABEL Code - 8 bit shift register
+
+P22V10G Chip Diagram:
+--------------------------------------------------------------------------------
+
+
+
+
+                                   P22V10G
+
+                         +---------\       /---------+
+                         |          \     /          |
+                         |           -----           |
+                   clock |  1                    24  | Vcc                     
+                         |                           |
+               serial_in |  2                    23  |                         
+                         |                           |
+                         |  3                    22  |                         
+                         |                           |
+                         |  4                    21  | q7                      
+                         |                           |
+                         |  5                    20  | q6                      
+                         |                           |
+                         |  6                    19  | q5                      
+                         |                           |
+                         |  7                    18  | q4                      
+                         |                           |
+                         |  8                    17  | q3                      
+                         |                           |
+                         |  9                    16  | q2                      
+                         |                           |
+                         | 10                    15  | q1                      
+                         |                           |
+                         | 11                    14  | q0                      
+                         |                           |
+                     GND | 12                    13  |                         
+                         |                           |
+                         |                           |
+                         `---------------------------'
+
+                        SIGNATURE: N/A
+
+
+                                                                      Page 4
+ispLEVER Classic 1.7.00.05.28.13  -  Device Utilization Chart         Wed Nov 05 09:54:09 2014
+
+Lab 8 ABEL Code - 8 bit shift register
+
+P22V10G Resource Allocations:
+--------------------------------------------------------------------------------
+
+
+
+        Device        | Resource  |   Design    |
+       Resources      | Available | Requirement | Unused
+======================|===========|=============|==============
+                      |           |             |
+Input Pins:           |           |             |
+                      |           |             |
+          Input:      |     12    |      2      |   10 ( 83 %)
+                      |           |             |
+Output Pins:          |           |             |
+                      |           |             |
+          In/Out:     |     10    |      8      |    2 ( 20 %)
+          Output:     |      -    |      -      |    -
+                      |           |             |
+Buried Nodes:         |           |             |
+                      |           |             |
+          Input Reg:  |      -    |      -      |    -
+          Pin Reg:    |     10    |      8      |    2 ( 20 %)
+          Buried Reg: |      -    |      -      |    -
+
+
+                                                                      Page 5
+ispLEVER Classic 1.7.00.05.28.13  -  Device Utilization Chart         Wed Nov 05 09:54:09 2014
+
+Lab 8 ABEL Code - 8 bit shift register
+
+P22V10G Product Terms Distribution:
+--------------------------------------------------------------------------------
+
+
+
+            Signal                       |    Pin   | Terms | Terms | Terms
+             Name                        | Assigned | Used  |  Max  | Unused
+=========================================|==========|=======|=======|=======
+q0.D                                     |   14     |   1   |   8   |   7
+q1.D                                     |   15     |   1   |  10   |   9
+q2.D                                     |   16     |   1   |  12   |  11
+q3.D                                     |   17     |   1   |  14   |  13
+q4.D                                     |   18     |   1   |  16   |  15
+q5.D                                     |   19     |   1   |  16   |  15
+q6.D                                     |   20     |   1   |  14   |  13
+q7.D                                     |   21     |   1   |  12   |  11
+
+
+     ==== List of Inputs/Feedbacks ====
+
+Signal Name                              | Pin      | Pin Type
+=========================================|==========|=========
+serial_in                                |    2     | INPUT
+clock                                    |    1     | CLK/IN
+
+
+                                                                      Page 6
+ispLEVER Classic 1.7.00.05.28.13  -  Device Utilization Chart         Wed Nov 05 09:54:09 2014
+
+Lab 8 ABEL Code - 8 bit shift register
+
+P22V10G Unused Resources:
+--------------------------------------------------------------------------------
+
+
+
+ Pin   |  Pin   |   Product   | Flip-flop
+Number |  Type  |   Terms     |   Type
+=======|========|=============|==========
+    3  |  INPUT |      -      |    -   
+    4  |  INPUT |      -      |    -   
+    5  |  INPUT |      -      |    -   
+    6  |  INPUT |      -      |    -   
+    7  |  INPUT |      -      |    -   
+    8  |  INPUT |      -      |    -   
+    9  |  INPUT |      -      |    -   
+   10  |  INPUT |      -      |    -   
+   11  |  INPUT |      -      |    -   
+   13  |  INPUT |      -      |    -   
+   22  |  BIDIR | NORMAL 10   |    D
+   23  |  BIDIR | NORMAL  8   |    D

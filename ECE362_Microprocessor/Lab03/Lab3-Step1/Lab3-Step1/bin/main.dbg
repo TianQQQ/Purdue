@@ -1,0 +1,103 @@
+; ECE 362 Lab 3 - Fall 2014 - Step 1
+
+; Name: < enter name here >
+
+; Lab: < enter lab division here >
+
+; Class Number: < enter class number here >
+
+; Use Code Warrior (CW) in Full Chip Simulation mode
+
+;***********************************************************************
+;
+; Write a REENTRANT subroutine "findc" that counts the number of instances
+; of a specified (ASCII) character in the string that is passed to it.
+; Recall that a reentrant subroutine does not use any global variables
+; (i.e., any local variables utilized should be allocated on the stack.
+;
+; At entry, the (ASCII) character to match along with the string to search
+; is passed via the stack, as shown; assume the string terminates with the
+; ASCII NULL character (the string can be any length up to 255 characters).
+;
+; At exit, the number of instances of the specified character is returned
+; via the stack (as an unsigned 8-bit binary number) in place of the character
+; that was matched (the string should be deallocated from the stack).
+;
+; At entry:
+;
+;      +--------------------+
+; SP ->| return address - H |
+;      +--------------------+
+;      | return address - L |
+;      +--------------------+
+;      | character to match |
+;      +--------------------+
+;      | string - firstchar |
+;      +--------------------+
+;      |       char         |
+;      +--------------------+
+;      |       char         |
+;      +--------------------+
+;      | string - lastchar  |
+;      +--------------------+
+;      |     ASCII NULL     |
+;      +--------------------+
+;
+;
+; Just prior to exit:
+;
+;      +--------------------+
+; SP ->| return address - H |
+;      +--------------------+
+;      | return address - L |
+;      +--------------------+
+;      | number of matches  |
+;      +--------------------+
+;
+;***********************************************************************
+;
+; To test and auto-grade your solution:
+;	- Use CodeWarrior to assemble your code and launch the debugger
+;	- Load the Auto-Grader (L3AG-1.s19) into the debugger
+;		> Choose File -> Load Application
+;		> Change the file type to "Motorola S-Record (*.s*)"
+;		> Navigate to the 'AutoGrade' folder within your project
+;		> Open 'L3AG-1.s19'
+; - Open and configure the SCI terminal as a debugger component
+;	- Start execution at location $800
+;
+; The score displayed is the number of test cases your code has passed.
+; If nothing is displayed (i.e., your code "crashes"), no points will be
+; awarded - note that there is no way to "protect" the application that
+; tests your code from stack errors inflicted by mistakes in your code.
+;
+; Also note: If the message "STACK CREEP!" appears, it means that the
+; stack has not been handled correctly (e.g., more pushes than pops or
+; data passed to it not de-allocated correctly). 
+;
+;***********************************************************************
+
+	org	$A00	; DO NOT REMOVE OR MODIFY THIS LINE
+
+; Place your code for "findc" below
+
+findc
+       pulx             ; pull stack to D (M(SP):M(SP+1))=>(A:B)
+       pulb             ; pull stack pointer to b M(SP)=>(b)
+       ldy #$0000         ; ld Y imm 0       
+cnt_c  
+       pula             ; M(SP)=>(A)
+       cmpa #$00	; (A)-(M)  M is imm $00
+       beq  cexit	; branch cexit; if equal(if Z = 1)
+       cba	; (A)-(B) 
+       beq increment    ; branch increment; if equal (if Z=1)         ; count the same elements in SP
+       bra cnt_c   	; branch cnt_c; always if(1=1)
+cexit
+       tfr y,d;
+       pshb
+       pshx		; push x to stack  (D)=>M(SP)                 ; SP is address counter
+       rts		; return from subroutine (M(SP):M(SP+1))=>PC(h):PC(l) SP+2=>SP    ; SP counter; PC(h:l)   address  
+       
+increment
+       iny		          ; (Y)+$0001=>(Y)
+       bra cnt_c       	; branch cnt_c

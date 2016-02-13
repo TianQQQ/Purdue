@@ -1,0 +1,15 @@
+MODULE mem9s12c
+TITLE '9S12C Memory Interface'
+DECLARATIONS
+PA0..PA7 pin; " MCU Port A
+ECLK pin; " MCU E-clock
+RW pin; " MCU Read/Write
+!CS, !OE, !WE pin istype 'com';
+LA8..LA15 pin istype 'reg_D'; " demultiplexed address
+EQUATIONS
+[LA8..LA15].D = [PA0..PA7];
+[LA8..LA15].CLK = ECLK;
+CS = !LA15.Q & ECLK; " map SRAM into lower half of address space
+OE = RW & ECLK;
+WE = !RW & ECLK;
+END

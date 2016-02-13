@@ -1,0 +1,114 @@
+ispLEVER 3.0 Linked Equations File
+Copyright(C), 1992-2003, Lattice Semiconductor Corp.
+All Rights Reserved.
+
+Design mem92c12 created Mon Oct 01 13:37:13 2012
+
+Title: 9S12C Memory Interface
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   2          2        1    Pin   CS 
+   2          2        1    Pin   OE 
+   2          2        1    Pin   WE 
+   1/1        1        1    Pin   LA8.D 
+   1/1        1        1    Pin   LA8.C 
+   1/1        1        1    Pin   LA9.D 
+   1/1        1        1    Pin   LA9.C 
+   1/1        1        1    Pin   LA10.D 
+   1/1        1        1    Pin   LA10.C 
+   1/1        1        1    Pin   LA11.D 
+   1/1        1        1    Pin   LA11.C 
+   1/1        1        1    Pin   LA12.D 
+   1/1        1        1    Pin   LA12.C 
+   1/1        1        1    Pin   LA13.D 
+   1/1        1        1    Pin   LA13.C 
+   1/1        1        1    Pin   LA14.D 
+   1/1        1        1    Pin   LA14.C 
+   1/1        1        1    Pin   LA15.D 
+   1/1        1        1    Pin   LA15.C 
+=========
+  22/16         Best P-Term Total: 22
+                       Total Pins: 21
+                      Total Nodes: 0
+            Average P-Term/Output: 1
+
+
+Equations:
+
+CS = (!ECLK
+     # LA15.Q);
+
+OE = (!ECLK
+     # !RW);
+
+WE = (!ECLK
+     # RW);
+
+LA8.D = (PA0);
+
+LA8.C = (ECLK);
+
+LA9.D = (PA1);
+
+LA9.C = (ECLK);
+
+LA10.D = (PA2);
+
+LA10.C = (ECLK);
+
+LA11.D = (PA3);
+
+LA11.C = (ECLK);
+
+LA12.D = (PA4);
+
+LA12.C = (ECLK);
+
+LA13.D = (PA5);
+
+LA13.C = (ECLK);
+
+LA14.D = (PA6);
+
+LA14.C = (ECLK);
+
+LA15.D = (PA7);
+
+LA15.C = (ECLK);
+
+
+Reverse-Polarity Equations:
+
+!LA8.D = (!PA0);
+
+!LA8.C = (!ECLK);
+
+!LA9.D = (!PA1);
+
+!LA9.C = (!ECLK);
+
+!LA10.D = (!PA2);
+
+!LA10.C = (!ECLK);
+
+!LA11.D = (!PA3);
+
+!LA11.C = (!ECLK);
+
+!LA12.D = (!PA4);
+
+!LA12.C = (!ECLK);
+
+!LA13.D = (!PA5);
+
+!LA13.C = (!ECLK);
+
+!LA14.D = (!PA6);
+
+!LA14.C = (!ECLK);
+
+!LA15.D = (!PA7);
+
+!LA15.C = (!ECLK);
+

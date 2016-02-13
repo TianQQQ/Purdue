@@ -1,0 +1,17 @@
+Signal Name Cross Reference File
+
+ispLEVER 3.00.01.27.08.03_SP2003.01
+
+Design 'hw2' created Mon Oct 01 14:38:43 2012
+
+Title:  9S12C Memory Interface
+
+ LEGEND:  '>'  Functional Block Port Separator
+          '/'  Hierarchy Path Separator
+          '@'  Automatically Generated Node
+
+
+Short Name                              Hierarchical Name
+----------                              -----------------
+
+ *** Shortened names not required for this design. ***

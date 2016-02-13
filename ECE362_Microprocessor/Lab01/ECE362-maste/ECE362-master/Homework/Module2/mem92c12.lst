@@ -1,0 +1,17 @@
+0002 |
+0003 |TITLE '9S12C Memory Interface'
+0004 |DECLARATIONS
+0005 |PA0..PA7 pin; " MCU Port A
+0006 |ECLK pin; " MCU E-clock
+0007 |RW pin; " MCU Read/Write
+0008 |!CS, !OE, !WE pin istype 'com';
+0009 |LA8..LA15 pin istype 'reg_D'; " demultiplexed address
+0010 |EQUATIONS
+0011 |[LA8..LA15].D = [PA0..PA7];
+0012 |[LA8..LA15].CLK = ECLK;
+0013 |CS = !LA15.Q & ECLK; " map SRAM into lower half of address space
+0014 |OE = RW & ECLK;
+0015 |WE = !RW & ECLK;
+0016 |
+0017 |END 
+0018 |

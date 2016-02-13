@@ -1,0 +1,16 @@
+ispLEVER 3.00.01.27.08.03_SP2003.01 SDFGEN
+Copyright(C),1992-2003, Lattice Semiconductor Corporation. All Rights Reserved.
+Output Files:
+  Netlist File: hw2.vho
+  Delay   File: hw2.sdf
+
+Parsing C:\Program Files\ispTOOLS\ispcpld/dat/sdf.mdl
+Input file: n:\362\homework\module2\hw2.tt4
+Reading library information ...
+Mapping to combinational gates 
+Mapping to netlist view.
+Utilization Estimate
+    Combinational Macros:          6
+    Flip-Flop and Latch Macros:    8
+    I/O Pads:                     21
+Elapsed time: 1 seconds

@@ -1,0 +1,73 @@
+#$ TOOL ispLEVER Classic 1.7.00.05.28.13
+#$ DATE Tue Oct 21 18:13:11 2014
+#$ TITLE Lab 7 ABEL Source
+#$ MODULE lab7
+#$ JEDECFILE lab7
+#$ PINS 12 clock:1 serial_in:2 q0:14 q1:15 q2:16 q3:17 q4:18 q5:19 q6:20 q7:21 q8:22 q9:23
+
+.model lab7
+.inputs q0.BLIF q1.BLIF q2.BLIF q3.BLIF q4.BLIF q5.BLIF q6.BLIF q7.BLIF q8.BLIF \
+serial_in.BLIF clock.BLIF
+.outputs q1.REG q2.REG q3.REG q4.REG q5.REG q6.REG q7.REG q8.REG q9.REG q0.REG \
+q0.C q1.C q2.C q3.C q4.C q5.C q6.C q7.C q8.C q9.C
+.names serial_in.BLIF q0.REG
+0 1
+1 0
+.names q0.BLIF q1.REG
+1 1
+0 0
+.names q1.BLIF q2.REG
+1 1
+0 0
+.names q2.BLIF q3.REG
+1 1
+0 0
+.names q3.BLIF q4.REG
+1 1
+0 0
+.names q4.BLIF q5.REG
+1 1
+0 0
+.names q5.BLIF q6.REG
+1 1
+0 0
+.names q6.BLIF q7.REG
+1 1
+0 0
+.names q7.BLIF q8.REG
+1 1
+0 0
+.names q8.BLIF q9.REG
+1 1
+0 0
+.names clock.BLIF q0.C
+1 1
+0 0
+.names clock.BLIF q1.C
+1 1
+0 0
+.names clock.BLIF q2.C
+1 1
+0 0
+.names clock.BLIF q3.C
+1 1
+0 0
+.names clock.BLIF q4.C
+1 1
+0 0
+.names clock.BLIF q5.C
+1 1
+0 0
+.names clock.BLIF q6.C
+1 1
+0 0
+.names clock.BLIF q7.C
+1 1
+0 0
+.names clock.BLIF q8.C
+1 1
+0 0
+.names clock.BLIF q9.C
+1 1
+0 0
+.end

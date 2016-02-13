@@ -1,0 +1,63 @@
+ispLEVER Classic 1.7.00.05.28.13 Linked Equations File
+Copyright(C), 1992-2013, Lattice Semiconductor Corp.
+All Rights Reserved.
+
+Design lab6 created Tue Oct 14 19:40:57 2014
+
+Title: Lab 6 ABEL File
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   1          1        1    Pin   i0 
+   1          1        1    Pin   i1 
+   2          4        1    Pin   a1 
+   2          4        1    Pin   b1 
+   1          4        1    Pin   c1 
+   3          4        1    Pin   d1 
+   6          4        1    Pin   e1 
+   4          4        1    Pin   f1 
+   3          4        1    Pin   g1 
+=========
+  23                 P-Term Total: 23
+                       Total Pins: 15
+                      Total Nodes: 0
+            Average P-Term/Output: 2
+
+
+Equations:
+
+i0 = (!t_d);
+
+i1 = (!m_d);
+
+a1 = (!i5 & !i4 & !i3 & i2
+     # !i5 & i4 & !i3 & !i2);
+
+b1 = (!i5 & i4 & !i3 & i2
+     # !i5 & i4 & i3 & !i2);
+
+c1 = (!i5 & !i4 & i3 & !i2);
+
+d1 = (!i5 & i4 & i3 & i2
+     # !i5 & !i4 & !i3 & i2
+     # !i5 & i4 & !i3 & !i2);
+
+e1 = (!i5 & i4 & i3 & i2
+     # !i5 & !i4 & i3 & i2
+     # !i5 & i4 & !i3 & i2
+     # i5 & !i4 & !i3 & i2
+     # !i5 & !i4 & !i3 & i2
+     # !i5 & i4 & !i3 & !i2);
+
+f1 = (!i5 & i4 & i3 & i2
+     # !i5 & !i4 & i3 & i2
+     # !i5 & !i4 & !i3 & i2
+     # !i5 & !i4 & i3 & !i2);
+
+g1 = (!i5 & i4 & i3 & i2
+     # !i5 & !i4 & !i3 & i2
+     # !i5 & !i4 & !i3 & !i2);
+
+
+Reverse-Polarity Equations:
+

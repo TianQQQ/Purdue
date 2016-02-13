@@ -1,0 +1,1 @@
+-src hw2.bl5 -type BLIF -devfile "C:\Program Files\ispTOOLS\ispcpld/dat/lc4k/m4s_32_30.dev" -lci hw2.lct -prc hw2.lco -log hw2.log -touch hw2.fti

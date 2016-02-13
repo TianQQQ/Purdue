@@ -1,0 +1,558 @@
+|--------------------------------------------------------------|
+|- ispLEVER 3.00.01.27.08.03_SP2003.01 Fitter Report File     -|
+|- Copyright(C), 1992-2001, Lattice Semiconductor Corporation -|
+|- All Rights Reserved.                                       -|
+|--------------------------------------------------------------|
+
+
+
+
+Project_Summary
+~~~~~~~~~~~~~~~
+Project Name         :  hw2
+Project Path         :  N:\362\Homework\Module2
+Project Fitted on    :  Mon Oct 01 14:38:45 2012
+
+Device               :  M4032_30
+Package              :  44
+GLB Input Mux Size   :  6
+Available Blocks     :  2
+Speed                :  -5
+Part Number          :  LC4032B-5T44C
+Source Format        :  ABEL_Schematic
+
+
+// Project 'hw2' Fit Successfully! //
+
+
+Compilation_Times
+~~~~~~~~~~~~~~~~~
+Prefit Time                     0 secs
+Load Design Time                0.03 secs
+Partition Time                  0.02 secs
+Place Time                      0.00 secs
+Route Time                      0.00 secs
+Total Fit Time                  00:00:01
+
+
+Design_Summary
+~~~~~~~~~~~~~~
+Total Input Pins                10
+Total Logic Functions           11
+  Total Output Pins             11
+  Total Bidir I/O Pins          0
+  Total Buried Nodes            0
+Total Flip-Flops                8
+  Total D Flip-Flops            8
+  Total T Flip-Flops            0
+  Total Latches                 0
+Total Product Terms             19
+
+Total Reserved Pins             0
+Total Locked Pins               1
+Total Locked Nodes              0
+
+Total Unique Output Enables     0
+Total Unique Clocks             1
+Total Unique Clock Enables      0
+Total Unique Resets             0
+Total Unique Presets            0
+
+
+Device_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~~~~
+                                 Total
+                               Available  Used  Available  Utilization
+----------------------------------------------------------------------
+Dedicated Pins
+  Clock/Input Pins                  2        2      0    -->   100
+  I/O / Enable Pins                 2        1      1    -->    50
+I/O Pins                           28       18     10    -->    64
+Logic Functions                    32       11     21    -->    34
+  Input Registers                  30        0     30    -->     0
+  Unusable Macrocells              ..        0     ..    -->    ..
+
+GLB Inputs                         72       11     61    -->    15
+Logical Product Terms             160       11    149    -->     6
+Occupied GLBs                       2        2      0    -->   100
+Occupied Macrocells                32       11     21    -->    34
+  One Function Macrocells          ..       11     ..    -->    ..
+  Zero Function Macrocells         ..        0     ..    -->    ..
+Occupied Product Terms            168       11    157    -->     6
+
+Control Product Terms:
+  GLB Clock/Clock Enables           2        0      2    -->     0
+  GLB Reset/Presets                 2        0      2    -->     0
+  Macrocell Clocks                 32        0     32    -->     0
+  Macrocell Clock Enables          32        0     32    -->     0
+  Macrocell Enables                32        0     32    -->     0
+  Macrocell Resets                 32        0     32    -->     0
+  Macrocell Presets                32        0     32    -->     0
+
+Global Routing Pool                64       11     53    -->    17
+  GRP from IFB                     ..       10     ..    -->    ..
+    (from input signals)           ..       10     ..    -->    ..
+    (from output signals)          ..        0     ..    -->    ..
+    (from bidir signals)           ..        0     ..    -->    ..
+  GRP from MFB                     ..        1     ..    -->    ..
+----------------------------------------------------------------------
+
+<Note> 1 : IFB is I/O feedback.
+<Note> 2 : MFB is macrocell feedback.
+
+
+
+GLB_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~
+                                                                    # of PT
+                     I/O    Input  Macrocells   Macrocells   Logic  clusters
+             Fanin   Pins    Regs Used Unusable  available    PTs   used
+------------------------------------------------------------------------------
+Maximum
+  GLB         36      *(1)     8   --     --         16       80       16
+==============================================================================
+  GLB    A     4      7/15     0    4      0         12        4        4
+  GLB    B     7     11/15     0    7      0          9        7        7
+------------------------------------------------------------------------------
+
+<Note> 1 : For ispMACH 4000 devices, the number of IOs depends on the GLB.
+<Note> 2 : Four rightmost columns above reflect last status of the placement process.
+
+
+
+GLB_Control_Summary
+~~~~~~~~~~~~~~~~~~~
+           Shared Shared | Mcell  Mcell  Mcell  Mcell  Mcell 
+           Clk/CE Rst/Pr | Clock  CE     Enable Reset  Preset
+------------------------------------------------------------------------------
+Maximum
+  GLB        1      1        16     16     16     16     16  
+==============================================================================
+  GLB    A   0      0         0      0      0      0      0
+  GLB    B   0      0         0      0      0      0      0
+------------------------------------------------------------------------------
+
+<Note> 1 : For ispMACH 4000 devices, the number of output enables depends on the GLB.
+
+
+
+Optimizer_and_Fitter_Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pin Assignment :                       No
+Group Assignment :                     No
+Pin Reservation :                      No
+
+@Ignore_Project_Constraints :
+  Pin Assignments :                    No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+  Group Assignments :                  No
+  Macrocell Assignment :               No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+
+@Backannotate_Project_Constraints
+  Pin Assignments :                    No
+  Pin And Block Assignments :          No
+  Pin, Macrocell and Block :           No
+
+@Timing_Constraints :                  No
+
+@Global_Project_Optimization :
+  Balanced Partitioning :              Yes
+  Spread Placement :                   Yes
+
+  Note :
+    Pack Design :
+       Balanced Partitioning = No
+       Spread Placement      = No
+    Spread Design :
+       Balanced Partitioning = Yes
+       Spread Placement      = Yes
+
+
+@Logic_Synthesis :
+  Logic Reduction :                    Yes
+  Node Collapsing :                    FMAX
+  Fmax_Logic_Level :                   1
+  D/T Synthesis :                      Yes
+  XOR Synthesis :                      Yes
+  Max. P-Term for Collapsing :         16
+  Max. P-Term for Splitting :          80
+  Max Symbols :                        24
+
+@Utilization_options
+  Max. % of Macrocells used :          100
+@Usercode                               (HEX)
+@IO_Types                              Default = LVCMOS18 (2)
+@Output_Slew_Rate                      Default = FAST (2)
+@Power                                 Default = HIGH (2)
+@Pull                                  Default = PULLUP_UP (2)
+@Fast_Bypass                           Default = None (2)
+@OSM_Bypass                            Default = None
+@Input_Registers                       Default = None (2)
+
+Device Options:
+<Note> 1 : Reserved unused I/Os can be independently driven to Low or High, and does not
+           follow the drive level set for the Global Configure Unused I/O Option.
+<Note> 2 : For user-specified constraints on individual signals, refer to the Output,
+           Bidir and Buried Signal Lists.
+
+
+
+Pinout_Listing
+~~~~~~~~~~~~~~
+      | Pin   |GLB |Assigned|                 | Signal|
+Pin No| Type  |Pad |Pin     |     I/O Type    | Type  | Signal name
+-------------------------------------------------------------------
+1     | TDI   |    |        |                 |       |
+2     |  I_O  | A5 |        |LVCMOS18         | Input |PA2
+3     |  I_O  | A6 |        |LVCMOS18         | Input |PA4
+4     |  I_O  | A7 |        |LVCMOS18         | Input |PA6
+5     |GNDIO0 |    |        |                 |       |
+6     |VCCIO0 |    |        |                 |       |
+7     |  I_O  | A8 |        |                 |       |
+8     |  I_O  | A9 |        |                 |       |
+9     |  I_O  | A10|        |                 |       |
+10    | TCK   |    |        |                 |       |
+11    | VCC   |    |        |                 |       |
+12    | GND   |    |        |                 |       |
+13    |  I_O  | A12|        |                 |       |
+14    |  I_O  | A13|        |                 |       |
+15    |  I_O  | A14|        |                 |       |
+16    |  I_O  | A15|        |                 |       |
+17    |INCLK2 |    |    *   |LVCMOS18         | Input |RW
+18    |  I_O  | B0 |        |LVCMOS18         | Output|CS
+19    |  I_O  | B1 |        |LVCMOS18         | Output|OE
+20    |  I_O  | B2 |        |LVCMOS18         | Output|WE
+21    |  I_O  | B3 |        |LVCMOS18         | Output|LA8
+22    |  I_O  | B4 |        |LVCMOS18         | Output|LA10
+23    | TMS   |    |        |                 |       |
+24    |  I_O  | B5 |        |LVCMOS18         | Output|LA12
+25    |  I_O  | B6 |        |LVCMOS18         | Output|LA14
+26    |  I_O  | B7 |        |LVCMOS18         | Input |PA1
+27    |GNDIO1 |    |        |                 |       |
+28    |VCCIO1 |    |        |                 |       |
+29    |  I_O  | B8 |        |LVCMOS18         | Input |PA3
+30    |  I_O  | B9 |        |LVCMOS18         | Input |PA5
+31    |  I_O  | B10|        |LVCMOS18         | Input |PA7
+32    | TDO   |    |        |                 |       |
+33    | VCC   |    |        |                 |       |
+34    | GND   |    |        |                 |       |
+35    |  I_O  | B12|        |                 |       |
+36    |  I_O  | B13|        |                 |       |
+37    |  I_O  | B14|        |                 |       |
+38    | I_O/OE| B15|        |                 |       |
+39    |INCLK0 |    |        |LVCMOS18         | Input |ECLK
+40    | I_O/OE| A0 |        |LVCMOS18         | Output|LA9
+41    |  I_O  | A1 |        |LVCMOS18         | Output|LA11
+42    |  I_O  | A2 |        |LVCMOS18         | Output|LA13
+43    |  I_O  | A3 |        |LVCMOS18         | Output|LA15
+44    |  I_O  | A4 |        |LVCMOS18         | Input |PA0
+-------------------------------------------------------------------
+
+<Note> GLB Pad : This notation refers to the GLB I/O pad number in the device.
+<Note> Assigned Pin : user or dedicated input assignment (E.g. Clock pins).
+<Note> Pin Type : 
+          ClkIn : Dedicated input or clock pin 
+           CLK  : Dedicated clock pin
+           I_O  : Input/Output pin
+           INP  : Dedicated input pin
+           JTAG : JTAG Control and test pin
+           NC   : No connected
+
+
+
+Input_Signal_List
+~~~~~~~~~~~~~~~~~
+                Input
+         Pin    Fanout
+ Pin GLB Type         Pullup Signal
+----------------------------------
+  39  -- INCLK  1 -B      Up ECLK
+  44   A  I/O   1 -B      Up PA0
+  26   B  I/O   1 A-      Up PA1
+   2   A  I/O   1 -B      Up PA2
+  29   B  I/O   1 A-      Up PA3
+   3   A  I/O   1 -B      Up PA4
+  30   B  I/O   1 A-      Up PA5
+   4   A  I/O   1 -B      Up PA6
+  31   B  I/O   1 A-      Up PA7
+  17  -- INCLK  1 -B      Up RW
+----------------------------------
+
+
+
+Output_Signal_List
+~~~~~~~~~~~~~~~~~~
+          I      C      P R         O Output
+          N      L Mc   R E C O I F B Fanout
+ Pin GLB  P PTs  S Type E S E E R P P       Slew Pullup Signal
+--------------------------------------------------------------
+  18   B  2   1  1 COM                  -- Fast     Up CS
+  22   B  1   1  1 DFF                  -- Fast     Up LA10
+  41   A  1   1  1 DFF                  -- Fast     Up LA11
+  24   B  1   1  1 DFF                  -- Fast     Up LA12
+  42   A  1   1  1 DFF                  -- Fast     Up LA13
+  25   B  1   1  1 DFF                  -- Fast     Up LA14
+  43   A  1   1  1 DFF                1 -B Fast     Up LA15
+  21   B  1   1  1 DFF                  -- Fast     Up LA8
+  40   A  1   1  1 DFF                  -- Fast     Up LA9
+  19   B  2   1  1 COM                  -- Fast     Up OE
+  20   B  2   1  1 COM                  -- Fast     Up WE
+--------------------------------------------------------------
+
+<Note> CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+       PRE = Has preset equation
+       RES = Has reset equation
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        IR = Input register
+        FP = Fast path used
+       OBP = OSM bypass used
+
+
+
+Bidir_Signal_List
+~~~~~~~~~~~~~~~~~
+          I      C      P R         O Bidir
+          N      L Mc   R E C O I F B Fanout
+ Pin GLB  P PTs  S Type E S E E R P P       Slew Pullup Signal
+--------------------------------------------------------------
+--------------------------------------------------------------
+
+<Note> CLS = Number of clusters used
+       INP = Number of input signals
+       PTs = Number of product terms
+       PRE = Has preset equation
+       RES = Has reset equation
+        CE = Has clock enable equation
+        OE = Has output enable equation
+        IR = Input register
+        FP = Fast path used
+       OBP = OSM bypass used
+
+
+
+Buried_Signal_List
+~~~~~~~~~~~~~~~~~~
+
+
+
+Signals_Fanout_List
+~~~~~~~~~~~~~~~~~~~
+Signal Source :                 Fanout List
+------------------------------------------------------------
+ECLK{..}      : CS{B}          OE{B}          WE{B}
+LA15.Q{A}     : CS{B}
+PA0{A}        : LA8{B}
+PA1{B}        : LA9{A}
+PA2{A}        : LA10{B}
+PA3{B}        : LA11{A}
+PA4{A}        : LA12{B}
+PA5{B}        : LA13{A}
+PA6{A}        : LA14{B}
+PA7{B}        : LA15{A}
+RW{..}        : OE{B}          WE{B}
+------------------------------------------------------------
+<Note> {.} : Indicates GLB location of signal
+
+
+
+
+GLB_A_CLUSTER_TABLE
+~~~~~~~~~~~~~~~~~~~
+    CCCC CCCC CCCC CCCC GGBBBB      I  T   L X C
+    0000 0000 0011 1111 CECCAA      /  P   P P P
+    0123 4567 8901 2345 KBKERP Type O  T   T T T   Signal
+---------------------------------------------------------
+M00 *--- ---- ---- ---- ------
+M01 -1-- ---- ---- ---- 1----- OUT  0  0   1 0 0 LA9
+M02 --*- ---- ---- ---- ------
+M03 ---1 ---- ---- ---- 1----- OUT  1  0   1 0 0 LA11
+M04 ---- *--- ---- ---- ------
+M05 ---- -*-- ---- ---- ------
+M06 ---- --1- ---- ---- 1----- OUT  2  0   1 0 0 LA13
+M07 ---- ---* ---- ---- ------
+M08 ---- ---- *--- ---- ------
+M09 ---- ---- -*-- ---- ------
+M10 ---- ---- --1- ---- 1----- OUT  3  0   1 0 0 LA15
+M11 ---- ---- ---* ---- ------
+M12 ---- ---- ---- *--- ------
+M13 ---- ---- ---- -*-- ------
+M14 ---- ---- ---- --*- ------
+M15 ---- ---- ---- ---* ------
+---------------------------------------------------------
+
+
+
+GLB_B_CLUSTER_TABLE
+~~~~~~~~~~~~~~~~~~~
+    CCCC CCCC CCCC CCCC GGBBBB      I  T   L X C
+    0000 0000 0011 1111 CECCAA      /  P   P P P
+    0123 4567 8901 2345 KBKERP Type O  T   T T T   Signal
+---------------------------------------------------------
+M00 1--- ---- ---- ---- ------ OUT  0  0   1 0 0 CS
+M01 -1-- ---- ---- ---- ------ OUT  1  0   1 0 0 OE
+M02 --*- ---- ---- ---- ------
+M03 ---1 ---- ---- ---- ------ OUT  2  0   1 0 0 WE
+M04 ---- *--- ---- ---- ------
+M05 ---- -1-- ---- ---- 1----- OUT  3  0   1 0 0 LA8
+M06 ---- --*- ---- ---- ------
+M07 ---- ---1 ---- ---- 1----- OUT  4  0   1 0 0 LA10
+M08 ---- ---- *--- ---- ------
+M09 ---- ---- -1-- ---- 1----- OUT  5  0   1 0 0 LA12
+M10 ---- ---- --*- ---- ------
+M11 ---- ---- ---* ---- ------
+M12 ---- ---- ---- 1--- 1----- OUT  6  0   1 0 0 LA14
+M13 ---- ---- ---- -*-- ------
+M14 ---- ---- ---- --*- ------
+M15 ---- ---- ---- ---* ------
+---------------------------------------------------------
+
+
+<Note> Pin clocks, block clocks, block resets, block presets and
+       output enables are not included in the ctrl pterm counts
+       in the above tables.
+
+<Note> LPT = Number of Logic Pterms
+       XPT = Number of XOR Pterms
+       CPT = Number of Control Pterms
+
+<Note> TPT = Number of Pterm Adders
+
+<Note> GCK = Global Pin Clock
+       GEB = Global Output Enable Bus
+       BCK = Block Asynchronous Clock
+       BCE = Block Clock Enable
+       BAR = Block Asynchronous Reset
+       BAP = Block Asynchronous Preset
+
+
+
+GLB_A_LOGIC_ARRAY_FANIN
+~~~~~~~~~~~~~~~~~~~~~~~
+GI  Source             Signal    GI  Source             Signal
+-----------------------------    -----------------------------
+00 ...       ...                 18 ...       ...             
+01 ...       ...                 19 ...       ...             
+02 ...       ...                 20 ...       ...             
+03 pin 26    PA1                 21 ...       ...             
+04 pin 30    PA5                 22 ...       ...             
+05 ...       ...                 23 ...       ...             
+06 ...       ...                 24 ...       ...             
+07 ...       ...                 25 ...       ...             
+08 pin 31    PA7                 26 ...       ...             
+09 ...       ...                 27 ...       ...             
+10 ...       ...                 28 ...       ...             
+11 ...       ...                 29 ...       ...             
+12 pin 29    PA3                 30 ...       ...             
+13 ...       ...                 31 ...       ...             
+14 ...       ...                 32 ...       ...             
+15 ...       ...                 33 ...       ...             
+16 ...       ...                 34 ...       ...             
+17 ...       ...                 35 ...       ...             
+--------------------------------------------------------------
+
+
+GLB_B_LOGIC_ARRAY_FANIN
+~~~~~~~~~~~~~~~~~~~~~~~
+GI  Source   Signal              GI  Source   Signal          
+-----------------------------    -----------------------------
+00 ...       ...                 18 ...       ...             
+01 pin 4     PA6                 19 pin 2     PA2             
+02 pin 17    RW                  20 ...       ...             
+03 ...       ...                 21 ...       ...             
+04 ...       ...                 22 ...       ...             
+05 ...       ...                 23 pin 44    PA0             
+06 ...       ...                 24 ...       ...             
+07 ...       ...                 25 ...       ...             
+08 ...       ...                 26 ...       ...             
+09 ...       ...                 27 ...       ...             
+10 pin 39    ECLK                28 ...       ...             
+11 pin 3     PA4                 29 ...       ...             
+12 ...       ...                 30 ...       ...             
+13 mc A-10   LA15.Q              31 ...       ...             
+14 ...       ...                 32 ...       ...             
+15 ...       ...                 33 ...       ...             
+16 ...       ...                 34 ...       ...             
+17 ...       ...                 35 ...       ...             
+--------------------------------------------------------------
+
+
+<Note> GI indicates the GLB inputs into the AND array.
+<Note> Source indicates where the signal comes from (pin or macrocell).
+
+
+
+PostFit_Equations
+~~~~~~~~~~~~~~~~~
+
+------------------------
+ Product Term Histogram
+------------------------
+1   pterms : 11   (11  )
+------------------------
+
+<Note> The number of pterms in the above histogram counts only
+       cluster pterms used. It does not include pterms from
+       control equations placed on global pins or block level
+       product terms.
+
+<Note> The value in brackets is the cumulative number of
+       functions having less than or equal number of product
+       terms.
+
+
+
+------------------------
+   GLB Input Histogram
+------------------------
+1   inputs : 8    (8   )
+2   inputs : 3    (11  )
+------------------------
+
+<Note> The number of block inputs in the above histogram counts
+       only signal sources that are inputs to the AND array.
+       It does not include signal sources assigned to global pins.
+
+<Note> The value in brackets is the cumulative number of
+       functions having less than or equal number of signal
+       sources.
+
+
+CS = !( ECLK & !LA15.Q ) ; (1 pterm, 2 signals)
+
+LA10.D = PA2 ; (1 pterm, 1 signal)
+LA10.C = ECLK ; (1 pterm, 1 signal)
+
+LA11.D = PA3 ; (1 pterm, 1 signal)
+LA11.C = ECLK ; (1 pterm, 1 signal)
+
+LA12.D = PA4 ; (1 pterm, 1 signal)
+LA12.C = ECLK ; (1 pterm, 1 signal)
+
+LA13.D = PA5 ; (1 pterm, 1 signal)
+LA13.C = ECLK ; (1 pterm, 1 signal)
+
+LA14.D = PA6 ; (1 pterm, 1 signal)
+LA14.C = ECLK ; (1 pterm, 1 signal)
+
+LA15.D = PA7 ; (1 pterm, 1 signal)
+LA15.C = ECLK ; (1 pterm, 1 signal)
+
+LA8.D = PA0 ; (1 pterm, 1 signal)
+LA8.C = ECLK ; (1 pterm, 1 signal)
+
+LA9.D = PA1 ; (1 pterm, 1 signal)
+LA9.C = ECLK ; (1 pterm, 1 signal)
+
+OE = !( ECLK & RW ) ; (1 pterm, 2 signals)
+
+WE = !( ECLK & !RW ) ; (1 pterm, 2 signals)
+
+
+
+
