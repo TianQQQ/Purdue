@@ -1,0 +1,12 @@
+// data: task prority 0, rate lambda0; task priority 1, rate lambada1;
+//simulation loop(ps. repeatively entering time == service time of all departured and blank time) {
+//if next task in the q blank(no task in q), collect that time(for cpu uti)(blank time = next arrival - current time)
+// and set *[current time]* = current + that blank time
+//service that task:means set *[current time]* += duration, then ......same as the first task
+
+//next task in q(0 first) has been serviced
+//[current time] = current time + that task's duration 
+//move all the tasks arrived during that serive time to q1 and q0
+//set departure time = current time
+//collect wait time separately, task++; or better idea
+//remove that task     }

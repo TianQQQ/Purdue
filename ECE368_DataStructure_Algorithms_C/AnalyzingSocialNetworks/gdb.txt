@@ -1,0 +1,129 @@
+Breakpoint 1 at 0x400e77: file p.c, line 130.
+The program is not being run.
+Starting program: /home/shay/a/qiu58/ECE368/Project3/a.out input.txt
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffe418) at p.c:130
+130			lv2list = secondneighbor(mat2, lv1list, num_ver, query1, lv1list[0]);
+Missing separate debuginfos, use: debuginfo-install glibc-2.12-1.149.el6_6.7.x86_64
+131			av1 += lv1list[0];
+132			av2 += lv2list[0];
+128		for (i = 0; i < num_ver; i++){        // calculate average nodes 
+129			lv1list = firstneighbor(mat2, num_ver, i);
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffe418) at p.c:130
+130			lv2list = secondneighbor(mat2, lv1list, num_ver, query1, lv1list[0]);
+131			av1 += lv1list[0];
+$1 = 1
+132			av2 += lv2list[0];
+128		for (i = 0; i < num_ver; i++){        // calculate average nodes 
+129			lv1list = firstneighbor(mat2, num_ver, i);
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffe418) at p.c:130
+130			lv2list = secondneighbor(mat2, lv1list, num_ver, query1, lv1list[0]);
+$2 = 2
+secondneighbor (mat=0x6036a0, lv1list=0x603ae0, n=6, s=0, lv1=2) at p.c:323
+323	int *secondneighbor(double * * mat,int * lv1list, int n, int s, int lv1){
+324		int i,j,k = 0;
+325		int mark1[n];
+326		int lv2 = 0;
+327		int a = 0;
+328		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+329			mark1[i] = 0;
+Cannot access memory at address 0x600000006
+328		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+329			mark1[i] = 0;
+328		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+329			mark1[i] = 0;
+328		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+329			mark1[i] = 0;
+328		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+329			mark1[i] = 0;
+328		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+329			mark1[i] = 0;
+328		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+331		mark1[s] = 1;
+332		for(i = 0; i < lv1; i++){
+333			k = lv1list[1 + i] - 1;
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+336					++lv2;
+337					mark1[j] = 1;
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+336					++lv2;
+337					mark1[j] = 1;
+334			for (j = 0; j < n; j++){
+332		for(i = 0; i < lv1; i++){
+333			k = lv1list[1 + i] - 1;
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+336					++lv2;
+337					mark1[j] = 1;
+Cannot access memory at address 0x600000006
+334			for (j = 0; j < n; j++){
+335				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+334			for (j = 0; j < n; j++){
+332		for(i = 0; i < lv1; i++){
+342		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+343			mark1[i] = 0;
+342		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+343			mark1[i] = 0;
+342		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+343			mark1[i] = 0;
+342		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+343			mark1[i] = 0;
+342		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+343			mark1[i] = 0;
+342		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+Cannot access memory at address 0x600000006
+343			mark1[i] = 0;
+342		for(i = 0 ; i < n ; i++){//初始化所有结点，每个结点都没有被选中
+345		mark1[s] = 1;
+346		k = 0;
+348		int * lv2list = malloc(sizeof(int) * (lv2 + 1));
+349		lv2list[0] = 0;
+350		for(i = 0; i < lv1; i++){
+351			k = lv1list[1 + i] - 1;
+352			for (j = 0; j < n; j++){
+353				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+352			for (j = 0; j < n; j++){
+353				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+352			for (j = 0; j < n; j++){
+353				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+354					++a;
+355					lv2list[a] = j + 1;
+356					mark1[j] = 1;
+352			for (j = 0; j < n; j++){
+353				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+352			for (j = 0; j < n; j++){
+353				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+352			for (j = 0; j < n; j++){
+353				if(mark1[j] == 0 && mat[k][j] < 100000000) {
+$3 = 0
+$4 = 3
+$5 = 0
+$6 = 0
+$7 = 1
+$8 = 1
+$9 = 0
+A debugging session is active.
+
+	Inferior 1 [process 18288] will be killed.
+
+Quit anyway? (y or n) 
