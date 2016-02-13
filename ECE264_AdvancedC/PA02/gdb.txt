@@ -1,0 +1,3 @@
+No symbol table is loaded.  Use the "file" command.
+Make breakpoint pending on future shared library load? (y or [n]) 
+Breakpoint 1 (pa02.c:59) pending.

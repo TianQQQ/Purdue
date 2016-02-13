@@ -1,0 +1,114 @@
+==25874== Memcheck, a memory error detector
+==25874== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==25874== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==25874== Command: ./a.out 2
+==25874== Parent PID: 25869
+==25874== 
+--25874-- 
+--25874-- Valgrind options:
+--25874--    --tool=memcheck
+--25874--    --leak-check=full
+--25874--    --verbose
+--25874--    --log-file=memcheck.log
+--25874-- Contents of /proc/version:
+--25874--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--25874-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--25874-- Page sizes: currently 4096, max supported 4096
+--25874-- Valgrind library directory: /usr/lib64/valgrind
+--25874-- Reading syms from /tmp/.myYlgu/a.out
+--25874-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--25874--    object doesn't have a dynamic symbol table
+--25874-- Reading syms from /lib64/ld-2.12.so
+--25874--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--25874--   .. build-id is valid
+--25874-- Scheduler: using generic scheduler lock implementation.
+--25874-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==25874== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-25874-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==25874== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-25874-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==25874== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-25874-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==25874== 
+==25874== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==25874== don't want to do, unless you know exactly what you're doing,
+==25874== or are doing some strange experiment):
+==25874==   /usr/lib64/valgrind/../../bin/vgdb --pid=25874 ...command...
+==25874== 
+==25874== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==25874==   /path/to/gdb ./a.out
+==25874== and then give GDB the following command
+==25874==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=25874
+==25874== --pid is optional if only one valgrind process is running
+==25874== 
+--25874-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--25874-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--25874-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--25874-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--25874-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--25874-- Reading syms from /lib64/libc-2.12.so
+--25874--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--25874--   .. build-id is valid
+--25874-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--25874-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--25874-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--25874-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--25874-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--25874-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--25874-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--25874-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--25874-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+==25874== Invalid write of size 8
+==25874==    at 0x400888: List_createNode (answer08.c:13)
+==25874==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==25874==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==25874==    by 0x400869: List_createNode (answer08.c:11)
+==25874==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874== 
+==25874== Invalid read of size 8
+==25874==    at 0x4012EF: tests_List_createNode (test_List_createNode.c:35)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==25874==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==25874==    by 0x400869: List_createNode (answer08.c:11)
+==25874==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874== 
+--25874-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--25874-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+==25874== 
+==25874== HEAP SUMMARY:
+==25874==     in use at exit: 0 bytes in 0 blocks
+==25874==   total heap usage: 2 allocs, 2 frees, 24 bytes allocated
+==25874== 
+==25874== All heap blocks were freed -- no leaks are possible
+==25874== 
+==25874== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+==25874== 
+==25874== 1 errors in context 1 of 2:
+==25874== Invalid read of size 8
+==25874==    at 0x4012EF: tests_List_createNode (test_List_createNode.c:35)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==25874==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==25874==    by 0x400869: List_createNode (answer08.c:11)
+==25874==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874== 
+==25874== 
+==25874== 1 errors in context 2 of 2:
+==25874== Invalid write of size 8
+==25874==    at 0x400888: List_createNode (answer08.c:13)
+==25874==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==25874==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==25874==    by 0x400869: List_createNode (answer08.c:11)
+==25874==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==25874==    by 0x402205: main (<stdin>:159)
+==25874== 
+--25874-- 
+--25874-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--25874-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==25874== 
+==25874== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)

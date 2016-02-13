@@ -1,0 +1,51 @@
+#!/bin/bash
+
+echo "Testing case :: 00.Boston_Cleaners.NV.89135 :: difference (if any) will be printed ..."
+./search "Boston Cleaners" NV 89135 | diff - test/00.Boston_Cleaners.NV.89135
+echo "Testing case :: 00.Boston_Cleaners.NV.89135 :: DONE"
+
+echo "Testing case :: 01.Boston_Cleaners.NV :: difference (if any) will be printed ..."
+./search "Boston Cleaners" NV | diff - test/01.Boston_Cleaners.NV
+echo "Testing case :: 01.Boston_Cleaners.NV :: DONE"
+
+echo "Testing case :: 02.Boston_Cleaners :: difference (if any) will be printed ..."
+./search "Boston Cleaners" | diff - test/02.Boston_Cleaners
+echo "Testing case :: 02.Boston_Cleaners :: DONE"
+
+echo "Testing case :: 03.Boston_Cleaners.89135 :: difference (if any) will be printed ..."
+./search "Boston Cleaners" "" 89135 | diff - test/03.Boston_Cleaners.89135
+echo "Testing case :: 03.Boston_Cleaners.89135 :: DONE"
+
+echo "Testing case :: 04.bOsToN_cLeAnErS.89135 :: difference (if any) will be printed ..."
+./search "bOsToN cLeAnErS" nV 89135 | diff - test/04.bOsToN_cLeAnErS.89135
+echo "Testing case :: 04.bOsToN_cLeAnErS.89135 :: DONE"
+
+echo "Testing case :: 05.Rubys_Diner.85226 :: difference (if any) will be printed ..."
+./search "Ruby's Diner" | diff - test/05.Rubys_Diner.85226
+echo "Testing case :: 05.Rubys_Diner.85226 :: DONE"
+
+echo "Testing case :: 06.Capriottis :: difference (if any) will be printed ..."
+./search "Capriotti's" | diff - test/06.Capriottis
+echo "Testing case :: 06.Capriottis :: DONE"
+
+echo "Testing case :: 07.Subway.AA :: difference (if any) will be printed ..."
+./search "Subway" AA | diff - test/07.Subway.AA
+echo "Testing case :: 07.Subway.AA :: DONE"
+
+echo "Testing case :: 08.Subway.00000 :: difference (if any) will be printed ..."
+./search "Subway" "" 00000 | diff - test/08.Subway.00000
+echo "Testing case :: 08.Subway.00000 :: DONE"
+
+echo "Testing case :: 09.aaaaaaaaaaa :: difference (if any) will be printed ..."
+./search "aaaaaaaaaaa" | diff - test/09.aaaaaaaaaaa
+echo "Testing case :: 09.aaaaaaaaaaa :: DONE"
+
+echo "Testing case :: 10.Simplicity_Laser_Hair_Removal :: difference (if any) will be printed ..."
+./search "Simplicity Laser Hair Removal" | diff - test/10.Simplicity_Laser_Hair_Removal
+echo "Testing case :: 10.Simplicity_Laser_Hair_Removal :: DONE"
+
+#echo "Testing case :: 11.McDonalds.Burger_King.Wendys.Starbucks :: difference (if any) will be printed ..."
+#./search "McDonald's" "" "" "Burger King" "" "" "Wendy's" "" "" "Starbucks" "" "" | diff - test/11.McDonalds.Burger_King.Wendys.Starbucks
+#echo "Testing case :: 11.McDonalds.Burger_King.Wendys.Starbucks :: DONE"
+
+echo "Tester finishes ... Use at your own risk ... verify you program with Valgrind ..."

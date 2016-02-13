@@ -1,0 +1,62 @@
+# .bashrc file of Alex Quinn
+# License:  public domain (use as you please, no credit needed)
+#
+# vim: set tabstop=4 shiftwidth=4 fileencoding=utf8 expandtab:
+
+
+# Make all files that you create private by default (i.e., not readable,
+# writable, or executable by other users on the system).
+umask 077
+
+
+if [[ $- =~ "i" ]]; then  # If this is an interactive session...
+
+    ######################################################################
+    # PROMPT FORMAT
+    #
+    # Set up prompt like Cygwin version.  These codes are described at...
+    #   http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html ...
+    export PS1='\[\e]0;\w\a\]\n\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[0m\]\n\$ '
+    export PS2='> '
+    export PS4='+ '
+
+
+    ######################################################################
+    # ALIASES
+    #
+
+    # mcd
+    function mcd() {
+        # Make a directory and then change to it.  This will be used like an alias.
+        mkdir $1
+        cd $1
+    }
+
+    # less
+    alias less='less -r'
+    # -r = --raw-control-chars .. means to display raw characters instead of
+    # showing ^M, ^R, etc.
+
+    # rm
+    alias rm='rm -i'
+    # -i = --interactive ... means to prompt before deleting any files, unless
+    # -f is added
+
+    # whence
+    alias whence='type -a'
+    # prints description of a command (i.e., alias, location, etc.) -a means to
+    # print all of the places that contain an executable matching the argument
+
+    # ls
+    if [ "${BASH_VERSINFO[5]}" == "x86_64-apple-darwin10.0" ]; then
+        # Mac version of ls
+        alias ls='ls -G -p'
+    else
+        # GNU version of ls
+        alias ls='ls -F --color=tty -B'
+    fi
+
+    # ll
+    alias ll='ls -l'
+    # -l = use long listing format
+fi

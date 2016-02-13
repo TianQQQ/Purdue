@@ -1,0 +1,99 @@
+==4020== Memcheck, a memory error detector
+==4020== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==4020== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==4020== Command: ./a.out images/bmps/03-hawkes-bay-NZ.bmp student-out-07_03-hawkes-bay-NZ.ee264
+==4020== Parent PID: 4017
+==4020== 
+--4020-- 
+--4020-- Valgrind options:
+--4020--    --tool=memcheck
+--4020--    --leak-check=full
+--4020--    --verbose
+--4020--    --log-file=memcheck-07.log
+--4020-- Contents of /proc/version:
+--4020--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--4020-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--4020-- Page sizes: currently 4096, max supported 4096
+--4020-- Valgrind library directory: /usr/lib64/valgrind
+--4020-- Reading syms from /tmp/.6dVBvu/a.out
+--4020-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--4020--    object doesn't have a dynamic symbol table
+--4020-- Reading syms from /lib64/ld-2.12.so
+--4020--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--4020--   .. build-id is valid
+--4020-- Scheduler: using generic scheduler lock implementation.
+--4020-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==4020== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-4020-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==4020== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-4020-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==4020== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-4020-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==4020== 
+==4020== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==4020== don't want to do, unless you know exactly what you're doing,
+==4020== or are doing some strange experiment):
+==4020==   /usr/lib64/valgrind/../../bin/vgdb --pid=4020 ...command...
+==4020== 
+==4020== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==4020==   /path/to/gdb ./a.out
+==4020== and then give GDB the following command
+==4020==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=4020
+==4020== --pid is optional if only one valgrind process is running
+==4020== 
+--4020-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--4020-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--4020-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--4020-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--4020-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--4020-- Reading syms from /lib64/libc-2.12.so
+--4020--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--4020--   .. build-id is valid
+--4020-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4020-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4020-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--4020-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4020-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--4020-- REDIR: 0x35ff881120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4020-- REDIR: 0x35ff9336f0 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--4020-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--4020-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--4020-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--4020-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--4020-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--4020-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--4020-- REDIR: 0x35ff8839a0 (memset) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--4020-- REDIR: 0x35ff8839e0 (__GI_memset) redirected to 0x4a09a50 (memset)
+==4020== Syscall param write(buf) points to uninitialised byte(s)
+==4020==    at 0x35FF8DB600: __write_nocancel (syscall-template.S:82)
+==4020==    by 0x35FF871AD2: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1268)
+==4020==    by 0x35FF873084: _IO_do_write@@GLIBC_2.2.5 (fileops.c:522)
+==4020==    by 0x35FF87174C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1350)
+==4020==    by 0x35FF867A4C: fwrite (iofwrite.c:45)
+==4020==    by 0x401942: Image_save (answer07.c:538)
+==4020==    by 0x402978: main (<stdin>:88)
+==4020==  Address 0x4c0f000 is not stack'd, malloc'd or (recently) free'd
+==4020== 
+==4020== 
+==4020== HEAP SUMMARY:
+==4020==     in use at exit: 0 bytes in 0 blocks
+==4020==   total heap usage: 8 allocs, 8 frees, 242,133 bytes allocated
+==4020== 
+==4020== All heap blocks were freed -- no leaks are possible
+==4020== 
+==4020== Use --track-origins=yes to see where uninitialised values come from
+==4020== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+==4020== 
+==4020== 1 errors in context 1 of 1:
+==4020== Syscall param write(buf) points to uninitialised byte(s)
+==4020==    at 0x35FF8DB600: __write_nocancel (syscall-template.S:82)
+==4020==    by 0x35FF871AD2: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1268)
+==4020==    by 0x35FF873084: _IO_do_write@@GLIBC_2.2.5 (fileops.c:522)
+==4020==    by 0x35FF87174C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1350)
+==4020==    by 0x35FF867A4C: fwrite (iofwrite.c:45)
+==4020==    by 0x401942: Image_save (answer07.c:538)
+==4020==    by 0x402978: main (<stdin>:88)
+==4020==  Address 0x4c0f000 is not stack'd, malloc'd or (recently) free'd
+==4020== 
+--4020-- 
+--4020-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--4020-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==4020== 
+==4020== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

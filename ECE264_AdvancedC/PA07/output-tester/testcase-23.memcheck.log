@@ -1,0 +1,141 @@
+==27339== Memcheck, a memory error detector
+==27339== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==27339== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==27339== Command: ./a.out images/corrupt-testcases/08-height-wrong.ee264 student-out-22_-
+==27339== Parent PID: 27337
+==27339== 
+--27339-- 
+--27339-- Valgrind options:
+--27339--    --tool=memcheck
+--27339--    --leak-check=full
+--27339--    --verbose
+--27339--    --log-file=memcheck-22.log
+--27339-- Contents of /proc/version:
+--27339--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--27339-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--27339-- Page sizes: currently 4096, max supported 4096
+--27339-- Valgrind library directory: /usr/lib64/valgrind
+--27339-- Reading syms from /tmp/.6dVBvu/a.out
+--27339-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--27339--    object doesn't have a dynamic symbol table
+--27339-- Reading syms from /lib64/ld-2.12.so
+--27339--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--27339--   .. build-id is valid
+--27339-- Scheduler: using generic scheduler lock implementation.
+--27339-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==27339== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-27339-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==27339== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-27339-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==27339== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-27339-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==27339== 
+==27339== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==27339== don't want to do, unless you know exactly what you're doing,
+==27339== or are doing some strange experiment):
+==27339==   /usr/lib64/valgrind/../../bin/vgdb --pid=27339 ...command...
+==27339== 
+==27339== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==27339==   /path/to/gdb ./a.out
+==27339== and then give GDB the following command
+==27339==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=27339
+==27339== --pid is optional if only one valgrind process is running
+==27339== 
+--27339-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--27339-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--27339-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--27339-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--27339-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--27339-- Reading syms from /lib64/libc-2.12.so
+--27339--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--27339--   .. build-id is valid
+--27339-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--27339-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--27339-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--27339-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--27339-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--27339-- REDIR: 0x35ff881120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--27339-- REDIR: 0x35ff9336f0 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--27339-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--27339-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--27339-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--27339-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--27339-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--27339-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+==27339== Invalid read of size 1
+==27339==    at 0x401619: Image_load (answer07.c:440)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339==  Address 0x4c3b50c is 0 bytes after a block of size 108 alloc'd
+==27339==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==27339==    by 0x401550: Image_load (answer07.c:420)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339== 
+==27339== Invalid read of size 1
+==27339==    at 0x40162B: Image_load (answer07.c:441)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339==  Address 0x4c3b50d is 1 bytes after a block of size 108 alloc'd
+==27339==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==27339==    by 0x401550: Image_load (answer07.c:420)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339== 
+==27339== Invalid read of size 1
+==27339==    at 0x40163D: Image_load (answer07.c:442)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339==  Address 0x4c3b50e is 2 bytes after a block of size 108 alloc'd
+==27339==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==27339==    by 0x401550: Image_load (answer07.c:420)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339== 
+==27339== 
+==27339== HEAP SUMMARY:
+==27339==     in use at exit: 155 bytes in 3 blocks
+==27339==   total heap usage: 6 allocs, 3 frees, 878 bytes allocated
+==27339== 
+==27339== Searching for pointers to 3 not-freed blocks
+==27339== Checked 64,632 bytes
+==27339== 
+==27339== 155 (24 direct, 131 indirect) bytes in 1 blocks are definitely lost in loss record 3 of 3
+==27339==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==27339==    by 0x40137B: Image_load (answer07.c:371)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339== 
+==27339== LEAK SUMMARY:
+==27339==    definitely lost: 24 bytes in 1 blocks
+==27339==    indirectly lost: 131 bytes in 2 blocks
+==27339==      possibly lost: 0 bytes in 0 blocks
+==27339==    still reachable: 0 bytes in 0 blocks
+==27339==         suppressed: 0 bytes in 0 blocks
+==27339== 
+==27339== ERROR SUMMARY: 25 errors from 4 contexts (suppressed: 6 from 6)
+==27339== 
+==27339== 8 errors in context 1 of 4:
+==27339== Invalid read of size 1
+==27339==    at 0x40163D: Image_load (answer07.c:442)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339==  Address 0x4c3b50e is 2 bytes after a block of size 108 alloc'd
+==27339==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==27339==    by 0x401550: Image_load (answer07.c:420)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339== 
+==27339== 
+==27339== 8 errors in context 2 of 4:
+==27339== Invalid read of size 1
+==27339==    at 0x40162B: Image_load (answer07.c:441)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339==  Address 0x4c3b50d is 1 bytes after a block of size 108 alloc'd
+==27339==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==27339==    by 0x401550: Image_load (answer07.c:420)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339== 
+==27339== 
+==27339== 8 errors in context 3 of 4:
+==27339== Invalid read of size 1
+==27339==    at 0x401619: Image_load (answer07.c:440)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339==  Address 0x4c3b50c is 0 bytes after a block of size 108 alloc'd
+==27339==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==27339==    by 0x401550: Image_load (answer07.c:420)
+==27339==    by 0x40287C: main (<stdin>:61)
+==27339== 
+--27339-- 
+--27339-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--27339-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==27339== 
+==27339== ERROR SUMMARY: 25 errors from 4 contexts (suppressed: 6 from 6)

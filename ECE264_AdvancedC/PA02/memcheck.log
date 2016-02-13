@@ -1,0 +1,511 @@
+==7561== Memcheck, a memory error detector
+==7561== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==7561== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==7561== Command: ./pa02.c
+==7561== Parent PID: 6485
+==7561== 
+--7561-- 
+--7561-- Valgrind options:
+--7561--    --tool=memcheck
+--7561--    --leak-check=full
+--7561--    --verbose
+--7561--    --log-file=memcheck.log
+--7561-- Contents of /proc/version:
+--7561--   Linux version 2.6.32-431.23.3.el6.x86_64 (mockbuild@x86-027.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Wed Jul 16 06:12:23 EDT 2014
+--7561-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--7561-- Page sizes: currently 4096, max supported 4096
+--7561-- Valgrind library directory: /usr/lib64/valgrind
+--7561-- Reading syms from /bin/bash
+--7561-- ELF section outside all mapped regions
+--7561-- Reading syms from /bin/bash
+--7561--    object doesn't have a symbol table
+--7561-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--7561--    object doesn't have a dynamic symbol table
+--7561-- Reading syms from /lib64/ld-2.12.so
+--7561--   Considering /usr/lib/debug/.build-id/57/bf668f99b7f5917b8d55fbb645173c9a644575.debug ..
+--7561--   .. build-id is valid
+--7561-- Scheduler: using generic scheduler lock implementation.
+--7561-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==7561== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-7561-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==7561== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-7561-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==7561== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-7561-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==7561== 
+==7561== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==7561== don't want to do, unless you know exactly what you're doing,
+==7561== or are doing some strange experiment):
+==7561==   /usr/lib64/valgrind/../../bin/vgdb --pid=7561 ...command...
+==7561== 
+==7561== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==7561==   /path/to/gdb ./pa02.c
+==7561== and then give GDB the following command
+==7561==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=7561
+==7561== --pid is optional if only one valgrind process is running
+==7561== 
+--7561-- REDIR: 0x3f79a17530 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--7561-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--7561-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--7561-- REDIR: 0x3f79a173a0 (index) redirected to 0x4a07bf0 (index)
+--7561-- REDIR: 0x3f79a17420 (strcmp) redirected to 0x4a08530 (strcmp)
+--7561-- Reading syms from /lib64/libtinfo.so.5.7
+--7561--    object doesn't have a symbol table
+--7561-- Reading syms from /lib64/libdl-2.12.so
+--7561--   Considering /usr/lib/debug/.build-id/af/c7448f2f2f6ed4e5bc82b1bd8a7320b84a9d48.debug ..
+--7561--   .. build-id is valid
+--7561-- Reading syms from /lib64/libc-2.12.so
+--7561--   Considering /usr/lib/debug/.build-id/07/b5ce35eba864a01b697f5ca117e94b9248064f.debug ..
+--7561--   .. build-id is valid
+--7561-- REDIR: 0x3f79e84cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79e86f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79e82c40 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--7561-- REDIR: 0x3f79e7f720 (__GI_strcmp) redirected to 0x4a084e0 (__GI_strcmp)
+--7561-- REDIR: 0x3f79e81160 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--7561-- REDIR: 0x3f79e81390 (__GI_strncmp) redirected to 0x4a08430 (__GI_strncmp)
+--7561-- REDIR: 0x3f79e7f660 (__GI_strchr) redirected to 0x4a07b30 (__GI_strchr)
+--7561-- REDIR: 0x3f79e83350 (memchr) redirected to 0x4a085d0 (memchr)
+--7561-- REDIR: 0x3f79e8aaf0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--7561-- REDIR: 0x3f79e7a640 (malloc) redirected to 0x4a0696c (malloc)
+--7561-- REDIR: 0x3f79e84500 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--7561-- REDIR: 0x3f79e89670 (memcpy) redirected to 0x4a08b20 (memcpy)
+--7561-- REDIR: 0x3f79e7b520 (free) redirected to 0x4a06369 (free)
+--7561-- REDIR: 0x3f79e81120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79f33560 (__strlen_sse42) redirected to 0x4a07f50 (strlen)
+--7561-- REDIR: 0x3f79e80b70 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79f34000 (???) redirected to 0x4a07f90 (strcpy)
+--7561-- REDIR: 0x3f79e81350 (strncmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79f29130 (__strncmp_sse42) redirected to 0x4a083d0 (strncmp)
+--7561-- REDIR: 0x3f79e82c10 (rindex) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79f2a2f0 (__strrchr_sse42) redirected to 0x4a07a40 (rindex)
+--7561-- REDIR: 0xffffffffff600400 (???) redirected to 0x3804953d (vgPlain_amd64_linux_REDIR_FOR_vtime)
+--7561-- REDIR: 0x3f79e8aaa0 (__GI___rawmemchr) redirected to 0x4a09f60 (__GI___rawmemchr)
+--7561-- REDIR: 0x3f79e7f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79f28290 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--7561-- REDIR: 0x3f79e81240 (strnlen) redirected to 0x4a07ef0 (strnlen)
+--7561-- REDIR: 0x3f79eff2d0 (__strcpy_chk) redirected to 0x4a0ad30 (__strcpy_chk)
+--7561-- REDIR: 0x3f79e7f630 (index) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79f281e0 (__strchr_sse42) redirected to 0x4a07b00 (index)
+--7561-- REDIR: 0xffffffffff600000 (???) redirected to 0x38049533 (vgPlain_amd64_linux_REDIR_FOR_vgettimeofday)
+--7561-- REDIR: 0x3f79e839a0 (memset) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79e839e0 (__GI_memset) redirected to 0x4a09a10 (memset)
+--7561-- REDIR: 0x3f79e83800 (memmove) redirected to 0x4a09ab0 (memmove)
+--7561-- REDIR: 0x3f79e90bc0 (wcslen) redirected to 0x4a0a320 (wcslen)
+--8771-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--8771-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+--8771-- REDIR: 0x3f79e7ba10 (realloc) redirected to 0x4a06b17 (realloc)
+==8771== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8771-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==8771== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8771-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==8771== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8771-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==8771== 
+==8771== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==8771== don't want to do, unless you know exactly what you're doing,
+==8771== or are doing some strange experiment):
+==8771==   /usr/lib64/valgrind/../../bin/vgdb --pid=8771 ...command...
+==8771== 
+==8771== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==8771==   /path/to/gdb ./pa02.c
+==8771== and then give GDB the following command
+==8771==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=8771
+==8771== --pid is optional if only one valgrind process is running
+==8771== 
+--8771-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==8771== 
+==8771== HEAP SUMMARY:
+==8771==     in use at exit: 22,864 bytes in 538 blocks
+==8771==   total heap usage: 860 allocs, 322 frees, 91,832 bytes allocated
+==8771== 
+==8771== Searching for pointers to 538 not-freed blocks
+==8771== Checked 202,888 bytes
+==8771== 
+==8771== 5 bytes in 1 blocks are definitely lost in loss record 31 of 247
+==8771==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8771==    by 0x465EA2: xmalloc (in /bin/bash)
+==8771==    by 0x42F143: ??? (in /bin/bash)
+==8771==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==8771==    by 0x430BED: execute_command (in /bin/bash)
+==8771==    by 0x41D535: reader_loop (in /bin/bash)
+==8771==    by 0x41CCF8: main (in /bin/bash)
+==8771== 
+==8771== 272 bytes in 1 blocks are definitely lost in loss record 230 of 247
+==8771==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8771==    by 0x465EA2: xmalloc (in /bin/bash)
+==8771==    by 0x481060: strvec_from_word_list (in /bin/bash)
+==8771==    by 0x42F579: ??? (in /bin/bash)
+==8771==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==8771==    by 0x430BED: execute_command (in /bin/bash)
+==8771==    by 0x41D535: reader_loop (in /bin/bash)
+==8771==    by 0x41CCF8: main (in /bin/bash)
+==8771== 
+==8771== LEAK SUMMARY:
+==8771==    definitely lost: 277 bytes in 2 blocks
+==8771==    indirectly lost: 0 bytes in 0 blocks
+==8771==      possibly lost: 0 bytes in 0 blocks
+==8771==    still reachable: 22,587 bytes in 536 blocks
+==8771==         suppressed: 0 bytes in 0 blocks
+==8771== Reachable blocks (those to which a pointer was found) are not shown.
+==8771== To see them, rerun with: --leak-check=full --show-reachable=yes
+==8771== 
+==8771== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+--8771-- 
+--8771-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--8771-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==8771== 
+==8771== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+--7561-- REDIR: 0x3f79e82be0 (strncpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--7561-- REDIR: 0x3f79f34a20 (???) redirected to 0x4a08130 (strncpy)
+--7561-- REDIR: 0x3f79e7ba10 (realloc) redirected to 0x4a06b17 (realloc)
+--9047-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--9047-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+==9047== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9047-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9047== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9047-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9047== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9047-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9047== 
+==9047== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9047== don't want to do, unless you know exactly what you're doing,
+==9047== or are doing some strange experiment):
+==9047==   /usr/lib64/valgrind/../../bin/vgdb --pid=9047 ...command...
+==9047== 
+==9047== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9047==   /path/to/gdb ./pa02.c
+==9047== and then give GDB the following command
+==9047==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9047
+==9047== --pid is optional if only one valgrind process is running
+==9047== 
+--9047-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==9047== 
+==9047== HEAP SUMMARY:
+==9047==     in use at exit: 23,677 bytes in 544 blocks
+==9047==   total heap usage: 1,102 allocs, 558 frees, 138,057 bytes allocated
+==9047== 
+==9047== Searching for pointers to 544 not-freed blocks
+==9047== Checked 204,640 bytes
+==9047== 
+==9047== 28 bytes in 1 blocks are definitely lost in loss record 125 of 264
+==9047==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9047==    by 0x465EA2: xmalloc (in /bin/bash)
+==9047==    by 0x42F143: ??? (in /bin/bash)
+==9047==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9047==    by 0x430BED: execute_command (in /bin/bash)
+==9047==    by 0x41D535: reader_loop (in /bin/bash)
+==9047==    by 0x41CCF8: main (in /bin/bash)
+==9047== 
+==9047== 112 bytes in 1 blocks are definitely lost in loss record 242 of 264
+==9047==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9047==    by 0x465EA2: xmalloc (in /bin/bash)
+==9047==    by 0x481060: strvec_from_word_list (in /bin/bash)
+==9047==    by 0x42F579: ??? (in /bin/bash)
+==9047==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9047==    by 0x430BED: execute_command (in /bin/bash)
+==9047==    by 0x41D535: reader_loop (in /bin/bash)
+==9047==    by 0x41CCF8: main (in /bin/bash)
+==9047== 
+==9047== LEAK SUMMARY:
+==9047==    definitely lost: 140 bytes in 2 blocks
+==9047==    indirectly lost: 0 bytes in 0 blocks
+==9047==      possibly lost: 0 bytes in 0 blocks
+==9047==    still reachable: 23,537 bytes in 542 blocks
+==9047==         suppressed: 0 bytes in 0 blocks
+==9047== Reachable blocks (those to which a pointer was found) are not shown.
+==9047== To see them, rerun with: --leak-check=full --show-reachable=yes
+==9047== 
+==9047== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+--9047-- 
+--9047-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9047-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9047== 
+==9047== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+--9242-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--9242-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+==9242== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9242-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9242== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9242-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9242== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9242-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9242== 
+==9242== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9242== don't want to do, unless you know exactly what you're doing,
+==9242== or are doing some strange experiment):
+==9242==   /usr/lib64/valgrind/../../bin/vgdb --pid=9242 ...command...
+==9242== 
+==9242== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9242==   /path/to/gdb ./pa02.c
+==9242== and then give GDB the following command
+==9242==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9242
+==9242== --pid is optional if only one valgrind process is running
+==9242== 
+--9242-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==9242== 
+==9242== HEAP SUMMARY:
+==9242==     in use at exit: 23,387 bytes in 529 blocks
+==9242==   total heap usage: 1,200 allocs, 671 frees, 178,331 bytes allocated
+==9242== 
+==9242== Searching for pointers to 529 not-freed blocks
+==9242== Checked 204,640 bytes
+==9242== 
+==9242== 4 bytes in 1 blocks are definitely lost in loss record 25 of 263
+==9242==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9242==    by 0x465EA2: xmalloc (in /bin/bash)
+==9242==    by 0x42F143: ??? (in /bin/bash)
+==9242==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9242==    by 0x430BED: execute_command (in /bin/bash)
+==9242==    by 0x41D535: reader_loop (in /bin/bash)
+==9242==    by 0x41CCF8: main (in /bin/bash)
+==9242== 
+==9242== 16 bytes in 1 blocks are definitely lost in loss record 120 of 263
+==9242==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9242==    by 0x465EA2: xmalloc (in /bin/bash)
+==9242==    by 0x481060: strvec_from_word_list (in /bin/bash)
+==9242==    by 0x42F579: ??? (in /bin/bash)
+==9242==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9242==    by 0x430BED: execute_command (in /bin/bash)
+==9242==    by 0x41D535: reader_loop (in /bin/bash)
+==9242==    by 0x41CCF8: main (in /bin/bash)
+==9242== 
+==9242== LEAK SUMMARY:
+==9242==    definitely lost: 20 bytes in 2 blocks
+==9242==    indirectly lost: 0 bytes in 0 blocks
+==9242==      possibly lost: 0 bytes in 0 blocks
+==9242==    still reachable: 23,367 bytes in 527 blocks
+==9242==         suppressed: 0 bytes in 0 blocks
+==9242== Reachable blocks (those to which a pointer was found) are not shown.
+==9242== To see them, rerun with: --leak-check=full --show-reachable=yes
+==9242== 
+==9242== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+--9242-- 
+--9242-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9242-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9242== 
+==9242== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+--9406-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--9406-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+==9406== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9406-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9406== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9406-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9406== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9406-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9406== 
+==9406== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9406== don't want to do, unless you know exactly what you're doing,
+==9406== or are doing some strange experiment):
+==9406==   /usr/lib64/valgrind/../../bin/vgdb --pid=9406 ...command...
+==9406== 
+==9406== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9406==   /path/to/gdb ./pa02.c
+==9406== and then give GDB the following command
+==9406==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9406
+==9406== --pid is optional if only one valgrind process is running
+==9406== 
+--9406-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==9406== 
+==9406== HEAP SUMMARY:
+==9406==     in use at exit: 23,383 bytes in 529 blocks
+==9406==   total heap usage: 1,220 allocs, 691 frees, 177,753 bytes allocated
+==9406== 
+==9406== Searching for pointers to 529 not-freed blocks
+==9406== Checked 204,680 bytes
+==9406== 
+==9406== 2 bytes in 1 blocks are definitely lost in loss record 15 of 261
+==9406==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9406==    by 0x465EA2: xmalloc (in /bin/bash)
+==9406==    by 0x42F143: ??? (in /bin/bash)
+==9406==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9406==    by 0x430BED: execute_command (in /bin/bash)
+==9406==    by 0x41D535: reader_loop (in /bin/bash)
+==9406==    by 0x41CCF8: main (in /bin/bash)
+==9406== 
+==9406== LEAK SUMMARY:
+==9406==    definitely lost: 2 bytes in 1 blocks
+==9406==    indirectly lost: 0 bytes in 0 blocks
+==9406==      possibly lost: 0 bytes in 0 blocks
+==9406==    still reachable: 23,381 bytes in 528 blocks
+==9406==         suppressed: 0 bytes in 0 blocks
+==9406== Reachable blocks (those to which a pointer was found) are not shown.
+==9406== To see them, rerun with: --leak-check=full --show-reachable=yes
+==9406== 
+==9406== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9406-- 
+--9406-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9406-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9406== 
+==9406== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9559-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--9559-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+==9559== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9559-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9559== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9559-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9559== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9559-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9559== 
+==9559== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9559== don't want to do, unless you know exactly what you're doing,
+==9559== or are doing some strange experiment):
+==9559==   /usr/lib64/valgrind/../../bin/vgdb --pid=9559 ...command...
+==9559== 
+==9559== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9559==   /path/to/gdb ./pa02.c
+==9559== and then give GDB the following command
+==9559==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9559
+==9559== --pid is optional if only one valgrind process is running
+==9559== 
+--9559-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==9559== 
+==9559== HEAP SUMMARY:
+==9559==     in use at exit: 23,413 bytes in 531 blocks
+==9559==   total heap usage: 1,274 allocs, 743 frees, 178,718 bytes allocated
+==9559== 
+==9559== Searching for pointers to 531 not-freed blocks
+==9559== Checked 204,720 bytes
+==9559== 
+==9559== 2 bytes in 1 blocks are definitely lost in loss record 16 of 261
+==9559==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9559==    by 0x465EA2: xmalloc (in /bin/bash)
+==9559==    by 0x42F143: ??? (in /bin/bash)
+==9559==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9559==    by 0x430BED: execute_command (in /bin/bash)
+==9559==    by 0x41D535: reader_loop (in /bin/bash)
+==9559==    by 0x41CCF8: main (in /bin/bash)
+==9559== 
+==9559== LEAK SUMMARY:
+==9559==    definitely lost: 2 bytes in 1 blocks
+==9559==    indirectly lost: 0 bytes in 0 blocks
+==9559==      possibly lost: 0 bytes in 0 blocks
+==9559==    still reachable: 23,411 bytes in 530 blocks
+==9559==         suppressed: 0 bytes in 0 blocks
+==9559== Reachable blocks (those to which a pointer was found) are not shown.
+==9559== To see them, rerun with: --leak-check=full --show-reachable=yes
+==9559== 
+==9559== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9559-- 
+--9559-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9559-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9559== 
+==9559== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9724-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--9724-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+==9724== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9724-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9724== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9724-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9724== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9724-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9724== 
+==9724== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9724== don't want to do, unless you know exactly what you're doing,
+==9724== or are doing some strange experiment):
+==9724==   /usr/lib64/valgrind/../../bin/vgdb --pid=9724 ...command...
+==9724== 
+==9724== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9724==   /path/to/gdb ./pa02.c
+==9724== and then give GDB the following command
+==9724==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9724
+==9724== --pid is optional if only one valgrind process is running
+==9724== 
+--9724-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==9724== 
+==9724== HEAP SUMMARY:
+==9724==     in use at exit: 23,445 bytes in 533 blocks
+==9724==   total heap usage: 1,326 allocs, 793 frees, 179,646 bytes allocated
+==9724== 
+==9724== Searching for pointers to 533 not-freed blocks
+==9724== Checked 204,760 bytes
+==9724== 
+==9724== 2 bytes in 1 blocks are definitely lost in loss record 16 of 261
+==9724==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9724==    by 0x465EA2: xmalloc (in /bin/bash)
+==9724==    by 0x42F143: ??? (in /bin/bash)
+==9724==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9724==    by 0x430BED: execute_command (in /bin/bash)
+==9724==    by 0x41D535: reader_loop (in /bin/bash)
+==9724==    by 0x41CCF8: main (in /bin/bash)
+==9724== 
+==9724== LEAK SUMMARY:
+==9724==    definitely lost: 2 bytes in 1 blocks
+==9724==    indirectly lost: 0 bytes in 0 blocks
+==9724==      possibly lost: 0 bytes in 0 blocks
+==9724==    still reachable: 23,443 bytes in 532 blocks
+==9724==         suppressed: 0 bytes in 0 blocks
+==9724== Reachable blocks (those to which a pointer was found) are not shown.
+==9724== To see them, rerun with: --leak-check=full --show-reachable=yes
+==9724== 
+==9724== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9724-- 
+--9724-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9724-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9724== 
+==9724== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9932-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--9932-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+==9932== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-9932-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9932== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-9932-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9932== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-9932-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==9932== 
+==9932== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==9932== don't want to do, unless you know exactly what you're doing,
+==9932== or are doing some strange experiment):
+==9932==   /usr/lib64/valgrind/../../bin/vgdb --pid=9932 ...command...
+==9932== 
+==9932== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==9932==   /path/to/gdb ./pa02.c
+==9932== and then give GDB the following command
+==9932==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=9932
+==9932== --pid is optional if only one valgrind process is running
+==9932== 
+--9932-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==9932== 
+==9932== HEAP SUMMARY:
+==9932==     in use at exit: 23,477 bytes in 535 blocks
+==9932==   total heap usage: 1,378 allocs, 843 frees, 180,578 bytes allocated
+==9932== 
+==9932== Searching for pointers to 535 not-freed blocks
+==9932== Checked 204,800 bytes
+==9932== 
+==9932== 2 bytes in 1 blocks are definitely lost in loss record 16 of 261
+==9932==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==9932==    by 0x465EA2: xmalloc (in /bin/bash)
+==9932==    by 0x42F143: ??? (in /bin/bash)
+==9932==    by 0x42FF42: execute_command_internal (in /bin/bash)
+==9932==    by 0x430BED: execute_command (in /bin/bash)
+==9932==    by 0x41D535: reader_loop (in /bin/bash)
+==9932==    by 0x41CCF8: main (in /bin/bash)
+==9932== 
+==9932== LEAK SUMMARY:
+==9932==    definitely lost: 2 bytes in 1 blocks
+==9932==    indirectly lost: 0 bytes in 0 blocks
+==9932==      possibly lost: 0 bytes in 0 blocks
+==9932==    still reachable: 23,475 bytes in 534 blocks
+==9932==         suppressed: 0 bytes in 0 blocks
+==9932== Reachable blocks (those to which a pointer was found) are not shown.
+==9932== To see them, rerun with: --leak-check=full --show-reachable=yes
+==9932== 
+==9932== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--9932-- 
+--9932-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--9932-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==9932== 
+==9932== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--7561-- REDIR: 0x3f79e84b80 (__GI_stpcpy) redirected to 0x4a097a0 (__GI_stpcpy)
+--7561-- REDIR: 0x3f79e80ba0 (__GI_strcpy) redirected to 0x4a08060 (__GI_strcpy)
+--7561-- REDIR: 0x3f79f2b330 (__strcasecmp_sse42) redirected to 0x4a0aa40 (strcasecmp)
+==7561== 
+==7561== HEAP SUMMARY:
+==7561==     in use at exit: 25,675 bytes in 531 blocks
+==7561==   total heap usage: 1,395 allocs, 864 frees, 181,018 bytes allocated
+==7561== 
+==7561== Searching for pointers to 531 not-freed blocks
+==7561== Checked 206,976 bytes
+==7561== 
+==7561== 56 (32 direct, 24 indirect) bytes in 1 blocks are definitely lost in loss record 226 of 253
+==7561==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==7561==    by 0x465EA2: xmalloc (in /bin/bash)
+==7561==    by 0x428D6A: make_bare_simple_command (in /bin/bash)
+==7561==    by 0x42943D: make_simple_command (in /bin/bash)
+==7561==    by 0x4261E7: yyparse (in /bin/bash)
+==7561==    by 0x41D2E9: parse_command (in /bin/bash)
+==7561==    by 0x41D3B5: read_command (in /bin/bash)
+==7561==    by 0x41D607: reader_loop (in /bin/bash)
+==7561==    by 0x41CCF8: main (in /bin/bash)
+==7561== 
+==7561== LEAK SUMMARY:
+==7561==    definitely lost: 32 bytes in 1 blocks
+==7561==    indirectly lost: 24 bytes in 1 blocks
+==7561==      possibly lost: 0 bytes in 0 blocks
+==7561==    still reachable: 25,619 bytes in 529 blocks
+==7561==         suppressed: 0 bytes in 0 blocks
+==7561== Reachable blocks (those to which a pointer was found) are not shown.
+==7561== To see them, rerun with: --leak-check=full --show-reachable=yes
+==7561== 
+==7561== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--7561-- 
+--7561-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--7561-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==7561== 
+==7561== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

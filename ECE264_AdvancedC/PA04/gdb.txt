@@ -1,0 +1,4 @@
+Breakpoint 1 at 0x40070c: file grep-lite.c, line 8.
+Hangup detected on fd 0
+Error detected on fd 0
+error detected on stdin

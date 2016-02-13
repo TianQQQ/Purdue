@@ -1,0 +1,114 @@
+==15425== Memcheck, a memory error detector
+==15425== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==15425== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==15425== Command: ./a.out 0
+==15425== Parent PID: 15424
+==15425== 
+--15425-- 
+--15425-- Valgrind options:
+--15425--    --tool=memcheck
+--15425--    --leak-check=full
+--15425--    --verbose
+--15425--    --log-file=memcheck.log
+--15425-- Contents of /proc/version:
+--15425--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--15425-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--15425-- Page sizes: currently 4096, max supported 4096
+--15425-- Valgrind library directory: /usr/lib64/valgrind
+--15425-- Reading syms from /tmp/.myYlgu/a.out
+--15425-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--15425--    object doesn't have a dynamic symbol table
+--15425-- Reading syms from /lib64/ld-2.12.so
+--15425--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--15425--   .. build-id is valid
+--15425-- Scheduler: using generic scheduler lock implementation.
+--15425-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==15425== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-15425-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==15425== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-15425-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==15425== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-15425-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==15425== 
+==15425== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==15425== don't want to do, unless you know exactly what you're doing,
+==15425== or are doing some strange experiment):
+==15425==   /usr/lib64/valgrind/../../bin/vgdb --pid=15425 ...command...
+==15425== 
+==15425== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==15425==   /path/to/gdb ./a.out
+==15425== and then give GDB the following command
+==15425==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=15425
+==15425== --pid is optional if only one valgrind process is running
+==15425== 
+--15425-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--15425-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--15425-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--15425-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--15425-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--15425-- Reading syms from /lib64/libc-2.12.so
+--15425--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--15425--   .. build-id is valid
+--15425-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--15425-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--15425-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--15425-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--15425-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--15425-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--15425-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--15425-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--15425-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+==15425== Invalid write of size 8
+==15425==    at 0x400888: List_createNode (answer08.c:13)
+==15425==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==15425==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==15425==    by 0x400869: List_createNode (answer08.c:11)
+==15425==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425== 
+==15425== Invalid read of size 8
+==15425==    at 0x4012EF: tests_List_createNode (test_List_createNode.c:35)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==15425==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==15425==    by 0x400869: List_createNode (answer08.c:11)
+==15425==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425== 
+--15425-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--15425-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+==15425== 
+==15425== HEAP SUMMARY:
+==15425==     in use at exit: 0 bytes in 0 blocks
+==15425==   total heap usage: 2 allocs, 2 frees, 9 bytes allocated
+==15425== 
+==15425== All heap blocks were freed -- no leaks are possible
+==15425== 
+==15425== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)
+==15425== 
+==15425== 1 errors in context 1 of 2:
+==15425== Invalid read of size 8
+==15425==    at 0x4012EF: tests_List_createNode (test_List_createNode.c:35)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==15425==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==15425==    by 0x400869: List_createNode (answer08.c:11)
+==15425==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425== 
+==15425== 
+==15425== 1 errors in context 2 of 2:
+==15425== Invalid write of size 8
+==15425==    at 0x400888: List_createNode (answer08.c:13)
+==15425==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425==  Address 0x4c3b048 is 0 bytes after a block of size 8 alloc'd
+==15425==    at 0x4A06A2E: malloc (vg_replace_malloc.c:270)
+==15425==    by 0x400869: List_createNode (answer08.c:11)
+==15425==    by 0x4012D0: tests_List_createNode (test_List_createNode.c:32)
+==15425==    by 0x402205: main (<stdin>:159)
+==15425== 
+--15425-- 
+--15425-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--15425-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==15425== 
+==15425== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 6 from 6)

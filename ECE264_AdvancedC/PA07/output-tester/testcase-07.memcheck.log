@@ -1,0 +1,99 @@
+==30190== Memcheck, a memory error detector
+==30190== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==30190== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==30190== Command: ./a.out images/bmps/02-cat-chess.bmp student-out-06_02-cat-chess.ee264
+==30190== Parent PID: 30188
+==30190== 
+--30190-- 
+--30190-- Valgrind options:
+--30190--    --tool=memcheck
+--30190--    --leak-check=full
+--30190--    --verbose
+--30190--    --log-file=memcheck-06.log
+--30190-- Contents of /proc/version:
+--30190--   Linux version 2.6.32-431.29.2.el6.x86_64 (mockbuild@x86-026.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Jul 27 15:55:46 EDT 2014
+--30190-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--30190-- Page sizes: currently 4096, max supported 4096
+--30190-- Valgrind library directory: /usr/lib64/valgrind
+--30190-- Reading syms from /tmp/.6dVBvu/a.out
+--30190-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--30190--    object doesn't have a dynamic symbol table
+--30190-- Reading syms from /lib64/ld-2.12.so
+--30190--   Considering /usr/lib/debug/.build-id/3b/fa45bce0e82e1d90d37a0cc8630f97f2003bf5.debug ..
+--30190--   .. build-id is valid
+--30190-- Scheduler: using generic scheduler lock implementation.
+--30190-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==30190== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-30190-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==30190== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-30190-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==30190== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-30190-by-qiu58-on-ecegrid-thin1.ecn.purdue.edu
+==30190== 
+==30190== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==30190== don't want to do, unless you know exactly what you're doing,
+==30190== or are doing some strange experiment):
+==30190==   /usr/lib64/valgrind/../../bin/vgdb --pid=30190 ...command...
+==30190== 
+==30190== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==30190==   /path/to/gdb ./a.out
+==30190== and then give GDB the following command
+==30190==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=30190
+==30190== --pid is optional if only one valgrind process is running
+==30190== 
+--30190-- REDIR: 0x35ff417610 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--30190-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--30190-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--30190-- REDIR: 0x35ff417480 (index) redirected to 0x4a07c30 (index)
+--30190-- REDIR: 0x35ff417500 (strcmp) redirected to 0x4a08570 (strcmp)
+--30190-- Reading syms from /lib64/libc-2.12.so
+--30190--   Considering /usr/lib/debug/.build-id/73/3ad3a438b5a695f7a63a77413f9b2c8c94e8e6.debug ..
+--30190--   .. build-id is valid
+--30190-- REDIR: 0x35ff884cd0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30190-- REDIR: 0x35ff886f90 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30190-- REDIR: 0x35ff882c40 (__GI_strrchr) redirected to 0x4a07ab0 (__GI_strrchr)
+--30190-- REDIR: 0x35ff87f6e0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30190-- REDIR: 0x35ff928420 (__strcmp_sse42) redirected to 0x4a084d0 (strcmp)
+--30190-- REDIR: 0x35ff881120 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30190-- REDIR: 0x35ff9336f0 (__strlen_sse42) redirected to 0x4a07f90 (strlen)
+--30190-- REDIR: 0x35ff88aaf0 (strchrnul) redirected to 0x4a09fb0 (strchrnul)
+--30190-- REDIR: 0x35ff884500 (mempcpy) redirected to 0x4a0a020 (mempcpy)
+--30190-- REDIR: 0x35ff87b520 (free) redirected to 0x4a063a9 (free)
+--30190-- REDIR: 0x35ff87a640 (malloc) redirected to 0x4a069ac (malloc)
+--30190-- REDIR: 0x35ff889670 (memcpy) redirected to 0x4a08b60 (memcpy)
+--30190-- REDIR: 0x35ff881160 (__GI_strlen) redirected to 0x4a07fb0 (__GI_strlen)
+--30190-- REDIR: 0x35ff8839a0 (memset) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--30190-- REDIR: 0x35ff8839e0 (__GI_memset) redirected to 0x4a09a50 (memset)
+==30190== Syscall param write(buf) points to uninitialised byte(s)
+==30190==    at 0x35FF8DB600: __write_nocancel (syscall-template.S:82)
+==30190==    by 0x35FF871AD2: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1268)
+==30190==    by 0x35FF873084: _IO_do_write@@GLIBC_2.2.5 (fileops.c:522)
+==30190==    by 0x35FF87174C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1350)
+==30190==    by 0x35FF867A4C: fwrite (iofwrite.c:45)
+==30190==    by 0x401942: Image_save (answer07.c:538)
+==30190==    by 0x402978: main (<stdin>:88)
+==30190==  Address 0x4c0f000 is not stack'd, malloc'd or (recently) free'd
+==30190== 
+==30190== 
+==30190== HEAP SUMMARY:
+==30190==     in use at exit: 0 bytes in 0 blocks
+==30190==   total heap usage: 8 allocs, 8 frees, 272,125 bytes allocated
+==30190== 
+==30190== All heap blocks were freed -- no leaks are possible
+==30190== 
+==30190== Use --track-origins=yes to see where uninitialised values come from
+==30190== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+==30190== 
+==30190== 1 errors in context 1 of 1:
+==30190== Syscall param write(buf) points to uninitialised byte(s)
+==30190==    at 0x35FF8DB600: __write_nocancel (syscall-template.S:82)
+==30190==    by 0x35FF871AD2: _IO_file_write@@GLIBC_2.2.5 (fileops.c:1268)
+==30190==    by 0x35FF873084: _IO_do_write@@GLIBC_2.2.5 (fileops.c:522)
+==30190==    by 0x35FF87174C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1350)
+==30190==    by 0x35FF867A4C: fwrite (iofwrite.c:45)
+==30190==    by 0x401942: Image_save (answer07.c:538)
+==30190==    by 0x402978: main (<stdin>:88)
+==30190==  Address 0x4c0f000 is not stack'd, malloc'd or (recently) free'd
+==30190== 
+--30190-- 
+--30190-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--30190-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==30190== 
+==30190== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
