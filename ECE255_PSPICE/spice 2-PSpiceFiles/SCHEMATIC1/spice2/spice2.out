@@ -1,0 +1,147 @@
+
+**** 03/22/15 18:30:25 ******* PSpice 16.3.0 (June 2009) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-spice2"  [ Z:\ECE255\spice 2-pspicefiles\schematic1\spice2.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "spice2.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../spice 2-pspicefiles/spice 2.lib" 
+* From [PSPICE NETLIST] section of C:\Program Files\Cadence\SPB_16.3\tools\PSpice\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.AC DEC 10 1 10000k
+.PROBE V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source SPICE 2
+Q_Q1         N00309 VB N00305 Q2N3904
+R_R1         VB N00280  6.5k TC=0,0 
+R_RC         N00280 N00309  500 TC=0,0 
+R_RE         0 N00305  450 TC=0,0 
+R_R2         VB 0  2.5k TC=0,0 
+R_RL         N00345 0  5k TC=0,0 
+R_Rs         VS N01310  500 TC=0,0 
+C_C2         N00309 N00345  100M  TC=0,0 
+C_C1         N01310 VB  100M  TC=0,0 
+V_V2         N00280 0 DC 5  
+V_V3         VS 0 DC 0 AC 1n 
+
+**** RESUMING spice2.cir ****
+.END
+
+**** 03/22/15 18:30:25 ******* PSpice 16.3.0 (June 2009) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-spice2"  [ Z:\ECE255\spice 2-pspicefiles\schematic1\spice2.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Q2N3904         
+               NPN             
+       LEVEL    1            
+          IS    6.734000E-15 
+          BF  100            
+          NF    1            
+         VAF   74.03         
+         IKF     .06678      
+         ISE    6.734000E-15 
+          NE    1.259        
+          BR     .7371       
+          NR    1            
+         VAR  100            
+         ISS    0            
+          RB   10            
+          RE    0            
+          RC    1            
+         CJE    4.493000E-12 
+         VJE     .75         
+         MJE     .2593       
+         CJC    3.638000E-12 
+         VJC     .75         
+         MJC     .3085       
+        XCJC    1            
+         CJS    0            
+         VJS     .75         
+          TF  301.200000E-12 
+         XTF    2            
+         VTF    4            
+         ITF     .4          
+          TR  239.500000E-09 
+         XTB    1.5          
+          KF    0            
+          AF    1            
+          CN    2.42         
+           D     .87         
+
+
+**** 03/22/15 18:30:25 ******* PSpice 16.3.0 (June 2009) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-spice2"  [ Z:\ECE255\spice 2-pspicefiles\schematic1\spice2.sim ] 
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   VB)    1.3502  (   VS)    0.0000  (N00280)    5.0000 (N00305)     .6748     
+
+(N00309)    4.2609 (N00345)    0.0000 (N01310)    0.0000 
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V2        -2.040E-03
+    V_V3         0.000E+00
+
+    TOTAL POWER DISSIPATION   1.02E-02  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 03/22/15 18:30:25 ******* PSpice 16.3.0 (June 2009) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-spice2"  [ Z:\ECE255\spice 2-pspicefiles\schematic1\spice2.sim ] 
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .09
+

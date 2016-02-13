@@ -1,0 +1,501 @@
+MODULE 12
+
+TITLE 'step3'
+
+" Target CPLD is ispMACH LC4256ZE 144-pin TQFP (LC4256ZE-5TN144C)
+
+LIBRARY 'lattice';
+
+DECLARATIONS
+
+" Internal Oscillator
+
+osc_dis, osc_rst, osc_out, tmr_out node istype 'com';
+
+" Use maximum possible internal divisor -> yields approx 4 Hz output frequency
+
+XLAT_OSCTIMER(DYNOSCDIS, TIMERRES, OSCOUT, TIMEROUT, 1048576);
+
+" Input pins from DIP switch
+" DOWN - contact closure to ground - logic 0
+" UP - open contact pulled high with resistor - logic 1
+
+DIP0 pin 79;	"IO_K6
+DIP1 pin 78;	"IO_K8
+DIP2 pin 77;	"IO_K10
+DIP3 pin 76;	"IO_K12
+DIP4 pin 23;	"IO_E6
+DIP5 pin 24;	"IO_E8
+DIP6 pin 25;	"IO_E10
+DIP7 pin 26;	"IO_E12
+
+DIP = [DIP7, DIP6, DIP5, DIP4, DIP3, DIP2, DIP1, DIP0];
+
+" SPDT toggle switches (can be used to create bounceless switches) 
+" ACTIVE LOW (contact closure to ground, with pull-up)
+!S1_NC pin 58;	"IO_I2   normally closed (down position)
+!S1_NO pin 59;	"IO_I4   normally open (up position)
+!S2_NC pin 60;	"IO_I6   normally closed (down position)
+!S2_NO pin 61;	"IO_I8   normally open (up position)
+
+" Top row of red LEDs
+
+!LED0 pin 40 istype 'com';	"IO_G10  right-most
+!LED1 pin 39 istype 'com';	"IO_G12
+!LED2 pin 33 istype 'com';	"IO_F12
+!LED3 pin 32 istype 'com'; 	"IO_F10
+!LED4 pin 31 istype 'com';	"IO_F8
+!LED5 pin 30 istype 'com';	"IO_F6
+!LED6 pin 29 istype 'com';	"IO_F4
+!LED7 pin 28 istype 'com';	"IO_F2   left-most
+
+TOPRED = [LED7, LED6, LED5, LED4, LED3, LED2, LED1, LED0];
+
+" Second row (from top) of red LEDs
+
+!LED8 pin 139 istype 'com';	"IO_B4   right-most
+!LED9 pin 138 istype 'com';	"IO_B2
+!LED10 pin 135 istype 'com';	"IO_A12	
+!LED11 pin 134 istype 'com';	"IO_A10
+!LED12 pin 133 istype 'com';	"IO_A8
+!LED13 pin 132 istype 'com';	"IO_A6
+!LED14 pin 131 istype 'com';	"IO_A4
+!LED15 pin 130 istype 'com';	"IO_A2   left-most
+
+MIDRED = [LED15, LED14, LED13, LED12, LED11, LED10, LED9, LED8];
+
+" 7-segment common-anode displays (active low outputs)
+" Right-most display (DIS1)
+
+!DIS1a pin 87 istype 'com';	"IO_L6
+!DIS1b pin 86 istype 'com';	"IO_L8
+!DIS1c pin 85 istype 'com';	"IO_L10
+!DIS1d pin 84 istype 'com';	"IO_L12
+!DIS1e pin 83 istype 'com';	"IO_L14
+!DIS1f pin 81 istype 'com';	"IO_K2
+!DIS1g pin 80 istype 'com';	"IO_K4
+
+DIS1 = [DIS1a, DIS1b, DIS1c, DIS1d, DIS1e, DIS1f, DIS1g];
+
+" Second-from-right display (DIS2)
+
+!DIS2a pin 98 istype 'com';	"IO_M12
+!DIS2b pin 97 istype 'com';	"IO_M10
+!DIS2c pin 96 istype 'com';	"IO_M8
+!DIS2d pin 95 istype 'com';	"IO_M6
+!DIS2e pin 94 istype 'com';	"IO_M4
+!DIS2f pin 93 istype 'com';	"IO_M2
+!DIS2g pin 88 istype 'com';	"IO_L4
+
+DIS2 = [DIS2a, DIS2b, DIS2c, DIS2d, DIS2e, DIS2f, DIS2g];
+
+" Second-from-left display (DIS3)
+
+!DIS3a pin 125 istype 'com';	"IO_P2
+!DIS3b pin 124 istype 'com';	"IO_P4
+!DIS3c pin 123 istype 'com';	"IO_P6
+!DIS3d pin 122 istype 'com';  "IO_P8
+!DIS3e pin 121 istype 'com';	"IO_P10
+!DIS3f pin 120 istype 'com';	"IO_P12
+!DIS3g pin 116 istype 'com';	"IO_O2
+
+DIS3 = [DIS3a, DIS3b, DIS3c, DIS3d, DIS3e, DIS3f, DIS3g];
+
+" Left-most display (DIS4)
+
+!DIS4a pin 44 istype 'com';	"IO_G2
+!DIS4b pin 48 istype 'com';	"IO_H12
+!DIS4c pin 49 istype 'com';	"IO_H10
+!DIS4d pin 50 istype 'com';	"IO_H8
+!DIS4e pin 51 istype 'com';	"IO_H6
+!DIS4f pin 52 istype 'com'; 	"IO_H4
+!DIS4g pin 53 istype 'com';	"IO_H2
+
+DIS4 = [DIS4a, DIS4b, DIS4c, DIS4d, DIS4e, DIS4f, DIS4g];
+
+" Jumbo R-Y-G LEDs
+!LED16 pin 140 istype 'com';	"IO_B6   RED
+!LED17 pin 141 istype 'com';	"IO_B8   YELLOW
+!LED18 pin 142 istype 'com';	"IO_B10  GREEN
+!LED19 pin 143 istype 'com';	"IO_B12  (unpopulated)
+
+" Bottom row of red LEDs
+
+!LED20 pin 100 istype 'com';	"IO_N2   right-most
+!LED21 pin 101 istype 'com';	"IO_N4
+!LED22 pin 102 istype 'com';	"IO_N6
+!LED23 pin 103 istype 'com';	"IO_N8
+!LED24 pin 104 istype 'com';	"IO_N10
+!LED25 pin 105 istype 'com';	"IO_N12
+!LED26 pin 111 istype 'com';	"IO_O12
+!LED27 pin 112 istype 'com';	"IO_O10  left-most
+
+BOTRED = [LED27, LED26, LED25, LED24, LED23, LED22, LED21, LED20];
+
+" Yellow LEDs next to toggle switches
+!LED28 pin 63 istype 'com';	"IO_I12  right
+!LED29 pin 62 istype 'com';	"IO_I10  left
+
+" 7-segment alphanumeric display code declarations
+blank = [0,0,0,0,0,0,0];  " blank (all off)
+char0 = [1,1,1,1,1,1,0];  " 0
+char1 = [0,1,1,0,0,0,0];  " 1
+char2 = [1,1,0,1,1,0,1];  " 2
+char3 = [1,1,1,1,0,0,1];  " 3
+char4 = [0,1,1,0,0,1,1];  " 4
+char5 = [1,0,1,1,0,1,1];  " 5
+char6 = [1,0,1,1,1,1,1];  " 6
+char7 = [1,1,1,0,0,0,0];  " 7
+char8 = [1,1,1,1,1,1,1];  " 8
+char9 = [1,1,1,1,0,1,1];  " 9
+charA = [1,1,1,0,1,1,1];  " A
+charB = [0,0,1,1,1,1,1];  " b
+charC = [1,0,0,1,1,1,0];  " C
+charD = [0,1,1,1,1,0,1];  " d
+charE = [1,0,0,1,1,1,1];  " E
+charF = [1,0,0,0,1,1,1];  " F
+charG = [1,1,1,1,0,1,1];  " g
+charH = [0,1,1,0,1,1,1];  " H
+charI = [0,0,1,0,0,0,0];  " i
+charJ = [0,1,1,1,0,0,0];  " J
+charL = [0,0,0,1,1,1,0];  " L
+charN = [0,0,1,0,1,0,1];  " n
+charO = [0,0,1,1,1,0,1];  " o
+charP = [1,1,0,0,1,1,1];  " P
+charR = [0,0,0,0,1,0,1];  " r
+charS = [1,0,1,1,0,1,1];  " S
+charU = [0,1,1,1,1,1,0];  " U
+charY = [0,1,1,1,0,1,1];  " y	
+
+" User-defined variables follow
+
+"----------------------Step 1-----------------------"
+BFC1,BFC2 node istype 'reg';
+C0..C3 node;
+CF,NF,ZF,VF node;
+Mode node;
+"CHECK1,CHECK2 node;
+Flags = [CF, NF, ZF, VF];
+q0..q3 node istype 'reg';
+Y0 = Mode$DIP0;
+Y1 = Mode$DIP1;
+Y2 = Mode$DIP2;
+Y3 = Mode$DIP3;
+G0 = q0&Y0; " generate function definitions
+G1 = q1&Y1;
+G2 = q2&Y2;
+G3 = q3&Y3;
+P0 = q0$Y0; " propagate function definitions
+P1 = q1$Y1;
+P2 = q2$Y2;
+P3 = q3$Y3;
+
+L16,L17,L18 node;
+"----------------------Step 4-----------------------"
+Count0..Count7 node istype 'reg';
+CAALL = [Count3, Count2, Count1, Count0];
+CA1 = [0, 0, 0, 1];
+CA2 = [0, 0, 1, 0];
+CA3 = [0, 0, 1, 1];
+CA4 = [0, 1, 0, 0];
+CA5 = [0, 1, 0, 1];
+CA6 = [0, 1, 1, 0];
+CA7 = [0, 1, 1, 1];
+CA8 = [1, 0, 0, 0];
+CA9 = [1, 0, 0, 1];
+CA10= [1, 0, 1, 0];
+
+"-----------------------Step 5--------------------
+" 1st digit Counter
+XB3,XB2,XB1,XB0 node istype 'reg';
+XBALL = [XB3..XB0];
+XD0 = [0, 0, 0, 0];
+XD1 = [0, 0, 0, 1];
+XD2 = [0, 0, 1, 0];
+XD3 = [0, 0, 1, 1];
+XD4 = [0, 1, 0, 0];
+XD5 = [0, 1, 0, 1];
+XD6 = [0, 1, 1, 0];
+XD7 = [0, 1, 1, 1];
+XD8 = [1, 0, 0, 0];
+XD9 = [1, 0, 0, 1]; 
+YB3..YB0 node;
+YBALL = [YB3..YB0];
+
+" LED LIGHTS
+T0..T20 node istype 'com';
+LALL1 = [T6..T0];
+LALL2 = [T13..T7];
+LALL3 = [T20..T14];
+CB0..CB4 node;
+SB0..SB3 node;
+SBALL = [SB3..SB0];
+GB0 = XB0&YB0; " generate function definitions
+GB1 = XB1&YB1;
+GB2 = XB2&YB2;
+GB3 = XB3&YB3;
+PB0 = XB0$YB0; " propagate function definitions
+PB1 = XB1$YB1;
+PB2 = XB2$YB2;
+PB3 = XB3$YB3;
+" 2nd digit Counter
+XCALL = [Count7..Count4];
+XC0 = [0, 0, 0, 0];
+XC1 = [0, 0, 0, 1];
+XC2 = [0, 0, 1, 0];
+XC3 = [0, 0, 1, 1];
+XC4 = [0, 1, 0, 0];
+XC5 = [0, 1, 0, 1];
+XC6 = [0, 1, 1, 0];
+XC7 = [0, 1, 1, 1];
+XC8 = [1, 0, 0, 0];
+
+"Step 6
+timdiv,timdiv1 node istype 'reg_d,buffer';
+a0..a6 node;
+b0..b6,c0..c6,d0..d6 node istype 'reg';
+K1 = [a6..a0];
+K2 = [b6..b0];
+K3 = [c6..c0];
+K4 = [d6..d0];
+"K5 = [0,0,0,0,0,0,0];
+WORD0..WORD3 node istype 'reg';
+WORD = [WORD3..WORD0];
+w0 = [0, 0, 0, 0];
+w1 = [0, 0, 0, 1];
+w2 = [0, 0, 1, 0];
+w3 = [0, 0, 1, 1];
+w4 = [0, 1, 0, 0];
+w5 = [0, 1, 0, 1];
+w6 = [0, 1, 1, 0];
+w7 = [0, 1, 1, 1];
+w8 = [1, 0, 0, 0];
+w9 = [1, 0, 0, 1];
+w10= [1, 0, 1, 0];
+w11= [1, 0, 1, 1];
+w12= [1, 1, 0, 0];
+w13= [1, 1, 0, 1];
+w14= [1, 1, 1, 0];
+w15= [1, 1, 1, 1];
+"=========================================================================
+STATE_DIAGRAM CAALL
+state CA1: goto CA2;
+state CA2: goto CA3;
+state CA3: goto CA4;
+state CA4: goto CA5;
+state CA5: goto CA6;
+state CA6: goto CA7;
+state CA7: goto CA8;
+state CA8: goto CA9;
+state CA9: goto CA10;
+state CA10: goto CA10;
+
+
+TRUTH_TABLE ([CAALL] -> [LALL3])
+	[CA1] -> [char1];
+	[CA2] -> [char2];
+	[CA3] -> [char3];
+	[CA4] -> [char4];
+	[CA5] -> [char5];
+	[CA6] -> [char6];
+	[CA7] -> [char7];
+	[CA8] -> [char8];
+	[CA9] -> [char9];
+	[CA10]-> [char9];
+
+
+STATE_DIAGRAM XCALL
+state XC0: if (CB4 == 1) then XC1;
+		else goto XC0;
+state XC1: if (CB4 == 1) then XC2;
+		else goto XC1;
+state XC2: if (CB4 == 1) then XC3;
+		else goto XC2;
+state XC3: if (CB4 == 1) then XC4;
+		else goto XC3;
+state XC4: if (CB4 == 1) then XC5;
+		else goto XC4;
+state XC5: if (CB4 == 1) then XC6;
+		else goto XC5;
+state XC6: if (CB4 == 1) then XC7;
+		else goto XC6;
+state XC7: if (CB4 == 1) then XC8;
+		else goto XC7;
+state XC8: goto XC8;
+
+STATE_DIAGRAM WORD
+state w0: goto w1;
+state w1: goto w2;
+state w2: goto w3;
+state w3: if (Count7#(Count6&Count5)#(Count6&Count4) == 1) then w4;
+	 else goto w8;
+state w4: goto w5;
+state w5: goto w6;
+state w6: goto w7;
+state w7: goto w0;
+state w8: goto w9;
+state w9: goto w10;
+state w10: goto w11;
+state w11: goto w12;
+state w12: goto w0;
+
+
+
+TRUTH_TABLE ([XBALL] -> [LALL1])
+	[XD0] -> [char0];
+	[XD1] -> [char1];
+	[XD2] -> [char2];
+	[XD3] -> [char3];
+	[XD4] -> [char4];
+	[XD5] -> [char5];
+	[XD6] -> [char6];
+	[XD7] -> [char7];
+	[XD8] -> [char8];
+	[XD9] -> [char9];
+
+
+TRUTH_TABLE ([XCALL] -> [LALL2])
+	[XC0] -> [char0];
+	[XC1] -> [char1];
+	[XC2] -> [char2];
+	[XC3] -> [char3];
+	[XC4] -> [char4];
+	[XC5] -> [char5];
+	[XC6] -> [char6];
+	[XC7] -> [char7];
+	[XC8] -> [char8];
+
+"TRUTH_TABLE ([WORD] -> [K1])
+"	[w0] -> [blank];
+"	[w1] -> [K5];
+"	[w2] -> [K5];
+"	[w3] -> [blank];
+"	[w4] -> [charY];
+"	[w5] -> [charE];
+"	[w6] -> [charA];
+"	[w7] -> [charH];
+"	[w8] -> [blank];
+"	[w9] -> [charL];
+"	[w10] -> [charO];
+"	[w11] -> [charS];
+"	[w12] -> [charE];
+"	[w13] -> [charR];
+
+
+" Note - these should all be declared as NODES (*not* PINS)
+
+
+" ======================= START OF EQUATIONS SECTION =================================
+
+EQUATIONS
+
+" Internal oscillator setup (disable/enable and reset variables) and OSCTIMER instance
+
+osc_dis = 0;
+osc_rst = 0;
+
+I1 OSCTIMER(osc_dis, osc_rst, osc_out, tmr_out);
+
+" User-defined equations, clocked-operator tables, and/or state diagram definitions follow
+" BOUNCELESS SWITCHES
+BFC1.D = 0;
+BFC1.CLK = 0;
+BFC1.AP = S1_NO;
+BFC1.AR = S1_NC; 
+
+BFC2.D = 0;
+BFC2.CLK = 0;
+BFC2.AP = S2_NO;
+BFC2.AR = S2_NC; 
+
+"Step 1
+C0 = G0 # Mode&P0; " carry function definitions
+C1 = G1 # G0&P1 # Mode&P0&P1;
+C2 = G2 # G1&P2 # G0&P1&P2 # Mode&P0&P1&P2;
+C3 = G3 # G2&P3 # G1&P2&P3 # G0&P1&P2&P3 # Mode&P0&P1&P2&P3;
+LED0 = Mode$P0;
+LED1 = C0$P1;
+LED2 = C1$P2;
+LED3 = C2$P3;
+
+ZF = !(LED0#LED1#LED2#LED3);
+NF = LED3;
+CF = !Mode$C3;
+VF = C3$C2;
+[LED7..LED4] = Flags;
+
+"Step 2
+Mode = 1;
+L17 = VF&NF # !VF & !NF & !ZF; 
+L16 = NF $ VF;
+L18 = ZF;
+LED16 = L16 & !DIP7;
+LED17 = L17 & !DIP7;
+LED18 = L18 & !DIP7;
+
+"Step 3
+"CHECK1 = q3&!q2&!q1&!q0;
+"CHECK2 = !q3&!q2&!q1&!q0;
+q0 := !(CAALL == CA10)&(!q0$q3$q2) # q0&(CAALL == CA10);
+q1 := !(CAALL == CA10)&q0 # q1&(CAALL == CA10);
+q2 := !(CAALL == CA10)&q1 # q2&(CAALL == CA10);
+q3 := !(CAALL == CA10)&q2 # q3&(CAALL == CA10);
+
+[q0..q3].clk = BFC1;
+[q0..q3].AR = BFC2;
+[LED8..LED11] = [q0..q3]&!DIP7;
+
+"Step 4
+CAALL.CLK = BFC1;
+[Count3..Count1].AR = BFC2;
+Count0.AP = BFC2;
+
+"Step 5
+YBALL = [0,0,0,0]&L16 # [0,1,0,0]&L17 # [1,0,0,1]&L18;
+CB0 = GB0; " carry function definitions
+CB1 = GB1 # GB0&PB1 ;
+CB2 = GB2 # GB1&PB2 # GB0&PB1&PB2;
+CB3 = GB3 # GB2&PB3 # GB1&PB2&PB3 # GB0&PB1&PB2&PB3;
+SB0 = PB0;
+SB1 = CB0$PB1;
+SB2 = CB1$PB2;
+SB3 = CB2$PB3;
+CB4 = CB3 # SB3&SB2 # SB3&SB1;
+
+XBALL:= SBALL + ([0,1,1,0]&CB4);
+
+[XBALL,XCALL].AR = BFC2;
+[XBALL,XCALL].CLK = BFC1&!(CAALL == CA10);
+
+
+[DIS4,DIS2,DIS1] = [LALL3,LALL2,LALL1]&!(CAALL == CA10);
+
+"Step 6
+timdiv.clk = tmr_out;
+timdiv := !timdiv;
+timdiv1.clk = timdiv;
+timdiv1 := !timdiv1;
+
+K2:= K1;
+K3:= K2;
+K4:= K3;
+
+
+K1 = (WORD == w0)&blank # (WORD == w1)&LALL2 # (WORD == w2)&LALL1 
+	# (WORD == w3)&blank # (WORD == w4)&charY # (WORD == w5)&charE 
+	# (WORD == w6)&charA # (WORD == w7)&charH # (WORD == w8)&charL 
+	# (WORD == w9)&charO # (WORD == w10)&charS # (WORD == w11)&charE # (WORD == w12)&charR;
+
+
+WORD.AR = BFC2;
+WORD.CLK = timdiv1&(CAALL==CA10);
+K4.CLK = timdiv1;
+K3.CLK = timdiv1;
+K2.CLK = timdiv1;
+[K4,K3,K2].AR = BFC2;
+[DIS4,DIS3,DIS2,DIS1] = (CAALL == CA10)&[K4,K3,K2,K1];
+
+END
+
+
+

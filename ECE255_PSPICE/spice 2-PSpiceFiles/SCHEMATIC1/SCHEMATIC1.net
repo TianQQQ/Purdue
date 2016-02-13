@@ -1,0 +1,12 @@
+* source SPICE 2
+Q_Q1         N00309 VB N00305 Q2N3904
+R_R1         VB N00280  6.5k TC=0,0 
+R_RC         N00280 N00309  500 TC=0,0 
+R_RE         0 N00305  450 TC=0,0 
+R_R2         VB 0  2.5k TC=0,0 
+R_RL         N00345 0  5k TC=0,0 
+R_Rs         VS N01310  500 TC=0,0 
+C_C2         N00309 N00345  100M  TC=0,0 
+C_C1         N01310 VB  100M  TC=0,0 
+V_V2         N00280 0 DC 5  
+V_V3         VS 0 DC 0 AC 1n 

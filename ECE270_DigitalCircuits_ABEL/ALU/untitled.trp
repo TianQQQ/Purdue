@@ -1,0 +1,170 @@
+
+Timing Report
+
+//  Project = untitled
+//  Family  = lc4k
+//  Device  = LC4256ZE
+//  Speed   = -5.8
+//  Voltage = 1.8
+//  Operating Condition = COM
+//  Data sheet version  = 0.9
+
+//  Pass Bidirection = OFF
+//  Pass S/R = OFF
+//  Pass Latch = OFF
+//  Pass Clock = OFF
+//  Maximum Paths = 20
+//  T_SU Endpoints D/T inputs = ON
+//  T_SU Endpoints CE inputs = OFF
+//  T_SU Endpoints S/R inputs = OFF
+//  T_SU Endpoints RAM gated = ON
+//  Fmax of CE = ON
+//  Fmax of RAM = ON
+
+//  Location(From => To)
+//    Pin number: numeric number preceded by "p", BGA number as is
+//    Macrocell number: Segment#,GLB#,Macrocell#
+//                      Segment#: starts from 0 (if applicable)
+//                      GLB#: starts from A..Z, AA..ZZ
+//                      Macrocell#: starts from 0 to 31
+
+
+Section fMAX
+
+  Maximum Operating Frequency: 35.71 MHz
+  Clock Source From:           DIP7
+  Logic Levels:                6
+  Path Delay:                  28.00 ns
+  Path Expansion                                Source                        Destination
+  ==============                                ======                        ===========
+   0.45  tCOi                                   LED15.C                       LED15.Q
+   4.30  tFBK+tROUTE+tBLA*13+tMCELL             LED15.Q                       ab0
+   0.45  tPDi                                   ab0                           ab0
+   4.25  tFBK+tROUTE+tBLA*12+tMCELL             ab0                           db1
+   0.45  tPDi                                   db1                           db1
+   3.75  tFBK+tROUTE+tBLA*2+tMCELL              db1                           P1
+   0.45  tPDi                                   P1                            P1
+   3.65  tFBK+tROUTE+tMCELL                     P1                            C2
+   0.45  tPDi                                   C2                            C2
+   3.70  tFBK+tROUTE+tBLA+tMCELL                C2                            alu3
+   0.45  tPDi                                   alu3                          alu3
+   3.65  tFBK+tROUTE+tMCELL                     alu3                          LED3.D
+   2.00  tS_PT                                  LED3.D                        LED3.C
+ 
+  Clock Source From: DIP7
+  Delay         Level   Location(From => To)    Source                        Destination                   Destination_Clock
+  =====         =====   ====================    ======                        ===========                   =================
+  28.00           6      A2       =>  F15       LED15.C                       LED3.D                        DIP7
+  28.00           6      A2       =>  F13       LED15.C                       LED5.D                        DIP7
+  28.00           6      A2       =>  F4        LED15.C                       LED6.D                        DIP7
+  27.95           6      A2       =>  F0        LED15.C                       LED2.D                        DIP7
+  27.65           6      O15      =>  F15       mar0.C                        LED3.D                        DIP7
+  27.65           6      O15      =>  F13       mar0.C                        LED5.D                        DIP7
+  27.65           6      O15      =>  F4        mar0.C                        LED6.D                        DIP7
+  27.65           6      O4       =>  F15       mar1.C                        LED3.D                        DIP7
+  27.65           6      O4       =>  F13       mar1.C                        LED5.D                        DIP7
+  27.65           6      O4       =>  F4        mar1.C                        LED6.D                        DIP7
+  27.65           6      O3       =>  F15       mar2.C                        LED3.D                        DIP7
+  27.65           6      O3       =>  F13       mar2.C                        LED5.D                        DIP7
+  27.65           6      O3       =>  F4        mar2.C                        LED6.D                        DIP7
+  27.65           6      G14      =>  F15       mar3.C                        LED3.D                        DIP7
+  27.65           6      G14      =>  F13       mar3.C                        LED5.D                        DIP7
+  27.65           6      G14      =>  F4        mar3.C                        LED6.D                        DIP7
+  27.60           6      O15      =>  F0        mar0.C                        LED2.D                        DIP7
+  27.60           6      O4       =>  F0        mar1.C                        LED2.D                        DIP7
+  27.60           6      O3       =>  F0        mar2.C                        LED2.D                        DIP7
+  27.60           6      G14      =>  F0        mar3.C                        LED2.D                        DIP7
+
+
+Section tSU
+
+   tSU,    tHD   Level   Location(From => To)    Source                        Destination                   Reference_Clock
+  ===========   =====   ====================    ======                        ===========                   ===============
+ 22.45,-10.20     5     p26       =>  F15       DIP7                          LED3.D                        DIP7
+ 22.45,-10.15     5     p26       =>  F13       DIP7                          LED5.D                        DIP7
+ 22.45,-10.20     5     p26       =>  F4        DIP7                          LED6.D                        DIP7
+ 22.40,-10.15     5     p26       =>  F0        DIP7                          LED2.D                        DIP7
+ 18.35,-10.20     4     p26       =>  G13       DIP7                          LED1.D                        DIP7
+ 18.35,-10.15     4     p26       =>  F14       DIP7                          LED4.D                        DIP7
+ 18.30,-10.15     4     p26       =>  F2        DIP7                          LED7.D                        DIP7
+ 14.20,-10.20     3     p26       =>  G12       DIP7                          LED0.D                        DIP7
+ 10.10,- 6.10     2     p26       =>  B2        DIP7                          LED9.D                        DIP7
+ 10.10,- 6.10     2     p26       =>  A1        DIP7                          LED11.D                       DIP7
+ 10.05,- 6.05     2     p26       =>  B4        DIP7                          LED8.D                        DIP7
+ 10.05,- 6.05     2     p26       =>  A0        DIP7                          LED10.D                       DIP7
+  5.90,- 1.90     1     p26       =>  A3        DIP7                          ir4.D                         DIP7
+  5.90,- 1.90     1     p26       =>  O11       DIP7                          ir5.D                         DIP7
+  5.90,- 1.90     1     p26       =>  E13       DIP7                          ir6.D                         DIP7
+  4.80,- 0.80     1     p79       =>  G12       DIP0                          LED0.D                        DIP7
+  4.80,- 0.80     1     p79       =>  F13       DIP0                          LED5.D                        DIP7
+  4.75,- 0.75     1     p78       =>  G13       DIP1                          LED1.D                        DIP7
+  4.75,- 0.75     1     p78       =>  F13       DIP1                          LED5.D                        DIP7
+  4.75,- 0.75     1     p77       =>  F0        DIP2                          LED2.D                        DIP7
+
+
+Section tRCV
+
+   Delay         Level   Location(From => To)    Source                        Destination
+  =====         =====   ====================    ======                        ===========
+   7.60           1     p26       =>  B6        DIP7                          LED16.AP
+   6.95           1     p58       =>  I13       S1_NC                         LED28.AP
+   6.95           1     p58       =>  I8        S1_NC                         S1BC.AR
+   6.95           1     p59       =>  I13       S1_NO                         LED28.AR
+   6.95           1     p59       =>  I8        S1_NO                         S1BC.AP
+   6.95           1     p60       =>  I10       S2_NC                         LED29.AP
+   6.95           1     p60       =>  I9        S2_NC                         S2BC.AR
+   6.95           1     p61       =>  I10       S2_NO                         LED29.AR
+   6.95           1     p61       =>  I9        S2_NO                         S2BC.AP
+   2.20           1     p26       =>  G12       DIP7                          LED0.AP
+   2.20           1     p26       =>  G13       DIP7                          LED1.AP
+   2.20           1     p26       =>  F0        DIP7                          LED2.AP
+   2.20           1     p26       =>  F15       DIP7                          LED3.AP
+   2.20           1     p26       =>  F14       DIP7                          LED4.AP
+   2.20           1     p26       =>  F13       DIP7                          LED5.AP
+   2.20           1     p26       =>  F4        DIP7                          LED6.AP
+   2.20           1     p26       =>  F2        DIP7                          LED7.AP
+   2.20           1     p26       =>  B4        DIP7                          LED8.AP
+   2.20           1     p26       =>  B2        DIP7                          LED9.AP
+   2.20           1     p26       =>  A0        DIP7                          LED10.AP
+
+
+Section tPD
+
+   Delay         Level   Location(From => To)    Source                        Destination
+  =====         =====   ====================    ======                        ===========
+   6.45           1     p26       => p141       DIP7                          LED17
+   6.45           1     p26       => p142       DIP7                          LED18
+   6.45           1     p26       => p100       DIP7                          LED20
+   6.45           1     p26       => p101       DIP7                          LED21
+   6.45           1     p26       => p102       DIP7                          LED22
+   6.45           1     p26       => p103       DIP7                          LED23
+   5.90           1     p79       => p100       DIP0                          LED20
+   5.90           1     p77       => p102       DIP2                          LED22
+   5.90           1     p76       => p103       DIP3                          LED23
+   5.85           1     p78       => p101       DIP1                          LED21
+
+
+Section tCO
+
+     tCO         Level   Location(From => To)    Source                        Destination                   Register_Clock
+    ===         =====   ====================    ======                        ===========                   ==============
+  20.20           3     p26       => p87        DIP7                          DIS1a                         m4q3.C
+  20.20           3     p26       => p87        DIP7                          DIS1a                         m13q3.C
+  20.20           3     p26       => p87        DIP7                          DIS1a                         m11q3.C
+  20.20           3     p26       => p87        DIP7                          DIS1a                         m9q3.C
+  20.20           3     p26       => p87        DIP7                          DIS1a                         m2q3.C
+  20.20           3     p26       => p86        DIP7                          DIS1b                         m2q3.C
+  20.20           3     p26       => p86        DIP7                          DIS1b                         m13q3.C
+  20.20           3     p26       => p86        DIP7                          DIS1b                         m11q3.C
+  20.20           3     p26       => p86        DIP7                          DIS1b                         m4q3.C
+  20.20           3     p26       => p86        DIP7                          DIS1b                         m9q3.C
+  20.20           3     p26       => p85        DIP7                          DIS1c                         m4q3.C
+  20.20           3     p26       => p85        DIP7                          DIS1c                         m9q3.C
+  20.20           3     p26       => p85        DIP7                          DIS1c                         m13q3.C
+  20.20           3     p26       => p85        DIP7                          DIS1c                         m2q3.C
+  20.20           3     p26       => p85        DIP7                          DIS1c                         m11q3.C
+  20.20           3     p26       => p84        DIP7                          DIS1d                         m4q3.C
+  20.20           3     p26       => p84        DIP7                          DIS1d                         m11q3.C
+  20.20           3     p26       => p84        DIP7                          DIS1d                         m9q3.C
+  20.20           3     p26       => p84        DIP7                          DIS1d                         m13q3.C
+  20.20           3     p26       => p84        DIP7                          DIS1d                         m2q3.C

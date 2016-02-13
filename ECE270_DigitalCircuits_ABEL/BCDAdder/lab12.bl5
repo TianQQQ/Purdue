@@ -1,0 +1,1071 @@
+#$ TOOL  ispLEVER Classic 1.7.00.05.28.13
+#$ DATE  Thu Apr 16 12:09:29 2015
+#$ JEDECFILE  lab12
+#$ MODULE  Lab12
+#$ TITLE  Lab 12
+#$ PROPERTY  Lattice OSCTIMER TIMER_DIV= 1048576;
+#$ PINS 70 DIP0:79 DIP1:78 DIP2:77 DIP3:76 DIP4:23 DIP5:24 DIP6:25 DIP7:26
+ S1_NC:58 S1_NO:59 S2_NC:60 S2_NO:61 LED0:40 LED1:39 LED2:33 LED3:32 LED4:31
+ LED5:30 LED6:29 LED7:28 LED8:139 LED9:138 LED10:135 LED11:134 LED12:133
+ LED13:132 LED14:131 LED15:130 DIS1a:87 DIS1b:86 DIS1c:85 DIS1d:84 DIS1e:83
+ DIS1f:81 DIS1g:80 DIS2a:98 DIS2b:97 DIS2c:96 DIS2d:95 DIS2e:94 DIS2f:93 DIS2g:88
+ DIS3a:125 DIS3b:124 DIS3c:123 DIS3d:122 DIS3e:121 DIS3f:120 DIS3g:116 DIS4a:44
+ DIS4b:48 DIS4c:49 DIS4d:50 DIS4e:51 DIS4f:52 DIS4g:53 LED16:140 LED17:141
+ LED18:142 LED19:143 LED20:100 LED21:101 LED22:102 LED23:103 LED24:104 LED25:105
+ LED26:111 LED27:112 LED28:63 LED29:62
+#$ NODES 73 osc_dis osc_out tmr_out S3 BFC BFD ZF VF LF0 LF1 LF2 LF3 LF4 LF5
+ sat0 sat1 sat2 sat3 score0 score1 score2 score3 score4 score5 score6 score7 add4
+ add5 add7 actsc0 actsc1 actsc2 actsc3 actsc4 actsc5 actsc6 timdiv2+ timdiv4+
+ lft0 lft1 lft2 lft3 lft4 lft5 lft6 lft7 lft8 lft9 lft10 lft11 lft12 lft13 lft14
+ lft15 lft16 lft17 lft18 lft19 lft20 lft21 lft22 lft23 lft24 lft25 lft26 lft27
+ nico poi fg q0 q1 q2 q3
+#$ EXTERNAL osctimer 4 DYNOSCDIS'i' TIMERRES'i' OSCOUT'o' TIMEROUT'o'
+#$ INSTANCE I1 osctimer 4 osc_dis osc_dis osc_out tmr_out
+.model lab12 
+.inputs S1_NO.BLIF S1_NC.BLIF S2_NO.BLIF S2_NC.BLIF timdiv2.Q tmr_out.BLIF \
+ timdiv4.Q ZF.BLIF VF.BLIF S3.BLIF DIP7.BLIF BFC.Q BFD.Q LF0.Q LF1.Q LF2.Q LF3.Q \
+ LF4.Q LF5.Q sat0.Q sat1.Q sat2.Q sat3.Q actsc3.BLIF actsc2.BLIF actsc1.BLIF \
+ actsc0.BLIF actsc6.BLIF actsc5.BLIF actsc4.BLIF DIP0.BLIF DIP1.BLIF DIP2.BLIF \
+ DIP3.BLIF score0.Q score1.Q score2.Q score3.Q score4.Q add4.BLIF score5.Q \
+ add5.BLIF score6.Q score7.Q add7.BLIF lft14.Q lft15.Q lft16.Q lft17.Q lft18.Q \
+ lft19.Q lft20.Q lft7.Q lft8.Q lft9.Q lft10.Q lft11.Q lft12.Q lft13.Q lft0.Q \
+ lft1.Q lft2.Q lft3.Q lft4.Q lft5.Q lft6.Q nico.Q poi.Q lft21.Q fg.BLIF lft22.Q \
+ lft23.Q lft24.Q lft25.Q lft26.Q lft27.Q q3.Q q2.Q q1.Q q0.Q
+.outputs LED0 LED1.X1 LED1.X2 LED2.X1 LED2.X2 LED3 LED4 LED5 LED6 LED7.X1 \
+ LED7.X2 LED8- LED9- LED10- LED11- DIS1a.X1 DIS1a.X2 DIS1b DIS1c DIS1d.X1 \
+ DIS1d.X2 DIS1e- DIS1f DIS1g.X1 DIS1g.X2 DIS2a- DIS2b- DIS2c DIS2d- DIS2e- DIS2f- \
+ DIS2g- DIS3a- DIS3b- DIS3c- DIS3d- DIS3e- DIS3f- DIS3g- DIS4a- DIS4b.X1 DIS4b.X2 \
+ DIS4c DIS4d- DIS4e- DIS4f- DIS4g.X1 DIS4g.X2 LED16- LED17- LED18- osc_dis S3.X1 \
+ S3.X2 BFC.D BFC.C BFC.AR BFC.AP BFD.D BFD.C BFD.AR BFD.AP ZF- VF.X1 VF.X2 LF0.D \
+ LF0.C LF0.AR LF1.D LF1.C LF1.AR LF2.D LF2.C LF2.AR LF3.D LF3.C LF3.AR LF4.D \
+ LF4.C LF4.AR LF5.D LF5.C LF5.AP sat0.D- sat0.C sat0.AP sat1.D sat1.C sat1.AR \
+ sat2.D sat2.C sat2.AR sat3.D sat3.C sat3.AR score0.T score0.C score0.AR score1.T \
+ score1.C score1.AR score2.T score2.C score2.AR score3.T score3.C score3.AR \
+ score4.T.X1 score4.T.X2 score4.C score4.AR score5.T score5.C score5.AR score6.T- \
+ score6.C score6.AR score7.T- score7.C score7.AR add4- add5- add7- actsc0 \
+ actsc1.X1 actsc1.X2 actsc2.X1 actsc2.X2 actsc3 actsc4 actsc5.X1 actsc5.X2 \
+ actsc6.X1 actsc6.X2 timdiv2.D timdiv2.C timdiv4.D timdiv4.C lft0.D lft0.C \
+ lft0.AR lft1.D lft1.C lft1.AR lft2.D lft2.C lft2.AR lft3.D lft3.C lft3.AR lft4.D \
+ lft4.C lft4.AR lft5.D lft5.C lft5.AR lft6.D lft6.C lft6.AR lft7.D lft7.C lft7.AR \
+ lft8.D lft8.C lft8.AR lft9.D lft9.C lft9.AR lft10.D lft10.C lft10.AR lft11.D \
+ lft11.C lft11.AR lft12.D lft12.C lft12.AR lft13.D lft13.C lft13.AR lft14.D \
+ lft14.C lft14.AR lft15.D lft15.C lft15.AR lft16.D lft16.C lft16.AR lft17.D \
+ lft17.C lft17.AR lft18.D lft18.C lft18.AR lft19.D lft19.C lft19.AR lft20.D \
+ lft20.C lft20.AR lft21.D lft21.C lft21.AR lft22.D lft22.C lft22.AR lft23.D \
+ lft23.C lft23.AR lft24.D lft24.C lft24.AR lft25.D lft25.C lft25.AR lft26.D \
+ lft26.C lft26.AR lft27.D lft27.C lft27.AR nico.D- nico.C nico.AR poi.D.X1 \
+ poi.D.X2 poi.C poi.AR fg- q0.D q0.C q0.AR q1.D- q1.C q1.AR q2.D q2.C q2.AR \
+ q3.D.X1 q3.D.X2 q3.C q3.AR
+.names LF0.Q DIP0.BLIF LED0
+00 1
+11 1
+.names LF0.Q DIP0.BLIF DIP1.BLIF LED1.X1
+010 1
+1-1 1
+-01 1
+.names LF1.Q LED1.X2
+0 1
+.names LF0.Q LF1.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF LED2.X1
+-0-10 1
+001-0 1
+0-110 1
+11--1 1
+-10-1 1
+1--01 1
+-1-01 1
+--001 1
+.names LF2.Q LED2.X2
+0 1
+.names S3.BLIF LED3
+0 1
+.names VF.BLIF LED4
+0 1
+.names ZF.BLIF LED5
+0 1
+.names S3.BLIF LED6
+0 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF LED7.X1
+--1---0- 1
+111----- 1
+-11-0--- 1
+1-1--0-- 1
+-11--0-- 1
+--1-00-- 1
+11----0- 1
+-1--0-0- 1
+1----00- 1
+-1---00- 1
+----000- 1
+---0---1 1
+---1---0 1
+.names LF3.Q DIP3.BLIF LED7.X2
+01 1
+.names DIP7.BLIF LF0.Q LED8-
+01 1
+.names DIP7.BLIF LF1.Q LED9-
+01 1
+.names DIP7.BLIF LF2.Q LED10-
+01 1
+.names DIP7.BLIF LF3.Q LED11-
+01 1
+.names actsc6.BLIF actsc4.BLIF score7.Q lft0.Q fg.BLIF DIS1a.X1
+0-0-0 1
+-1--0 1
+---01 1
+.names actsc6.BLIF actsc5.BLIF fg.BLIF DIS1a.X2
+000 1
+.names actsc6.BLIF actsc5.BLIF actsc4.BLIF score7.Q lft1.Q fg.BLIF DIS1b
+01-1-0 1
+-11--0 1
+11-0-0 1
+----01 1
+1-1--0 1
+.names actsc6.BLIF actsc5.BLIF actsc4.BLIF score7.Q lft2.Q fg.BLIF DIS1c
+10-0-0 1
+-11--0 1
+----01 1
+1-1--0 1
+.names actsc6.BLIF actsc5.BLIF actsc4.BLIF score7.Q lft3.Q fg.BLIF DIS1d.X1
+0-01-0 1
+101--0 1
+1100-0 1
+----01 1
+.names actsc5.BLIF fg.BLIF DIS1d.X2
+10 1
+.names actsc6.BLIF actsc5.BLIF actsc4.BLIF score7.Q lft4.Q fg.BLIF DIS1e-
+1-00-0 1
+00-0-0 1
+----11 1
+.names actsc6.BLIF actsc5.BLIF actsc4.BLIF score7.Q lft5.Q fg.BLIF DIS1f
+-001-0 1
+1--1-0 1
+-11--0 1
+----01 1
+10---0 1
+.names actsc6.BLIF actsc5.BLIF actsc4.BLIF score7.Q lft6.Q fg.BLIF DIS1g.X1
+00---0 1
+1101-0 1
+----01 1
+.names actsc4.BLIF fg.BLIF DIS1g.X2
+10 1
+.names actsc3.BLIF actsc2.BLIF actsc1.BLIF actsc0.BLIF lft7.Q fg.BLIF DIS2a-
+000--0 1
+1-10-0 1
+-1-0-0 1
+----11 1
+.names actsc3.BLIF actsc2.BLIF actsc1.BLIF actsc0.BLIF lft8.Q fg.BLIF DIS2b-
+11-0-0 1
+000--0 1
+00-0-0 1
+----11 1
+--00-0 1
+.names actsc3.BLIF actsc2.BLIF actsc1.BLIF actsc0.BLIF lft9.Q fg.BLIF DIS2c
+010--0 1
+--11-0 1
+1--1-0 1
+----01 1
+.names actsc3.BLIF actsc2.BLIF actsc1.BLIF actsc0.BLIF lft10.Q fg.BLIF DIS2d-
+1010-0 1
+000--0 1
+-100-0 1
+01-0-0 1
+----11 1
+.names actsc3.BLIF actsc2.BLIF actsc1.BLIF actsc0.BLIF lft11.Q fg.BLIF DIS2e-
+01-0-0 1
+000--0 1
+----11 1
+.names actsc3.BLIF actsc2.BLIF actsc1.BLIF actsc0.BLIF lft12.Q fg.BLIF DIS2f-
+000--0 1
+-010-0 1
+0-10-0 1
+----11 1
+.names actsc3.BLIF actsc2.BLIF actsc1.BLIF actsc0.BLIF lft13.Q fg.BLIF DIS2g-
+0-10-0 1
+0001-0 1
+-010-0 1
+-100-0 1
+----11 1
+.names lft14.Q fg.BLIF DIS3a-
+11 1
+.names lft15.Q fg.BLIF DIS3b-
+11 1
+.names lft16.Q fg.BLIF DIS3c-
+11 1
+.names lft17.Q fg.BLIF DIS3d-
+11 1
+.names lft18.Q fg.BLIF DIS3e-
+11 1
+.names lft19.Q fg.BLIF DIS3f-
+11 1
+.names lft20.Q fg.BLIF DIS3g-
+11 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q lft21.Q fg.BLIF DIS4a-
+-001-0 1
+1-10-0 1
+-1-0-0 1
+----11 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q fg.BLIF lft22.Q DIS4b.X1
+00-00- 1
+-1010- 1
+11100- 1
+----10 1
+.names sat2.Q fg.BLIF DIS4b.X2
+10 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q fg.BLIF lft23.Q DIS4c
+0-000- 1
+--110- 1
+-1-10- 1
+----10 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q fg.BLIF lft24.Q DIS4d-
+10100- 1
+-0010- 1
+01-00- 1
+-1000- 1
+----11 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q fg.BLIF lft25.Q DIS4e-
+00010- 1
+01-00- 1
+----11 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q fg.BLIF lft26.Q DIS4f-
+-0010- 1
+0-100- 1
+-0100- 1
+----11 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q fg.BLIF lft27.Q DIS4g.X1
+-00-0- 1
+11100- 1
+----10 1
+.names sat3.Q fg.BLIF DIS4g.X2
+10 1
+.names ZF.BLIF VF.BLIF S3.BLIF DIP7.BLIF LED16-
+0000 1
+0110 1
+.names VF.BLIF S3.BLIF DIP7.BLIF LED17-
+100 1
+010 1
+.names ZF.BLIF DIP7.BLIF LED18-
+10 1
+.names osc_dis
+.names LF0.Q LF1.Q LF2.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF S3.X1
+--1--00 1
+111---0 1
+-110--0 1
+1-1-0-0 1
+-11-0-0 1
+--100-0 1
+11---00 1
+-1-0-00 1
+1---000 1
+-1--000 1
+---0000 1
+--0--11 1
+-00-1-1 1
+-0--111 1
+0001--1 1
+0-011-1 1
+00-1-11 1
+0--1111 1
+.names LF3.Q S3.X2
+0 1
+.names BFC.D
+.names BFC.C
+.names S1_NC.BLIF BFC.AR
+0 1
+.names S1_NO.BLIF BFC.AP
+0 1
+.names BFD.D
+.names BFD.C
+.names S2_NC.BLIF BFD.AR
+0 1
+.names S2_NO.BLIF BFD.AP
+0 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF ZF-
+--1---0- 1
+--0---1- 1
+-1---0-- 1
+-0---1-- 1
+1---0--- 1
+0---1--- 1
+---1---0 1
+---0---1 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF VF.X1
+--00--1- 1
+-001-100 1
+00011-00 1
+0-011100 1
+-011-110 1
+00111-10 1
+0-111110 1
+11-0---1 1
+-1-00--1 1
+1--0-0-1 1
+-1-0-0-1 1
+---000-1 1
+--0---11 1
+--10--01 1
+.names LF2.Q DIP2.BLIF VF.X2
+01 1
+.names LF2.Q LF3.Q LF4.Q LF5.Q LF0.D
+100- 1
+010- 1
+---1 1
+.names BFC.Q LF0.C
+1 1
+.names BFD.Q LF0.AR
+1 1
+.names LF0.Q LF4.Q LF1.D
+10 1
+.names BFC.Q LF1.C
+1 1
+.names BFD.Q LF1.AR
+1 1
+.names LF1.Q LF4.Q LF2.D
+10 1
+.names BFC.Q LF2.C
+1 1
+.names BFD.Q LF2.AR
+1 1
+.names LF2.Q LF4.Q LF3.D
+10 1
+.names BFC.Q LF3.C
+1 1
+.names BFD.Q LF3.AR
+1 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q LF4.D
+0011 1
+.names BFC.Q LF4.C
+1 1
+.names BFD.Q LF4.AR
+1 1
+.names LF4.Q LF5.D
+1 1
+.names BFC.Q LF5.C
+1 1
+.names BFD.Q LF5.AP
+1 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q sat0.D-
+-101 1
+1--- 1
+.names BFC.Q sat0.C
+1 1
+.names BFD.Q sat0.AP
+1 1
+.names sat0.Q sat1.Q sat1.D
+10 1
+01 1
+.names BFC.Q sat1.C
+1 1
+.names BFD.Q sat1.AR
+1 1
+.names sat0.Q sat1.Q sat2.Q sat2.D
+110 1
+-01 1
+0-1 1
+.names BFC.Q sat2.C
+1 1
+.names BFD.Q sat2.AR
+1 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q sat3.D
+1110 1
+--01 1
+-0-1 1
+0--1 1
+.names BFC.Q sat3.C
+1 1
+.names BFD.Q sat3.AR
+1 1
+.names score1.Q score2.Q score3.Q score4.Q add4.BLIF score5.Q add5.BLIF score6.Q score7.Q add7.BLIF score0.T
+111-1-1111 1
+1111--1111 1
+111-11-111 1
+1111-1-111 1
+111-111--- 1
+1111-11--- 1
+11111----- 1
+.names BFC.Q score0.C
+1 1
+.names BFD.Q score0.AR
+1 1
+.names score2.Q score3.Q score4.Q add4.BLIF score5.Q add5.BLIF score6.Q score7.Q add7.BLIF score1.T
+11-1-1111 1
+111--1111 1
+11-11-111 1
+111-1-111 1
+11-111--- 1
+111-11--- 1
+1111----- 1
+.names BFC.Q score1.C
+1 1
+.names BFD.Q score1.AR
+1 1
+.names score3.Q score4.Q add4.BLIF score5.Q add5.BLIF score6.Q score7.Q add7.BLIF score2.T
+1-1-1111 1
+11--1111 1
+1-11-111 1
+11-1-111 1
+1-111--- 1
+11-11--- 1
+111----- 1
+.names BFC.Q score2.C
+1 1
+.names BFD.Q score2.AR
+1 1
+.names score4.Q add4.BLIF score5.Q add5.BLIF score6.Q score7.Q add7.BLIF score3.T
+-1-1111 1
+1--1111 1
+-11-111 1
+1-1-111 1
+-111--- 1
+1-11--- 1
+11----- 1
+.names BFC.Q score3.C
+1 1
+.names BFD.Q score3.AR
+1 1
+.names add4.BLIF score5.Q add5.BLIF score6.Q score7.Q add7.BLIF score4.T.X1
+1-00-- 1
+011--- 1
+101--- 1
+1-0--0 1
+1-0-0- 1
+0-0111 1
+.names add4.BLIF score5.Q add5.BLIF score6.Q score7.Q add7.BLIF score4.T.X2
+-0-111 1
+.names BFC.Q score4.C
+1 1
+.names BFD.Q score4.AR
+1 1
+.names add5.BLIF score6.Q score7.Q add7.BLIF score5.T
+0111 1
+1-0- 1
+10-- 1
+1--0 1
+.names BFC.Q score5.C
+1 1
+.names BFD.Q score5.AR
+1 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q sat0.Q sat1.Q sat2.Q sat3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF score7.Q score6.T-
+----0101----- 1
+---1-------0- 1
+---0-------1- 1
+--1-------0-- 1
+--0-------1-- 1
+-1-------0--- 1
+-0-------1--- 1
+1-------0---- 1
+0-------1---- 1
+------------0 1
+.names BFC.Q score6.C
+1 1
+.names BFD.Q score6.AR
+1 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q sat0.Q sat1.Q sat2.Q sat3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF score7.T-
+----0101---- 1
+--1-------0- 1
+--0-------1- 1
+-1-------0-- 1
+-0-------1-- 1
+1-------0--- 1
+0-------1--- 1
+---1-------0 1
+---0-------1 1
+.names BFC.Q score7.C
+1 1
+.names BFD.Q score7.AR
+1 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q sat0.Q sat1.Q sat2.Q sat3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF add4-
+----0101---- 1
+--1-------0- 1
+--0-------1- 1
+-1-------0-- 1
+-0-------1-- 1
+1-------0--- 1
+0-------1--- 1
+---1-------0 1
+---0-------1 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q sat0.Q sat1.Q sat2.Q sat3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF add5-
+----0101---- 1
+---0----000- 1
+1--0-----00- 1
+-1-0----0-0- 1
+11-0------0- 1
+--10----00-- 1
+1-10-----0-- 1
+-110----0--- 1
+1110-------- 1
+-1-0-----00- 1
+-110-----0-- 1
+--------0001 1
+1--------001 1
+-1------0-01 1
+11--------01 1
+--1-----00-1 1
+1-1------0-1 1
+-11-----0--1 1
+111--------1 1
+--10------0- 1
+-1-------001 1
+-11------0-1 1
+--1-------01 1
+---0-------1 1
+.names LF0.Q LF1.Q LF2.Q LF3.Q sat0.Q sat1.Q sat2.Q sat3.Q DIP0.BLIF DIP1.BLIF DIP2.BLIF DIP3.BLIF add7-
+----0101---- 1
+--1-------0- 1
+--0-------1- 1
+-1-------0-- 1
+-0-------1-- 1
+1-------0--- 1
+0-------1--- 1
+---1-------0 1
+---0-------1 1
+.names score0.Q score1.Q score2.Q score3.Q actsc0
+011- 1
+01-1 1
+1-00 1
+10-- 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q actsc1.X1
+--00- 1
+000-- 1
+00-00 1
+.names score1.Q actsc1.X2
+0 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q actsc2.X1
+1-0--- 1
+-10--- 1
+--0100 1
+001-0- 1
+0011-0 1
+.names score3.Q actsc2.X2
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q actsc3
+001-0-1 1
+000100- 1
+001110- 1
+001-01- 1
+000-111 1
+--0011- 1
+-1-01-- 1
+-1-0-11 1
+--100-- 1
+--001-1 1
+1--0--- 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q actsc4
+0100010 1
+0010011 1
+0011000 1
+0001001 1
+-000100 1
+-1--111 1
+--01110 1
+--11101 1
+-11-1-- 1
+-1-11-- 1
+1---1-- 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q actsc5.X1
+00100-1 1
+01000-- 1
+0100--1 1
+00011-- 1
+0001--0 1
+00-11-0 1
+00-1-10 1
+0001-1- 1
+00-111- 1
+000-110 1
+.names score5.Q actsc5.X2
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q actsc6.X1
+01001-- 1
+0-0011- 1
+000100- 1
+00100-- 1
+001-01- 1
+001110- 1
+00-1001 1
+0-001-1 1
+000-111 1
+0100-11 1
+001-0-1 1
+0011-01 1
+.names score6.Q actsc6.X2
+1 1
+.names timdiv2.Q timdiv2.D
+0 1
+.names tmr_out.BLIF timdiv2.C
+1 1
+.names timdiv4.Q timdiv4.D
+0 1
+.names timdiv2.Q timdiv4.C
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q score7.Q q3.Q q2.Q q1.Q q0.Q lft0.D
+0100-1-00-1- 1
+00-111-00-1- 1
+001-0-1-0-10 1
+-0--01110-11 1
+1----0000-11 1
+0-00100-0-1- 1
+010011--0-1- 1
+0100-0-10-1- 1
+-1--01010-11 1
+--10011-0-11 1
+00-1-1000-1- 1
+000-110-0-11 1
+0000-0-00-11 1
+00-1-0010-11 1
+-1--0-100-11 1
+0001-01-0-11 1
+-1-10-1-0-11 1
+1---100-0-11 1
+00-00---0-10 1
+---000110-11 1
+001-1-1-0-11 1
+00-11---0-10 1
+00-0-1-10-11 1
+---100-00-11 1
+--1--0000-11 1
+1---01-10-11 1
+-1--100-0-11 1
+001-0-0-0-11 1
+00--01--0-10 1
+--0-0-100-11 1
+1---0-1-0-11 1
+--------1100 1
+11-1----0-10 1
+010-----0-10 1
+--------1011 1
+--------011- 1
+.names timdiv4.Q lft0.C
+1 1
+.names BFD.Q lft0.AR
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q score7.Q q3.Q q2.Q q1.Q q0.Q lft1.D
+00--000-0010 1
+001-0-100-11 1
+--0-10000-11 1
+00001-0-0-11 1
+--0-0-110-11 1
+--0-01000-11 1
+0100-1-10-11 1
+001--0100-11 1
+---1001-0-11 1
+001001-10-11 1
+0-001-100-11 1
+001-1-110-11 1
+0100-11-001- 1
+00-01-000-11 1
+00-1-10-0-11 1
+000-----0010 1
+0001--110-11 1
+-1--100-0-11 1
+-101----0010 1
+--1-00-00-11 1
+--1--0010-11 1
+---100-10-11 1
+00-1-1-00-11 1
+0000-0--0-11 1
+111-----0010 1
+0-0-1---0010 1
+00-0----0010 1
+--------1000 1
+1---0-110-11 1
+1---0-000-11 1
+-1--0-110-11 1
+-1--0-000-11 1
+1---00--0-11 1
+1----00-0-11 1
+--------01-1 1
+.names timdiv4.Q lft1.C
+1 1
+.names BFD.Q lft1.AR
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q score7.Q q3.Q q2.Q q1.Q q0.Q lft2.D
+0010-1---01- 1
+0100-1---01- 1
+00--00---010 1
+-11--00-0-11 1
+00-11-0-0-11 1
+001-1-0--01- 1
+000-10---011 1
+001-0-1--01- 1
+1---01--0-11 1
+000-111--01- 1
+00-1-0--0-11 1
+1----00-0-11 1
+0100--1--01- 1
+----0--10-11 1
+-1--01--0-11 1
+--0-0-0-0-11 1
+---1-00-0-11 1
+0-00-----010 1
+-----0010-11 1
+---001--0-11 1
+00-----10-11 1
+1110-----010 1
+-101-----010 1
+001------010 1
+--------01-1 1
+--------10-0 1
+--------101- 1
+.names timdiv4.Q lft2.C
+1 1
+.names BFD.Q lft2.AR
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q score7.Q q3.Q q2.Q q1.Q q0.Q lft3.D
+0-000-0-0-10 1
+--0-1001-011 1
+000011-1-011 1
+00100-00-01- 1
+00110-0--011 1
+0-0000--0-10 1
+01001-11-011 1
+0011--1--010 1
+-00-00-0-011 1
+0-000101-01- 1
+--0-0-10-011 1
+0001011--01- 1
+-1-1001--011 1
+001-101--011 1
+--100011-011 1
+0011-111-01- 1
+001-000--011 1
+0001-1-0-01- 1
+0010011--01- 1
+01000-01-01- 1
+1---00-0-011 1
+0100-1-0-011 1
+0000100--01- 1
+-00-001--011 1
+001-1-10-011 1
+00-1-100-01- 1
+000-110--011 1
+11-1----0-10 1
+000--010-011 1
+--1--000-011 1
+00-1-1---010 1
+-101----0-10 1
+---100-0-011 1
+00-11---0-10 1
+00-00---0-10 1
+00-01101-011 1
+1---0101-011 1
+-1--0101-011 1
+--------1100 1
+1---100--011 1
+1---0-10-011 1
+-1--100--011 1
+--------0101 1
+-1--0-10-011 1
+1---001--011 1
+--------0110 1
+--------10-1 1
+--------101- 1
+.names timdiv4.Q lft3.C
+1 1
+.names BFD.Q lft3.AR
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q score7.Q q3.Q q2.Q q1.Q q0.Q lft4.D
+001-0-000-11 1
+010-0-0-0-10 1
+---001100-11 1
+-1-1-0000-11 1
+0000-00-0-10 1
+0-01-10--010 1
+001-1-100-11 1
+001111--0-10 1
+11-1----0-10 1
+0-001-000-11 1
+0-0110--0-10 1
+---100-00-11 1
+0001--100-11 1
+00-1-1000-11 1
+0000-0-00-11 1
+0-0000--0-10 1
+--1--0000-11 1
+000-01--0-10 1
+-101----0-10 1
+0100-1-00-11 1
+1---0-100-11 1
+-1--0-100-11 1
+1----0000-11 1
+--------1-0- 1
+--------10-0 1
+--------011- 1
+.names timdiv4.Q lft4.C
+1 1
+.names BFD.Q lft4.AR
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q score7.Q q3.Q q2.Q q1.Q q0.Q lft5.D
+010-00--0-10 1
+0010110-0-1- 1
+00100-1-0-11 1
+0010-1-00-11 1
+0100-1-00-11 1
+01000--00-11 1
+--00010-0-11 1
+0011101-0-1- 1
+--01100-0-11 1
+001-011-0-11 1
+01001-1-0-11 1
+1---01-00-11 1
+-1--01-00-11 1
+0011000-0-1- 1
+0001001-0-11 1
+1---010-0-11 1
+1----000-011 1
+0000100-0-1- 1
+-11-100-0-11 1
+0-00111-0-11 1
+00011-0-0-11 1
+001-1-000-1- 1
+001-0-100-11 1
+000-1-100-11 1
+-1--010-0-11 1
+01000-0-0-1- 1
+--0-0-000-11 1
+1---100-0-11 1
+---001-00-11 1
+-1--0-000-11 1
+00000---0-10 1
+0011----0-10 1
+001-1---0-10 1
+-101----0-10 1
+--------1-00 1
+--------10-1 1
+--------011- 1
+--------01-1 1
+.names timdiv4.Q lft5.C
+1 1
+.names BFD.Q lft5.AR
+1 1
+.names score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q score7.Q q3.Q q2.Q q1.Q q0.Q lft6.D
+0-00-1000-11 1
+00-0110--011 1
+001101--0-1- 1
+---101100-11 1
+00-110-00-1- 1
+--00010-0-11 1
+-00-001-0-11 1
+010010---011 1
+0011-11--01- 1
+001-011-0-1- 1
+--0-00100-11 1
+1---010-0-11 1
+1111----0-10 1
+00-1-0000-11 1
+0-011---0-10 1
+-1-1001-0-11 1
+0-00111-0-11 1
+--10001-0-11 1
+001-101-0-1- 1
+010-00--0-10 1
+1---100-0-11 1
+1---01-00-11 1
+001-000-0-1- 1
+01000-0-0-1- 1
+00010-1-0-11 1
+00-0-1-00-11 1
+0-01-1--0-10 1
+000-1-0-0-11 1
+-1--100-0-11 1
+--1-01-00-11 1
+1---001-0-11 1
+-1--010-0-11 1
+--------1-00 1
+001-----0-10 1
+---------101 1
+--------101- 1
+--------011- 1
+.names timdiv4.Q lft6.C
+1 1
+.names BFD.Q lft6.AR
+1 1
+.names lft0.Q lft7.D
+1 1
+.names timdiv4.Q lft7.C
+1 1
+.names BFD.Q lft7.AR
+1 1
+.names lft1.Q lft8.D
+1 1
+.names timdiv4.Q lft8.C
+1 1
+.names BFD.Q lft8.AR
+1 1
+.names lft2.Q lft9.D
+1 1
+.names timdiv4.Q lft9.C
+1 1
+.names BFD.Q lft9.AR
+1 1
+.names lft3.Q lft10.D
+1 1
+.names timdiv4.Q lft10.C
+1 1
+.names BFD.Q lft10.AR
+1 1
+.names lft4.Q lft11.D
+1 1
+.names timdiv4.Q lft11.C
+1 1
+.names BFD.Q lft11.AR
+1 1
+.names lft5.Q lft12.D
+1 1
+.names timdiv4.Q lft12.C
+1 1
+.names BFD.Q lft12.AR
+1 1
+.names lft6.Q lft13.D
+1 1
+.names timdiv4.Q lft13.C
+1 1
+.names BFD.Q lft13.AR
+1 1
+.names lft7.Q lft14.D
+1 1
+.names timdiv4.Q lft14.C
+1 1
+.names BFD.Q lft14.AR
+1 1
+.names lft8.Q lft15.D
+1 1
+.names timdiv4.Q lft15.C
+1 1
+.names BFD.Q lft15.AR
+1 1
+.names lft9.Q lft16.D
+1 1
+.names timdiv4.Q lft16.C
+1 1
+.names BFD.Q lft16.AR
+1 1
+.names lft10.Q lft17.D
+1 1
+.names timdiv4.Q lft17.C
+1 1
+.names BFD.Q lft17.AR
+1 1
+.names lft11.Q lft18.D
+1 1
+.names timdiv4.Q lft18.C
+1 1
+.names BFD.Q lft18.AR
+1 1
+.names lft12.Q lft19.D
+1 1
+.names timdiv4.Q lft19.C
+1 1
+.names BFD.Q lft19.AR
+1 1
+.names lft13.Q lft20.D
+1 1
+.names timdiv4.Q lft20.C
+1 1
+.names BFD.Q lft20.AR
+1 1
+.names lft14.Q lft21.D
+1 1
+.names timdiv4.Q lft21.C
+1 1
+.names BFD.Q lft21.AR
+1 1
+.names lft15.Q lft22.D
+1 1
+.names timdiv4.Q lft22.C
+1 1
+.names BFD.Q lft22.AR
+1 1
+.names lft16.Q lft23.D
+1 1
+.names timdiv4.Q lft23.C
+1 1
+.names BFD.Q lft23.AR
+1 1
+.names lft17.Q lft24.D
+1 1
+.names timdiv4.Q lft24.C
+1 1
+.names BFD.Q lft24.AR
+1 1
+.names lft18.Q lft25.D
+1 1
+.names timdiv4.Q lft25.C
+1 1
+.names BFD.Q lft25.AR
+1 1
+.names lft19.Q lft26.D
+1 1
+.names timdiv4.Q lft26.C
+1 1
+.names BFD.Q lft26.AR
+1 1
+.names lft20.Q lft27.D
+1 1
+.names timdiv4.Q lft27.C
+1 1
+.names BFD.Q lft27.AR
+1 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q nico.D-
+----00--000 1
+000-------- 1
+----00-0--- 1
+----000---- 1
+---0------- 1
+.names BFC.Q nico.C
+1 1
+.names BFD.Q nico.AR
+1 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q poi.D.X1
+---1000---- 1
+---100-0--- 1
+000100----- 1
+---100--000 1
+.names sat0.Q sat1.Q sat2.Q sat3.Q score0.Q score1.Q score2.Q score3.Q score4.Q score5.Q score6.Q poi.D.X2
+000100----- 1
+.names BFC.Q poi.C
+1 1
+.names BFD.Q poi.AR
+1 1
+.names nico.Q poi.Q fg-
+00 1
+.names nico.Q poi.Q q3.Q q2.Q q1.Q q0.Q q0.D
+1-01-0 1
+-101-0 1
+--10-0 1
+--110- 1
+--0-10 1
+.names timdiv4.Q q0.C
+1 1
+.names BFD.Q q0.AR
+1 1
+.names nico.Q poi.Q q3.Q q2.Q q1.Q q0.Q q1.D-
+00--00 1
+--11-- 1
+----11 1
+---100 1
+--1-00 1
+.names timdiv4.Q q1.C
+1 1
+.names BFD.Q q1.AR
+1 1
+.names nico.Q q3.Q q2.Q q1.Q q0.Q q2.D
+1010- 1
+--011 1
+-1100 1
+-0110 1
+-0101 1
+.names timdiv4.Q q2.C
+1 1
+.names BFD.Q q2.AR
+1 1
+.names nico.Q poi.Q q3.Q q2.Q q1.Q q0.Q q3.D.X1
+--1-00 1
+--0111 1
+01-100 1
+.names nico.Q poi.Q q3.Q q2.Q q1.Q q0.Q q3.D.X2
+--10-- 1
+.names timdiv4.Q q3.C
+1 1
+.names BFD.Q q3.AR
+1 1
+.end

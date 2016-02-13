@@ -1,0 +1,43 @@
+
+**** 04/11/15 16:57:17 ******* PSpice 16.3.0 (June 2009) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-bias"  [ Z:\ECE255\3-pspicefiles\schematic1\bias.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "bias.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Program Files\Cadence\SPB_16.3\tools\PSpice\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.PROBE V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source 3
+Q_Q1         I N14610 N14617 Q2N3904
+Q_Q2         N14610 N14610 N14617 Q2N3904
+V_V1         0 0 -5Vdc
+V_V2         N14617 0 -5Vdc
+R_R1         I 0 9.3k
+I_I1         0 N14610 DC 1mA  
+
+**** RESUMING bias.cir ****
+.END
+
+ERROR -- Voltage source and/or inductor loop involving V_V1
+You may break the loop by adding a series resistance

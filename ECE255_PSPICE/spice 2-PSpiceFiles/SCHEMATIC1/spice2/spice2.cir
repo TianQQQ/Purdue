@@ -1,0 +1,19 @@
+** Profile: "SCHEMATIC1-spice2"  [ Z:\ECE255\spice 2-pspicefiles\schematic1\spice2.sim ] 
+
+** Creating circuit file "spice2.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../spice 2-pspicefiles/spice 2.lib" 
+* From [PSPICE NETLIST] section of C:\Program Files\Cadence\SPB_16.3\tools\PSpice\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.AC DEC 10 1 10000k
+.PROBE V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+.END

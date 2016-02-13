@@ -1,0 +1,1015 @@
+#$ TOOL ispLEVER Classic 1.7.00.05.28.13
+#$ DATE Mon Apr 27 21:21:01 2015
+#$ TITLE Lab Practical Exam Skeleton File
+#$ PROPERTY Lattice OSCTIMER TIMER_DIV= 1048576;
+#$ MODULE 11
+#$ JEDECFILE lab11
+#$ PINS 70 DIP0:79 DIP1:78 DIP2:77 DIP3:76 DIP4:23 DIP5:24 DIP6:25 DIP7:26 S1_NC:58 \
+#  S1_NO:59 S2_NC:60 S2_NO:61 LED0:40 LED1:39 LED2:33 LED3:32 LED4:31 LED5:30 LED6:29 \
+#  LED7:28 LED8:139 LED9:138 LED10:135 LED11:134 LED12:133 LED13:132 LED14:131 LED15:130 \
+#  DIS1a:87 DIS1b:86 DIS1c:85 DIS1d:84 DIS1e:83 DIS1f:81 DIS1g:80 DIS2a:98 DIS2b:97 \
+#  DIS2c:96 DIS2d:95 DIS2e:94 DIS2f:93 DIS2g:88 DIS3a:125 DIS3b:124 DIS3c:123 DIS3d:122 \
+#  DIS3e:121 DIS3f:120 DIS3g:116 DIS4a:44 DIS4b:48 DIS4c:49 DIS4d:50 DIS4e:51 DIS4f:52 \
+#  DIS4g:53 LED16:140 LED17:141 LED18:142 LED19:143 LED20:100 LED21:101 LED22:102 \
+#  LED23:103 LED24:104 LED25:105 LED26:111 LED27:112 LED28:63 LED29:62
+#$ NODES 99 osc_dis osc_rst osc_out tmr_out S1BC+ S2BC+ lfsr0 lfsr1 lfsr2 lfsr3 lfsr4 \
+#  lfsr5 lfsr6 lfsr7 timdiv+ timdiv2+ rct0 rct1 rct2 rct3 rct4 rct5 rct6 rct7 rcg0 rcg1 rcg2 rcg3 \
+#  rcg4 rcg5 rcg6 rcg7 ENT fl0 fl1 fl2 fl3 fl4 fl5 fl6 fl7 check error lft0 lft1 lft2 lft3 lft4 lft5 \
+#  lft6 lft7 lft8 lft9 lft10 lft11 lft12 lft13 lft14 lft15 lft16 lft17 lft18 lft19 lft20 lft21 \
+#  lft22 lft23 lft24 lft25 lft26 lft27 nico poi daze mod0 mod1 mod2 mod3 mod4 mod5 mod6 mod7 mod8 \
+#  mod9 mod10 mod11 mod12 mod13 mod14 mod15 mod16 mod17 mod18 mod19 mod20 I1>DYNOSCDIS'co'  \
+#  I1>TIMERRES'co'  I1>OSCOUT'co'  I1>TIMEROUT'co' 
+#$ EXTERNAL osctimer  4 DYNOSCDIS'i'  TIMERRES'i'  OSCOUT'o'  TIMEROUT'o' 
+#$ INSTANCE I1 osctimer 4 I1>DYNOSCDIS I1>TIMERRES I1>OSCOUT I1>TIMEROUT
+.model lab11
+.inputs I1>OSCOUT.BLIF I1>TIMEROUT.BLIF osc_dis.BLIF osc_rst.BLIF S1_NO.BLIF \
+S1_NC.BLIF S1BC.Q S2_NO.BLIF S2_NC.BLIF S2BC.Q timdiv.BLIF tmr_out.BLIF \
+timdiv2.BLIF lfsr6.BLIF lfsr5.BLIF lfsr4.BLIF lfsr3.BLIF lfsr2.BLIF lfsr1.BLIF \
+lfsr0.BLIF DIP0.BLIF DIP7.BLIF lfsr7.Q lfsr6.Q lfsr5.Q lfsr4.Q lfsr3.Q lfsr2.Q \
+lfsr1.Q lfsr0.Q DIP1.BLIF rct6.BLIF rct5.BLIF rct4.BLIF rct3.BLIF rct2.BLIF \
+rct1.BLIF rct0.BLIF rct7.BLIF S1BC.BLIF check.BLIF S2BC.BLIF ENT.BLIF \
+rcg7.BLIF lfsr7.BLIF error.BLIF rcg6.BLIF rcg5.BLIF rcg4.BLIF rcg3.BLIF \
+rcg2.BLIF rcg1.BLIF rcg0.BLIF fl0.BLIF fl1.BLIF fl2.BLIF fl3.BLIF fl4.BLIF \
+fl5.BLIF fl6.BLIF fl7.BLIF lft0.Q lft1.Q lft2.Q lft3.Q lft4.Q lft5.Q lft6.Q \
+lft7.Q lft8.Q lft9.Q lft10.Q lft11.Q lft12.Q lft13.Q lft14.Q lft15.Q lft16.Q \
+lft17.Q lft18.Q lft19.Q lft20.Q lft21.Q lft22.Q lft23.Q lft24.Q lft25.Q \
+lft26.Q lft27.Q lft14.BLIF lft15.BLIF lft16.BLIF lft17.BLIF lft18.BLIF \
+lft19.BLIF lft20.BLIF lft7.BLIF lft8.BLIF lft9.BLIF lft10.BLIF lft11.BLIF \
+lft12.BLIF lft13.BLIF lft0.BLIF lft1.BLIF lft2.BLIF lft3.BLIF lft4.BLIF \
+lft5.BLIF lft6.BLIF LED16.BLIF LED17.BLIF LED18.BLIF mod0.BLIF mod7.BLIF \
+mod14.BLIF mod1.BLIF mod8.BLIF mod15.BLIF mod2.BLIF mod9.BLIF mod16.BLIF \
+mod3.BLIF mod10.BLIF mod17.BLIF mod4.BLIF mod11.BLIF mod18.BLIF mod5.BLIF \
+mod12.BLIF mod19.BLIF mod6.BLIF mod13.BLIF mod20.BLIF nico.BLIF daze.BLIF \
+poi.BLIF
+.outputs osc_dis osc_rst osc_out tmr_out LED0 LED1 LED2 LED3 LED4 LED5 LED6 \
+LED7 LED8 LED9 LED10 LED11 LED12 LED13 LED14 LED15 DIS1a DIS1b DIS1c DIS1d \
+DIS1e DIS1f DIS1g DIS2a DIS2b DIS2c DIS2d DIS2e DIS2f DIS2g DIS3a DIS3b DIS3c \
+DIS3d DIS3e DIS3f DIS3g DIS4a DIS4b DIS4c DIS4d DIS4e DIS4f DIS4g LED16 LED17 \
+LED18 LED28 LED29 fl0 fl1 fl2 fl3 fl4 fl5 fl6 fl7 I1>DYNOSCDIS I1>TIMERRES \
+S1BC.D S1BC.C S1BC.AP S1BC.AR S2BC.D S2BC.C S2BC.AP S2BC.AR timdiv.D timdiv.C \
+timdiv2.D timdiv2.C lfsr7.REG lfsr6.REG lfsr5.REG lfsr4.REG lfsr3.REG \
+lfsr2.REG lfsr1.REG lfsr0.REG lfsr7.C lfsr6.C lfsr5.C lfsr4.C lfsr3.C lfsr2.C \
+lfsr1.C lfsr0.C lfsr7.CE lfsr6.CE lfsr5.CE lfsr4.CE lfsr3.CE lfsr2.CE lfsr1.CE \
+lfsr0.CE lfsr7.AP lfsr6.AP lfsr5.AP lfsr4.AP lfsr3.AP lfsr2.AP lfsr1.AP \
+lfsr0.AP rct7.REG rct6.REG rct5.REG rct4.REG rct3.REG rct2.REG rct1.REG \
+rct0.REG rct7.C rct6.C rct5.C rct4.C rct3.C rct2.C rct1.C rct0.C rct7.AR \
+rct6.AR rct5.AR rct4.AR rct3.AR rct2.AR rct1.AR rct0.AP rcg7.C rcg6.C rcg5.C \
+rcg4.C rcg3.C rcg2.C rcg1.C rcg0.C rcg7.AR rcg6.AR rcg5.AR rcg4.AR rcg3.AR \
+rcg2.AR rcg1.AR rcg0.AR rcg7.REG rcg6.REG rcg5.REG rcg4.REG rcg3.REG rcg2.REG \
+rcg1.REG rcg0.REG ENT.C ENT.REG check.AR check.C check.D error.AR error.C \
+error.D error.AP check.AP lft21.REG lft22.REG lft23.REG lft24.REG lft25.REG \
+lft26.REG lft27.REG lft14.REG lft15.REG lft16.REG lft17.REG lft18.REG \
+lft19.REG lft20.REG lft7.REG lft8.REG lft9.REG lft10.REG lft11.REG lft12.REG \
+lft13.REG lft0.REG lft1.REG lft2.REG lft3.REG lft4.REG lft5.REG lft6.REG \
+lft0.AR lft1.AR lft2.AR lft3.AR lft4.AR lft5.AR lft6.AR lft7.AR lft8.AR \
+lft9.AR lft10.AR lft11.AR lft12.AR lft13.AR lft14.AR lft15.AR lft16.AR \
+lft17.AR lft18.AR lft19.AR lft20.AR lft21.AR lft22.AR lft23.AR lft24.AR \
+lft25.AR lft26.AR lft27.AR lft0.C lft1.C lft2.C lft3.C lft4.C lft5.C lft6.C \
+lft7.C lft8.C lft9.C lft10.C lft11.C lft12.C lft13.C lft14.C lft15.C lft16.C \
+lft17.C lft18.C lft19.C lft20.C lft21.C lft22.C lft23.C lft24.C lft25.C \
+lft26.C lft27.C mod0.C mod1.C mod2.C mod3.C mod4.C mod5.C mod6.C mod7.C mod8.C \
+mod9.C mod10.C mod11.C mod12.C mod13.C mod14.C mod15.C mod16.C mod17.C mod18.C \
+mod19.C mod20.C mod0.AR mod1.AR mod2.AR mod3.AR mod4.AR mod5.AR mod6.AR \
+mod7.AR mod8.AR mod9.AR mod10.AR mod11.AR mod12.AR mod13.AR mod14.AR mod15.AR \
+mod16.AR mod17.AR mod18.AR mod19.AR mod20.AR nico.AR poi.AR daze.AR nico.C \
+poi.C daze.C mod0.REG mod1.REG mod2.REG mod3.REG mod4.REG mod5.REG mod6.REG \
+nico.REG mod7.REG mod8.REG mod9.REG mod10.REG mod11.REG mod12.REG mod13.REG \
+poi.REG daze.REG mod14.REG mod15.REG mod16.REG mod17.REG mod18.REG mod19.REG \
+mod20.REG
+.names osc_dis
+.names osc_rst
+.names lfsr0.Q DIP1.BLIF LED0
+0- 1
+-1 1
+.names lfsr1.Q DIP1.BLIF LED1
+0- 1
+-1 1
+.names lfsr2.Q DIP1.BLIF LED2
+0- 1
+-1 1
+.names lfsr3.Q DIP1.BLIF LED3
+0- 1
+-1 1
+.names lfsr4.Q DIP1.BLIF LED4
+0- 1
+-1 1
+.names lfsr5.Q DIP1.BLIF LED5
+0- 1
+-1 1
+.names lfsr6.Q DIP1.BLIF LED6
+0- 1
+-1 1
+.names lfsr7.Q DIP1.BLIF LED7
+0- 1
+-1 1
+.names rct0.BLIF check.BLIF LED8
+00 1
+.names rct1.BLIF check.BLIF LED9
+0- 1
+-1 1
+.names rct2.BLIF check.BLIF LED10
+0- 1
+-1 1
+.names rct3.BLIF check.BLIF LED11
+0- 1
+-1 1
+.names rct4.BLIF check.BLIF LED12
+0- 1
+-1 1
+.names rct5.BLIF check.BLIF LED13
+0- 1
+-1 1
+.names rct6.BLIF check.BLIF LED14
+0- 1
+-1 1
+.names rct7.BLIF check.BLIF LED15
+0- 1
+-1 1
+.names lft0.Q DIS1a
+0 1
+.names lft1.Q DIS1b
+0 1
+.names lft2.Q DIS1c
+0 1
+.names lft3.Q DIS1d
+0 1
+.names lft4.Q DIS1e
+0 1
+.names lft5.Q DIS1f
+0 1
+.names lft6.Q DIS1g
+0 1
+.names lft7.Q DIS2a
+0 1
+.names lft8.Q DIS2b
+0 1
+.names lft9.Q DIS2c
+0 1
+.names lft10.Q DIS2d
+0 1
+.names lft11.Q DIS2e
+0 1
+.names lft12.Q DIS2f
+0 1
+.names lft13.Q DIS2g
+0 1
+.names lft14.Q DIS3a
+0 1
+.names lft15.Q DIS3b
+0 1
+.names lft16.Q DIS3c
+0 1
+.names lft17.Q DIS3d
+0 1
+.names lft18.Q DIS3e
+0 1
+.names lft19.Q DIS3f
+0 1
+.names lft20.Q DIS3g
+0 1
+.names lft21.Q DIS4a
+0 1
+.names lft22.Q DIS4b
+0 1
+.names lft23.Q DIS4c
+0 1
+.names lft24.Q DIS4d
+0 1
+.names lft25.Q DIS4e
+0 1
+.names lft26.Q DIS4f
+0 1
+.names lft27.Q DIS4g
+0 1
+.names check.BLIF error.BLIF LED16
+0- 1
+-0 1
+.names DIP0.BLIF check.BLIF error.BLIF LED17
+1-- 1
+-1- 1
+--1 1
+.names check.BLIF error.BLIF LED18
+0- 1
+-1 1
+.names S1BC.Q LED28
+0 1
+.names S2BC.Q LED29
+0 1
+.names lfsr0.BLIF ENT.BLIF error.BLIF rcg0.BLIF fl0
+--1- 1
+01-1 1
+10-1 1
+.names lfsr1.BLIF ENT.BLIF error.BLIF rcg1.BLIF fl1
+--1- 1
+01-1 1
+10-1 1
+.names lfsr2.BLIF ENT.BLIF error.BLIF rcg2.BLIF fl2
+--1- 1
+01-1 1
+10-1 1
+.names lfsr3.BLIF ENT.BLIF error.BLIF rcg3.BLIF fl3
+--1- 1
+01-1 1
+10-1 1
+.names lfsr4.BLIF ENT.BLIF error.BLIF rcg4.BLIF fl4
+--1- 1
+01-1 1
+10-1 1
+.names lfsr5.BLIF ENT.BLIF error.BLIF rcg5.BLIF fl5
+--1- 1
+01-1 1
+10-1 1
+.names lfsr6.BLIF ENT.BLIF error.BLIF rcg6.BLIF fl6
+--1- 1
+01-1 1
+10-1 1
+.names ENT.BLIF rcg7.BLIF lfsr7.BLIF error.BLIF fl7
+---1 1
+011- 1
+110- 1
+.names S1BC.D
+.names S1BC.C
+.names S1_NO.BLIF S1BC.AP
+0 1
+.names S1_NC.BLIF S1BC.AR
+0 1
+.names S2BC.D
+.names S2BC.C
+.names S2_NO.BLIF S2BC.AP
+0 1
+.names S2_NC.BLIF S2BC.AR
+0 1
+.names timdiv.BLIF timdiv.D
+0 1
+.names timdiv2.BLIF timdiv2.D
+0 1
+.names lfsr6.BLIF lfsr4.BLIF lfsr2.BLIF lfsr1.BLIF lfsr0.REG
+0111 1
+1011 1
+1101 1
+0001 1
+1110 1
+0010 1
+0100 1
+1000 1
+.names rct6.BLIF rct5.BLIF rct4.BLIF rct3.BLIF rct2.BLIF rct1.BLIF rct0.BLIF \
+rct7.BLIF rct0.REG
+00000001 1
+.names rct7.BLIF check.BLIF rcg7.REG
+10 1
+.names rct6.BLIF check.BLIF rcg6.REG
+10 1
+.names rct5.BLIF check.BLIF rcg5.REG
+10 1
+.names rct4.BLIF check.BLIF rcg4.REG
+10 1
+.names rct3.BLIF check.BLIF rcg3.REG
+10 1
+.names rct2.BLIF check.BLIF rcg2.REG
+10 1
+.names rct1.BLIF check.BLIF rcg1.REG
+10 1
+.names rct0.BLIF check.BLIF rcg0.REG
+10 1
+.names check.C
+.names check.D
+.names error.C
+.names error.D
+.names fl0.BLIF fl1.BLIF fl2.BLIF fl3.BLIF fl4.BLIF fl5.BLIF fl6.BLIF fl7.BLIF \
+error.AP
+10000000 1
+.names rcg7.BLIF error.BLIF check.AP
+1- 1
+-1 1
+.names LED16.BLIF LED17.BLIF LED18.BLIF mod0.BLIF mod7.BLIF mod14.BLIF \
+lft0.REG
+0---1- 1
+--0--1 1
+1111-- 1
+.names LED16.BLIF LED17.BLIF LED18.BLIF mod1.BLIF mod8.BLIF mod15.BLIF \
+lft1.REG
+0---1- 1
+--0--1 1
+1111-- 1
+.names LED16.BLIF LED17.BLIF LED18.BLIF mod2.BLIF mod9.BLIF mod16.BLIF \
+lft2.REG
+0---1- 1
+--0--1 1
+1111-- 1
+.names LED16.BLIF LED17.BLIF LED18.BLIF mod3.BLIF mod10.BLIF mod17.BLIF \
+lft3.REG
+0---1- 1
+--0--1 1
+1111-- 1
+.names LED16.BLIF LED17.BLIF LED18.BLIF mod4.BLIF mod11.BLIF mod18.BLIF \
+lft4.REG
+0---1- 1
+--0--1 1
+1111-- 1
+.names LED16.BLIF LED17.BLIF LED18.BLIF mod5.BLIF mod12.BLIF mod19.BLIF \
+lft5.REG
+0---1- 1
+--0--1 1
+1111-- 1
+.names LED16.BLIF LED17.BLIF LED18.BLIF mod6.BLIF mod13.BLIF mod20.BLIF \
+lft6.REG
+0---1- 1
+--0--1 1
+1111-- 1
+.names LED17.BLIF lft0.AR
+0 1
+.names LED17.BLIF lft1.AR
+0 1
+.names LED17.BLIF lft2.AR
+0 1
+.names LED17.BLIF lft3.AR
+0 1
+.names LED17.BLIF lft4.AR
+0 1
+.names LED17.BLIF lft5.AR
+0 1
+.names LED17.BLIF lft6.AR
+0 1
+.names LED17.BLIF lft7.AR
+0 1
+.names LED17.BLIF lft8.AR
+0 1
+.names LED17.BLIF lft9.AR
+0 1
+.names LED17.BLIF lft10.AR
+0 1
+.names LED17.BLIF lft11.AR
+0 1
+.names LED17.BLIF lft12.AR
+0 1
+.names LED17.BLIF lft13.AR
+0 1
+.names LED17.BLIF lft14.AR
+0 1
+.names LED17.BLIF lft15.AR
+0 1
+.names LED17.BLIF lft16.AR
+0 1
+.names LED17.BLIF lft17.AR
+0 1
+.names LED17.BLIF lft18.AR
+0 1
+.names LED17.BLIF lft19.AR
+0 1
+.names LED17.BLIF lft20.AR
+0 1
+.names LED17.BLIF lft21.AR
+0 1
+.names LED17.BLIF lft22.AR
+0 1
+.names LED17.BLIF lft23.AR
+0 1
+.names LED17.BLIF lft24.AR
+0 1
+.names LED17.BLIF lft25.AR
+0 1
+.names LED17.BLIF lft26.AR
+0 1
+.names LED17.BLIF lft27.AR
+0 1
+.names DIP7.BLIF LED16.BLIF mod7.AR
+1- 1
+-1 1
+.names DIP7.BLIF LED16.BLIF mod8.AR
+1- 1
+-1 1
+.names DIP7.BLIF LED16.BLIF mod9.AR
+1- 1
+-1 1
+.names DIP7.BLIF LED16.BLIF mod10.AR
+1- 1
+-1 1
+.names DIP7.BLIF LED16.BLIF mod11.AR
+1- 1
+-1 1
+.names DIP7.BLIF LED16.BLIF mod12.AR
+1- 1
+-1 1
+.names DIP7.BLIF LED16.BLIF mod13.AR
+1- 1
+-1 1
+.names DIP7.BLIF LED17.BLIF mod14.AR
+1- 1
+-0 1
+.names DIP7.BLIF LED17.BLIF mod15.AR
+1- 1
+-0 1
+.names DIP7.BLIF LED17.BLIF mod16.AR
+1- 1
+-0 1
+.names DIP7.BLIF LED17.BLIF mod17.AR
+1- 1
+-0 1
+.names DIP7.BLIF LED17.BLIF mod18.AR
+1- 1
+-0 1
+.names DIP7.BLIF LED17.BLIF mod19.AR
+1- 1
+-0 1
+.names DIP7.BLIF LED17.BLIF mod20.AR
+1- 1
+-0 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF mod0.REG
+10011110 1
+10110110 1
+00001010 1
+00000000 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF mod1.REG
+10011100 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF mod2.REG
+10011100 1
+00000000 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF mod3.REG
+10011110 1
+10110110 1
+00001010 1
+10011100 1
+00000000 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF mod4.REG
+10011110 1
+10110110 1
+00001010 1
+01111100 1
+10011100 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF mod5.REG
+10011110 1
+10110110 1
+00001010 1
+10011100 1
+00000000 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF mod6.REG
+10110110 1
+00001010 1
+01111100 1
+00000000 1
+.names mod0.BLIF mod1.BLIF mod2.BLIF mod3.BLIF mod4.BLIF mod5.BLIF mod6.BLIF \
+nico.BLIF nico.REG
+00001010 1
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF mod7.REG
+000000000 1
+.names mod8.REG
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF mod9.REG
+000010101 1
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF mod10.REG
+000010101 1
+000000000 1
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF mod11.REG
+001110101 1
+000010101 1
+100111100 1
+000010100 1
+000000000 1
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF mod12.REG
+000000000 1
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF mod13.REG
+001110101 1
+000010101 1
+100111100 1
+000010100 1
+000000000 1
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF poi.REG
+001110101 1
+.names mod7.BLIF mod8.BLIF mod9.BLIF mod10.BLIF mod11.BLIF mod12.BLIF \
+mod13.BLIF poi.BLIF daze.BLIF daze.REG
+000010101 1
+000010100 1
+.names mod14.BLIF mod15.BLIF mod16.BLIF mod17.BLIF mod18.BLIF mod19.BLIF \
+mod20.BLIF mod14.REG
+1100111 1
+0011101 1
+.names mod14.BLIF mod15.BLIF mod16.BLIF mod17.BLIF mod18.BLIF mod19.BLIF \
+mod20.BLIF mod15.REG
+0011101 1
+.names mod14.BLIF mod15.BLIF mod16.BLIF mod17.BLIF mod18.BLIF mod19.BLIF \
+mod20.BLIF mod16.REG
+1001111 1
+0000000 1
+.names mod14.BLIF mod15.BLIF mod16.BLIF mod17.BLIF mod18.BLIF mod19.BLIF \
+mod20.BLIF mod17.REG
+1100111 1
+0000000 1
+.names mod14.BLIF mod15.BLIF mod16.BLIF mod17.BLIF mod18.BLIF mod19.BLIF \
+mod20.BLIF mod18.REG
+1001111 1
+1100111 1
+0011101 1
+0000000 1
+.names mod14.BLIF mod15.BLIF mod16.BLIF mod17.BLIF mod18.BLIF mod19.BLIF \
+mod20.BLIF mod19.REG
+1100111 1
+0011101 1
+.names mod14.BLIF mod15.BLIF mod16.BLIF mod17.BLIF mod18.BLIF mod19.BLIF \
+mod20.BLIF mod20.REG
+1001111 1
+1100111 1
+0011101 1
+0000000 1
+.names I1>OSCOUT.BLIF osc_out
+1 1
+0 0
+.names I1>TIMEROUT.BLIF tmr_out
+1 1
+0 0
+.names osc_dis.BLIF I1>DYNOSCDIS
+1 1
+0 0
+.names osc_rst.BLIF I1>TIMERRES
+1 1
+0 0
+.names tmr_out.BLIF timdiv.C
+1 1
+0 0
+.names timdiv.BLIF timdiv2.C
+1 1
+0 0
+.names lfsr6.BLIF lfsr7.REG
+1 1
+0 0
+.names lfsr5.BLIF lfsr6.REG
+1 1
+0 0
+.names lfsr4.BLIF lfsr5.REG
+1 1
+0 0
+.names lfsr3.BLIF lfsr4.REG
+1 1
+0 0
+.names lfsr2.BLIF lfsr3.REG
+1 1
+0 0
+.names lfsr1.BLIF lfsr2.REG
+1 1
+0 0
+.names lfsr0.BLIF lfsr1.REG
+1 1
+0 0
+.names timdiv2.BLIF lfsr7.C
+1 1
+0 0
+.names timdiv2.BLIF lfsr6.C
+1 1
+0 0
+.names timdiv2.BLIF lfsr5.C
+1 1
+0 0
+.names timdiv2.BLIF lfsr4.C
+1 1
+0 0
+.names timdiv2.BLIF lfsr3.C
+1 1
+0 0
+.names timdiv2.BLIF lfsr2.C
+1 1
+0 0
+.names timdiv2.BLIF lfsr1.C
+1 1
+0 0
+.names timdiv2.BLIF lfsr0.C
+1 1
+0 0
+.names DIP0.BLIF lfsr7.CE
+1 1
+0 0
+.names DIP0.BLIF lfsr6.CE
+1 1
+0 0
+.names DIP0.BLIF lfsr5.CE
+1 1
+0 0
+.names DIP0.BLIF lfsr4.CE
+1 1
+0 0
+.names DIP0.BLIF lfsr3.CE
+1 1
+0 0
+.names DIP0.BLIF lfsr2.CE
+1 1
+0 0
+.names DIP0.BLIF lfsr1.CE
+1 1
+0 0
+.names DIP0.BLIF lfsr0.CE
+1 1
+0 0
+.names DIP7.BLIF lfsr7.AP
+1 1
+0 0
+.names DIP7.BLIF lfsr6.AP
+1 1
+0 0
+.names DIP7.BLIF lfsr5.AP
+1 1
+0 0
+.names DIP7.BLIF lfsr4.AP
+1 1
+0 0
+.names DIP7.BLIF lfsr3.AP
+1 1
+0 0
+.names DIP7.BLIF lfsr2.AP
+1 1
+0 0
+.names DIP7.BLIF lfsr1.AP
+1 1
+0 0
+.names DIP7.BLIF lfsr0.AP
+1 1
+0 0
+.names rct6.BLIF rct7.REG
+1 1
+0 0
+.names rct5.BLIF rct6.REG
+1 1
+0 0
+.names rct4.BLIF rct5.REG
+1 1
+0 0
+.names rct3.BLIF rct4.REG
+1 1
+0 0
+.names rct2.BLIF rct3.REG
+1 1
+0 0
+.names rct1.BLIF rct2.REG
+1 1
+0 0
+.names rct0.BLIF rct1.REG
+1 1
+0 0
+.names S1BC.BLIF rct7.C
+1 1
+0 0
+.names S1BC.BLIF rct6.C
+1 1
+0 0
+.names S1BC.BLIF rct5.C
+1 1
+0 0
+.names S1BC.BLIF rct4.C
+1 1
+0 0
+.names S1BC.BLIF rct3.C
+1 1
+0 0
+.names S1BC.BLIF rct2.C
+1 1
+0 0
+.names S1BC.BLIF rct1.C
+1 1
+0 0
+.names S1BC.BLIF rct0.C
+1 1
+0 0
+.names DIP7.BLIF rct7.AR
+1 1
+0 0
+.names DIP7.BLIF rct6.AR
+1 1
+0 0
+.names DIP7.BLIF rct5.AR
+1 1
+0 0
+.names DIP7.BLIF rct4.AR
+1 1
+0 0
+.names DIP7.BLIF rct3.AR
+1 1
+0 0
+.names DIP7.BLIF rct2.AR
+1 1
+0 0
+.names DIP7.BLIF rct1.AR
+1 1
+0 0
+.names DIP7.BLIF rct0.AP
+1 1
+0 0
+.names S1BC.BLIF rcg7.C
+1 1
+0 0
+.names S1BC.BLIF rcg6.C
+1 1
+0 0
+.names S1BC.BLIF rcg5.C
+1 1
+0 0
+.names S1BC.BLIF rcg4.C
+1 1
+0 0
+.names S1BC.BLIF rcg3.C
+1 1
+0 0
+.names S1BC.BLIF rcg2.C
+1 1
+0 0
+.names S1BC.BLIF rcg1.C
+1 1
+0 0
+.names S1BC.BLIF rcg0.C
+1 1
+0 0
+.names DIP7.BLIF rcg7.AR
+1 1
+0 0
+.names DIP7.BLIF rcg6.AR
+1 1
+0 0
+.names DIP7.BLIF rcg5.AR
+1 1
+0 0
+.names DIP7.BLIF rcg4.AR
+1 1
+0 0
+.names DIP7.BLIF rcg3.AR
+1 1
+0 0
+.names DIP7.BLIF rcg2.AR
+1 1
+0 0
+.names DIP7.BLIF rcg1.AR
+1 1
+0 0
+.names DIP7.BLIF rcg0.AR
+1 1
+0 0
+.names S1BC.BLIF ENT.C
+1 1
+0 0
+.names S2BC.BLIF ENT.REG
+1 1
+0 0
+.names DIP7.BLIF check.AR
+1 1
+0 0
+.names DIP7.BLIF error.AR
+1 1
+0 0
+.names lft14.BLIF lft21.REG
+1 1
+0 0
+.names lft15.BLIF lft22.REG
+1 1
+0 0
+.names lft16.BLIF lft23.REG
+1 1
+0 0
+.names lft17.BLIF lft24.REG
+1 1
+0 0
+.names lft18.BLIF lft25.REG
+1 1
+0 0
+.names lft19.BLIF lft26.REG
+1 1
+0 0
+.names lft20.BLIF lft27.REG
+1 1
+0 0
+.names lft7.BLIF lft14.REG
+1 1
+0 0
+.names lft8.BLIF lft15.REG
+1 1
+0 0
+.names lft9.BLIF lft16.REG
+1 1
+0 0
+.names lft10.BLIF lft17.REG
+1 1
+0 0
+.names lft11.BLIF lft18.REG
+1 1
+0 0
+.names lft12.BLIF lft19.REG
+1 1
+0 0
+.names lft13.BLIF lft20.REG
+1 1
+0 0
+.names lft0.BLIF lft7.REG
+1 1
+0 0
+.names lft1.BLIF lft8.REG
+1 1
+0 0
+.names lft2.BLIF lft9.REG
+1 1
+0 0
+.names lft3.BLIF lft10.REG
+1 1
+0 0
+.names lft4.BLIF lft11.REG
+1 1
+0 0
+.names lft5.BLIF lft12.REG
+1 1
+0 0
+.names lft6.BLIF lft13.REG
+1 1
+0 0
+.names timdiv2.BLIF lft0.C
+1 1
+0 0
+.names timdiv2.BLIF lft1.C
+1 1
+0 0
+.names timdiv2.BLIF lft2.C
+1 1
+0 0
+.names timdiv2.BLIF lft3.C
+1 1
+0 0
+.names timdiv2.BLIF lft4.C
+1 1
+0 0
+.names timdiv2.BLIF lft5.C
+1 1
+0 0
+.names timdiv2.BLIF lft6.C
+1 1
+0 0
+.names timdiv2.BLIF lft7.C
+1 1
+0 0
+.names timdiv2.BLIF lft8.C
+1 1
+0 0
+.names timdiv2.BLIF lft9.C
+1 1
+0 0
+.names timdiv2.BLIF lft10.C
+1 1
+0 0
+.names timdiv2.BLIF lft11.C
+1 1
+0 0
+.names timdiv2.BLIF lft12.C
+1 1
+0 0
+.names timdiv2.BLIF lft13.C
+1 1
+0 0
+.names timdiv2.BLIF lft14.C
+1 1
+0 0
+.names timdiv2.BLIF lft15.C
+1 1
+0 0
+.names timdiv2.BLIF lft16.C
+1 1
+0 0
+.names timdiv2.BLIF lft17.C
+1 1
+0 0
+.names timdiv2.BLIF lft18.C
+1 1
+0 0
+.names timdiv2.BLIF lft19.C
+1 1
+0 0
+.names timdiv2.BLIF lft20.C
+1 1
+0 0
+.names timdiv2.BLIF lft21.C
+1 1
+0 0
+.names timdiv2.BLIF lft22.C
+1 1
+0 0
+.names timdiv2.BLIF lft23.C
+1 1
+0 0
+.names timdiv2.BLIF lft24.C
+1 1
+0 0
+.names timdiv2.BLIF lft25.C
+1 1
+0 0
+.names timdiv2.BLIF lft26.C
+1 1
+0 0
+.names timdiv2.BLIF lft27.C
+1 1
+0 0
+.names timdiv2.BLIF mod0.C
+1 1
+0 0
+.names timdiv2.BLIF mod1.C
+1 1
+0 0
+.names timdiv2.BLIF mod2.C
+1 1
+0 0
+.names timdiv2.BLIF mod3.C
+1 1
+0 0
+.names timdiv2.BLIF mod4.C
+1 1
+0 0
+.names timdiv2.BLIF mod5.C
+1 1
+0 0
+.names timdiv2.BLIF mod6.C
+1 1
+0 0
+.names timdiv2.BLIF mod7.C
+1 1
+0 0
+.names timdiv2.BLIF mod8.C
+1 1
+0 0
+.names timdiv2.BLIF mod9.C
+1 1
+0 0
+.names timdiv2.BLIF mod10.C
+1 1
+0 0
+.names timdiv2.BLIF mod11.C
+1 1
+0 0
+.names timdiv2.BLIF mod12.C
+1 1
+0 0
+.names timdiv2.BLIF mod13.C
+1 1
+0 0
+.names timdiv2.BLIF mod14.C
+1 1
+0 0
+.names timdiv2.BLIF mod15.C
+1 1
+0 0
+.names timdiv2.BLIF mod16.C
+1 1
+0 0
+.names timdiv2.BLIF mod17.C
+1 1
+0 0
+.names timdiv2.BLIF mod18.C
+1 1
+0 0
+.names timdiv2.BLIF mod19.C
+1 1
+0 0
+.names timdiv2.BLIF mod20.C
+1 1
+0 0
+.names DIP7.BLIF mod0.AR
+1 1
+0 0
+.names DIP7.BLIF mod1.AR
+1 1
+0 0
+.names DIP7.BLIF mod2.AR
+1 1
+0 0
+.names DIP7.BLIF mod3.AR
+1 1
+0 0
+.names DIP7.BLIF mod4.AR
+1 1
+0 0
+.names DIP7.BLIF mod5.AR
+1 1
+0 0
+.names DIP7.BLIF mod6.AR
+1 1
+0 0
+.names DIP7.BLIF nico.AR
+1 1
+0 0
+.names DIP7.BLIF poi.AR
+1 1
+0 0
+.names DIP7.BLIF daze.AR
+1 1
+0 0
+.names timdiv2.BLIF nico.C
+1 1
+0 0
+.names timdiv2.BLIF poi.C
+1 1
+0 0
+.names timdiv2.BLIF daze.C
+1 1
+0 0
+.end

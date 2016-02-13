@@ -1,0 +1,1036 @@
+|--------------------------------------------------- ----------|
+|- ispLEVER Classic 1.7.00.05.28.13 Equations File            -|
+|- Copyright(C), 1992-2012, Lattice Semiconductor Corporation -|
+|- All Rights Reserved.                                       -|
+|--------------------------------------------------------------|
+
+
+Equations:
+
+
+BFC.D = 0 ; (0 pterm, 0 signal)
+BFC.C = 0 ; (0 pterm, 0 signal)
+BFC.AR = !S1_NC ; (1 pterm, 1 signal)
+BFC.AP = !S1_NO ; (1 pterm, 1 signal)
+
+BFD.D = 0 ; (0 pterm, 0 signal)
+BFD.C = 0 ; (0 pterm, 0 signal)
+BFD.AR = !S2_NC ; (1 pterm, 1 signal)
+BFD.AP = !S2_NO ; (1 pterm, 1 signal)
+
+DIS1a.X1 = !score7.Q & !actsc6 & !fg
+    # actsc4 & !fg
+    # !lft0.Q & fg ; (3 pterms, 5 signals)
+DIS1a.X2 = !actsc5 & !actsc6 & !fg ; (1 pterm, 3 signals)
+
+DIS1b = score7.Q & actsc5 & !actsc6 & !fg
+    # actsc4 & actsc5 & !fg
+    # !score7.Q & actsc5 & actsc6 & !fg
+    # !lft1.Q & fg
+    # actsc4 & actsc6 & !fg ; (5 pterms, 6 signals)
+
+DIS1c = !score7.Q & !actsc5 & actsc6 & !fg
+    # actsc4 & actsc5 & !fg
+    # !lft2.Q & fg
+    # actsc4 & actsc6 & !fg ; (4 pterms, 6 signals)
+
+DIS1d.X1 = score7.Q & !actsc4 & !actsc6 & !fg
+    # actsc4 & !actsc5 & actsc6 & !fg
+    # !score7.Q & !actsc4 & actsc5 & actsc6 & !fg
+    # !lft3.Q & fg ; (4 pterms, 6 signals)
+DIS1d.X2 = actsc5 & !fg ; (1 pterm, 2 signals)
+
+DIS1e = !( !score7.Q & !actsc4 & actsc6 & !fg
+    # !score7.Q & !actsc5 & !actsc6 & !fg
+    # lft4.Q & fg ) ; (3 pterms, 6 signals)
+
+DIS1f = score7.Q & !actsc4 & !actsc5 & !fg
+    # score7.Q & actsc6 & !fg
+    # actsc4 & actsc5 & !fg
+    # !lft5.Q & fg
+    # !actsc5 & actsc6 & !fg ; (5 pterms, 6 signals)
+
+DIS1g.X1 = !actsc5 & !actsc6 & !fg
+    # score7.Q & !actsc4 & actsc5 & actsc6 & !fg
+    # !lft6.Q & fg ; (3 pterms, 6 signals)
+DIS1g.X2 = actsc4 & !fg ; (1 pterm, 2 signals)
+
+DIS2a = !( !actsc1 & !actsc2 & !actsc3 & !fg
+    # !actsc0 & actsc1 & actsc3 & !fg
+    # !actsc0 & actsc2 & !fg
+    # lft7.Q & fg ) ; (4 pterms, 6 signals)
+
+DIS2b = !( !actsc0 & actsc2 & actsc3 & !fg
+    # !actsc1 & !actsc2 & !actsc3 & !fg
+    # !actsc0 & !actsc2 & !actsc3 & !fg
+    # lft8.Q & fg
+    # !actsc0 & !actsc1 & !fg ) ; (5 pterms, 6 signals)
+
+DIS2c = !actsc1 & actsc2 & !actsc3 & !fg
+    # actsc0 & actsc1 & !fg
+    # actsc0 & actsc3 & !fg
+    # !lft9.Q & fg ; (4 pterms, 6 signals)
+
+DIS2d = !( !actsc0 & actsc1 & !actsc2 & actsc3 & !fg
+    # !actsc1 & !actsc2 & !actsc3 & !fg
+    # !actsc0 & !actsc1 & actsc2 & !fg
+    # !actsc0 & actsc2 & !actsc3 & !fg
+    # lft10.Q & fg ) ; (5 pterms, 6 signals)
+
+DIS2e = !( !actsc0 & actsc2 & !actsc3 & !fg
+    # !actsc1 & !actsc2 & !actsc3 & !fg
+    # lft11.Q & fg ) ; (3 pterms, 6 signals)
+
+DIS2f = !( !actsc1 & !actsc2 & !actsc3 & !fg
+    # !actsc0 & actsc1 & !actsc2 & !fg
+    # !actsc0 & actsc1 & !actsc3 & !fg
+    # lft12.Q & fg ) ; (4 pterms, 6 signals)
+
+DIS2g = !( !actsc0 & actsc1 & !actsc3 & !fg
+    # actsc0 & !actsc1 & !actsc2 & !actsc3 & !fg
+    # !actsc0 & actsc1 & !actsc2 & !fg
+    # !actsc0 & !actsc1 & actsc2 & !fg
+    # lft13.Q & fg ) ; (5 pterms, 6 signals)
+
+DIS3a = !( lft14.Q & fg ) ; (1 pterm, 2 signals)
+
+DIS3b = !( lft15.Q & fg ) ; (1 pterm, 2 signals)
+
+DIS3c = !( lft16.Q & fg ) ; (1 pterm, 2 signals)
+
+DIS3d = !( lft17.Q & fg ) ; (1 pterm, 2 signals)
+
+DIS3e = !( lft18.Q & fg ) ; (1 pterm, 2 signals)
+
+DIS3f = !( lft19.Q & fg ) ; (1 pterm, 2 signals)
+
+DIS3g = !( lft20.Q & fg ) ; (1 pterm, 2 signals)
+
+DIS4a = !( !sat1.Q & !sat2.Q & sat3.Q & !fg
+    # sat0.Q & sat2.Q & !sat3.Q & !fg
+    # sat1.Q & !sat3.Q & !fg
+    # lft21.Q & fg ) ; (4 pterms, 6 signals)
+
+DIS4b.X1 = !sat0.Q & !sat1.Q & !sat3.Q & !fg
+    # sat1.Q & !sat2.Q & sat3.Q & !fg
+    # sat0.Q & sat1.Q & sat2.Q & !sat3.Q & !fg
+    # !lft22.Q & fg ; (4 pterms, 6 signals)
+DIS4b.X2 = sat2.Q & !fg ; (1 pterm, 2 signals)
+
+DIS4c = !sat0.Q & !sat2.Q & !sat3.Q & !fg
+    # sat2.Q & sat3.Q & !fg
+    # sat1.Q & sat3.Q & !fg
+    # !lft23.Q & fg ; (4 pterms, 6 signals)
+
+DIS4d = !( sat0.Q & !sat1.Q & sat2.Q & !sat3.Q & !fg
+    # !sat1.Q & !sat2.Q & sat3.Q & !fg
+    # !sat0.Q & sat1.Q & !sat3.Q & !fg
+    # sat1.Q & !sat2.Q & !sat3.Q & !fg
+    # lft24.Q & fg ) ; (5 pterms, 6 signals)
+
+DIS4e = !( !sat0.Q & !sat1.Q & !sat2.Q & sat3.Q & !fg
+    # !sat0.Q & sat1.Q & !sat3.Q & !fg
+    # lft25.Q & fg ) ; (3 pterms, 6 signals)
+
+DIS4f = !( !sat1.Q & !sat2.Q & sat3.Q & !fg
+    # !sat0.Q & sat2.Q & !sat3.Q & !fg
+    # !sat1.Q & sat2.Q & !sat3.Q & !fg
+    # lft26.Q & fg ) ; (4 pterms, 6 signals)
+
+DIS4g.X1 = !sat1.Q & !sat2.Q & !fg
+    # sat0.Q & sat1.Q & sat2.Q & !sat3.Q & !fg
+    # !lft27.Q & fg ; (3 pterms, 6 signals)
+DIS4g.X2 = sat3.Q & !fg ; (1 pterm, 2 signals)
+
+LED0 = !DIP0 & !LF0.Q
+    # DIP0 & LF0.Q ; (2 pterms, 2 signals)
+
+LED1.X1 = DIP0 & !DIP1 & !LF0.Q
+    # DIP1 & LF0.Q
+    # !DIP0 & DIP1 ; (3 pterms, 3 signals)
+LED1.X2 = !LF1.Q ; (1 pterm, 1 signal)
+
+LED10 = !( !DIP7 & LF2.Q ) ; (1 pterm, 2 signals)
+
+LED11 = !( !DIP7 & LF3.Q ) ; (1 pterm, 2 signals)
+
+LED16 = !( !DIP7 & !S3 & !ZF & !VF
+    # !DIP7 & S3 & !ZF & VF ) ; (2 pterms, 4 signals)
+
+LED17 = !( !DIP7 & !S3 & VF
+    # !DIP7 & S3 & !VF ) ; (2 pterms, 3 signals)
+
+LED18 = !( !DIP7 & ZF ) ; (1 pterm, 2 signals)
+
+LED2.X1 = DIP1 & !DIP2 & !LF1.Q
+    # DIP0 & !DIP2 & !LF0.Q & !LF1.Q
+    # DIP0 & DIP1 & !DIP2 & !LF0.Q
+    # DIP2 & LF0.Q & LF1.Q
+    # !DIP0 & DIP2 & LF1.Q
+    # !DIP1 & DIP2 & LF0.Q
+    # !DIP1 & DIP2 & LF1.Q
+    # !DIP0 & !DIP1 & DIP2 ; (8 pterms, 5 signals)
+LED2.X2 = !LF2.Q ; (1 pterm, 1 signal)
+
+LED3 = !S3 ; (1 pterm, 1 signal)
+
+LED4 = !VF ; (1 pterm, 1 signal)
+
+LED5 = !ZF ; (1 pterm, 1 signal)
+
+LED6 = !S3 ; (1 pterm, 1 signal)
+
+LED7.X1 = !DIP2 & LF2.Q
+    # LF0.Q & LF1.Q & LF2.Q
+    # !DIP0 & LF1.Q & LF2.Q
+    # !DIP1 & LF0.Q & LF2.Q
+    # !DIP1 & LF1.Q & LF2.Q
+    # !DIP0 & !DIP1 & LF2.Q
+    # !DIP2 & LF0.Q & LF1.Q
+    # !DIP0 & !DIP2 & LF1.Q
+    # !DIP1 & !DIP2 & LF0.Q
+    # !DIP1 & !DIP2 & LF1.Q
+    # !DIP0 & !DIP1 & !DIP2
+    # DIP3 & !LF3.Q
+    # !DIP3 & LF3.Q ; (13 pterms, 8 signals)
+LED7.X2 = DIP3 & !LF3.Q ; (1 pterm, 2 signals)
+
+LED8 = !( !DIP7 & LF0.Q ) ; (1 pterm, 2 signals)
+
+LED9 = !( !DIP7 & LF1.Q ) ; (1 pterm, 2 signals)
+
+LF0.D = LF2.Q & !LF3.Q & !LF4.Q
+    # !LF2.Q & LF3.Q & !LF4.Q
+    # LF5.Q ; (3 pterms, 4 signals)
+LF0.C = BFC.Q ; (1 pterm, 1 signal)
+LF0.AR = BFD.Q ; (1 pterm, 1 signal)
+
+LF1.D = LF0.Q & !LF4.Q ; (1 pterm, 2 signals)
+LF1.C = BFC.Q ; (1 pterm, 1 signal)
+LF1.AR = BFD.Q ; (1 pterm, 1 signal)
+
+LF2.D = LF1.Q & !LF4.Q ; (1 pterm, 2 signals)
+LF2.C = BFC.Q ; (1 pterm, 1 signal)
+LF2.AR = BFD.Q ; (1 pterm, 1 signal)
+
+LF3.D = LF2.Q & !LF4.Q ; (1 pterm, 2 signals)
+LF3.C = BFC.Q ; (1 pterm, 1 signal)
+LF3.AR = BFD.Q ; (1 pterm, 1 signal)
+
+LF4.D = !LF0.Q & !LF1.Q & LF2.Q & LF3.Q ; (1 pterm, 4 signals)
+LF4.C = BFC.Q ; (1 pterm, 1 signal)
+LF4.AR = BFD.Q ; (1 pterm, 1 signal)
+
+LF5.D = LF4.Q ; (1 pterm, 1 signal)
+LF5.C = BFC.Q ; (1 pterm, 1 signal)
+LF5.AP = BFD.Q ; (1 pterm, 1 signal)
+
+S3.X1 = !DIP2 & !DIP3 & LF2.Q
+    # !DIP3 & LF0.Q & LF1.Q & LF2.Q
+    # !DIP0 & !DIP3 & LF1.Q & LF2.Q
+    # !DIP1 & !DIP3 & LF0.Q & LF2.Q
+    # !DIP1 & !DIP3 & LF1.Q & LF2.Q
+    # !DIP0 & !DIP1 & !DIP3 & LF2.Q
+    # !DIP2 & !DIP3 & LF0.Q & LF1.Q
+    # !DIP0 & !DIP2 & !DIP3 & LF1.Q
+    # !DIP1 & !DIP2 & !DIP3 & LF0.Q
+    # !DIP1 & !DIP2 & !DIP3 & LF1.Q
+    # !DIP0 & !DIP1 & !DIP2 & !DIP3
+    # DIP2 & DIP3 & !LF2.Q
+    # DIP1 & DIP3 & !LF1.Q & !LF2.Q
+    # DIP1 & DIP2 & DIP3 & !LF1.Q
+    # DIP0 & DIP3 & !LF0.Q & !LF1.Q & !LF2.Q
+    # DIP0 & DIP1 & DIP3 & !LF0.Q & !LF2.Q
+    # DIP0 & DIP2 & DIP3 & !LF0.Q & !LF1.Q
+    # DIP0 & DIP1 & DIP2 & DIP3 & !LF0.Q ; (18 pterms, 7 signals)
+S3.X2 = !LF3.Q ; (1 pterm, 1 signal)
+
+VF.X1 = DIP2 & !LF2.Q & !LF3.Q
+    # DIP1 & !DIP2 & !DIP3 & !LF1.Q & !LF2.Q & LF3.Q
+    # DIP0 & !DIP2 & !DIP3 & !LF0.Q & !LF1.Q & !LF2.Q & LF3.Q
+    # DIP0 & DIP1 & !DIP2 & !DIP3 & !LF0.Q & !LF2.Q & LF3.Q
+    # DIP1 & DIP2 & !DIP3 & !LF1.Q & LF2.Q & LF3.Q
+    # DIP0 & DIP2 & !DIP3 & !LF0.Q & !LF1.Q & LF2.Q & LF3.Q
+    # DIP0 & DIP1 & DIP2 & !DIP3 & !LF0.Q & LF2.Q & LF3.Q
+    # DIP3 & LF0.Q & LF1.Q & !LF3.Q
+    # !DIP0 & DIP3 & LF1.Q & !LF3.Q
+    # !DIP1 & DIP3 & LF0.Q & !LF3.Q
+    # !DIP1 & DIP3 & LF1.Q & !LF3.Q
+    # !DIP0 & !DIP1 & DIP3 & !LF3.Q
+    # DIP2 & DIP3 & !LF2.Q
+    # !DIP2 & DIP3 & LF2.Q & !LF3.Q ; (14 pterms, 8 signals)
+VF.X2 = DIP2 & !LF2.Q ; (1 pterm, 2 signals)
+
+ZF = !( !DIP2 & LF2.Q
+    # DIP2 & !LF2.Q
+    # !DIP1 & LF1.Q
+    # DIP1 & !LF1.Q
+    # !DIP0 & LF0.Q
+    # DIP0 & !LF0.Q
+    # !DIP3 & LF3.Q
+    # DIP3 & !LF3.Q ) ; (8 pterms, 8 signals)
+
+_dup_osc_dis = 0 ; (0 pterm, 0 signal)
+
+actsc0 = !score0.Q & score1.Q & score2.Q
+    # !score0.Q & score1.Q & score3.Q
+    # score0.Q & !score2.Q & !score3.Q
+    # score0.Q & !score1.Q ; (4 pterms, 4 signals)
+
+actsc1.X1 = !score2.Q & !score3.Q
+    # !score0.Q & !score1.Q & !score2.Q
+    # !score0.Q & !score1.Q & !score3.Q & !score4.Q ; (3 pterms, 5 signals)
+actsc1.X2 = !score1.Q ; (1 pterm, 1 signal)
+
+actsc2.X1 = score0.Q & !score2.Q
+    # score1.Q & !score2.Q
+    # !score2.Q & score3.Q & !score4.Q & !score5.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & !score5.Q ; (5 pterms, 6 signals)
+actsc2.X2 = score3.Q ; (1 pterm, 1 signal)
+
+actsc3 = !score0.Q & !score1.Q & score2.Q & !score4.Q & score6.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score4.Q & !score5.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & score4.Q & !score5.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score5.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & score5.Q & score6.Q
+    # !score2.Q & !score3.Q & score4.Q & score5.Q
+    # score1.Q & !score3.Q & score4.Q
+    # score1.Q & !score3.Q & score5.Q & score6.Q
+    # score2.Q & !score3.Q & !score4.Q
+    # !score2.Q & !score3.Q & score4.Q & score6.Q
+    # score0.Q & !score3.Q ; (11 pterms, 7 signals)
+
+actsc4 = !score0.Q & score1.Q & !score2.Q & !score3.Q & !score4.Q & score5.Q
+       & !score6.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & !score4.Q & score5.Q
+       & score6.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & !score4.Q & !score5.Q
+       & !score6.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score4.Q & !score5.Q
+       & score6.Q
+    # !score1.Q & !score2.Q & !score3.Q & score4.Q & !score5.Q & !score6.Q
+    # score1.Q & score4.Q & score5.Q & score6.Q
+    # !score2.Q & score3.Q & score4.Q & score5.Q & !score6.Q
+    # score2.Q & score3.Q & score4.Q & !score5.Q & score6.Q
+    # score1.Q & score2.Q & score4.Q
+    # score1.Q & score3.Q & score4.Q
+    # score0.Q & score4.Q ; (11 pterms, 7 signals)
+
+actsc5.X1 = !score0.Q & !score1.Q & score2.Q & !score3.Q & !score4.Q
+       & score6.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & !score4.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score6.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & score4.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score6.Q
+    # !score0.Q & !score1.Q & score3.Q & score4.Q & !score6.Q
+    # !score0.Q & !score1.Q & score3.Q & score5.Q & !score6.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & score5.Q
+    # !score0.Q & !score1.Q & score3.Q & score4.Q & score5.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & score5.Q & !score6.Q ; (10 pterms, 7 signals)
+actsc5.X2 = score5.Q ; (1 pterm, 1 signal)
+
+actsc6.X1 = !score0.Q & score1.Q & !score2.Q & !score3.Q & score4.Q
+    # !score0.Q & !score2.Q & !score3.Q & score4.Q & score5.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score4.Q & !score5.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & !score4.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score5.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & score4.Q & !score5.Q
+    # !score0.Q & !score1.Q & score3.Q & !score4.Q & !score5.Q & score6.Q
+    # !score0.Q & !score2.Q & !score3.Q & score4.Q & score6.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & score5.Q & score6.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & score6.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score6.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & !score5.Q & score6.Q ; (12 pterms, 7 signals)
+actsc6.X2 = score6.Q ; (1 pterm, 1 signal)
+
+add4 = !( !sat0.Q & sat1.Q & !sat2.Q & sat3.Q
+    # !DIP2 & LF2.Q
+    # DIP2 & !LF2.Q
+    # !DIP1 & LF1.Q
+    # DIP1 & !LF1.Q
+    # !DIP0 & LF0.Q
+    # DIP0 & !LF0.Q
+    # !DIP3 & LF3.Q
+    # DIP3 & !LF3.Q ) ; (9 pterms, 12 signals)
+
+add5 = !( !sat0.Q & sat1.Q & !sat2.Q & sat3.Q
+    # !DIP0 & !DIP1 & !DIP2 & !LF3.Q
+    # !DIP1 & !DIP2 & LF0.Q & !LF3.Q
+    # !DIP0 & !DIP2 & LF1.Q & !LF3.Q
+    # !DIP2 & LF0.Q & LF1.Q & !LF3.Q
+    # !DIP0 & !DIP1 & LF2.Q & !LF3.Q
+    # !DIP1 & LF0.Q & LF2.Q & !LF3.Q
+    # !DIP0 & LF1.Q & LF2.Q & !LF3.Q
+    # LF0.Q & LF1.Q & LF2.Q & !LF3.Q
+    # !DIP1 & !DIP2 & LF1.Q & !LF3.Q
+    # !DIP1 & LF1.Q & LF2.Q & !LF3.Q
+    # !DIP0 & !DIP1 & !DIP2 & DIP3
+    # !DIP1 & !DIP2 & DIP3 & LF0.Q
+    # !DIP0 & !DIP2 & DIP3 & LF1.Q
+    # !DIP2 & DIP3 & LF0.Q & LF1.Q
+    # !DIP0 & !DIP1 & DIP3 & LF2.Q
+    # !DIP1 & DIP3 & LF0.Q & LF2.Q
+    # !DIP0 & DIP3 & LF1.Q & LF2.Q
+    # DIP3 & LF0.Q & LF1.Q & LF2.Q
+    # !DIP2 & LF2.Q & !LF3.Q
+    # !DIP1 & !DIP2 & DIP3 & LF1.Q
+    # !DIP1 & DIP3 & LF1.Q & LF2.Q
+    # !DIP2 & DIP3 & LF2.Q
+    # DIP3 & !LF3.Q ) ; (24 pterms, 12 signals)
+
+add7 = !( !sat0.Q & sat1.Q & !sat2.Q & sat3.Q
+    # !DIP2 & LF2.Q
+    # DIP2 & !LF2.Q
+    # !DIP1 & LF1.Q
+    # DIP1 & !LF1.Q
+    # !DIP0 & LF0.Q
+    # DIP0 & !LF0.Q
+    # !DIP3 & LF3.Q
+    # DIP3 & !LF3.Q ) ; (9 pterms, 12 signals)
+
+fg = !( !nico.Q & !poi.Q ) ; (1 pterm, 2 signals)
+
+lft0.D = !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & !score7.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score4.Q & score5.Q & !score7.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score6.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # !score1.Q & !score4.Q & score5.Q & score6.Q & score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # score0.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & !score3.Q & score4.Q & !score5.Q & !score6.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score4.Q & score5.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & !score5.Q & score7.Q
+       & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score5.Q & !score6.Q & score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # score2.Q & !score3.Q & !score4.Q & score5.Q & score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score5.Q & !score6.Q & !score7.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & score5.Q & !score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & !score5.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & !score5.Q & !score6.Q & score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score5.Q & score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score1.Q & score3.Q & !score4.Q & score6.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & !score4.Q & !q0.Q & q1.Q & !q3.Q
+    # !score3.Q & !score4.Q & !score5.Q & score6.Q & score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score4.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & score5.Q & score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # score3.Q & !score4.Q & !score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score2.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & score5.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & !score4.Q & score5.Q & !q0.Q & q1.Q & !q3.Q
+    # !score2.Q & !score4.Q & score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & score6.Q & q0.Q & q1.Q & !q3.Q
+    # !q0.Q & !q1.Q & q2.Q & q3.Q
+    # score0.Q & score1.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !q0.Q & q1.Q & !q3.Q
+    # q0.Q & q1.Q & !q2.Q & q3.Q
+    # q1.Q & q2.Q & !q3.Q ; (36 pterms, 12 signals)
+lft0.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft0.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft1.D = !score0.Q & !score1.Q & !score4.Q & !score5.Q & !score6.Q & !q0.Q
+       & q1.Q & !q2.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score2.Q & score4.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & score4.Q & !score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score2.Q & !score4.Q & score6.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score2.Q & !score4.Q & score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score5.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score3.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & !score4.Q & score5.Q
+       & score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & !score3.Q & score4.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & score6.Q & score7.Q & q0.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & score6.Q
+       & q1.Q & !q2.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & score4.Q & !score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score5.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !q0.Q & q1.Q & !q2.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & score6.Q & score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score1.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score2.Q & score3.Q & !q0.Q & q1.Q & !q2.Q & !q3.Q
+    # score2.Q & !score4.Q & !score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score2.Q & !score5.Q & !score6.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # score3.Q & !score4.Q & !score5.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score5.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & !score5.Q & q0.Q & q1.Q
+       & !q3.Q
+    # score0.Q & score1.Q & score2.Q & !q0.Q & q1.Q & !q2.Q & !q3.Q
+    # !score0.Q & !score2.Q & score4.Q & !q0.Q & q1.Q & !q2.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & !q0.Q & q1.Q & !q2.Q & !q3.Q
+    # !q0.Q & !q1.Q & !q2.Q & q3.Q
+    # score0.Q & !score4.Q & score6.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score6.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & !score5.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # q0.Q & q2.Q & !q3.Q ; (35 pterms, 12 signals)
+lft1.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft1.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft10.D = lft3.Q ; (1 pterm, 1 signal)
+lft10.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft10.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft11.D = lft4.Q ; (1 pterm, 1 signal)
+lft11.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft11.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft12.D = lft5.Q ; (1 pterm, 1 signal)
+lft12.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft12.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft13.D = lft6.Q ; (1 pterm, 1 signal)
+lft13.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft13.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft14.D = lft7.Q ; (1 pterm, 1 signal)
+lft14.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft14.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft15.D = lft8.Q ; (1 pterm, 1 signal)
+lft15.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft15.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft16.D = lft9.Q ; (1 pterm, 1 signal)
+lft16.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft16.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft17.D = lft10.Q ; (1 pterm, 1 signal)
+lft17.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft17.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft18.D = lft11.Q ; (1 pterm, 1 signal)
+lft18.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft18.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft19.D = lft12.Q ; (1 pterm, 1 signal)
+lft19.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft19.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft2.D = !score0.Q & !score1.Q & score2.Q & !score3.Q & score5.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & !score4.Q & !score5.Q & !q0.Q & q1.Q & !q2.Q
+    # score1.Q & score2.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score4.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & !score6.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & !score5.Q & q0.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score6.Q & q1.Q & !q2.Q
+    # score0.Q & !score4.Q & score5.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & score5.Q & score6.Q
+       & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score3.Q & !score5.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score6.Q & q1.Q & !q2.Q
+    # !score4.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score5.Q & q0.Q & q1.Q & !q3.Q
+    # !score2.Q & !score4.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # score3.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & !score3.Q & !q0.Q & q1.Q & !q2.Q
+    # !score5.Q & !score6.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score3.Q & !score4.Q & score5.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & score1.Q & score2.Q & !score3.Q & !q0.Q & q1.Q & !q2.Q
+    # score1.Q & !score2.Q & score3.Q & !q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & !q0.Q & q1.Q & !q2.Q
+    # q0.Q & q2.Q & !q3.Q
+    # !q0.Q & !q2.Q & q3.Q
+    # q1.Q & !q2.Q & q3.Q ; (27 pterms, 12 signals)
+lft2.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft2.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft20.D = lft13.Q ; (1 pterm, 1 signal)
+lft20.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft20.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft21.D = lft14.Q ; (1 pterm, 1 signal)
+lft21.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft21.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft22.D = lft15.Q ; (1 pterm, 1 signal)
+lft22.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft22.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft23.D = lft16.Q ; (1 pterm, 1 signal)
+lft23.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft23.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft24.D = lft17.Q ; (1 pterm, 1 signal)
+lft24.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft24.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft25.D = lft18.Q ; (1 pterm, 1 signal)
+lft25.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft25.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft26.D = lft19.Q ; (1 pterm, 1 signal)
+lft26.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft26.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft27.D = lft20.Q ; (1 pterm, 1 signal)
+lft27.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft27.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft3.D = !score0.Q & !score2.Q & !score3.Q & !score4.Q & !score6.Q & !q0.Q
+       & q1.Q & !q3.Q
+    # !score2.Q & score4.Q & !score5.Q & !score6.Q & score7.Q & q0.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & score4.Q & score5.Q
+       & score7.Q & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & !score4.Q & !score6.Q
+       & !score7.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & !score4.Q & !score6.Q
+       & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score2.Q & !score3.Q & !score4.Q & !score5.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score4.Q & score6.Q
+       & score7.Q & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & score6.Q & !q0.Q & q1.Q
+       & !q2.Q
+    # !score1.Q & !score2.Q & !score4.Q & !score5.Q & !score7.Q & q0.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & !score2.Q & !score3.Q & !score4.Q & score5.Q & !score6.Q
+       & score7.Q & q1.Q & !q2.Q
+    # !score2.Q & !score4.Q & score6.Q & !score7.Q & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score4.Q & score5.Q
+       & score6.Q & q1.Q & !q2.Q
+    # score1.Q & score3.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & !score5.Q & score6.Q
+       & q0.Q & q1.Q & !q2.Q
+    # score2.Q & !score3.Q & !score4.Q & !score5.Q & score6.Q & score7.Q
+       & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & score5.Q & score6.Q
+       & score7.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & !score5.Q & !score6.Q
+       & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & score5.Q & !score7.Q
+       & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & !score4.Q & score5.Q
+       & score6.Q & q1.Q & !q2.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & !score4.Q & !score6.Q
+       & score7.Q & q1.Q & !q2.Q
+    # score0.Q & !score4.Q & !score5.Q & !score7.Q & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & !score7.Q
+       & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & score4.Q & !score5.Q
+       & !score6.Q & q1.Q & !q2.Q
+    # !score1.Q & !score2.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score3.Q & score5.Q & !score6.Q & !score7.Q
+       & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & score5.Q & !score6.Q
+       & q0.Q & q1.Q & !q2.Q
+    # score0.Q & score1.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score5.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q2.Q
+    # score2.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score3.Q & score5.Q & !q0.Q & q1.Q & !q2.Q
+    # score1.Q & !score2.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # score3.Q & !score4.Q & !score5.Q & !score7.Q & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score3.Q & score4.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & !score4.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & score4.Q & score5.Q & !score6.Q
+       & score7.Q & q0.Q & q1.Q & !q2.Q
+    # score0.Q & !score4.Q & score5.Q & !score6.Q & score7.Q & q0.Q & q1.Q
+       & !q2.Q
+    # score1.Q & !score4.Q & score5.Q & !score6.Q & score7.Q & q0.Q & q1.Q
+       & !q2.Q
+    # !q0.Q & !q1.Q & q2.Q & q3.Q
+    # score0.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q2.Q
+    # score0.Q & !score4.Q & score6.Q & !score7.Q & q0.Q & q1.Q & !q2.Q
+    # score1.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q2.Q
+    # q0.Q & !q1.Q & q2.Q & !q3.Q
+    # score1.Q & !score4.Q & score6.Q & !score7.Q & q0.Q & q1.Q & !q2.Q
+    # score0.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q & !q2.Q
+    # !q0.Q & q1.Q & q2.Q & !q3.Q
+    # q0.Q & !q2.Q & q3.Q
+    # q1.Q & !q2.Q & q3.Q ; (48 pterms, 12 signals)
+lft3.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft3.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft4.D = !score0.Q & !score1.Q & score2.Q & !score4.Q & !score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score4.Q & !score6.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # !score3.Q & !score4.Q & score5.Q & score6.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # score1.Q & score3.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & !score5.Q & !score6.Q
+       & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & score3.Q & score5.Q & !score6.Q & !q0.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & score4.Q & score5.Q
+       & !q0.Q & q1.Q & !q3.Q
+    # score0.Q & score1.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & !score3.Q & score4.Q & !score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & score3.Q & score4.Q & !score5.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # score3.Q & !score4.Q & !score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score5.Q & !score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & !score5.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & !score3.Q & !score4.Q & !score5.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # score2.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score4.Q & score5.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # score1.Q & !score2.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !q1.Q & q3.Q
+    # !q0.Q & !q2.Q & q3.Q
+    # q1.Q & q2.Q & !q3.Q ; (26 pterms, 12 signals)
+lft4.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft4.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft5.D = !score0.Q & score1.Q & !score2.Q & !score4.Q & !score5.Q & !q0.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & score4.Q & score5.Q
+       & !score6.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & !score4.Q & score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score3.Q & score5.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score5.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & !score4.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score2.Q & !score3.Q & !score4.Q & score5.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & score4.Q & !score5.Q
+       & score6.Q & q1.Q & !q3.Q
+    # !score2.Q & score3.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score5.Q & score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score4.Q & score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & !score4.Q & !score5.Q
+       & !score6.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score4.Q & !score5.Q
+       & score6.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score5.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & score4.Q & !score5.Q
+       & !score6.Q & q1.Q & !q3.Q
+    # score1.Q & score2.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score2.Q & !score3.Q & score4.Q & score5.Q & score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & score4.Q & !score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & !score6.Q & !score7.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & !score4.Q & !score6.Q
+       & q1.Q & !q3.Q
+    # !score2.Q & !score4.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !score3.Q & !score4.Q & score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & !score6.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & !score3.Q & !score4.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & !q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score2.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # !q0.Q & !q1.Q & q3.Q
+    # q0.Q & !q2.Q & q3.Q
+    # q1.Q & q2.Q & !q3.Q
+    # q0.Q & q2.Q & !q3.Q ; (38 pterms, 12 signals)
+lft5.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft5.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft6.D = !score0.Q & !score2.Q & !score3.Q & score5.Q & !score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & score4.Q & score5.Q & !score6.Q
+       & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & !score4.Q & score5.Q
+       & q1.Q & !q3.Q
+    # score3.Q & !score4.Q & score5.Q & score6.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & score4.Q & !score5.Q & !score7.Q
+       & q1.Q & !q3.Q
+    # !score2.Q & !score3.Q & !score4.Q & score5.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score1.Q & !score2.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & score4.Q & !score5.Q
+       & q0.Q & q1.Q & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & score3.Q & score5.Q & score6.Q & q1.Q
+       & !q2.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & score5.Q & score6.Q
+       & q1.Q & !q3.Q
+    # !score2.Q & !score4.Q & !score5.Q & score6.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # score0.Q & !score4.Q & score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & score1.Q & score2.Q & score3.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score3.Q & !score5.Q & !score6.Q & !score7.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score2.Q & score3.Q & score4.Q & !q0.Q & q1.Q & !q3.Q
+    # score1.Q & score3.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score2.Q & !score3.Q & score4.Q & score5.Q & score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # score2.Q & !score3.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & score4.Q & !score5.Q & score6.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score4.Q & !score5.Q & !q0.Q & q1.Q
+       & !q3.Q
+    # score0.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !score4.Q & !score5.Q & !score6.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & score1.Q & !score2.Q & !score3.Q & !score4.Q & !score6.Q
+       & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score3.Q & !score4.Q & score6.Q
+       & q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score3.Q & score5.Q & !score7.Q & q0.Q & q1.Q
+       & !q3.Q
+    # !score0.Q & !score2.Q & score3.Q & score5.Q & !q0.Q & q1.Q & !q3.Q
+    # !score0.Q & !score1.Q & !score2.Q & score4.Q & !score6.Q & q0.Q & q1.Q
+       & !q3.Q
+    # score1.Q & score4.Q & !score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # score2.Q & !score4.Q & score5.Q & !score7.Q & q0.Q & q1.Q & !q3.Q
+    # score0.Q & !score4.Q & !score5.Q & score6.Q & q0.Q & q1.Q & !q3.Q
+    # score1.Q & !score4.Q & score5.Q & !score6.Q & q0.Q & q1.Q & !q3.Q
+    # !q0.Q & !q1.Q & q3.Q
+    # !score0.Q & !score1.Q & score2.Q & !q0.Q & q1.Q & !q3.Q
+    # q0.Q & !q1.Q & q2.Q
+    # q1.Q & !q2.Q & q3.Q
+    # q1.Q & q2.Q & !q3.Q ; (37 pterms, 12 signals)
+lft6.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft6.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft7.D = lft0.Q ; (1 pterm, 1 signal)
+lft7.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft7.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft8.D = lft1.Q ; (1 pterm, 1 signal)
+lft8.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft8.AR = BFD.Q ; (1 pterm, 1 signal)
+
+lft9.D = lft2.Q ; (1 pterm, 1 signal)
+lft9.C = timdiv4.Q ; (1 pterm, 1 signal)
+lft9.AR = BFD.Q ; (1 pterm, 1 signal)
+
+nico.D = !( !score0.Q & !score1.Q & !score4.Q & !score5.Q & !score6.Q
+    # !sat0.Q & !sat1.Q & !sat2.Q
+    # !score0.Q & !score1.Q & !score3.Q
+    # !score0.Q & !score1.Q & !score2.Q
+    # !sat3.Q ) ; (5 pterms, 11 signals)
+nico.C = BFC.Q ; (1 pterm, 1 signal)
+nico.AR = BFD.Q ; (1 pterm, 1 signal)
+
+osc_dis = 0 ; (0 pterm, 0 signal)
+
+poi.D.X1 = sat3.Q & !score0.Q & !score1.Q & !score2.Q
+    # sat3.Q & !score0.Q & !score1.Q & !score3.Q
+    # !sat0.Q & !sat1.Q & !sat2.Q & sat3.Q & !score0.Q & !score1.Q
+    # sat3.Q & !score0.Q & !score1.Q & !score4.Q & !score5.Q & !score6.Q ; (4 pterms, 11 signals)
+poi.D.X2 = !sat0.Q & !sat1.Q & !sat2.Q & sat3.Q & !score0.Q & !score1.Q ; (1 pterm, 6 signals)
+poi.C = BFC.Q ; (1 pterm, 1 signal)
+poi.AR = BFD.Q ; (1 pterm, 1 signal)
+
+q0.D = nico.Q & !q0.Q & q2.Q & !q3.Q
+    # poi.Q & !q0.Q & q2.Q & !q3.Q
+    # !q0.Q & !q2.Q & q3.Q
+    # !q1.Q & q2.Q & q3.Q
+    # !q0.Q & q1.Q & !q3.Q ; (5 pterms, 6 signals)
+q0.C = timdiv4.Q ; (1 pterm, 1 signal)
+q0.AR = BFD.Q ; (1 pterm, 1 signal)
+
+q1.D = !( !nico.Q & !poi.Q & !q0.Q & !q1.Q
+    # q2.Q & q3.Q
+    # q0.Q & q1.Q
+    # !q0.Q & !q1.Q & q2.Q
+    # !q0.Q & !q1.Q & q3.Q ) ; (5 pterms, 6 signals)
+q1.C = timdiv4.Q ; (1 pterm, 1 signal)
+q1.AR = BFD.Q ; (1 pterm, 1 signal)
+
+q2.D = nico.Q & !q1.Q & q2.Q & !q3.Q
+    # q0.Q & q1.Q & !q2.Q
+    # !q0.Q & !q1.Q & q2.Q & q3.Q
+    # !q0.Q & q1.Q & q2.Q & !q3.Q
+    # q0.Q & !q1.Q & q2.Q & !q3.Q ; (5 pterms, 5 signals)
+q2.C = timdiv4.Q ; (1 pterm, 1 signal)
+q2.AR = BFD.Q ; (1 pterm, 1 signal)
+
+q3.D.X1 = !q0.Q & !q1.Q & q3.Q
+    # q0.Q & q1.Q & q2.Q & !q3.Q
+    # !nico.Q & poi.Q & !q0.Q & !q1.Q & q2.Q ; (3 pterms, 6 signals)
+q3.D.X2 = !q2.Q & q3.Q ; (1 pterm, 2 signals)
+q3.C = timdiv4.Q ; (1 pterm, 1 signal)
+q3.AR = BFD.Q ; (1 pterm, 1 signal)
+
+sat0.D = !( sat1.Q & !sat2.Q & sat3.Q
+    # sat0.Q ) ; (2 pterms, 4 signals)
+sat0.C = BFC.Q ; (1 pterm, 1 signal)
+sat0.AP = BFD.Q ; (1 pterm, 1 signal)
+
+sat1.D = sat0.Q & !sat1.Q
+    # !sat0.Q & sat1.Q ; (2 pterms, 2 signals)
+sat1.C = BFC.Q ; (1 pterm, 1 signal)
+sat1.AR = BFD.Q ; (1 pterm, 1 signal)
+
+sat2.D = sat0.Q & sat1.Q & !sat2.Q
+    # !sat1.Q & sat2.Q
+    # !sat0.Q & sat2.Q ; (3 pterms, 3 signals)
+sat2.C = BFC.Q ; (1 pterm, 1 signal)
+sat2.AR = BFD.Q ; (1 pterm, 1 signal)
+
+sat3.D = sat0.Q & sat1.Q & sat2.Q & !sat3.Q
+    # !sat2.Q & sat3.Q
+    # !sat1.Q & sat3.Q
+    # !sat0.Q & sat3.Q ; (4 pterms, 4 signals)
+sat3.C = BFC.Q ; (1 pterm, 1 signal)
+sat3.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score0.T = score1.Q & score2.Q & score3.Q & score6.Q & score7.Q & add4 & add5
+       & add7
+    # score1.Q & score2.Q & score3.Q & score4.Q & score6.Q & score7.Q & add5
+       & add7
+    # score1.Q & score2.Q & score3.Q & score5.Q & score6.Q & score7.Q & add4
+       & add7
+    # score1.Q & score2.Q & score3.Q & score4.Q & score5.Q & score6.Q
+       & score7.Q & add7
+    # score1.Q & score2.Q & score3.Q & score5.Q & add4 & add5
+    # score1.Q & score2.Q & score3.Q & score4.Q & score5.Q & add5
+    # score1.Q & score2.Q & score3.Q & score4.Q & add4 ; (7 pterms, 10 signals)
+score0.C = BFC.Q ; (1 pterm, 1 signal)
+score0.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score1.T = score2.Q & score3.Q & score6.Q & score7.Q & add4 & add5 & add7
+    # score2.Q & score3.Q & score4.Q & score6.Q & score7.Q & add5 & add7
+    # score2.Q & score3.Q & score5.Q & score6.Q & score7.Q & add4 & add7
+    # score2.Q & score3.Q & score4.Q & score5.Q & score6.Q & score7.Q & add7
+    # score2.Q & score3.Q & score5.Q & add4 & add5
+    # score2.Q & score3.Q & score4.Q & score5.Q & add5
+    # score2.Q & score3.Q & score4.Q & add4 ; (7 pterms, 9 signals)
+score1.C = BFC.Q ; (1 pterm, 1 signal)
+score1.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score2.T = score3.Q & score6.Q & score7.Q & add4 & add5 & add7
+    # score3.Q & score4.Q & score6.Q & score7.Q & add5 & add7
+    # score3.Q & score5.Q & score6.Q & score7.Q & add4 & add7
+    # score3.Q & score4.Q & score5.Q & score6.Q & score7.Q & add7
+    # score3.Q & score5.Q & add4 & add5
+    # score3.Q & score4.Q & score5.Q & add5
+    # score3.Q & score4.Q & add4 ; (7 pterms, 8 signals)
+score2.C = BFC.Q ; (1 pterm, 1 signal)
+score2.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score3.T = score6.Q & score7.Q & add4 & add5 & add7
+    # score4.Q & score6.Q & score7.Q & add5 & add7
+    # score5.Q & score6.Q & score7.Q & add4 & add7
+    # score4.Q & score5.Q & score6.Q & score7.Q & add7
+    # score5.Q & add4 & add5
+    # score4.Q & score5.Q & add5
+    # score4.Q & add4 ; (7 pterms, 7 signals)
+score3.C = BFC.Q ; (1 pterm, 1 signal)
+score3.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score4.T.X1 = !score6.Q & add4 & !add5
+    # score5.Q & !add4 & add5
+    # !score5.Q & add4 & add5
+    # add4 & !add5 & !add7
+    # !score7.Q & add4 & !add5
+    # score6.Q & score7.Q & !add4 & !add5 & add7 ; (6 pterms, 6 signals)
+score4.T.X2 = !score5.Q & score6.Q & score7.Q & add7 ; (1 pterm, 4 signals)
+score4.C = BFC.Q ; (1 pterm, 1 signal)
+score4.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score5.T = score6.Q & score7.Q & !add5 & add7
+    # !score7.Q & add5
+    # !score6.Q & add5
+    # add5 & !add7 ; (4 pterms, 4 signals)
+score5.C = BFC.Q ; (1 pterm, 1 signal)
+score5.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score6.T = !( !sat0.Q & sat1.Q & !sat2.Q & sat3.Q
+    # !DIP3 & LF3.Q
+    # DIP3 & !LF3.Q
+    # !DIP2 & LF2.Q
+    # DIP2 & !LF2.Q
+    # !DIP1 & LF1.Q
+    # DIP1 & !LF1.Q
+    # !DIP0 & LF0.Q
+    # DIP0 & !LF0.Q
+    # !score7.Q ) ; (10 pterms, 13 signals)
+score6.C = BFC.Q ; (1 pterm, 1 signal)
+score6.AR = BFD.Q ; (1 pterm, 1 signal)
+
+score7.T = !( !sat0.Q & sat1.Q & !sat2.Q & sat3.Q
+    # !DIP2 & LF2.Q
+    # DIP2 & !LF2.Q
+    # !DIP1 & LF1.Q
+    # DIP1 & !LF1.Q
+    # !DIP0 & LF0.Q
+    # DIP0 & !LF0.Q
+    # !DIP3 & LF3.Q
+    # DIP3 & !LF3.Q ) ; (9 pterms, 12 signals)
+score7.C = BFC.Q ; (1 pterm, 1 signal)
+score7.AR = BFD.Q ; (1 pterm, 1 signal)
+
+timdiv2.D = !timdiv2.Q ; (1 pterm, 1 signal)
+timdiv2.C = tmr_out ; (1 pterm, 1 signal)
+
+timdiv4.D = !timdiv4.Q ; (1 pterm, 1 signal)
+timdiv4.C = timdiv2.Q ; (1 pterm, 1 signal)
+

@@ -1,0 +1,878 @@
+#$ TOOL  ispLEVER Classic 1.7.00.05.28.13
+#$ DATE  Mon Apr 27 21:21:01 2015
+#$ JEDECFILE  lab11
+#$ MODULE  Lab11
+#$ TITLE  Lab Practical Exam Skeleton File
+#$ PROPERTY  Lattice OSCTIMER TIMER_DIV= 1048576;
+#$ PINS 70 DIP0:79 DIP1:78 DIP2:77 DIP3:76 DIP4:23 DIP5:24 DIP6:25 DIP7:26
+ S1_NC:58 S1_NO:59 S2_NC:60 S2_NO:61 LED0:40 LED1:39 LED2:33 LED3:32 LED4:31
+ LED5:30 LED6:29 LED7:28 LED8:139 LED9:138 LED10:135 LED11:134 LED12:133
+ LED13:132 LED14:131 LED15:130 DIS1a:87 DIS1b:86 DIS1c:85 DIS1d:84 DIS1e:83
+ DIS1f:81 DIS1g:80 DIS2a:98 DIS2b:97 DIS2c:96 DIS2d:95 DIS2e:94 DIS2f:93 DIS2g:88
+ DIS3a:125 DIS3b:124 DIS3c:123 DIS3d:122 DIS3e:121 DIS3f:120 DIS3g:116 DIS4a:44
+ DIS4b:48 DIS4c:49 DIS4d:50 DIS4e:51 DIS4f:52 DIS4g:53 LED16:140 LED17:141
+ LED18:142 LED19:143 LED20:100 LED21:101 LED22:102 LED23:103 LED24:104 LED25:105
+ LED26:111 LED27:112 LED28:63 LED29:62
+#$ NODES 90 osc_dis osc_out tmr_out S1BC+ S2BC+ lfsr0 lfsr1 lfsr2 lfsr3 lfsr4
+ lfsr5 lfsr6 lfsr7 timdiv+ timdiv2+ rct0 rct1 rct2 rct3 rct4 rct5 rct6 rct7 rcg0
+ rcg1 rcg2 rcg3 rcg4 rcg5 rcg6 rcg7 ENT fl0 fl1 fl2 fl3 fl4 fl5 fl6 fl7 check
+ error lft0 lft1 lft2 lft3 lft4 lft5 lft6 lft7 lft8 lft9 lft10 lft11 lft12 lft13
+ lft14 lft15 lft16 lft17 lft18 lft19 lft20 nico poi daze mod0 mod1 mod2 mod3 mod4
+ mod5 mod6 mod7 mod8 mod9 mod10 mod11 mod12 mod13 mod14 mod15 mod16 mod17 mod18
+ mod19 mod20 check_0 mod7_0 mod14_0
+#$ EXTERNAL osctimer 4 DYNOSCDIS'i' TIMERRES'i' OSCOUT'o' TIMEROUT'o'
+#$ INSTANCE I1 osctimer 4 osc_dis osc_dis osc_out tmr_out
+.model lab11 
+.inputs S1_NO.BLIF S1_NC.BLIF S1BC.Q S2_NO.BLIF S2_NC.BLIF S2BC.Q timdiv.Q \
+ tmr_out.BLIF timdiv2.Q DIP0.BLIF DIP7.BLIF lfsr7.Q lfsr6.Q lfsr5.Q lfsr4.Q \
+ lfsr3.Q lfsr2.Q lfsr1.Q lfsr0.Q DIP1.BLIF rct6.Q rct5.Q rct4.Q rct3.Q rct2.Q \
+ rct1.Q rct0.Q rct7.Q check.Q ENT.Q rcg7.Q error.Q rcg6.Q rcg5.Q rcg4.Q rcg3.Q \
+ rcg2.Q rcg1.Q rcg0.Q fl0.BLIF fl1.BLIF fl2.BLIF fl3.BLIF fl4.BLIF fl5.BLIF \
+ fl6.BLIF fl7.BLIF lft0.Q lft1.Q lft2.Q lft3.Q lft4.Q lft5.Q lft6.Q lft7.Q lft8.Q \
+ lft9.Q lft10.Q lft11.Q lft12.Q lft13.Q lft14.Q lft15.Q lft16.Q lft17.Q lft18.Q \
+ lft19.Q lft20.Q LED16.BLIF LED17.BLIF mod0.Q mod7.Q mod14.Q mod1.Q mod8.Q \
+ mod15.Q mod2.Q mod9.Q mod16.Q mod3.Q mod10.Q mod17.Q mod4.Q mod11.Q mod18.Q \
+ mod5.Q mod12.Q mod19.Q mod6.Q mod13.Q mod20.Q nico.Q daze.Q poi.Q check_0.BLIF \
+ mod7_0.BLIF mod14_0.BLIF
+.outputs LED0- LED1- LED2- LED3- LED4- LED5- LED6- LED7- LED8 LED9- LED10- \
+ LED11- LED12- LED13- LED14- LED15- DIS1a.D DIS1a.C DIS1a.AP DIS1b.D DIS1b.C \
+ DIS1b.AP DIS1c.D DIS1c.C DIS1c.AP DIS1d.D DIS1d.C DIS1d.AP DIS1e.D DIS1e.C \
+ DIS1e.AP DIS1f.D DIS1f.C DIS1f.AP DIS1g.D DIS1g.C DIS1g.AP DIS2a.D DIS2a.C \
+ DIS2a.AP DIS2b.D DIS2b.C DIS2b.AP DIS2c.D DIS2c.C DIS2c.AP DIS2d.D DIS2d.C \
+ DIS2d.AP DIS2e.D DIS2e.C DIS2e.AP DIS2f.D DIS2f.C DIS2f.AP DIS2g.D DIS2g.C \
+ DIS2g.AP DIS3a.D DIS3a.C DIS3a.AP DIS3b.D DIS3b.C DIS3b.AP DIS3c.D DIS3c.C \
+ DIS3c.AP DIS3d.D DIS3d.C DIS3d.AP DIS3e.D DIS3e.C DIS3e.AP DIS3f.D DIS3f.C \
+ DIS3f.AP DIS3g.D DIS3g.C DIS3g.AP DIS4a.D DIS4a.C DIS4a.AP DIS4b.D DIS4b.C \
+ DIS4b.AP DIS4c.D DIS4c.C DIS4c.AP DIS4d.D DIS4d.C DIS4d.AP DIS4e.D DIS4e.C \
+ DIS4e.AP DIS4f.D DIS4f.C DIS4f.AP DIS4g.D DIS4g.C DIS4g.AP LED16- LED17- LED18- \
+ LED28.D LED28.C LED28.AR LED28.AP LED29.D LED29.C LED29.AR LED29.AP osc_dis \
+ S1BC.D S1BC.C S1BC.AR S1BC.AP S2BC.D S2BC.C S2BC.AR S2BC.AP lfsr0.D.X1 \
+ lfsr0.D.X2 lfsr0.C lfsr0.CE lfsr0.AP lfsr1.D lfsr1.C lfsr1.CE lfsr1.AP lfsr2.D \
+ lfsr2.C lfsr2.CE lfsr2.AP lfsr3.D lfsr3.C lfsr3.CE lfsr3.AP lfsr4.D lfsr4.C \
+ lfsr4.CE lfsr4.AP lfsr5.D lfsr5.C lfsr5.CE lfsr5.AP lfsr6.D lfsr6.C lfsr6.CE \
+ lfsr6.AP lfsr7.D lfsr7.C lfsr7.CE lfsr7.AP timdiv.D timdiv.C timdiv2.D timdiv2.C \
+ rct0.D rct0.C rct0.AP rct1.D rct1.C rct1.AR rct2.D rct2.C rct2.AR rct3.D rct3.C \
+ rct3.AR rct4.D rct4.C rct4.AR rct5.D rct5.C rct5.AR rct6.D rct6.C rct6.AR rct7.D \
+ rct7.C rct7.AR rcg0.D rcg0.C rcg0.AR rcg1.D rcg1.C rcg1.AR rcg2.D rcg2.C rcg2.AR \
+ rcg3.D rcg3.C rcg3.AR rcg4.D rcg4.C rcg4.AR rcg5.D rcg5.C rcg5.AR rcg6.D rcg6.C \
+ rcg6.AR rcg7.D rcg7.C rcg7.AR ENT.D ENT.C fl0 fl1 fl2 fl3 fl4 fl5 fl6 fl7 \
+ check.D check.C check.AR check.AP error.D error.C error.AR error.AP lft0.D \
+ lft0.C lft0.AR lft1.D lft1.C lft1.AR lft2.D lft2.C lft2.AR lft3.D lft3.C lft3.AR \
+ lft4.D lft4.C lft4.AR lft5.D lft5.C lft5.AR lft6.D lft6.C lft6.AR lft7.D lft7.C \
+ lft7.AR lft8.D lft8.C lft8.AR lft9.D lft9.C lft9.AR lft10.D lft10.C lft10.AR \
+ lft11.D lft11.C lft11.AR lft12.D lft12.C lft12.AR lft13.D lft13.C lft13.AR \
+ lft14.D lft14.C lft14.AR lft15.D lft15.C lft15.AR lft16.D lft16.C lft16.AR \
+ lft17.D lft17.C lft17.AR lft18.D lft18.C lft18.AR lft19.D lft19.C lft19.AR \
+ lft20.D lft20.C lft20.AR nico.D nico.C nico.AR poi.D poi.C poi.AR daze.D daze.C \
+ daze.AR mod0.D mod0.C mod0.AR mod1.D mod1.C mod1.AR mod2.D mod2.C mod2.AR mod3.D \
+ mod3.C mod3.AR mod4.D mod4.C mod4.AR mod5.D mod5.C mod5.AR mod6.D mod6.C mod6.AR \
+ mod7.D mod7.C mod7.AR mod8.D mod8.C mod8.AR mod9.D mod9.C mod9.AR mod10.D \
+ mod10.C mod10.AR mod11.D mod11.C mod11.AR mod12.D mod12.C mod12.AR mod13.D \
+ mod13.C mod13.AR mod14.D mod14.C mod14.AR mod15.D mod15.C mod15.AR mod16.D \
+ mod16.C mod16.AR mod17.D mod17.C mod17.AR mod18.D mod18.C mod18.AR mod19.D \
+ mod19.C mod19.AR mod20.D mod20.C mod20.AR check_0- mod7_0- mod14_0-
+.names lfsr0.Q DIP1.BLIF LED0-
+10 1
+.names lfsr1.Q DIP1.BLIF LED1-
+10 1
+.names lfsr2.Q DIP1.BLIF LED2-
+10 1
+.names lfsr3.Q DIP1.BLIF LED3-
+10 1
+.names lfsr4.Q DIP1.BLIF LED4-
+10 1
+.names lfsr5.Q DIP1.BLIF LED5-
+10 1
+.names lfsr6.Q DIP1.BLIF LED6-
+10 1
+.names lfsr7.Q DIP1.BLIF LED7-
+10 1
+.names rct0.Q check.Q LED8
+00 1
+.names rct1.Q check.Q LED9-
+10 1
+.names rct2.Q check.Q LED10-
+10 1
+.names rct3.Q check.Q LED11-
+10 1
+.names rct4.Q check.Q LED12-
+10 1
+.names rct5.Q check.Q LED13-
+10 1
+.names rct6.Q check.Q LED14-
+10 1
+.names rct7.Q check.Q LED15-
+10 1
+.names DIP0.BLIF check.Q error.Q mod0.Q mod7.Q mod14.Q DIS1a.D
+-11-0- 1
+000--- 1
+-0-0-- 1
+-10--0 1
+.names timdiv2.Q DIS1a.C
+1 1
+.names LED17.BLIF DIS1a.AP
+0 1
+.names DIP0.BLIF check.Q error.Q mod1.Q mod8.Q mod15.Q DIS1b.D
+-11-0- 1
+000--- 1
+-0-0-- 1
+-10--0 1
+.names timdiv2.Q DIS1b.C
+1 1
+.names LED17.BLIF DIS1b.AP
+0 1
+.names DIP0.BLIF check.Q error.Q mod2.Q mod9.Q mod16.Q DIS1c.D
+-11-0- 1
+000--- 1
+-0-0-- 1
+-10--0 1
+.names timdiv2.Q DIS1c.C
+1 1
+.names LED17.BLIF DIS1c.AP
+0 1
+.names DIP0.BLIF check.Q error.Q mod3.Q mod10.Q mod17.Q DIS1d.D
+-11-0- 1
+000--- 1
+-0-0-- 1
+-10--0 1
+.names timdiv2.Q DIS1d.C
+1 1
+.names LED17.BLIF DIS1d.AP
+0 1
+.names DIP0.BLIF check.Q error.Q mod4.Q mod11.Q mod18.Q DIS1e.D
+-11-0- 1
+000--- 1
+-0-0-- 1
+-10--0 1
+.names timdiv2.Q DIS1e.C
+1 1
+.names LED17.BLIF DIS1e.AP
+0 1
+.names DIP0.BLIF check.Q error.Q mod5.Q mod12.Q mod19.Q DIS1f.D
+-11-0- 1
+000--- 1
+-0-0-- 1
+-10--0 1
+.names timdiv2.Q DIS1f.C
+1 1
+.names LED17.BLIF DIS1f.AP
+0 1
+.names DIP0.BLIF check.Q error.Q mod6.Q mod13.Q mod20.Q DIS1g.D
+-11-0- 1
+000--- 1
+-0-0-- 1
+-10--0 1
+.names timdiv2.Q DIS1g.C
+1 1
+.names LED17.BLIF DIS1g.AP
+0 1
+.names lft0.Q DIS2a.D
+0 1
+.names timdiv2.Q DIS2a.C
+1 1
+.names LED17.BLIF DIS2a.AP
+0 1
+.names lft1.Q DIS2b.D
+0 1
+.names timdiv2.Q DIS2b.C
+1 1
+.names LED17.BLIF DIS2b.AP
+0 1
+.names lft2.Q DIS2c.D
+0 1
+.names timdiv2.Q DIS2c.C
+1 1
+.names LED17.BLIF DIS2c.AP
+0 1
+.names lft3.Q DIS2d.D
+0 1
+.names timdiv2.Q DIS2d.C
+1 1
+.names LED17.BLIF DIS2d.AP
+0 1
+.names lft4.Q DIS2e.D
+0 1
+.names timdiv2.Q DIS2e.C
+1 1
+.names LED17.BLIF DIS2e.AP
+0 1
+.names lft5.Q DIS2f.D
+0 1
+.names timdiv2.Q DIS2f.C
+1 1
+.names LED17.BLIF DIS2f.AP
+0 1
+.names lft6.Q DIS2g.D
+0 1
+.names timdiv2.Q DIS2g.C
+1 1
+.names LED17.BLIF DIS2g.AP
+0 1
+.names lft7.Q DIS3a.D
+0 1
+.names timdiv2.Q DIS3a.C
+1 1
+.names LED17.BLIF DIS3a.AP
+0 1
+.names lft8.Q DIS3b.D
+0 1
+.names timdiv2.Q DIS3b.C
+1 1
+.names LED17.BLIF DIS3b.AP
+0 1
+.names lft9.Q DIS3c.D
+0 1
+.names timdiv2.Q DIS3c.C
+1 1
+.names LED17.BLIF DIS3c.AP
+0 1
+.names lft10.Q DIS3d.D
+0 1
+.names timdiv2.Q DIS3d.C
+1 1
+.names LED17.BLIF DIS3d.AP
+0 1
+.names lft11.Q DIS3e.D
+0 1
+.names timdiv2.Q DIS3e.C
+1 1
+.names LED17.BLIF DIS3e.AP
+0 1
+.names lft12.Q DIS3f.D
+0 1
+.names timdiv2.Q DIS3f.C
+1 1
+.names LED17.BLIF DIS3f.AP
+0 1
+.names lft13.Q DIS3g.D
+0 1
+.names timdiv2.Q DIS3g.C
+1 1
+.names LED17.BLIF DIS3g.AP
+0 1
+.names lft14.Q DIS4a.D
+0 1
+.names timdiv2.Q DIS4a.C
+1 1
+.names LED17.BLIF DIS4a.AP
+0 1
+.names lft15.Q DIS4b.D
+0 1
+.names timdiv2.Q DIS4b.C
+1 1
+.names LED17.BLIF DIS4b.AP
+0 1
+.names lft16.Q DIS4c.D
+0 1
+.names timdiv2.Q DIS4c.C
+1 1
+.names LED17.BLIF DIS4c.AP
+0 1
+.names lft17.Q DIS4d.D
+0 1
+.names timdiv2.Q DIS4d.C
+1 1
+.names LED17.BLIF DIS4d.AP
+0 1
+.names lft18.Q DIS4e.D
+0 1
+.names timdiv2.Q DIS4e.C
+1 1
+.names LED17.BLIF DIS4e.AP
+0 1
+.names lft19.Q DIS4f.D
+0 1
+.names timdiv2.Q DIS4f.C
+1 1
+.names LED17.BLIF DIS4f.AP
+0 1
+.names lft20.Q DIS4g.D
+0 1
+.names timdiv2.Q DIS4g.C
+1 1
+.names LED17.BLIF DIS4g.AP
+0 1
+.names check.Q error.Q LED16-
+11 1
+.names DIP0.BLIF check.Q error.Q LED17-
+000 1
+.names check.Q error.Q LED18-
+10 1
+.names LED28.D
+ 1
+.names LED28.C
+.names S1_NO.BLIF LED28.AR
+0 1
+.names S1_NC.BLIF LED28.AP
+0 1
+.names LED29.D
+ 1
+.names LED29.C
+.names S2_NO.BLIF LED29.AR
+0 1
+.names S2_NC.BLIF LED29.AP
+0 1
+.names osc_dis
+.names S1BC.D
+.names S1BC.C
+.names S1_NC.BLIF S1BC.AR
+0 1
+.names S1_NO.BLIF S1BC.AP
+0 1
+.names S2BC.D
+.names S2BC.C
+.names S2_NC.BLIF S2BC.AR
+0 1
+.names S2_NO.BLIF S2BC.AP
+0 1
+.names lfsr4.Q lfsr2.Q lfsr1.Q lfsr0.D.X1
+111 1
+010 1
+001 1
+100 1
+.names lfsr6.Q lfsr0.D.X2
+1 1
+.names timdiv2.Q lfsr0.C
+1 1
+.names DIP0.BLIF lfsr0.CE
+1 1
+.names DIP7.BLIF lfsr0.AP
+1 1
+.names lfsr0.Q lfsr1.D
+1 1
+.names timdiv2.Q lfsr1.C
+1 1
+.names DIP0.BLIF lfsr1.CE
+1 1
+.names DIP7.BLIF lfsr1.AP
+1 1
+.names lfsr1.Q lfsr2.D
+1 1
+.names timdiv2.Q lfsr2.C
+1 1
+.names DIP0.BLIF lfsr2.CE
+1 1
+.names DIP7.BLIF lfsr2.AP
+1 1
+.names lfsr2.Q lfsr3.D
+1 1
+.names timdiv2.Q lfsr3.C
+1 1
+.names DIP0.BLIF lfsr3.CE
+1 1
+.names DIP7.BLIF lfsr3.AP
+1 1
+.names lfsr3.Q lfsr4.D
+1 1
+.names timdiv2.Q lfsr4.C
+1 1
+.names DIP0.BLIF lfsr4.CE
+1 1
+.names DIP7.BLIF lfsr4.AP
+1 1
+.names lfsr4.Q lfsr5.D
+1 1
+.names timdiv2.Q lfsr5.C
+1 1
+.names DIP0.BLIF lfsr5.CE
+1 1
+.names DIP7.BLIF lfsr5.AP
+1 1
+.names lfsr5.Q lfsr6.D
+1 1
+.names timdiv2.Q lfsr6.C
+1 1
+.names DIP0.BLIF lfsr6.CE
+1 1
+.names DIP7.BLIF lfsr6.AP
+1 1
+.names lfsr6.Q lfsr7.D
+1 1
+.names timdiv2.Q lfsr7.C
+1 1
+.names DIP0.BLIF lfsr7.CE
+1 1
+.names DIP7.BLIF lfsr7.AP
+1 1
+.names timdiv.Q timdiv.D
+0 1
+.names tmr_out.BLIF timdiv.C
+1 1
+.names timdiv2.Q timdiv2.D
+0 1
+.names timdiv.Q timdiv2.C
+1 1
+.names rct6.Q rct5.Q rct4.Q rct3.Q rct2.Q rct1.Q rct0.Q rct7.Q rct0.D
+00000001 1
+.names S1BC.Q rct0.C
+1 1
+.names DIP7.BLIF rct0.AP
+1 1
+.names rct0.Q rct1.D
+1 1
+.names S1BC.Q rct1.C
+1 1
+.names DIP7.BLIF rct1.AR
+1 1
+.names rct1.Q rct2.D
+1 1
+.names S1BC.Q rct2.C
+1 1
+.names DIP7.BLIF rct2.AR
+1 1
+.names rct2.Q rct3.D
+1 1
+.names S1BC.Q rct3.C
+1 1
+.names DIP7.BLIF rct3.AR
+1 1
+.names rct3.Q rct4.D
+1 1
+.names S1BC.Q rct4.C
+1 1
+.names DIP7.BLIF rct4.AR
+1 1
+.names rct4.Q rct5.D
+1 1
+.names S1BC.Q rct5.C
+1 1
+.names DIP7.BLIF rct5.AR
+1 1
+.names rct5.Q rct6.D
+1 1
+.names S1BC.Q rct6.C
+1 1
+.names DIP7.BLIF rct6.AR
+1 1
+.names rct6.Q rct7.D
+1 1
+.names S1BC.Q rct7.C
+1 1
+.names DIP7.BLIF rct7.AR
+1 1
+.names rct0.Q check.Q rcg0.D
+10 1
+.names S1BC.Q rcg0.C
+1 1
+.names DIP7.BLIF rcg0.AR
+1 1
+.names rct1.Q check.Q rcg1.D
+10 1
+.names S1BC.Q rcg1.C
+1 1
+.names DIP7.BLIF rcg1.AR
+1 1
+.names rct2.Q check.Q rcg2.D
+10 1
+.names S1BC.Q rcg2.C
+1 1
+.names DIP7.BLIF rcg2.AR
+1 1
+.names rct3.Q check.Q rcg3.D
+10 1
+.names S1BC.Q rcg3.C
+1 1
+.names DIP7.BLIF rcg3.AR
+1 1
+.names rct4.Q check.Q rcg4.D
+10 1
+.names S1BC.Q rcg4.C
+1 1
+.names DIP7.BLIF rcg4.AR
+1 1
+.names rct5.Q check.Q rcg5.D
+10 1
+.names S1BC.Q rcg5.C
+1 1
+.names DIP7.BLIF rcg5.AR
+1 1
+.names rct6.Q check.Q rcg6.D
+10 1
+.names S1BC.Q rcg6.C
+1 1
+.names DIP7.BLIF rcg6.AR
+1 1
+.names rct7.Q check.Q rcg7.D
+10 1
+.names S1BC.Q rcg7.C
+1 1
+.names DIP7.BLIF rcg7.AR
+1 1
+.names S2BC.Q ENT.D
+1 1
+.names S1BC.Q ENT.C
+1 1
+.names lfsr0.Q ENT.Q error.Q rcg0.Q fl0
+10-1 1
+01-1 1
+--1- 1
+.names lfsr1.Q ENT.Q error.Q rcg1.Q fl1
+10-1 1
+01-1 1
+--1- 1
+.names lfsr2.Q ENT.Q error.Q rcg2.Q fl2
+10-1 1
+01-1 1
+--1- 1
+.names lfsr3.Q ENT.Q error.Q rcg3.Q fl3
+10-1 1
+01-1 1
+--1- 1
+.names lfsr4.Q ENT.Q error.Q rcg4.Q fl4
+10-1 1
+01-1 1
+--1- 1
+.names lfsr5.Q ENT.Q error.Q rcg5.Q fl5
+10-1 1
+01-1 1
+--1- 1
+.names lfsr6.Q ENT.Q error.Q rcg6.Q fl6
+10-1 1
+01-1 1
+--1- 1
+.names lfsr7.Q ENT.Q rcg7.Q error.Q fl7
+011- 1
+101- 1
+---1 1
+.names check.D
+.names check.C
+.names DIP7.BLIF check.AR
+1 1
+.names check_0.BLIF check.AP
+1 1
+.names error.D
+.names error.C
+.names DIP7.BLIF error.AR
+1 1
+.names fl0.BLIF fl1.BLIF fl2.BLIF fl3.BLIF fl4.BLIF fl5.BLIF fl6.BLIF fl7.BLIF error.AP
+10000000 1
+.names DIP0.BLIF check.Q error.Q mod0.Q mod7.Q mod14.Q lft0.D
+-11-1- 1
+10-1-- 1
+-011-- 1
+-10--1 1
+.names timdiv2.Q lft0.C
+1 1
+.names LED17.BLIF lft0.AR
+0 1
+.names DIP0.BLIF check.Q error.Q mod1.Q mod8.Q mod15.Q lft1.D
+-11-1- 1
+10-1-- 1
+-011-- 1
+-10--1 1
+.names timdiv2.Q lft1.C
+1 1
+.names LED17.BLIF lft1.AR
+0 1
+.names DIP0.BLIF check.Q error.Q mod2.Q mod9.Q mod16.Q lft2.D
+-11-1- 1
+10-1-- 1
+-011-- 1
+-10--1 1
+.names timdiv2.Q lft2.C
+1 1
+.names LED17.BLIF lft2.AR
+0 1
+.names DIP0.BLIF check.Q error.Q mod3.Q mod10.Q mod17.Q lft3.D
+-11-1- 1
+10-1-- 1
+-011-- 1
+-10--1 1
+.names timdiv2.Q lft3.C
+1 1
+.names LED17.BLIF lft3.AR
+0 1
+.names DIP0.BLIF check.Q error.Q mod4.Q mod11.Q mod18.Q lft4.D
+-11-1- 1
+10-1-- 1
+-011-- 1
+-10--1 1
+.names timdiv2.Q lft4.C
+1 1
+.names LED17.BLIF lft4.AR
+0 1
+.names DIP0.BLIF check.Q error.Q mod5.Q mod12.Q mod19.Q lft5.D
+-11-1- 1
+10-1-- 1
+-011-- 1
+-10--1 1
+.names timdiv2.Q lft5.C
+1 1
+.names LED17.BLIF lft5.AR
+0 1
+.names DIP0.BLIF check.Q error.Q mod6.Q mod13.Q mod20.Q lft6.D
+-11-1- 1
+10-1-- 1
+-011-- 1
+-10--1 1
+.names timdiv2.Q lft6.C
+1 1
+.names LED17.BLIF lft6.AR
+0 1
+.names lft0.Q lft7.D
+1 1
+.names timdiv2.Q lft7.C
+1 1
+.names LED17.BLIF lft7.AR
+0 1
+.names lft1.Q lft8.D
+1 1
+.names timdiv2.Q lft8.C
+1 1
+.names LED17.BLIF lft8.AR
+0 1
+.names lft2.Q lft9.D
+1 1
+.names timdiv2.Q lft9.C
+1 1
+.names LED17.BLIF lft9.AR
+0 1
+.names lft3.Q lft10.D
+1 1
+.names timdiv2.Q lft10.C
+1 1
+.names LED17.BLIF lft10.AR
+0 1
+.names lft4.Q lft11.D
+1 1
+.names timdiv2.Q lft11.C
+1 1
+.names LED17.BLIF lft11.AR
+0 1
+.names lft5.Q lft12.D
+1 1
+.names timdiv2.Q lft12.C
+1 1
+.names LED17.BLIF lft12.AR
+0 1
+.names lft6.Q lft13.D
+1 1
+.names timdiv2.Q lft13.C
+1 1
+.names LED17.BLIF lft13.AR
+0 1
+.names lft7.Q lft14.D
+1 1
+.names timdiv2.Q lft14.C
+1 1
+.names LED17.BLIF lft14.AR
+0 1
+.names lft8.Q lft15.D
+1 1
+.names timdiv2.Q lft15.C
+1 1
+.names LED17.BLIF lft15.AR
+0 1
+.names lft9.Q lft16.D
+1 1
+.names timdiv2.Q lft16.C
+1 1
+.names LED17.BLIF lft16.AR
+0 1
+.names lft10.Q lft17.D
+1 1
+.names timdiv2.Q lft17.C
+1 1
+.names LED17.BLIF lft17.AR
+0 1
+.names lft11.Q lft18.D
+1 1
+.names timdiv2.Q lft18.C
+1 1
+.names LED17.BLIF lft18.AR
+0 1
+.names lft12.Q lft19.D
+1 1
+.names timdiv2.Q lft19.C
+1 1
+.names LED17.BLIF lft19.AR
+0 1
+.names lft13.Q lft20.D
+1 1
+.names timdiv2.Q lft20.C
+1 1
+.names LED17.BLIF lft20.AR
+0 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q nico.D
+00001010 1
+.names timdiv2.Q nico.C
+1 1
+.names DIP7.BLIF nico.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q daze.Q poi.Q poi.D
+001110110 1
+.names timdiv2.Q poi.C
+1 1
+.names DIP7.BLIF poi.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q poi.Q daze.D
+00001010 1
+.names timdiv2.Q daze.C
+1 1
+.names DIP7.BLIF daze.AR
+1 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q mod0.D
+00000000 1
+10110110 1
+00001010 1
+10011110 1
+.names timdiv2.Q mod0.C
+1 1
+.names DIP7.BLIF mod0.AR
+1 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q mod1.D
+10011100 1
+.names timdiv2.Q mod1.C
+1 1
+.names DIP7.BLIF mod1.AR
+1 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q mod2.D
+00000000 1
+10011100 1
+.names timdiv2.Q mod2.C
+1 1
+.names DIP7.BLIF mod2.AR
+1 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q mod3.D
+10110110 1
+00000000 1
+00001010 1
+100111-0 1
+.names timdiv2.Q mod3.C
+1 1
+.names DIP7.BLIF mod3.AR
+1 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q mod4.D
+00001010 1
+01111100 1
+10110110 1
+100111-0 1
+.names timdiv2.Q mod4.C
+1 1
+.names DIP7.BLIF mod4.AR
+1 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q mod5.D
+10110110 1
+00000000 1
+00001010 1
+100111-0 1
+.names timdiv2.Q mod5.C
+1 1
+.names DIP7.BLIF mod5.AR
+1 1
+.names mod0.Q mod1.Q mod2.Q mod3.Q mod4.Q mod5.Q mod6.Q nico.Q mod6.D
+01111100 1
+10110110 1
+00000000 1
+00001010 1
+.names timdiv2.Q mod6.C
+1 1
+.names DIP7.BLIF mod6.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q daze.Q poi.Q mod7.D
+000000000 1
+.names timdiv2.Q mod7.C
+1 1
+.names mod7_0.BLIF mod7.AR
+1 1
+.names mod8.D
+.names timdiv2.Q mod8.C
+1 1
+.names mod7_0.BLIF mod8.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q daze.Q poi.Q mod9.D
+000010110 1
+.names timdiv2.Q mod9.C
+1 1
+.names mod7_0.BLIF mod9.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q daze.Q poi.Q mod10.D
+000000000 1
+000010110 1
+.names timdiv2.Q mod10.C
+1 1
+.names mod7_0.BLIF mod10.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q daze.Q poi.Q mod11.D
+100111100 1
+000000000 1
+001110110 1
+0000101-0 1
+.names timdiv2.Q mod11.C
+1 1
+.names mod7_0.BLIF mod11.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q daze.Q poi.Q mod12.D
+000000000 1
+.names timdiv2.Q mod12.C
+1 1
+.names mod7_0.BLIF mod12.AR
+1 1
+.names mod7.Q mod8.Q mod9.Q mod10.Q mod11.Q mod12.Q mod13.Q daze.Q poi.Q mod13.D
+100111100 1
+000000000 1
+001110110 1
+0000101-0 1
+.names timdiv2.Q mod13.C
+1 1
+.names mod7_0.BLIF mod13.AR
+1 1
+.names mod14.Q mod15.Q mod16.Q mod17.Q mod18.Q mod19.Q mod20.Q mod14.D
+0011101 1
+1100111 1
+.names timdiv2.Q mod14.C
+1 1
+.names mod14_0.BLIF mod14.AR
+1 1
+.names mod14.Q mod15.Q mod16.Q mod17.Q mod18.Q mod19.Q mod20.Q mod15.D
+0011101 1
+.names timdiv2.Q mod15.C
+1 1
+.names mod14_0.BLIF mod15.AR
+1 1
+.names mod14.Q mod15.Q mod16.Q mod17.Q mod18.Q mod19.Q mod20.Q mod16.D
+0000000 1
+1001111 1
+.names timdiv2.Q mod16.C
+1 1
+.names mod14_0.BLIF mod16.AR
+1 1
+.names mod14.Q mod15.Q mod16.Q mod17.Q mod18.Q mod19.Q mod20.Q mod17.D
+0000000 1
+1100111 1
+.names timdiv2.Q mod17.C
+1 1
+.names mod14_0.BLIF mod17.AR
+1 1
+.names mod14.Q mod15.Q mod16.Q mod17.Q mod18.Q mod19.Q mod20.Q mod18.D
+0000000 1
+0011101 1
+1100111 1
+1001111 1
+.names timdiv2.Q mod18.C
+1 1
+.names mod14_0.BLIF mod18.AR
+1 1
+.names mod14.Q mod15.Q mod16.Q mod17.Q mod18.Q mod19.Q mod20.Q mod19.D
+0011101 1
+1100111 1
+.names timdiv2.Q mod19.C
+1 1
+.names mod14_0.BLIF mod19.AR
+1 1
+.names mod14.Q mod15.Q mod16.Q mod17.Q mod18.Q mod19.Q mod20.Q mod20.D
+0000000 1
+0011101 1
+1100111 1
+1001111 1
+.names timdiv2.Q mod20.C
+1 1
+.names mod14_0.BLIF mod20.AR
+1 1
+.names rcg7.Q error.Q check_0-
+00 1
+.names DIP7.BLIF LED16.BLIF mod7_0-
+00 1
+.names DIP7.BLIF LED17.BLIF mod14_0-
+01 1
+.end

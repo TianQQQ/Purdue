@@ -1,0 +1,24 @@
+MODULE cla4_v1
+TITLE '4-bit Carry Look-Ahead Adder – V1'
+DECLARATIONS
+X0..X3, Y0..Y3 pin; " operands
+CIN pin; " carry in
+S0..S3 pin istype 'com'; " sum outputs
+G0 = X0&Y0; " generate function definitions
+G1 = X1&Y1;
+G2 = X2&Y2;
+G3 = X3&Y3;
+P0 = X0$Y0; " propagate function definitions
+P1 = X1$Y1;
+P2 = X2$Y2;
+P3 = X3$Y3;
+C0 = G0 # CIN&P0; " carry function definitions
+C1 = G1 # G0&P1 # CIN&P0&P1;
+C2 = G2 # G1&P2 # G0&P1&P2 # CIN&P0&P1&P2;
+C3 = G3 # G2&P3 # G1&P2&P3 # G0&P1&P2&P3 # CIN&P0&P1&P2&P3;
+EQUATIONS
+S0 = CIN$P0;
+S1 = C0$P1;
+S2 = C1$P2;
+S3 = C2$P3;
+END

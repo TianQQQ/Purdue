@@ -1,0 +1,486 @@
+|--------------------------------------------------- ----------|
+|- ispLEVER Classic 1.7.00.05.28.13 Equations File            -|
+|- Copyright(C), 1992-2012, Lattice Semiconductor Corporation -|
+|- All Rights Reserved.                                       -|
+|--------------------------------------------------------------|
+
+
+Equations:
+
+
+DIS1a.D = !DIP0 & DIP1 & !mod14.Q
+    # DIP0 & !DIP1 & !mod7.Q
+    # !DIP0 & !DIP1 & !mod0.Q
+    # DIP0 & DIP1 & !mod21.Q ; (4 pterms, 6 signals)
+DIS1a.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS1a.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS1a_0 = !( !DIP0 & !DIP1 & !DIP7 & !e.Q & !f.Q
+    # DIP0 & !DIP1 & !DIP7 & e.Q & !f.Q
+    # !DIP0 & DIP1 & !DIP7 & !e.Q & f.Q
+    # DIP0 & DIP1 & !DIP7 & e.Q & f.Q ) ; (4 pterms, 5 signals)
+
+DIS1b.D = !DIP0 & DIP1 & !mod15.Q
+    # DIP0 & !DIP1 & !mod8.Q
+    # !DIP0 & !DIP1 & !mod1.Q
+    # DIP0 & DIP1 & !mod22.Q ; (4 pterms, 6 signals)
+DIS1b.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS1b.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS1c.D = !DIP0 & DIP1 & !mod16.Q
+    # DIP0 & !DIP1 & !mod9.Q
+    # !DIP0 & !DIP1 & !mod2.Q
+    # DIP0 & DIP1 & !mod23.Q ; (4 pterms, 6 signals)
+DIS1c.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS1c.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS1d.D = !DIP0 & DIP1 & !mod17.Q
+    # DIP0 & !DIP1 & !mod10.Q
+    # !DIP0 & !DIP1 & !mod3.Q
+    # DIP0 & DIP1 & !mod24.Q ; (4 pterms, 6 signals)
+DIS1d.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS1d.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS1e.D = !DIP0 & DIP1 & !mod18.Q
+    # DIP0 & !DIP1 & !mod11.Q
+    # !DIP0 & !DIP1 & !mod4.Q
+    # DIP0 & DIP1 & !mod25.Q ; (4 pterms, 6 signals)
+DIS1e.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS1e.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS1f.D = !DIP0 & DIP1 & !mod19.Q
+    # DIP0 & !DIP1 & !mod12.Q
+    # !DIP0 & !DIP1 & !mod5.Q
+    # DIP0 & DIP1 & !mod26.Q ; (4 pterms, 6 signals)
+DIS1f.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS1f.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS1g.D = !DIP0 & DIP1 & !mod20.Q
+    # DIP0 & !DIP1 & !mod13.Q
+    # !DIP0 & !DIP1 & !mod6.Q
+    # DIP0 & DIP1 & !mod27.Q ; (4 pterms, 6 signals)
+DIS1g.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS1g.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS2a.D = !lft0.Q ; (1 pterm, 1 signal)
+DIS2a.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS2a.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS2b.D = !lft1.Q ; (1 pterm, 1 signal)
+DIS2b.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS2b.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS2c.D = !lft2.Q ; (1 pterm, 1 signal)
+DIS2c.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS2c.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS2d.D = !lft3.Q ; (1 pterm, 1 signal)
+DIS2d.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS2d.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS2e.D = !lft4.Q ; (1 pterm, 1 signal)
+DIS2e.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS2e.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS2f.D = !lft5.Q ; (1 pterm, 1 signal)
+DIS2f.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS2f.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS2g.D = !lft6.Q ; (1 pterm, 1 signal)
+DIS2g.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS2g.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS3a.D = !lft7.Q ; (1 pterm, 1 signal)
+DIS3a.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS3a.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS3b.D = !lft8.Q ; (1 pterm, 1 signal)
+DIS3b.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS3b.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS3c.D = !lft9.Q ; (1 pterm, 1 signal)
+DIS3c.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS3c.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS3d.D = !lft10.Q ; (1 pterm, 1 signal)
+DIS3d.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS3d.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS3e.D = !lft11.Q ; (1 pterm, 1 signal)
+DIS3e.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS3e.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS3f.D = !lft12.Q ; (1 pterm, 1 signal)
+DIS3f.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS3f.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS3g.D = !lft13.Q ; (1 pterm, 1 signal)
+DIS3g.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS3g.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS4a.D = !lft14.Q ; (1 pterm, 1 signal)
+DIS4a.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS4a.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS4b.D = !lft15.Q ; (1 pterm, 1 signal)
+DIS4b.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS4b.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS4c.D = !lft16.Q ; (1 pterm, 1 signal)
+DIS4c.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS4c.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS4d.D = !lft17.Q ; (1 pterm, 1 signal)
+DIS4d.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS4d.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS4e.D = !lft18.Q ; (1 pterm, 1 signal)
+DIS4e.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS4e.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS4f.D = !lft19.Q ; (1 pterm, 1 signal)
+DIS4f.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS4f.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+DIS4g.D = !lft20.Q ; (1 pterm, 1 signal)
+DIS4g.C = !LED28.Q ; (1 pterm, 1 signal)
+DIS4g.AP = DIS1a_0 ; (1 pterm, 1 signal)
+
+LED28.D = !LED28.Q ; (1 pterm, 1 signal)
+LED28.C = timdiv.Q ; (1 pterm, 1 signal)
+
+_dup_osc_dis = 0 ; (0 pterm, 0 signal)
+
+a.D = a.Q & !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & mod5.Q & !mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & !mod5.Q & mod6.Q ; (2 pterms, 8 signals)
+a.C = !LED28.Q ; (1 pterm, 1 signal)
+a.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+b.D = b.Q & !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q
+       & !mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & mod5.Q & !mod6.Q
+    # mod0.Q & mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & mod5.Q & mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & !mod5.Q & mod6.Q
+    # !mod0.Q & mod2.Q & mod3.Q & mod4.Q & !mod5.Q & mod6.Q ; (5 pterms, 8 signals)
+b.C = !LED28.Q ; (1 pterm, 1 signal)
+b.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+c.D = c.Q & !mod14.Q & !mod15.Q & !mod16.Q & !mod17.Q & !mod18.Q & !mod19.Q
+       & !mod20.Q
+    # !mod14.Q & !mod15.Q & !mod16.Q & !mod17.Q & mod18.Q & !mod19.Q & mod20.Q ; (2 pterms, 8 signals)
+c.C = !LED28.Q ; (1 pterm, 1 signal)
+c.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+d.D = !mod21.Q & !mod22.Q & !mod23.Q & mod24.Q & mod25.Q & mod26.Q & !mod27.Q ; (1 pterm, 7 signals)
+d.C = !LED28.Q ; (1 pterm, 1 signal)
+d.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+e.D = DIP0 ; (1 pterm, 1 signal)
+e.C = tmr_out ; (1 pterm, 1 signal)
+
+f.D = DIP1 ; (1 pterm, 1 signal)
+f.C = tmr_out ; (1 pterm, 1 signal)
+
+lft0.D = !DIP0 & DIP1 & mod14.Q
+    # DIP0 & !DIP1 & mod7.Q
+    # !DIP0 & !DIP1 & mod0.Q
+    # DIP0 & DIP1 & mod21.Q ; (4 pterms, 6 signals)
+lft0.C = !LED28.Q ; (1 pterm, 1 signal)
+lft0.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft1.D = !DIP0 & DIP1 & mod15.Q
+    # DIP0 & !DIP1 & mod8.Q
+    # !DIP0 & !DIP1 & mod1.Q
+    # DIP0 & DIP1 & mod22.Q ; (4 pterms, 6 signals)
+lft1.C = !LED28.Q ; (1 pterm, 1 signal)
+lft1.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft10.D = lft3.Q ; (1 pterm, 1 signal)
+lft10.C = !LED28.Q ; (1 pterm, 1 signal)
+lft10.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft11.D = lft4.Q ; (1 pterm, 1 signal)
+lft11.C = !LED28.Q ; (1 pterm, 1 signal)
+lft11.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft12.D = lft5.Q ; (1 pterm, 1 signal)
+lft12.C = !LED28.Q ; (1 pterm, 1 signal)
+lft12.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft13.D = lft6.Q ; (1 pterm, 1 signal)
+lft13.C = !LED28.Q ; (1 pterm, 1 signal)
+lft13.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft14.D = lft7.Q ; (1 pterm, 1 signal)
+lft14.C = !LED28.Q ; (1 pterm, 1 signal)
+lft14.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft15.D = lft8.Q ; (1 pterm, 1 signal)
+lft15.C = !LED28.Q ; (1 pterm, 1 signal)
+lft15.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft16.D = lft9.Q ; (1 pterm, 1 signal)
+lft16.C = !LED28.Q ; (1 pterm, 1 signal)
+lft16.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft17.D = lft10.Q ; (1 pterm, 1 signal)
+lft17.C = !LED28.Q ; (1 pterm, 1 signal)
+lft17.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft18.D = lft11.Q ; (1 pterm, 1 signal)
+lft18.C = !LED28.Q ; (1 pterm, 1 signal)
+lft18.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft19.D = lft12.Q ; (1 pterm, 1 signal)
+lft19.C = !LED28.Q ; (1 pterm, 1 signal)
+lft19.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft2.D = !DIP0 & DIP1 & mod16.Q
+    # DIP0 & !DIP1 & mod9.Q
+    # !DIP0 & !DIP1 & mod2.Q
+    # DIP0 & DIP1 & mod23.Q ; (4 pterms, 6 signals)
+lft2.C = !LED28.Q ; (1 pterm, 1 signal)
+lft2.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft20.D = lft13.Q ; (1 pterm, 1 signal)
+lft20.C = !LED28.Q ; (1 pterm, 1 signal)
+lft20.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft3.D = !DIP0 & DIP1 & mod17.Q
+    # DIP0 & !DIP1 & mod10.Q
+    # !DIP0 & !DIP1 & mod3.Q
+    # DIP0 & DIP1 & mod24.Q ; (4 pterms, 6 signals)
+lft3.C = !LED28.Q ; (1 pterm, 1 signal)
+lft3.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft4.D = !DIP0 & DIP1 & mod18.Q
+    # DIP0 & !DIP1 & mod11.Q
+    # !DIP0 & !DIP1 & mod4.Q
+    # DIP0 & DIP1 & mod25.Q ; (4 pterms, 6 signals)
+lft4.C = !LED28.Q ; (1 pterm, 1 signal)
+lft4.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft5.D = !DIP0 & DIP1 & mod19.Q
+    # DIP0 & !DIP1 & mod12.Q
+    # !DIP0 & !DIP1 & mod5.Q
+    # DIP0 & DIP1 & mod26.Q ; (4 pterms, 6 signals)
+lft5.C = !LED28.Q ; (1 pterm, 1 signal)
+lft5.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft6.D = !DIP0 & DIP1 & mod20.Q
+    # DIP0 & !DIP1 & mod13.Q
+    # !DIP0 & !DIP1 & mod6.Q
+    # DIP0 & DIP1 & mod27.Q ; (4 pterms, 6 signals)
+lft6.C = !LED28.Q ; (1 pterm, 1 signal)
+lft6.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft7.D = lft0.Q ; (1 pterm, 1 signal)
+lft7.C = !LED28.Q ; (1 pterm, 1 signal)
+lft7.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft8.D = lft1.Q ; (1 pterm, 1 signal)
+lft8.C = !LED28.Q ; (1 pterm, 1 signal)
+lft8.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+lft9.D = lft2.Q ; (1 pterm, 1 signal)
+lft9.C = !LED28.Q ; (1 pterm, 1 signal)
+lft9.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod0.D = a.Q & !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & mod5.Q & !mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q & !mod6.Q ; (2 pterms, 8 signals)
+mod0.C = !LED28.Q ; (1 pterm, 1 signal)
+mod0.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod1.D = !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q & !mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & !mod5.Q & mod6.Q
+    # mod0.Q & mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & mod5.Q & mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & !mod5.Q & mod6.Q ; (4 pterms, 7 signals)
+mod1.C = !LED28.Q ; (1 pterm, 1 signal)
+mod1.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod10.D = mod7.Q & !mod8.Q & mod9.Q & mod10.Q & !mod11.Q & mod12.Q & mod13.Q
+    # !mod7.Q & !mod8.Q & mod9.Q & !mod10.Q & !mod11.Q & !mod12.Q & !mod13.Q
+    # !mod7.Q & !mod8.Q & mod9.Q & !mod10.Q & mod11.Q & !mod12.Q & mod13.Q ; (3 pterms, 7 signals)
+mod10.C = !LED28.Q ; (1 pterm, 1 signal)
+mod10.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod11.D = mod7.Q & !mod8.Q & mod9.Q & mod10.Q & !mod11.Q & mod12.Q & mod13.Q
+    # !mod7.Q & !mod8.Q & !mod9.Q & !mod10.Q & !mod11.Q & !mod12.Q & !mod13.Q
+    # !mod7.Q & !mod8.Q & mod9.Q & !mod10.Q & mod11.Q & !mod12.Q & mod13.Q ; (3 pterms, 7 signals)
+mod11.C = !LED28.Q ; (1 pterm, 1 signal)
+mod11.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod12.D = !mod7.Q & !mod8.Q & mod9.Q & !mod10.Q & !mod11.Q & !mod12.Q
+       & !mod13.Q
+    # mod7.Q & !mod8.Q & mod9.Q & mod10.Q & !mod11.Q & mod12.Q & mod13.Q ; (2 pterms, 7 signals)
+mod12.C = !LED28.Q ; (1 pterm, 1 signal)
+mod12.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod13.D = mod7.Q & !mod8.Q & mod9.Q & mod10.Q & !mod11.Q & mod12.Q & mod13.Q
+    # !mod7.Q & !mod8.Q & mod9.Q & !mod10.Q & mod11.Q & !mod12.Q & mod13.Q
+    # !mod7.Q & !mod8.Q & !mod10.Q & !mod11.Q & !mod12.Q & !mod13.Q ; (3 pterms, 7 signals)
+mod13.C = !LED28.Q ; (1 pterm, 1 signal)
+mod13.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod14.D = !mod14.Q & !mod15.Q & !mod16.Q & mod17.Q & mod18.Q & mod19.Q
+       & !mod20.Q
+    # !mod14.Q & mod15.Q & mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q ; (2 pterms, 7 signals)
+mod14.C = !LED28.Q ; (1 pterm, 1 signal)
+mod14.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod15.D = c.Q & !mod14.Q & !mod15.Q & !mod16.Q & !mod17.Q & !mod18.Q
+       & !mod19.Q & !mod20.Q
+    # !mod14.Q & mod15.Q & mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q ; (2 pterms, 8 signals)
+mod15.C = !LED28.Q ; (1 pterm, 1 signal)
+mod15.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod16.D = !mod14.Q & !mod15.Q & !mod16.Q & !mod17.Q & !mod18.Q & !mod19.Q
+       & !mod20.Q
+    # !mod14.Q & !mod15.Q & mod16.Q & mod17.Q & mod18.Q & mod20.Q ; (2 pterms, 7 signals)
+mod16.C = !LED28.Q ; (1 pterm, 1 signal)
+mod16.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod17.D = !mod14.Q & !mod15.Q & !mod17.Q & !mod18.Q & !mod19.Q & !mod20.Q
+    # !mod14.Q & !mod15.Q & mod16.Q & mod17.Q & mod18.Q & mod19.Q & mod20.Q
+    # !mod14.Q & !mod15.Q & !mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q ; (3 pterms, 7 signals)
+mod17.C = !LED28.Q ; (1 pterm, 1 signal)
+mod17.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod18.D = !mod14.Q & !mod15.Q & !mod17.Q & !mod18.Q & !mod19.Q & !mod20.Q
+    # mod14.Q & !mod15.Q & !mod16.Q & mod17.Q & mod18.Q & mod19.Q & mod20.Q
+    # !mod14.Q & mod15.Q & mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q
+    # !mod14.Q & !mod15.Q & mod16.Q & mod17.Q & mod18.Q & mod19.Q & mod20.Q
+    # !mod14.Q & !mod15.Q & !mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q ; (5 pterms, 7 signals)
+mod18.C = !LED28.Q ; (1 pterm, 1 signal)
+mod18.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod19.D = !mod14.Q & !mod15.Q & !mod17.Q & !mod18.Q & !mod19.Q & !mod20.Q
+    # !mod14.Q & mod15.Q & mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q
+    # !mod14.Q & !mod15.Q & !mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q ; (3 pterms, 7 signals)
+mod19.C = !LED28.Q ; (1 pterm, 1 signal)
+mod19.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod2.D = !b.Q & !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q
+       & !mod6.Q
+    # mod0.Q & mod1.Q & mod2.Q & mod3.Q & !mod4.Q & mod5.Q & mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & !mod5.Q & mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & !mod5.Q & mod6.Q
+    # mod0.Q & mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & mod5.Q & mod6.Q ; (5 pterms, 8 signals)
+mod2.C = !LED28.Q ; (1 pterm, 1 signal)
+mod2.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod20.D.X1 = !mod14.Q & mod16.Q & mod17.Q & mod18.Q & mod19.Q & !mod20.Q
+    # !mod15.Q & !mod16.Q & mod17.Q & mod18.Q & mod19.Q & mod20.Q
+    # !c.Q & !mod14.Q & !mod15.Q & !mod16.Q & !mod17.Q & !mod18.Q & !mod19.Q
+       & !mod20.Q ; (3 pterms, 8 signals)
+mod20.D.X2 = !mod14.Q & !mod15.Q & mod17.Q & mod18.Q & mod19.Q ; (1 pterm, 5 signals)
+mod20.C = !LED28.Q ; (1 pterm, 1 signal)
+mod20.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod21.D = !mod21.Q & !mod22.Q & mod23.Q & !mod24.Q & !mod25.Q & !mod26.Q
+       & !mod27.Q
+    # !mod21.Q & !mod22.Q & !mod23.Q & !mod24.Q & mod25.Q & !mod26.Q & mod27.Q ; (2 pterms, 7 signals)
+mod21.C = !LED28.Q ; (1 pterm, 1 signal)
+mod21.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod22.D = mod21.Q & mod22.Q & mod23.Q & !mod24.Q & mod25.Q & mod26.Q & mod27.Q
+    # !mod21.Q & !mod22.Q & mod23.Q & !mod24.Q & !mod25.Q & !mod26.Q
+       & !mod27.Q
+    # !mod21.Q & !mod22.Q & !mod23.Q & !mod24.Q & mod25.Q & !mod26.Q & mod27.Q ; (3 pterms, 7 signals)
+mod22.C = !LED28.Q ; (1 pterm, 1 signal)
+mod22.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod23.D = !mod21.Q & !mod22.Q & mod23.Q & !mod24.Q & !mod25.Q & !mod26.Q
+       & !mod27.Q
+    # mod21.Q & mod22.Q & mod23.Q & !mod24.Q & mod25.Q & mod26.Q & mod27.Q
+    # d.Q & !mod21.Q & !mod22.Q & !mod24.Q & !mod25.Q & !mod26.Q & !mod27.Q
+    # !mod21.Q & !mod22.Q & mod23.Q & mod24.Q & mod25.Q & mod26.Q & mod27.Q
+    # !mod21.Q & !mod22.Q & !mod23.Q & !mod24.Q & mod25.Q & !mod26.Q & mod27.Q ; (5 pterms, 8 signals)
+mod23.C = !LED28.Q ; (1 pterm, 1 signal)
+mod23.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod24.D = !mod21.Q & !mod22.Q & mod23.Q & !mod24.Q & !mod25.Q & !mod26.Q
+       & !mod27.Q
+    # d.Q & !mod21.Q & !mod22.Q & !mod24.Q & !mod25.Q & !mod26.Q & !mod27.Q
+    # mod21.Q & mod22.Q & mod23.Q & !mod24.Q & mod25.Q & mod26.Q & mod27.Q
+    # !mod21.Q & mod22.Q & mod23.Q & mod24.Q & mod25.Q & mod26.Q & !mod27.Q ; (4 pterms, 8 signals)
+mod24.C = !LED28.Q ; (1 pterm, 1 signal)
+mod24.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod25.D = !mod21.Q & !mod22.Q & !mod23.Q & !mod24.Q & !mod25.Q & !mod26.Q
+       & !mod27.Q
+    # !mod21.Q & mod22.Q & mod23.Q & mod24.Q & mod25.Q & mod26.Q & !mod27.Q
+    # mod21.Q & mod22.Q & mod23.Q & !mod24.Q & mod25.Q & mod26.Q & mod27.Q
+    # !mod21.Q & !mod22.Q & !mod23.Q & !mod24.Q & mod25.Q & !mod26.Q & mod27.Q ; (4 pterms, 7 signals)
+mod25.C = !LED28.Q ; (1 pterm, 1 signal)
+mod25.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod26.D = !mod21.Q & !mod22.Q & mod23.Q & !mod24.Q & !mod25.Q & !mod26.Q
+       & !mod27.Q
+    # !mod21.Q & mod22.Q & mod23.Q & mod24.Q & mod25.Q & mod26.Q & !mod27.Q
+    # mod21.Q & mod22.Q & mod23.Q & !mod24.Q & mod25.Q & mod26.Q & mod27.Q
+    # !mod21.Q & !mod22.Q & !mod23.Q & !mod24.Q & mod25.Q & !mod26.Q & mod27.Q
+    # d.Q & !mod21.Q & !mod22.Q & !mod24.Q & !mod25.Q & !mod26.Q & !mod27.Q ; (5 pterms, 8 signals)
+mod26.C = !LED28.Q ; (1 pterm, 1 signal)
+mod26.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod27.D = !mod21.Q & !mod22.Q & !mod23.Q & !mod24.Q & mod25.Q & !mod26.Q
+       & mod27.Q
+    # !mod21.Q & !mod22.Q & !mod24.Q & !mod25.Q & !mod26.Q & !mod27.Q ; (2 pterms, 7 signals)
+mod27.C = !LED28.Q ; (1 pterm, 1 signal)
+mod27.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod3.D = !b.Q & !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q
+       & !mod6.Q
+    # a.Q & !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & mod5.Q & !mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & !mod5.Q & mod6.Q
+    # mod0.Q & mod1.Q & mod2.Q & mod3.Q & !mod4.Q & mod5.Q & mod6.Q
+    # mod0.Q & mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & mod5.Q & mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & !mod5.Q & mod6.Q ; (6 pterms, 9 signals)
+mod3.C = !LED28.Q ; (1 pterm, 1 signal)
+mod3.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod4.D = b.Q & !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q
+       & !mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & !mod5.Q & mod6.Q
+    # mod0.Q & mod1.Q & mod2.Q & mod3.Q & !mod4.Q & mod5.Q & mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & mod5.Q & !mod6.Q
+    # mod0.Q & mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & mod5.Q & mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & !mod5.Q & mod6.Q ; (6 pterms, 8 signals)
+mod4.C = !LED28.Q ; (1 pterm, 1 signal)
+mod4.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod5.D = !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q & !mod6.Q
+    # mod0.Q & mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & mod5.Q & mod6.Q
+    # a.Q & !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & mod5.Q & !mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & !mod5.Q & mod6.Q ; (4 pterms, 8 signals)
+mod5.C = !LED28.Q ; (1 pterm, 1 signal)
+mod5.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod6.D = mod0.Q & mod1.Q & mod2.Q & mod3.Q & !mod4.Q & mod5.Q & mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & !mod4.Q & !mod5.Q & !mod6.Q
+    # !mod0.Q & mod1.Q & mod2.Q & mod3.Q & mod4.Q & mod5.Q & !mod6.Q
+    # !mod0.Q & !mod1.Q & !mod2.Q & !mod3.Q & mod4.Q & !mod5.Q & mod6.Q ; (4 pterms, 7 signals)
+mod6.C = !LED28.Q ; (1 pterm, 1 signal)
+mod6.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod7.D = !mod7.Q & !mod8.Q & mod9.Q & !mod10.Q & !mod11.Q & !mod12.Q
+       & !mod13.Q
+    # mod7.Q & !mod8.Q & mod9.Q & mod10.Q & !mod11.Q & mod12.Q & mod13.Q ; (2 pterms, 7 signals)
+mod7.C = !LED28.Q ; (1 pterm, 1 signal)
+mod7.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod8.D = 0 ; (0 pterm, 0 signal)
+mod8.C = !LED28.Q ; (1 pterm, 1 signal)
+mod8.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+mod9.D = !mod7.Q & !mod8.Q & !mod10.Q & !mod11.Q & !mod12.Q & !mod13.Q
+    # !mod7.Q & !mod8.Q & mod9.Q & mod11.Q & !mod12.Q & mod13.Q ; (2 pterms, 7 signals)
+mod9.C = !LED28.Q ; (1 pterm, 1 signal)
+mod9.AR = DIS1a_0 ; (1 pterm, 1 signal)
+
+osc_dis = 0 ; (0 pterm, 0 signal)
+
+timdiv.D = !timdiv.Q ; (1 pterm, 1 signal)
+timdiv.C = tmr_out ; (1 pterm, 1 signal)
+

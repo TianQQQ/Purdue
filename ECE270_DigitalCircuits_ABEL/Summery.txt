@@ -1,0 +1,427 @@
+RCT.clk = S1BC;            "rct clock set to S1BC
+[rct7..rct1].AR = DIP7;    "Reset by DIP7 to 00000001
+rct0.AP = DIP7;            "Preset by DIP7 to 1
+MIDRED = RCT & !check  # [0,0,0,0,0,0,0,1] & (check);
+" NOT check state, them midred = rct
+" check state, then from 00000001
+
+RCG.clk = S1BC;      "S1 bounceless to clk
+RCG.AR = DIP7;	     "RCG reset by DIP7
+RCG := RCT&!check;
+
+ENT.clk = S1BC;      " clock by S1BC
+ENT := S2BC;         " S2BC key set to enter
+
+
+" set check and error like a latch
+check.AR = DIP7;    
+check.clk = 0;
+check.d = 0;
+error.AR = DIP7;
+error.clk = 0;
+error.d = 0;
+
+FL = (([ENT,ENT,ENT,ENT,ENT,ENT,ENT,ENT]&RCG)$(LFSR&RCG))#error;
+error.ap = (FL==1);   "start to enter, FL = 1
+check.ap = error#rcg7;
+
+when 	  (check==0)&(error==0)&(DIP0==0) then {LED18=0;LED17=1;LED16=0;}  " YELLOW
+else when (check==1)&(error==0) 	  then {LED18=1;LED17=0;LED16=0;}  " RED
+else when (check==1)&(error==1) 	  then {LED18=0;LED17=0;LED16=1;}  " GREEN
+else when (check==0)&(error==0)&(DIP0==1) then {LED18=0;LED17=0;LED16=0;}  " NORMAL	 
+
+"Scrolling display""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Left shift register""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+DECLARATIONS
+
+lft0..lft27 node istype 'reg';
+LFT0 = [lft0,lft1,lft2,lft3,lft4,lft5,lft6];
+LFT1 = [lft7,lft8,lft9,lft10,lft11,lft12,lft13];
+LFT2 = [lft14,lft15,lft16,lft17,lft18,lft19,lft20];
+LFT3 = [lft21,lft22,lft23,lft24,lft25,lft26,lft27];
+LFT = [LFT0,LFT1,LFT2,LFT3];
+
+a,b,c node istype 'reg';
+mod0..mod20 node istype 'reg';
+MOD0 = [mod0,mod1,mod2,mod3,mod4,mod5,mod6];
+MOD1 = [mod7,mod8,mod9,mod10,mod11,mod12,mod13];
+MOD2 = [mod14,mod15,mod16,mod17,mod18,mod19,mod20];
+MOD = [MOD0,MOD1,MOD2];
+
+EQUATIONS
+
+DIS1 = LFT0.Q;
+DIS2 = LFT1.Q;
+DIS3 = LFT2.Q;
+DIS4 = LFT3.Q;
+
+LFT3 := LFT2;
+LFT2 := LFT1;
+LFT1 := LFT0;
+LFT0 := !(LED16#LED17#LED18)&MOD0 # LED16&MOD1 # LED18&MOD2;
+LFT.AR = DIP7;
+LFT.CLK = timdiv2;
+
+
+MOD.CLK = timdiv2;
+MOD.AR = DIP7;
+MOD2.AR = LED17;
+MOD1.AR = !LED16;
+
+[a,b,c].AR = DIP7;
+[a,b,c].CLK = timdiv2;
+
+TRUTH_TABLE ([MOD0,a]:>[MOD0,a])
+[blank,0]:>[charS,0];
+[charS,0]:>[charE,0];
+[charE,0]:>[charC,0];
+[charC,0]:>[charU,0];
+[charU,0]:>[charR,0];
+[charR,0]:>[charE,1];
+[charE,1]:>[blank,0];
+
+TRUTH_TABLE ([MOD1,b,c]:>[MOD1,b,c])
+[blank,0,0]:>[charE,0,0];
+[charE,0,0]:>[charR,0,0];
+[charR,0,0]:>[charR,0,1];
+[charR,0,1]:>[charO,0,1];
+[charO,0,1]:>[charR,1,0];
+[charR,1,0]:>[blank,0,0];
+
+TRUTH_TABLE([MOD2]:>[MOD2])
+[blank]:>[charO];
+[charO]:>[charP];
+[charP]:>[charE];
+[charE]:>[charN];
+[charN]:>[blank];
+
+"Counters"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Binary UP/Down counter    DIP6 = 1 UP
+Q0 := !Q0;
+Q1 := Q1 $ (DIP6 & Q0 # !DIP6 & !Q0);
+Q2 := Q2 $ (DIP6 & Q0 & Q1 # !DIP6 & !Q0 & !Q1);
+Q3 := Q3 $ (DIP6 & Q0 & Q1 & Q2 # !DIP6 & !Q0 & !Q1 & !Q2);
+[Q0..Q3].CLK = BFC2.Q;
+[Q0..Q3].AR = DIP0;
+[LED0..LED3] = [Q0..Q3];
+
+[Q0..Q3].CLK = tmr_out;   " atomatically clock
+osc_dis = !DIP1;          " Internal Oscillator controlled by DIP1 to pause
+timdiv.clk = tmr_out;
+timdiv:=!timdiv;         " time divider
+[Q0..Q3].CLK = timdiv;
+
+" BCD ADDER
+TRUTH_TABLE([actsc0,actsc1,actsc2,actsc3]->[nDIS2])
+[0,0,0,1]->[char1];
+[0,0,1,0]->[char2];
+[0,0,1,1]->[char3];
+[0,1,0,0]->[char4];
+[0,1,0,1]->[char5];
+[0,1,1,0]->[char6];
+[0,1,1,1]->[char7];
+[1,0,0,0]->[char8];
+[0,0,0,0]->[char0];
+
+TRUTH_TABLE([actsc4,actsc5,actsc6,actsc7]->[nDIS1])
+[0,0,0,1]->[char1];
+[0,0,1,0]->[char2];
+[0,0,1,1]->[char3];
+[0,1,0,0]->[char4];
+[0,1,0,1]->[char5];
+[0,1,1,0]->[char6];
+[0,1,1,1]->[char7];
+[1,0,0,0]->[char8];
+[1,0,0,1]->[char9];
+[0,0,0,0]->[char0];
+
+EQUATIONS
+
+score.AR = BFD;
+score.clk = BFC;
+[y0..y3] = ![DIP0..DIP3];
+
+"addsc + score
+when ([sat3..sat0]==10) then add = 0;
+else when (EQ == 1) then add = 9;          
+else when (SML == 1) then add = 0;
+else when (BIG == 1) then add = 4;
+score := score + add;
+
+when (score > 79) then actsc = score + 48;
+else when (score > 69) then actsc = score + 42;
+else when (score > 59) then actsc = score + 36;
+else when (score > 49) then actsc = score + 30;
+else when (score > 39) then actsc = score + 24;
+else when (score > 29) then actsc = score + 18;
+else when (score > 19) then actsc = score + 12;
+else when (score > 9) then actsc = score + 6;
+else actsc = score;
+
+"DIGITAL LOCK AND SEQUENCE GENERATOR"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+MODULE dcl
+TITLE 'Digital Combination Lock'
+X pin; "combination data input"
+R pin; "relock input"
+RESET pin; "asynchronous reset"
+CLOCK pin;
+Q2, Q1, Q0 pin istype 'reg';
+LOCKED pin istype 'com'; "LOCKED indicator"
+UNLOCKED pin istype 'com'; "UNLOCKED indicator"
+ALARM pin istype 'com'; "ALARM indicator"
+
+QALL = [Q2,Q1,Q0];
+A0 = [ 0, 0, 0];
+A1 = [ 0, 0, 1];
+A2 = [ 0, 1, 0];
+A3 = [ 0, 1, 1];
+A4 = [ 1, 0, 0];
+A5 = [ 1, 0, 1];
+A6 = [ 1, 1, 0];
+A7 = [ 1, 1, 1];
+
+STATE_DIAGRAM QALL
+state A0: if (R==1) then A0 
+else if (R==0)&(X==0) then A7
+else if (R==0)&(X==1) then A1;
+state A1: if (R==1) then A0 
+else if (R==0)&(X==0) then A2
+else if (R==0)&(X==1) then A7;
+state A2: if (R==1) then A0 
+else if (R==0)&(X==0) then A7
+else if (R==0)&(X==1) then A3;
+state A3: if (R==1) then A0 
+else if (R==0)&(X==0) then A7
+else if (R==0)&(X==1) then A4;
+state A4: if (R==1) then A0 
+else if (R==0)&(X==0) then A7
+else if (R==0)&(X==1) then A5;
+state A5: if (R==1) then A0 
+else if (R==0)&(X==0) then A6
+else if (R==0)&(X==1) then A7;
+state A6: if (R==1) then A0
+else if (R==0) then A6;
+state A7: goto A7; 
+
+
+EQUATIONS
+
+QALL.CLK = CLOCK;
+QALL.AR = RESET;
+LOCKED = !Q2&!Q1&!Q0;
+UNLOCKED = Q2&Q1&!Q0;
+ALARM = Q2&Q1&Q0; 
+END
+
+
+
+
+“ Small computer
+
+MODULE pc 
+TITLE 'Program Counter Module' 
+DECLARATIONS 
+CLOCK pin; 
+PC0..PC4 pin istype 'reg_D,buffer'; 
+PCC pin; " PC count enable 
+POA pin; " PC output on address bus tri-state enable 
+ARS pin; " asynchronous reset (connected to START) 
+ 
+EQUATIONS 
+" retain state count up by 1 
+PC0.d = !PCC&PC0.q # PCC&!PC0.q; 
+PC1.d = !PCC&PC1.q # PCC&(PC1.q $ PC0.q); 
+PC2.d = !PCC&PC2.q # PCC&(PC2.q $ (PC1.q&PC0.q)); 
+PC3.d = !PCC&PC3.q # PCC&(PC3.q $ (PC2.q&PC1.q&PC0.q)); 
+PC4.d = !PCC&PC4.q # PCC&(PC4.q $ (PC3.q&PC2.q&PC1.q&PC0.q)); 
+[PC0..PC4].oe = POA; 
+[PC0..PC4].ar = ARS; 
+[PC0..PC4].clk = CLOCK; 
+END
+
+
+
+MODULE ir 
+TITLE 'Instruction Register Module' 
+DECLARATIONS 
+CLOCK pin; 
+" IR4..IR0 connected to address bus 
+" IR7..IR5 supply opcode to IDMS 
+IR0..IR7 pin istype 'reg_D,buffer'; 
+DB0..DB7 pin; " data bus 
+IRL pin; " IR load enable 
+IRA pin; " IR output on address bus enable 
+ 
+EQUATIONS 
+" retain state load 
+[IR0..IR7].d = !IRL&[IR0..IR7].q # IRL&[DB0..DB7]; 
+[IR0..IR7].clk = CLOCK; 
+[IR0..IR4].oe = IRA; 
+[IR5..IR7].oe = [1,1,1]; 
+END 
+
+
+
+MODULE alu 
+TITLE 'ALU Module' 
+" 8-bit, 4-function ALU with bi-directional data bus 
+" 
+" ADD: (Q7..Q0) <- (Q7..Q0) + DB7..DB0 
+" SUB: (Q7..Q0) <- (Q7..Q0) - DB7..DB0 
+" LDA: (Q7..Q0) <- DB7..DB0 
+" AND: (Q7..Q0) <- (Q7..Q0) & DB7..DB0 
+" OUT: Value in Q7..Q0 output on data bus DB7..DB0 
+" 
+" AOE ALE ALX ALY Function CF ZF NF VF 
+" === === === === ======== == == == == 
+" 0 1 0 0 ADD X X X X 
+" 0 1 0 1 SUB X X X X 
+" 0 1 1 0 LDA • X X • 
+" 0 1 1 1 AND • X X • 
+" 1 0 d d OUT • • • • 
+" 0 0 d d <none> • • • • 
+" 
+" X -> flag affected • -> flag not affected 
+
+DECLARATIONS 
+CLOCK pin; 
+ 
+ALE pin; 
+AOE pin; 
+ALX pin; 
+ALY pin; 
+ 
+ALU0..ALU7 node istype 'com'; 
+ 
+DB0..DB7 pin istype 'reg_d,buffer'; 
+ 
+CF pin istype 'reg_d,buffer'; " carry flag 
+VF pin istype 'reg_d,buffer'; " overflow flag 
+NF pin istype 'reg_d,buffer'; " negative flag 
+ZF pin istype 'reg_d,buffer'; " zero flag 
+EQUATIONS 
+" LDA LSR ASL ASR 
+ALU0 = !ALX&!ALY&DB0.pin # !ALX&ALY&DB1.q # ALX&!ALY& 0 # ALX&ALY&DB1.q; 
+ALU1 = !ALX&!ALY&DB1.pin # !ALX&ALY&DB2.q # ALX&!ALY&DB0.q # ALX&ALY&DB2.q; 
+ALU2 = !ALX&!ALY&DB2.pin # !ALX&ALY&DB3.q # ALX&!ALY&DB1.q # ALX&ALY&DB3.q; 
+ALU3 = !ALX&!ALY&DB3.pin # !ALX&ALY&DB4.q # ALX&!ALY&DB2.q # ALX&ALY&DB4.q; 
+ALU4 = !ALX&!ALY&DB4.pin # !ALX&ALY&DB5.q # ALX&!ALY&DB3.q # ALX&ALY&DB5.q; 
+ALU5 = !ALX&!ALY&DB5.pin # !ALX&ALY&DB6.q # ALX&!ALY&DB4.q # ALX&ALY&DB6.q; 
+ALU6 = !ALX&!ALY&DB6.pin # !ALX&ALY&DB7.q # ALX&!ALY&DB5.q # ALX&ALY&DB7.q; 
+ALU7 = !ALX&!ALY&DB7.pin # !ALX&ALY& 0 # ALX&!ALY&DB6.q # ALX&ALY&DB7.q; 
+" Register bit and data bus control equations 
+[DB0..DB7].d = !ALE&[DB0..DB7].q # ALE&[ALU0..ALU7]; 
+[DB0..DB7].clk = CLOCK; 
+[DB0..DB7].oe = AOE; 
+" Flag register state equations 
+CF.d = !ALE&CF.q # 
+ ALE&(!ALX&!ALY&CF.q # !ALX&ALY&DB0.q # ALX&!ALY&DB7.q # ALX&ALY&DB0.q); 
+" LDA LSR ASL ASR 
+CF.clk = CLOCK; 
+ZF.d = !ALE&ZF.q # ALE&(!ALU7&!ALU6&!ALU5&!ALU4&!ALU3&!ALU2&!ALU1&!ALU0); 
+ZF.clk = CLOCK; 
+NF.d = !ALE&NF.q # ALE&ALU7; 
+NF.clk = CLOCK; 
+VF.d = !ALE&VF.q # ALE&VF.q; " NOTE: NOT AFFECTED 
+VF.clk = CLOCK; 
+END 
+
+
+
+
+MODULE idms 
+TITLE 'Instruction Decoder and Microsequencer' 
+DECLARATIONS 
+CLOCK pin; 
+START pin; " asynchronous START pushbutton 
+OP0..OP2 pin; " opcode bits (input from IR5..IR7) 
+" State counter 
+SQ node istype 'reg_D,buffer'; 
+" RUN/HLT state 
+RUN node istype 'reg_D,buffer'; 
+" RUN/HLT state 
+RUN node istype 'reg_D,buffer'; 
+" Memory control signals 
+MSL,MOE,MWE pin istype 'com'; 
+" PC control signals 
+PCC,POA,ARS pin istype 'com'; 
+" IR control signals 
+IRL,IRA pin istype 'com'; 
+" ALU control signals (not using flags yet) 
+ALE,ALX,ALY,AOE pin istype 'com'; 
+ 
+" Decoded opcode definitions 
+LDA = !OP2&!OP1&!OP0; " LDA opcode = 000 
+STA = !OP2&!OP1& OP0; " STA opcode = 001 
+ADD = !OP2& OP1&!OP0; " ADD opcode = 010 
+SUB = !OP2& OP1& OP0; " SUB opcode = 011 
+AND = OP2&!OP1&!OP0; " AND opcode = 100 
+HLT = OP2&!OP1& OP0; " HLT opcode = 101 
+" Decoded state definitions 
+S0 = !SQ.q; " fetch 
+S1 = SQ.q; " execute 
+ 
+EQUATIONS 
+ 
+" State counter 
+SQ.d = RUN.q&!SQ.q; " if RUN negated, resets SQ 
+SQ.clk = CLOCK; 
+SQ.ar = START; " start in fetch state 
+ 
+" Run/stop (equivalent of SR latch) 
+RUN.ap = START; " start with RUN set to 1 
+RUN.clk = CLOCK; 
+RUN.d = RUN.q; 
+RUN.ar = S1&HLT; " RUN is cleared when HLT executed 
+ 
+" System control equations 
+MSL = RUN.q&(S0 # S1&(LDA # STA # ADD # SUB # AND)); 
+MOE = S0 # S1&(LDA # ADD # SUB # AND); 
+MWE = S1&STA; 
+ARS = START; 
+PCC = RUN.q&S0; 
+POA = S0; 
+IRL = RUN.q&S0; 
+IRA = S1&(LDA # STA # ADD # SUB # AND); 
+AOE = S1&STA; 
+ALE = RUN.q&S1&(LDA # ADD # SUB # AND); 
+ALX = S1&(LDA # AND); 
+ALY = S1&(SUB # AND); 
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
