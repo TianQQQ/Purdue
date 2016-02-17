@@ -141,15 +141,106 @@ void Print_nRooks(int n) {
     cout<<"-------------------------------------nRooks"<<endl;
 }
 
-//========================================================================================== nRooks
+//========================================================================================== nRooks  3.1
+
+
+
+int Place_queens(int x[], int n, int r){  // jugde whether it can be place or not
+    for(int i=0; i < r; i++){
+        if( x[i] == x[r] || abs(r-i) == abs(x[r]-x[i])){   //
+            return false;
+        }
+    }
+    return true;
+}
+
+void Print_queens_helper(int x[], int n, int r){
+    if(r>n - 1){
+        arrayprintHelper(x, n);    // recursion base case
+        cout << endl;
+    }else{
+        for(int i = 0; i < n; i++){
+            x[r]=i;
+            if(Place_queens(x, n, r)) Print_queens_helper(x, n, r+1);  // r is index means column, x[r] means row
+        }
+    }
+}
+
+
 
 void Queens_Rooks(int n) {
-	//Print all solutions of Queens and Rooks problem to the screen.
+    //Print all solutions of Queens and Rooks problem to the screen.
+    int * arr = (int*) malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) {
+        arr[i] = -1;  // -1 means has not been assigned
+    }
+    Print_queens_helper(arr, n, 0);
+    cout<<"-------------------------------------nQueens"<<endl;
 }
-void Max_Consecutive_Numbers(int p[], int n) {
+
+
+
+//========================================================================================== nqueens  3.2
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Max_Consecutive_Numbers(int a[], int n) {   // O(n^3)
+    int maxSum = 0;
     
+    //i head
+    for (int i = 0; i < n; i++)
+    {
+        //j tail
+        for (int j = i; j < n; j++)
+        {
+            int thisSum = 0;
+            
+            //consecutive addition
+            for (int k = i; k <= j; k++){
+                thisSum += a[k];
+            }
+            if(thisSum > maxSum)
+                maxSum = thisSum;
+        }
+    }
+    
+    cout << "max consecutive numbers is " << maxSum<< endl;
+
 }
-void Max_Draw_Down(int p[], int n) {
+
+
+
+void Max_Draw_Down(int a[], int n) {
+    int maxSum = 0;
+    
+    //i head
+    for (int i = 0; i < n; i++)
+    {
+        //j tail
+        for (int j = i; j < n; j++)
+        {
+            int thisSum = 0;
+            
+            //consecutive addition
+            for (int k = i; k <= j; k++){
+                thisSum = a[i] - a[k];
+            }
+            if(thisSum > maxSum)
+                maxSum = thisSum;
+        }
+    }
+    
+    cout << "max consecutive numbers is " << maxSum<< endl;
 
 }
 //===============================================================================compare char
@@ -189,7 +280,7 @@ void print_pi(int N) {
 }
 
 int main() {
-	int p[] = { 4,1,3,6,2,10,7,8 };
+	int p[] = { 4,1,3,6,1,10,-10,8 };
 	int n = 8;
     counting_sort(p, n);
     insertion_sort(p, n);
@@ -204,8 +295,12 @@ int main() {
     cout<<"-------------------------------------compare const char"<<endl;
     
     Print_nRooks(4);
+    Queens_Rooks(4);
     
-    
+    int arr[] = { 4,1,3,6,-11,10,-10,8 };
+    int narr = 8;
+    Max_Consecutive_Numbers(arr, narr);
+    Max_Draw_Down(arr, narr);
  
 	return 0;
 }
