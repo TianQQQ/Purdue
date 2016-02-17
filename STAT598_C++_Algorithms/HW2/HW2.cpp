@@ -15,7 +15,7 @@ void arrayprintHelper(int p[], int n){
         cout << p[i] << ' ';
     }
 }
-
+//========================================================================================================print helper
 void insertion_sort(int p[], int n){
     for (int i=1; i<n; i++)
         for (int j = i-1; j>=0; j--) {
@@ -108,11 +108,9 @@ void counting_sort(int p[], int n) {
 
 //==================================================================================================
 
-int Place(int x[], int n, int r)
-{
-    int i;
-    for(i=0; i<n-1; i++){
-        if( i != r && x[i] == x[r]){   // abs(x[i]-x[k-1])==abs(i-k+1)
+int Place(int x[], int n, int r){  // jugde whether it can be place or not
+    for(int i=0; i < r; i++){
+        if( x[i] == x[r]){   // abs(x[i]-x[k-1])==abs(i-k+1)
             return false;
         }
     }
@@ -120,14 +118,13 @@ int Place(int x[], int n, int r)
 }
 
 void Print_nRooks_helper(int x[], int n, int r){
-    int i;
-    if(r>=n){
+    if(r>n - 1){
         arrayprintHelper(x, n);    // recursion base case
         cout << endl;
     }else{
-        for(i=0;i<n;i++){
+        for(int i = 0; i < n; i++){
             x[r]=i;
-            if(Place(x, n, r)) Print_nRooks_helper(x, n, r+1);
+            if(Place(x, n, r)) Print_nRooks_helper(x, n, r+1);  // r is index means column, x[r] means row
         }
     }
 }
@@ -138,13 +135,13 @@ void Print_nRooks(int n) {
     //for (int i=0; i<n; i++) matrix[i] = (int *)malloc(n * sizeof(int));
     int * arr = (int*) malloc(n * sizeof(int));
     for (int i = 0; i < n; i++) {
-        arr[i] = -1;
+        arr[i] = -1;  // -1 means has not been assigned
     }
     Print_nRooks_helper(arr, n, 0);
     cout<<"-------------------------------------nRooks"<<endl;
 }
 
-
+//========================================================================================== nRooks
 
 void Queens_Rooks(int n) {
 	//Print all solutions of Queens and Rooks problem to the screen.
@@ -155,7 +152,7 @@ void Max_Consecutive_Numbers(int p[], int n) {
 void Max_Draw_Down(int p[], int n) {
 
 }
-
+//===============================================================================compare char
 int compare(const char *a, const char *b){
     int i =0;
     int numa = 0;
@@ -206,7 +203,7 @@ int main() {
     cout << compare(a, b) << endl;
     cout<<"-------------------------------------compare const char"<<endl;
     
-    Print_nRooks(3);
+    Print_nRooks(4);
     
     
  
