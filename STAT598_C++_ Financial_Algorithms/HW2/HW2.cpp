@@ -219,17 +219,26 @@ void Max_Consecutive_Numbers(int a[], int n) {   // O(n^3)
     // O(n) online algorithm
     int maxSum = 0;
     int nowSum = 0;
+    int max =a[0];    // for all negative number
     
     for (int j = 0; j < n; j++)
     {
         nowSum += a[j];
-
+        
         if(nowSum > maxSum)
             maxSum = nowSum;
         else if(nowSum < 0)
             nowSum = 0;
-    }    
-    cout << "max consecutive numbers is " << maxSum<< endl;
+        
+        if (max < a[j]){
+            max = a[j];
+        }
+    }
+    if (max < 0) {
+        cout << "max consecutive numbers is " << max<< endl;
+    }else{
+        cout << "max consecutive numbers is " << maxSum<< endl;
+    }
 }
 
 
@@ -311,7 +320,7 @@ int main() {
     Print_nRooks(4);
     Queens_Rooks(5);
     
-    int arr[] = { -4,1,3,6,-11,10,-10,8 };
+    int arr[] = { -4,-1,-3,-6,-11,-10,-10, -8 };
     int narr = 8;
     Max_Consecutive_Numbers(arr, narr);
     Max_Draw_Down(arr, narr);
