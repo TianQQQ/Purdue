@@ -189,13 +189,9 @@ void Queens_Rooks(int n) {
 
 
 
-
-
-
-
 void Max_Consecutive_Numbers(int a[], int n) {   // O(n^3)
 /*    int maxSum = 0;
-    
+ 
     //i head
     for (int i = 0; i < n; i++)
     {
