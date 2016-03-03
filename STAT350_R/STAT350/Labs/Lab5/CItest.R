@@ -53,7 +53,7 @@ t.test(DMS$DMS, conf.level=0.95, alternative = "two.sided")
 # the z test is not default in R, so we will be loading an additional library to run this test
 # You only need to run the following lines once. 
 # install.packages('TeachingDemos')
-# library(TeachingDemos)
+library(TeachingDemos)    # z-test demo
 #the parameters are the same for the z.test as the t.test except # that now, you need to specify the population standard
 # deviation.
 # x contains the data, stdev is the known standard deviation, alternative = "two.sided" indicates that this is a
