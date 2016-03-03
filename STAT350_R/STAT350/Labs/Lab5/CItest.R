@@ -9,3 +9,8 @@ DMS=read.table(file="DMS.txt",header=T)
 # "less" (upper confidence bound for one-sided test), "greater" (lower confidence bound for one-sided test)
 t.test(DMS$DMS, conf.level=0.95, alternative = "two.sided")
 
+
+# boxplot
+View(DMS)
+attach(DMS)
+hist(DMS)
