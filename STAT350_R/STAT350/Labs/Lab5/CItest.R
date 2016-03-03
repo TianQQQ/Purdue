@@ -8,12 +8,13 @@ DMS=read.table(file="DMS.txt",header=T)
 # View(DMS)
 # attach(DMS$DMS)
 # library(lattice) # histogram ??????lattice
-hist(DMS$DMS)
+hist(DMS$DMS???breaks = "Sturges")
 means <- mean(DMS$DMS)
 std <- sd(DMS$DMS)
 curve(dnorm(x, mean=means, sd=std), col="blue", lwd=2, add=TRUE)   # normal distribution line
 lines(density(DMS$DMS, adjust=2),col = "red", lwd=2)
-
+mean(DMS$DMS) 
+sd(DMS$DMS)
 # boxplot
 boxplot(DMS$DMS)
 points(means, pch = 18)
