@@ -38,7 +38,7 @@ qqnorm(hogs$Weight.lb.,main="Normal Quantile Plot for normal distribution")
 qqline(hogs$Weight.lb.)
 
 t.test(hogs$Weight.lb., conf.level=0.95, alternative = "two.sided")
-
+library(TeachingDemos)
 stdev = sd(hogs$Weight.lb.)
 stdev
 z.test(hogs$Weight.lb., conf.level = 0.95, alternative="two.sided", sd=stdev)
