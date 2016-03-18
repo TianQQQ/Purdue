@@ -30,17 +30,15 @@ print(a[3])
 print('For interesting case 4, I find when the transition matrix is identity. It automatically becomes a steady state matrix.')
 
 print('\n\n4.')
-Matrix = [[0.729,0.081,0.081,0.009,0.081,0.009,0.009,0.001],[0.81,0,0.09,0,0.09,0,0.01,0]
-,[0.81,0.09,0,0,0.09,0.01,0,0]
-,[0,0.9,0,0,0,0.1,0,0]
-,[0.81,0.09,0.09,0.01,0,0,0,0]
-,[0,0.9,0,0.1,0,0,0,0]
-,[0,0,0.9,0.1,0,0,0,0]
-,[0,0,0,1,0,0,0,0]]
+Matrix = [[0 for x in range(4)] for x in range(4)]
+Matrix[0] = [0.638298,0.212766,0.106383,0.04255]
+Matrix[1] = [0.37037037,0.444444,0.111111,0.074074074]
+Matrix[2] = [0.384615,0.384615,0.1923077,0.03846]
+Matrix[3] = [0.5,0.4,0.1,0]
 
 #pprint(Matrix)
 Matrix = numpy.matrix(Matrix)
 a = 1
-for i in range(0,1000):
+for i in range(0,100000):
     a *= Matrix
 print(a)
