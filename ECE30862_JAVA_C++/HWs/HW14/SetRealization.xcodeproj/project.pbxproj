@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80DD653C1C9CC72B0065AB90 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80DD653B1C9CC72B0065AB90 /* main.cpp */; };
-		80DD65481C9CD0D80065AB90 /* complex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80DD65461C9CD0D80065AB90 /* complex.cpp */; };
+		80495ED51BF858BC000E9263 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 80495ED41BF858BC000E9263 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		80DD65361C9CC72B0065AB90 /* CopyFiles */ = {
+		80495ECF1BF858BC000E9263 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,14 +23,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		80DD65381C9CC72B0065AB90 /* HW3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HW3; sourceTree = BUILT_PRODUCTS_DIR; };
-		80DD653B1C9CC72B0065AB90 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		80DD65461C9CD0D80065AB90 /* complex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = complex.cpp; sourceTree = "<group>"; };
-		80DD65471C9CD0D80065AB90 /* complex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = complex.hpp; sourceTree = "<group>"; };
+		80367E001BF959BD00235EFF /* SetPartB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPartB.h; sourceTree = "<group>"; };
+		80495ED11BF858BC000E9263 /* SetRealization */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SetRealization; sourceTree = BUILT_PRODUCTS_DIR; };
+		80495ED41BF858BC000E9263 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		80495EDB1BF85932000E9263 /* SetPartA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetPartA.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		80DD65351C9CC72B0065AB90 /* Frameworks */ = {
+		80495ECE1BF858BC000E9263 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,97 +40,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		80DD652F1C9CC72B0065AB90 = {
+		80495EC81BF858BC000E9263 = {
 			isa = PBXGroup;
 			children = (
-				80DD653A1C9CC72B0065AB90 /* HW3 */,
-				80DD65391C9CC72B0065AB90 /* Products */,
+				80495ED31BF858BC000E9263 /* SetRealization */,
+				80495ED21BF858BC000E9263 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		80DD65391C9CC72B0065AB90 /* Products */ = {
+		80495ED21BF858BC000E9263 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80DD65381C9CC72B0065AB90 /* HW3 */,
+				80495ED11BF858BC000E9263 /* SetRealization */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		80DD653A1C9CC72B0065AB90 /* HW3 */ = {
+		80495ED31BF858BC000E9263 /* SetRealization */ = {
 			isa = PBXGroup;
 			children = (
-				80DD653B1C9CC72B0065AB90 /* main.cpp */,
-				80DD65461C9CD0D80065AB90 /* complex.cpp */,
-				80DD65471C9CD0D80065AB90 /* complex.hpp */,
+				80495EDB1BF85932000E9263 /* SetPartA.h */,
+				80495ED41BF858BC000E9263 /* main.cpp */,
+				80367E001BF959BD00235EFF /* SetPartB.h */,
 			);
-			path = HW3;
+			path = SetRealization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		80DD65371C9CC72B0065AB90 /* HW3 */ = {
+		80495ED01BF858BC000E9263 /* SetRealization */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80DD653F1C9CC72B0065AB90 /* Build configuration list for PBXNativeTarget "HW3" */;
+			buildConfigurationList = 80495ED81BF858BC000E9263 /* Build configuration list for PBXNativeTarget "SetRealization" */;
 			buildPhases = (
-				80DD65341C9CC72B0065AB90 /* Sources */,
-				80DD65351C9CC72B0065AB90 /* Frameworks */,
-				80DD65361C9CC72B0065AB90 /* CopyFiles */,
+				80495ECD1BF858BC000E9263 /* Sources */,
+				80495ECE1BF858BC000E9263 /* Frameworks */,
+				80495ECF1BF858BC000E9263 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = HW3;
-			productName = HW3;
-			productReference = 80DD65381C9CC72B0065AB90 /* HW3 */;
+			name = SetRealization;
+			productName = SetRealization;
+			productReference = 80495ED11BF858BC000E9263 /* SetRealization */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		80DD65301C9CC72B0065AB90 /* Project object */ = {
+		80495EC91BF858BC000E9263 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Tian Qiu";
 				TargetAttributes = {
-					80DD65371C9CC72B0065AB90 = {
-						CreatedOnToolsVersion = 7.2.1;
+					80495ED01BF858BC000E9263 = {
+						CreatedOnToolsVersion = 7.1;
 					};
 				};
 			};
-			buildConfigurationList = 80DD65331C9CC72B0065AB90 /* Build configuration list for PBXProject "HW3" */;
+			buildConfigurationList = 80495ECC1BF858BC000E9263 /* Build configuration list for PBXProject "SetRealization" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 80DD652F1C9CC72B0065AB90;
-			productRefGroup = 80DD65391C9CC72B0065AB90 /* Products */;
+			mainGroup = 80495EC81BF858BC000E9263;
+			productRefGroup = 80495ED21BF858BC000E9263 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				80DD65371C9CC72B0065AB90 /* HW3 */,
+				80495ED01BF858BC000E9263 /* SetRealization */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		80DD65341C9CC72B0065AB90 /* Sources */ = {
+		80495ECD1BF858BC000E9263 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80DD65481C9CD0D80065AB90 /* complex.cpp in Sources */,
-				80DD653C1C9CC72B0065AB90 /* main.cpp in Sources */,
+				80495ED51BF858BC000E9263 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		80DD653D1C9CC72B0065AB90 /* Debug */ = {
+		80495ED61BF858BC000E9263 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -174,7 +172,7 @@
 			};
 			name = Debug;
 		};
-		80DD653E1C9CC72B0065AB90 /* Release */ = {
+		80495ED71BF858BC000E9263 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -210,14 +208,14 @@
 			};
 			name = Release;
 		};
-		80DD65401C9CC72B0065AB90 /* Debug */ = {
+		80495ED91BF858BC000E9263 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		80DD65411C9CC72B0065AB90 /* Release */ = {
+		80495EDA1BF858BC000E9263 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -227,25 +225,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		80DD65331C9CC72B0065AB90 /* Build configuration list for PBXProject "HW3" */ = {
+		80495ECC1BF858BC000E9263 /* Build configuration list for PBXProject "SetRealization" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80DD653D1C9CC72B0065AB90 /* Debug */,
-				80DD653E1C9CC72B0065AB90 /* Release */,
+				80495ED61BF858BC000E9263 /* Debug */,
+				80495ED71BF858BC000E9263 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80DD653F1C9CC72B0065AB90 /* Build configuration list for PBXNativeTarget "HW3" */ = {
+		80495ED81BF858BC000E9263 /* Build configuration list for PBXNativeTarget "SetRealization" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				80DD65401C9CC72B0065AB90 /* Debug */,
-				80DD65411C9CC72B0065AB90 /* Release */,
+				80495ED91BF858BC000E9263 /* Debug */,
+				80495EDA1BF858BC000E9263 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 80DD65301C9CC72B0065AB90 /* Project object */;
+	rootObject = 80495EC91BF858BC000E9263 /* Project object */;
 }
