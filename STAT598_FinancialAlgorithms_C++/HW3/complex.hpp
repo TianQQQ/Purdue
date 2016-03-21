@@ -61,7 +61,7 @@ public :
     friend void arg (const complex &);
     friend void conj (const complex &);
     friend double sqrt (const complex &);
-    friend complex pow (const complex ,int p);
+    //friend complex pow (const complex ,int p);
     //Also need to implement im, obs , arg , conj , sqrt , pow as friend functions .
     //Need to use appropriate type of parameters and return value.
 };
