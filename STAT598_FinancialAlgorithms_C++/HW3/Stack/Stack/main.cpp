@@ -8,10 +8,6 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <string>
-#include <stdexcept>
 using namespace std;
 
 
@@ -22,7 +18,7 @@ using namespace std;
  
  public :
 
- ~stack ();
+ 
  //Destructor .
  size t size ();
  bool empty ( ) ;
@@ -39,7 +35,7 @@ template<class T>
 struct stack_node {
     T * next;
     T val;
-    stack_node(T * n) : next( n) {};
+    stack_node(T * n) : next(n) {};
 };
 
 template<class T>
@@ -54,10 +50,21 @@ class stack {
     //Three variables we keep.
     
     public :
-    stack ();//Constructor with no parameter .
-    stack (T);
-    stack ( node ) ; //Copy constructor with one node as parameter .
-    stack ( stack &);
+    stack (){
+        
+    }//Constructor with no parameter .
+    stack (T){
+        
+    }
+    stack ( node ) {
+        
+    }//Copy constructor with one node as parameter .
+    stack ( stack &){
+        
+    }
+    ~stack (){
+        
+    }
 };
 
 int main(){
