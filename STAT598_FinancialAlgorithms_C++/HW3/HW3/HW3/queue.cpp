@@ -1,8 +1,8 @@
 //
-//  stack_test.cpp
+//  queue.cpp
 //  HW3
 //
-//  Created by Tian Qiu on 16/3/20.
+//  Created by Tian Qiu on 16/3/21.
 //  Copyright © 2016年 Tian Qiu. All rights reserved.
 //
 
@@ -13,39 +13,39 @@ using namespace std;
 
 
 template<class T>
-struct stack_node {
+struct queue_node {
     T val;
-    stack_node<T> * next;
+    queue_node<T> * next;
     
     // constructor
-    stack_node() : next(nullptr) {};
+    queue_node() : next(nullptr) {};
     
 };
 
 
 template <typename T>
 
-class stack{
-    stack_node<T> *iterator;
+class queue{
+    queue_node<T> *iterator;
     size_t length;
-
+    
 public:
     
-    stack(){ iterator = 0;}
-    stack( T x){
-        stack();
+    queue(){ iterator = 0;}
+    queue( T x){
+        queue();
         push(x);
         length++;
     }
-    stack (stack_node<T> * node){
+    queue (queue_node<T> * node){
         iterator->val = node->val;
         node->next = iterator;
         iterator = node;
         length++;
     }
     
-    ~stack(){
-        stack_node<T> *p;
+    ~queue(){
+        queue_node<T> *p;
         while(iterator ){
             p=iterator->next;
             delete iterator;
@@ -61,13 +61,23 @@ public:
         return length;
     }
     
-    T & top(){
+
+    T& front(){
         if (!empty()) return iterator->val;
         else throw;
     }
     
+    T& back(){
+        queue_node<T> *p = iterator;
+        while(p->next){
+            p=p->next;
+        }
+        return p->val;
+    }
+    //Get the next and last element.
+    
     void push ( const T & x){
-        stack_node<T> * p = new stack_node<T>;
+        queue_node<T> * p = new queue_node<T>;
         p->val = x;    // linked list destructor important!!! infinite loop
         p->next = iterator;
         iterator = p;
@@ -78,7 +88,7 @@ public:
         T x;
         if (!empty()) {
             x = iterator -> val;
-            stack_node<T> *p = iterator;
+            queue_node<T> *p = iterator;
             iterator = p -> next;
             delete p;
             length -- ;
@@ -88,37 +98,28 @@ public:
 
 int main()
 {
-/*
-    stack_node<int> * node;
-    node->val = 1;
-    stack<int> b(node);
-*/
-    stack<char> a('x');
-    cout << a.top() <<endl;
+
+    
+    queue<char> a('x');
+    cout << a.front() <<endl;
     
     int s2 = 20;
     int s1 = 1;
-
-    stack<int> s;
+    
+    queue<int> s;
     for(int i=s2;i>=s1;--i){
         s.push(i);
     }
     
+    cout << s.back() << endl;
+    
     while(!s.empty()){
-        cout << s.top() <<" ";
+        cout << s.front() <<" ";
         s.pop();
     }
     cout << endl;
     return 0;
 }
-
-
-
-
-
-
-
-
 
 
 
