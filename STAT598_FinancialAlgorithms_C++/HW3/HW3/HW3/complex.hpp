@@ -1,10 +1,4 @@
-//
-//  complex.hpp
-//  HW3
-//
-//  Created by Tian Qiu on 16/3/18.
-//  Copyright © 2016年 Tian Qiu. All rights reserved.
-//
+
 
 #ifndef complex_hpp
 #define complex_hpp
@@ -24,8 +18,6 @@ public :
     complex(){ re=im=0; }
     complex(double re):re(re), im(0){};
     complex(double re, double im):re(re), im(im){};
-    //Why don’t we write a copy constructor and destructor?
-    // Becasue we dont need it.
     
     complex operator+(const complex & c){
         return complex(re+c.re, im+c.im);

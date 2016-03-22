@@ -68,7 +68,7 @@ public:
     
     void push ( const T & x){
         stack_node<T> * p = new stack_node<T>;
-        p->val = x;    // linked list destructor important!!! infinite loop
+        p->val = x;
         p->next = iterator;
         iterator = p;
         length ++;

@@ -24,8 +24,7 @@ public :
     complex(){ re=im=0; }
     complex(double re):re(re), im(0){};
     complex(double re, double im):re(re), im(im){};
-    //Why don’t we write a copy constructor and destructor?
-    // Becasue we dont need it.
+    
     
     complex operator+(const complex & c){
         return complex(re+c.re, im+c.im);
@@ -61,9 +60,7 @@ public :
     friend void arg (const complex &);
     friend void conj (const complex &);
     friend double sqrt (const complex &);
-    //friend complex pow (const complex ,int p);
-    //Also need to implement im, obs , arg , conj , sqrt , pow as friend functions .
-    //Need to use appropriate type of parameters and return value.
+
 };
 
 
@@ -84,7 +81,7 @@ double im (const complex & c){
     return c.im;
 }
 double abs (const complex & c){
-    return sqrt(int(c.im*c.im + c.re*c.im));
+    return sqrt(int(c.im*c.im + c.re*c.re));
 }
 void arg (const complex & c){
     cout << acos(c.re/(sqrt(pow(c.re,2)+pow(c.im,2))))<< endl;
@@ -92,13 +89,9 @@ void arg (const complex & c){
 void conj (const complex & c){
     cout << '(' << c.re << ',' << -c.im << ')' << endl;
 }
-complex pow (const complex c, int p){
-    complex c1 = c;
-    for (int i = 1; i<p; i++) {
-        c1 = c1 * c;
-    }
-    return c*c;
-}
+
+
+
 
 
 

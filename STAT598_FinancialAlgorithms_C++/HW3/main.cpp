@@ -1,9 +1,4 @@
-//
-//  main.cpp
-//  HW3
-//
-//  Created by Tian Qiu on 16/3/18.
-//  Copyright © 2016年 Tian Qiu. All rights reserved.
+
 //
 
 #include <iostream>
@@ -28,7 +23,7 @@ int main(int argc, const char * argv[]) {
     cout << abs(c1) << endl;
     arg(c1);
     conj(c1);
-    cout << pow(c1, 3) << endl; // c1 's power 2
+    //cout << pow(c1, 3) << endl; // c1 's power 2
     
     return 0;
 }

@@ -207,8 +207,9 @@ int main()
     linkedlist<char> a('x');
     cout << a.front() <<endl;
     
-    int s2 = 20;
     int s1 = 1;
+    int s2 = 20;
+    
     
     linkedlist<int> s;
     for(int i = s2; i >= s1; --i ){
