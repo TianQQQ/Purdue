@@ -47,19 +47,19 @@ public:
     }
     
     ~linkedlist(){
-        linkedlist_node<T> *p;
+        /*linkedlist_node<T> *p;
         while(iterator){
             p=iterator->next;
-            //delete iterator;
+            delete iterator;
             iterator=p;
-        }
+        }*/
     }
     
     iterator_type begin (){}  // useless
     
     iterator_type end(){    // useless
         linkedlist_node<T> *p = iterator;
-        while(p->next){
+        while(p->next->next){
             p=p->next;
         }
         return p->next;
@@ -125,7 +125,6 @@ public:
         linkedlist_node<T> *p = new linkedlist_node<T>;
         //p = end();
         //p = nullptr;
-        
         p = iterator;
         while(p->next->next){
             p=p->next;
@@ -160,8 +159,43 @@ public:
         }
     }
     
-    void sort(){
+    iterator_type GetPartion(iterator_type pBegin, iterator_type pEnd){
+        int key = pBegin->val;
+        iterator_type p = pBegin;
+        iterator_type q = p->next;
         
+        while(q != pEnd)
+        {
+            if(q->val < key)
+            {
+                p = p->next;
+                swap(p->val,q->val);
+            }
+            
+            q = q->next;
+        }  
+        swap(p->val,pBegin->val);
+        return p;  
+    }
+    
+    void Sort(iterator_type pBegin, iterator_type pEnd)
+    {
+
+        
+        if(pBegin != pEnd)
+        {
+            iterator_type partion = GetPartion(pBegin,pEnd);
+            Sort(pBegin,partion);
+            Sort(partion->next,pEnd);
+        }  
+    }
+    
+    void Sort(){
+        linkedlist_node<T> * pBegin = new linkedlist_node<T>;
+        linkedlist_node<T> * pEnd = new linkedlist_node<T>;
+        pBegin = iterator;
+        pEnd = end();
+        Sort(pBegin, pEnd);
     }
     
 };
@@ -181,20 +215,38 @@ int main()
         s.push_front(i);
     }
     
+    s.push_front(22);
     cout << s.back() << endl;
     s.push_back(25);
     s.push_back(5);
     cout << s.back() << endl;
     s.pop_back();
     cout << s.back() << endl;
-    s.remove(10);
+
+
     
+    s.Sort();
 
     while(!s.empty()){
         cout << s.front() <<" ";
         s.pop_front();
     }
     cout << endl;
+    
+    
+    
+    for(int i = s2; i >= s1; --i ){
+        s.push_front(i);
+    }
+    
+    s.remove(10);
+    
+    while(!s.empty()){
+        cout << s.front() <<" ";
+        s.pop_front();
+    }
+    cout << endl;
+    
     return 0;
 }
 
