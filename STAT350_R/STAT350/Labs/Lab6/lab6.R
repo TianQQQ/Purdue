@@ -1,11 +1,10 @@
-
-
-
-
 setwd("~/Desktop/Purdue/STAT350_R/STAT350/Labs/Lab6")
 airline_cleaned <- read.delim("~/Desktop/Purdue/STAT350_R/STAT350/Labs/Lab6/airline_cleaned.txt")
 
 attach(airline_cleaned)
+
+ActualElapsedTime = log(airline_cleaned$ActualElapsedTime)                               # log the data!!!!
+airline_cleaned$ActualElapsedTime = log(airline_cleaned$ActualElapsedTime)
 mean(ActualElapsedTime) 
 sd(ActualElapsedTime)
 mean(airline_cleaned$ActualElapsedTime) 
@@ -35,7 +34,7 @@ quartz()
 qqnorm(airline_cleaned$ActualElapsedTime,main="Normal Quantile Plot for normal distribution") 
 qqline(airline_cleaned$ActualElapsedTime)
 
-t.test(airline_cleaned$ActualElapsedTime, conf.level=0.95, alternative = "two.sided")
+t.test(airline_cleaned$ActualElapsedTime, conf.level=0.99, alternative = "two.sided")
 library(TeachingDemos)
 stdev = sd(airline_cleaned$ActualElapsedTime)
 stdev
