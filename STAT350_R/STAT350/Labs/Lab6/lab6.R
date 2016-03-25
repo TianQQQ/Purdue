@@ -10,6 +10,7 @@ sd(ActualElapsedTime)
 mean(airline_cleaned$ActualElapsedTime) 
 sd(airline_cleaned$ActualElapsedTime)
 
+t.test(airline_cleaned$ActualElapsedTime, conf.level=0.99, alternative = "two.sided")
 
 print(airline_cleaned$ActualElapsedTime)
 quartz()
