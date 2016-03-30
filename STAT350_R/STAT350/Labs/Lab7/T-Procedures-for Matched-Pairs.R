@@ -11,7 +11,7 @@ normaltest = Driver - Computer
 # The pairing will be x ??? y
 # alternative = "greater" or "less" or "two.sided" (this is the
 #  for two-sample independent ONLY appropriate alternative hypothesis)
-t.test(Driver,Computer, mu=0, alternative = "two.sided")
+t.test(Driver,Computer, mu=0,conf.level=0.95,paired = TRUE, alternative = "two.sided")
 # Information required for f
 std = sd(normaltest)
 size = length(Driver)
