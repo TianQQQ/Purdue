@@ -1,0 +1,17 @@
+
+
+2 flip flops for delay time
+
+
+if enable_timer:
+	enable flex_counter_10
+	increment for flex_counter_10
+
+	if rollover_val is 10 :
+		shift_strobe = 1;
+		increment flex_counter_9 //increment with shift_strobe;
+	
+	if rollover_val is 9 :
+		packet_done is true
+
+

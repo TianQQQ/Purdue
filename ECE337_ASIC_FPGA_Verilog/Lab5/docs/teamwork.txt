@@ -1,0 +1,21 @@
+Tian Qiu
+5
+5
+5
+5
+
+Chen yiyi
+5
+5
+5
+5
+
+2.) Team work together to brainstrom and then draw the diagram, Yiyi is more focused on state diagram, Tian is more focued on RTL. After sharing the information, we drew the graph individually. And then discuss the idea about converting the diagram to code and code separetely.
+
+3.) Team met twice. And team member sent messages to set up the meeting.
+
+4.) Thought the diagram and came up with the idea of converting the diagram to code with Tian and debugged with Tian.
+
+5.) As mentioned in part 2, we worked on different part of diagram and share the idea, and we did the converting and debugging.
+
+6.) We just used the test bench that already existed this time.

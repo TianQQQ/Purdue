@@ -1,0 +1,7 @@
+1. Minimum two clock cycles are needed to make sure data runs correctly.
+
+2. Given the filter in the lab, the output image makes sense.
+
+3. fseek, fopen, fscanf
+
+4. character
