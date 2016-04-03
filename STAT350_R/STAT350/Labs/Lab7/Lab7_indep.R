@@ -10,7 +10,18 @@ attach(studynew)
 #   code below.
 library(lattice)
 histogram(log(abs(ord$DepDelay)))
+means <- mean(ord$DepDelay)
+print(means)
+std <- sd(ord$DepDelay)
+curve(dnorm(x, mean=means, sd=std), col="blue", lwd=2, add=TRUE)   # normal distribution line
+lines(density(log(abs(ord$DepDelay)), adjust=2),col = "red", lwd=2)
+
+
+
 histogram(log(abs(mdw$DepDelay)))
+
+
+
 histogram(~log(abs(DepDelay)) | Origin, layout=c(1,2),type="density", panel=function(x)
 {panel.histogram(x) 
   panel.mathdensity(dmath=dnorm,col="blue",lwd=2,args=list(mean=mean(x, na.rm=T), sd = sd(x,na.rm=T))) 
