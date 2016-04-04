@@ -20,8 +20,29 @@ class matrix {
 public:
 	matrix();
 	void assign(const vector<T>&);
-	friend matrix<T, m, n> operator+ <>(const matrix<T, m, n>&, const matrix<T, m, n>&);
-	friend ostream& operator<< <>(ostream&, const matrix<T, m, n>&);
+    matrix<T, m, n> operator+ (const matrix<T, m, n> b){
+        matrix<T, m, n> res;
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                res.elements[i][j] += b.elements[i][j];
+        return res;
+    }
+    
+    void print (){
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j)
+                cout << elements[i][j] << " ";
+            cout << endl;
+        }
+    }
+
+    matrix<T, m, n> operator*(const T& b){
+        matrix<T, m, n> res;
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                res.elements[i][j] = b * elements[i][j];
+        return res;
+    }
 	//Pay attention to the "<>" after the operator.
 	//For operator overloading that involves template, this can solve some bugs.
 };
@@ -47,23 +68,29 @@ void matrix<T, m, n>::assign(const vector<T>& input) {
 	return;
 }
 
-template<class T, int m, int n>
-matrix<T, m, n> operator+ <>(const matrix<T, m, n>& a, const matrix<T, m, n>& b) {
-	matrix<T, m, n> res = a;
-	for (int i = 0; i < m; ++i)
-		for (int j = 0; j < n; ++j)
-			res.elements[i][j] += b.elements[i][j];
-	return res;
-}
 
+/*
 template<class T, int m, int n>
-ostream& operator<< <>(ostream& o, const matrix<T, m, n>& input) {
-	for (int i = 0; i < m; ++i) {
-		for (int j = 0; j < n; ++j)
-			o << input.elements[i][j] << " ";
-		o << endl;
-	}
-	return o;
-}
+matrix<T, m, n> operator+ (const matrix<T, m, n>& a, const matrix<T, m, n>& b) {
+
+}*/
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
