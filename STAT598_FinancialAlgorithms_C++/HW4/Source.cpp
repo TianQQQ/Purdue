@@ -9,8 +9,11 @@ int main() {
 	matrix<double, 2, 2> A, B, C;
 	A.assign(a);
 	B.assign(b);
-    A = B * 13;
-    //A = B + B;
+    C.assign(a);
+    A =  B * 13;
+    A = B + B;
+    C.print();
+    A = C.transpose();
     A.print();
     B.print();
 	return 0;

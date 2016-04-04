@@ -19,6 +19,12 @@ class matrix {
 	vector<vector<T>> elements;
 public:
 	matrix();
+    /*matrix ( matrix<T, m, n> & b){
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                this->elements[i][j] = b.elements[i][j];
+    }*/
+
 	void assign(const vector<T>&);
     matrix<T, m, n> operator+ (const matrix<T, m, n> b){
         matrix<T, m, n> res;
@@ -43,8 +49,41 @@ public:
                 res.elements[i][j] = b * elements[i][j];
         return res;
     }
-	//Pay attention to the "<>" after the operator.
-	//For operator overloading that involves template, this can solve some bugs.
+    
+    matrix<T, m, n> operator*(const matrix<T, m, n> b){
+        matrix<T, m, n> res;
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                res.elements[i][j] = b.elements[i][j] + elements[i][j];
+        return res;
+    }
+    
+    vector<T> row(int i){
+        return elements[i];
+    }
+    
+    vector<T> col(int j){
+        vector<T> col;
+        for (int i = 0; i < ncol; i++)
+        {
+            col.push_back(elements[i][j]);
+        }
+        return col;
+    }
+    matrix<T, n , m> transpose () {
+        matrix<T, m, n> res;
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                res.elements[j][i] = elements[i][j];
+        return res;
+    }// return the transpose of the matrix
+    
+    
+    //Matrix<T, m, n> GaussElimination (); //return the Gauss elimination
+
+    
+    ~matrix(){
+    }
 };
 
 template<class T, int m, int n>
@@ -68,12 +107,6 @@ void matrix<T, m, n>::assign(const vector<T>& input) {
 	return;
 }
 
-
-/*
-template<class T, int m, int n>
-matrix<T, m, n> operator+ (const matrix<T, m, n>& a, const matrix<T, m, n>& b) {
-
-}*/
 
 #endif
 
