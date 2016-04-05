@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 #define MAXNUM 50
@@ -21,11 +22,7 @@ class matrix {
 	vector<vector<T>> elements;
 public:
 	matrix();
-    /*matrix ( matrix<T, m, n> & b){
-        for (int i = 0; i < m; ++i)
-            for (int j = 0; j < n; ++j)
-                this->elements[i][j] = b.elements[i][j];
-    }*/
+    matrix ( matrix<T, m, n> & );
 
 	void assign(const vector<T>&);
     matrix<T, m, n> operator+ (const matrix<T, m, n> b){
@@ -81,28 +78,11 @@ public:
         return res;
     }// return the transpose of the matrix
     
- /*
-    ::matrix<T, m, n> GaussElimination (){
-        //高斯消元法（列选主元）
-        void Gauss (double a[][MAXNUM],int n)
-        {
-            int i,j;
-            SelectColE(a,n);   //列选主元并消元成上三角
-            //回代求解
-            printf("上三角的结果\n");
-            printM(a,3);
-            for(i=n;i>=1;i--)
-            {
-                for(j=i+1;j<=n;j++)
-                    a[i][n+1]-=a[i][j]*a[j][n+1];
-                a[i][n+1]/=a[i][i];
-            }
-            return ;
-        }
+    matrix<T, m, n> GaussElimination (){
+        matrix<T, m, n> res;
         
-
-    }//return the Gauss elimination
-*/
+        return res;
+    }//return the Gauss elimination*/
     
     ~matrix(){
     }
@@ -118,6 +98,18 @@ matrix<T, m, n>::matrix() {
 }
 
 template<class T, int m, int n>
+matrix<T, m, n>::matrix(matrix<T, m, n> & b) {
+    vector<T>temp(n, 0);
+    elements.assign(m, temp);
+    //Pay attention to the usage of member functions of vector class.
+    nrow = m;
+    ncol = n;
+    for (int i = 0; i < m; ++i)
+        for (int j = 0; j < n; ++j)
+            this->elements[i][j] = b.elements[i][j];
+}
+
+template<class T, int m, int n>
 void matrix<T, m, n>::assign(const vector<T>& input) {
 	int size = input.size();
 	int i;
@@ -129,43 +121,7 @@ void matrix<T, m, n>::assign(const vector<T>& input) {
 	return;
 }
 
-/*
-//选择列主元并进行消元
-void SelectColE(double a[][MAXNUM],int n)
-{
-    int i,j,k,maxRowE;
-    double temp; //用于记录消元时的因数
-    for(j=1;j<=n;j++)
-    {
-        maxRowE=j;
-        for(i=j;i<=n;i++)
-            if(fabs(a[i][j])>fabs(a[maxRowE][j]))
-                maxRowE = i;
-        if(maxRowE!=j)
-            swapRow(a,j,maxRowE,n);   //与最大主元所在行交换
-        //消元
-        for(i=j+1;i<=n;i++)
-        {
-            temp =a[i][j]/a[j][j];
-            for(k=j;k<=n+1;k++)
-                a[i][k]-=a[j][k]*temp;
-        }
-        printf("第%d列消元后：\n",j);
-        printM(a,3);
-    }
-}
 
-void swapRow(double a[][MAXNUM],int m,int maxRowE,int n)
-{
-    int k;
-    double temp;
-    for(k=m;k<=n+1;k++)
-    {
-        temp = a[m][k];
-        a[m][k] = a[maxRowE][k];
-        a[maxRowE][k] = temp;
-    }
-}*/
 #endif
 
 
