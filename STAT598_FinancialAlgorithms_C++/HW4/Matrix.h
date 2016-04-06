@@ -174,6 +174,10 @@ public:
         cout << endl;
     }
     
+    int rank(){
+        
+    }//return the rank of the matrix
+    
     
     ~matrix(){
     }
