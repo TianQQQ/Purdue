@@ -5,7 +5,7 @@ using namespace std;
 
 
 int main() {
-	vector<double> a = { 1, 2, 3, 1,1,1,1,1,1};
+	vector<double> a = { 1, 2, 3, 0,1,1,1,0,1};
 	vector<double> b = { 2, 3, 4 };
 	matrix<double, 2, 2>  B, C;
 	//A.assign(a);
@@ -21,8 +21,8 @@ int main() {
     matrix<double,3, 4>  D, E;
     D.assign(a);
     D.print();
-    E = D.GaussElimination();
-    E.print();
+    D.Solve(b);
+    //E.print();
     
 
 }

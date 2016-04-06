@@ -15,6 +15,33 @@ using namespace std;
 
 #define MAXNUM 50
 
+
+
+template<class T>
+void print_vvector(vector< vector<T> > A) {
+    int n = A.size();
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<n+1; j++) {
+            cout << A[i][j] << "\t";
+            if (j == n-1) {
+                cout << "| ";
+            }
+        }
+        cout << "\n";
+    }
+    cout << endl;
+}
+
+template<class T>
+void result_print(vector<T> x, int n){
+    cout << "Result:\t";
+    for (int i=0; i<n; i++) {
+        cout << x[i] << " ";
+    }
+    cout << endl;
+}
+
+
 template<class T, int m, int n>
 class matrix {
 	int nrow;
@@ -78,11 +105,73 @@ public:
         return res;
     }// return the transpose of the matrix
     
-    matrix<T, m, n> GaussElimination (){
-        matrix<T, m, n> res;
+    vector<vector<T>> GaussElimination (vector< vector<T> >   A){
         
-        return res;
+        for (int i=0; i<nrow; i++) {
+            // Search for maximum in this column
+            double maxEl = abs(A[i][i]);
+            int maxRow = i;
+            for (int k=i+1; k<nrow; k++) {
+                if (abs(A[k][i]) > maxEl) {
+                    maxEl = abs(A[k][i]);
+                    maxRow = k;
+                }
+            }
+            
+            // Swap maximum row with current row (column by column)
+            for (int k=i; k<nrow+1;k++) {
+                double tmp = A[maxRow][k];
+                A[maxRow][k] = A[i][k];
+                A[i][k] = tmp;
+            }
+            
+            // Make all rows below this one 0 in current column
+            for (int k=i+1; k<nrow; k++) {
+                double c = -A[k][i]/A[i][i];
+                for (int j=i; j<nrow+1; j++) {
+                    if (i==j) {
+                        A[k][j] = 0;
+                    } else {
+                        A[k][j] += c * A[i][j];
+                    }
+                }
+            }
+        }
+        print_vvector(A);
+        return A;
+
     }//return the Gauss elimination*/
+    
+    vector<T> Solve(const vector<T> & b){
+
+        vector<double> line(nrow+1,0);
+        vector< vector<double> > A(nrow,line);
+        
+        // Read inrowput data
+        for (int i=0; i<nrow; i++) {
+            for (int j=0; j<nrow; j++) {
+                A[i][j] = elements[i][j];
+            }
+        }
+        
+        for (int i=0; i<nrow; i++) {
+            A[i][nrow] = b[i];
+        }
+        
+        A = GaussElimination(A);
+        // Solve equation Ax=b for an upper triangular matrix A
+        vector<double> x(nrow);
+        for (int i=nrow-1; i>=0; i--) {
+            x[i] = A[i][nrow]/A[i][i];
+            for (int k=i-1;k>=0; k--) {
+                A[k][nrow] -= A[k][i] * x[i];
+            }
+        }
+        
+        //result_print <x, nrow>;
+        
+        return x;
+    }//solve a linear equation Ax = b,
     
     ~matrix(){
     }
@@ -120,6 +209,7 @@ void matrix<T, m, n>::assign(const vector<T>& input) {
 		elements[i / n][i % n] = 0;
 	return;
 }
+
 
 
 #endif
