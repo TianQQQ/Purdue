@@ -7,6 +7,8 @@ using namespace std;
 int main() {
 	vector<double> a = { 1, 2, 3, 0,1,1,1,0,1};
 	vector<double> b = { 2, 3, 4 };
+    vector<double> c = { 1, 2, 3, 0,1,1,1};
+    vector<double> d = { 1, 2, 0};
 	matrix<double, 2, 2>  B, C;
 	//A.assign(a);
 	B.assign(b);
@@ -22,7 +24,11 @@ int main() {
     D.assign(a);
     D.print();
     D.Solve(b);
-    //E.print();
+    cout << "Rank is " << D.rank() << endl;
+    E.assign(c);
+    E.print();
+    E.Solve(d);
+    cout << "Rank is " << E.rank() << endl;
     
 
 }

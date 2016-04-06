@@ -131,6 +131,7 @@ public:
             }
         }
         print_vvector(A);
+        elements = A;
         return A;
 
     }//return the Gauss elimination*/
@@ -175,7 +176,18 @@ public:
     }
     
     int rank(){
-        
+        int zero_line_count = 0;
+        for (int i=0; i<m; i++) {
+            for (int j=0; j<n; j++) {
+                if (elements[i][j] != 0) {
+                    break;
+                }
+                if (j == n-1) {
+                    zero_line_count++;
+                }
+            }
+        }
+        return nrow - zero_line_count;
     }//return the rank of the matrix
     
     
