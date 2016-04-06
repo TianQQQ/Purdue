@@ -32,14 +32,7 @@ void print_vvector(vector< vector<T> > A) {
     cout << endl;
 }
 
-template<class T>
-void result_print(vector<T> x, int n){
-    cout << "Result:\t";
-    for (int i=0; i<n; i++) {
-        cout << x[i] << " ";
-    }
-    cout << endl;
-}
+
 
 
 template<class T, int m, int n>
@@ -168,10 +161,19 @@ public:
             }
         }
         
-        //result_print <x, nrow>;
-        
+        solved_result_print(x);
         return x;
     }//solve a linear equation Ax = b,
+    
+    
+    void solved_result_print(vector<T> x){
+        cout << "Result:\t";
+        for (int i=0; i<nrow; i++) {
+            cout << "x[" << i+1 << "] = " << x[i] << "\t";
+        }
+        cout << endl;
+    }
+    
     
     ~matrix(){
     }
