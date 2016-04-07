@@ -37,9 +37,12 @@ void print_vvector(vector< vector<T> > A) {
 
 template<class T, int m, int n>
 class matrix {
-	int nrow;
+
+protected:
+    int nrow;
 	int ncol;
 	vector<vector<T>> elements;
+    
 public:
 	matrix();
     matrix ( matrix<T, m, n> & );
@@ -228,8 +231,27 @@ void matrix<T, m, n>::assign(const vector<T>& input) {
 	return;
 }
 
+////////////////////////////////////////////////////////////////////////// Square matrix class
+template<class T, int n>
+class SquareMatrix :public matrix<T, n, n> {
+    
+protected:
+    int nrow;
+    int ncol;
+    vector<vector<T>> elements;
+    
+public :
+    SquareMatrix ( ) {
+        vector<T>temp(n, 0);
+        elements.assign(n, temp);
+        //Pay attention to the usage of member functions of vector class.
+        nrow = n;
+        ncol = n;
+    }
+    SquareMatrix ( SquareMatrix<T, n>&);
 
 
+};
 #endif
 
 
