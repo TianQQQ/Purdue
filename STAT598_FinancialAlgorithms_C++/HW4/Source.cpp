@@ -34,10 +34,10 @@ int main() {
     cout << "Rank is " << E.rank() << endl;
     
     
-    cout << "SquareMatrix<T, n> class test start :" << endl;
-    SquareMatrix<double, 2> AA;
+    cout << "------------------------------------SquareMatrix<T, n> class test start --------------------------------------------------------" << endl;
+    SquareMatrix<double, 3> AA;
     AA.assign(a);
-    
+    AA.print();
 
 }
 
