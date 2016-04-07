@@ -44,6 +44,9 @@ protected:
 	vector<vector<T>> elements;
     
 public:
+    
+
+    
 	matrix();
     matrix ( matrix<T, m, n> & );
 
@@ -78,6 +81,18 @@ public:
             for (int j = 0; j < n; ++j)
                 res.elements[i][j] = b.elements[i][j] + elements[i][j];
         return res;
+    }
+    
+    friend inline ostream & operator<<(ostream &os, const matrix &a){
+        int i, j;
+        for(i = 0; i < a.row; i++){
+            for(j = 0; j < a.col - 1; j++){
+                os << a.data[i][j] << " ";
+            }
+            os << a.data[i][j];
+            os << endl;
+        }
+        return os;
     }
     
     vector<T> row(int i){
@@ -133,6 +148,7 @@ public:
                 }
             }
         }
+        cout << "After Gaussian elmination, the matrix becomes: " << endl;
         print_vvector(A);
         elements = A;
         return A;
@@ -154,6 +170,9 @@ public:
         for (int i=0; i<nrow; i++) {
             A[i][nrow] = b[i];
         }
+        
+        cout << "Matrix before solve is: " << endl;
+        print_vvector(A);
         
         A = GaussElimination(A);
         // Solve equation Ax=b for an upper triangular matrix A
@@ -235,7 +254,7 @@ void matrix<T, m, n>::assign(const vector<T>& input) {
 template<class T, int n>
 class SquareMatrix :public matrix<T, n, n> {
     
-protected:
+public:
     int nrow;
     int ncol;
     vector<vector<T>> elements;
@@ -249,7 +268,53 @@ public :
         ncol = n;
     }
     SquareMatrix ( SquareMatrix<T, n>&);
-
+    
+    
+    double determinant(vector<vector<T>> a, int n1){
+        int i,j,j1,j2;
+        double det = 0;
+        
+        if (n1 < 1) { /* Error */
+            
+        } else if (n1 == 1) { /* Shouldn't get used */
+            det = a[0][0];
+        } else if (n1 == 2) {
+            det = a[0][0] * a[1][1] - a[1][0] * a[0][1];
+        } else {
+            det = 0;
+            for (j1=0;j1<n1;j1++) {
+                vector<double> line(nrow+1,0);
+                vector< vector<double> > m(nrow,line);
+                for (i=1;i<n1;i++) {
+                    j2 = 0;
+                    for (j=0;j<n1;j++) {
+                        if (j == j1)
+                            continue;
+                        m[i-1][j2] = a[i][j];
+                        j2++;
+                    }
+                }
+                det += pow(-1.0,j1+2.0) * a[0][j1] * determinant(m ,n1-1);
+            }
+        }
+        return(det);
+    }
+    
+    bool isNonSingular(){
+        if (determinant(elements, n)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    SquareMatrix<T, n> inverse (){
+        
+    }//return the inverse of the matrix
+    
+    SquareMatrix<T, n> powmatrix(int n1){
+        
+    }//calculate Aˆn
 
 };
 #endif

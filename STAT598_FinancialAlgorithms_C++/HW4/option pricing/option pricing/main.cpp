@@ -127,7 +127,7 @@ int main(){
     A.update();
     cout << A.getprice()<<endl;
     option C;
-    C.getval(1,3, 0.04, 40, 100 ,1.5 ,3);
+    C.getval(1,3, 0.04, 40, 100 ,1.5 ,2);
     cout << C.judgetype("call") << endl;
     return 0;
 }

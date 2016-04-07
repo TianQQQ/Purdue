@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  Determinent
+//  Determinant
 //
 //  Created by Tian Qiu on 16/4/6.
 //  Copyright © 2016年 Tian Qiu. All rights reserved.
