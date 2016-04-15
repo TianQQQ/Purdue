@@ -42,6 +42,7 @@ qqmath(~log(abs(studynew.new$TaxiIn)) | studynew.new$UniqueCarrier, data = study
 
 fit <- aov(Comp ~ Group, data=studynew.new)
 summary(fit)
+# tukey test
 test.Tukey<-TukeyHSD(fit,conf.level=0.95)
 test.Tukey
 
