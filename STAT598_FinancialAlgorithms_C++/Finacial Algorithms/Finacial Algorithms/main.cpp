@@ -32,11 +32,12 @@ int main()
     cout << "The price of a barrier option is " << g << endl;
     
     
-    
-    double a = binary(100, 0.2, 90, 0.05, 3, "AssetOrNothingCall");
+    BlackScholes * k = new BlackScholes(100, 0.2, 90, 0.05, 3, "AssetOrNothingCall");
+    BlackScholes * m = new BlackScholes(100, 0.2, 90, 0.05, 3, "put");
+    double a = k->binary();
     cout << a << endl;
-    double b = black_scholes(100, 0.2, 70, 0.05, 3, "put");
-    cout << b << endl;
+    double z = m->black_scholes();
+    cout << z << endl;
     
     
     return EXIT_SUCCESS;
