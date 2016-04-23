@@ -21,15 +21,17 @@ local.lm = lm(localAirline$ActualElapsedTime ~ Distance)
 summary(local.lm)
 
 #7)
+x <- subset(airline, Month == 11 &	DayofMonth == 7 & Origin == "MSP" &	Dest == "MKE" & DepTime	== 1529)
+x$Distance
+x$ActualElapsedTime
 
 
+#8) calculate the residuals
 
-
-#e) calculate the residuals
 local.resid = local.lm$res #Extract residuals obtained in job.lm operation
 
-xyplot(job.resid ~ LOC,
-       data = job,
+xyplot(local.resid ~ Distance,
+       data = local.lm,
        main="Residual plot",
        ylab = "Residual",
        panel = function(x, y){
@@ -40,7 +42,15 @@ xyplot(job.resid ~ LOC,
 # Calculate the histogram and qqplot on the residuals please see previous labs for this
 # Note: this is a single sample
 # Generate the 2-sided Confidence Interval (CI) for the parameters
+histogram(local.resid, type="density", 
+          panel=function(x,...) 
+          {panel.histogram(x,...) 
+            panel.mathdensity(dmath=dnorm,col="blue",lwd=2,
+                              args=list(mean=mean(x, na.rm=T), sd = sd(x,na.rm=T)),...)
+            panel.densityplot(x,col="red",lwd=2,...)
+          })
+
 #h)
-confint(job.lm, level = 0.95)
+sconfint(local.lm, level = 0.99)
 #NOTE: This can also be done by hand from output of summary(job.lm) > # However, in this lab, you must use the code above.
 
