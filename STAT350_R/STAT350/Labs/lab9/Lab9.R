@@ -49,8 +49,11 @@ histogram(local.resid, type="density",
                               args=list(mean=mean(x, na.rm=T), sd = sd(x,na.rm=T)),...)
             panel.densityplot(x,col="red",lwd=2,...)
           })
-
+qqmath(local.resid, panel = function(x){
+  panel.qqmath(x)
+  panel.qqmathline(x)
+})
 #h)
-sconfint(local.lm, level = 0.99)
+confint(local.lm, level = 0.99)
 #NOTE: This can also be done by hand from output of summary(job.lm) > # However, in this lab, you must use the code above.
 
