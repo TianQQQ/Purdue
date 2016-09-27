@@ -1,0 +1,18 @@
+# COMPLETE and play around with N
+N = 79
+fib = zeros(N)
+roots1 = zeros(Complex{Float64}, N)
+roots2 = zeros(Complex{Float64}, N)
+fib[1] = 1; roots1[1] = 1 # avoid reporting these equal
+fib[2] = 1; roots1[2] = 1 # because we don't compute them
+for i=3:N
+    fib[i] = fib[i-2] + fib[i-1]
+    roots1 = (fib[i-1] + 1) / fib[i]
+    roots2 = (fib[i-1] - 1) / fib[i]
+    # COMPLETE this section to fill in
+end
+bign = findfirst(roots1.==roots2) # finds the first zero
+println(roots1)
+
+println(roots2)
+println(bign)
