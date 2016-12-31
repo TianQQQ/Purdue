@@ -1,0 +1,1 @@
+fswebcam ~/Desktop/Images/a.jpg
