@@ -1,0 +1,382 @@
+/*
+ Eric Villasenor
+ evillase@gmail.com
+
+ this block is the coherence protocol
+ and artibtration for ram
+ */
+
+// interface include
+`include "cache_control_if.vh"
+
+// memory types
+
+
+module memory_control (
+                       input CLK, nRST,
+                       cache_control_if.cc ccif);
+   // type import
+   import cpu_types_pkg::*;
+   
+   // dual cpu
+   parameter CPUS = 2;
+
+   typedef enum logic[4:0] {Idle,Invalidate1,Invalidate0,No_transfer0,No_transfer1,Load_instruction0,
+				Load_instruction1,Not_match1_1,Not_match0_0,Not_match0_1,Transfer0,Transfer1,
+				Replace0_0,Replace0_1,Replace1_0,Replace1_1,Snoop0,Snoop1,
+				Write_back0_0,Write_back0_1,Write_back1_0,Write_back1_1,Not_match1_0}  stateType;
+
+   stateType cache_state,cache_next_state;
+
+
+assign ccif.iload[0] =(cache_state == Load_instruction0)? ccif.ramload : 32'hdeadbeef;
+	assign ccif.iload[1] =(cache_state == Load_instruction1)? ccif.ramload : 32'hdeadbeef;
+	assign ccif.dload[0] = (cache_state==Not_match0_0 | cache_state == Not_match0_1 ) ? ccif.ramload : (cache_state == Write_back1_0 | cache_state == Write_back1_1) ? ccif.dstore[1] : (cache_state == Transfer1)? ccif.dstore[1] : 32'hdeadbeef;
+	assign ccif.dload[1] = (cache_state == Write_back0_0 | cache_state == Write_back0_1 ) ? ccif.dstore[0] : (cache_state==Not_match1_0 | cache_state == Not_match1_1) ? ccif.ramload : (cache_state == Transfer0)? ccif.dstore[0] : 32'hdeadbeef;
+
+
+   always_ff @(posedge CLK, negedge nRST) begin:CCSTAT
+    if(nRST == 1'b0)
+      cache_state <= Idle;
+      else
+      cache_state <= cache_next_state;
+    end
+
+  logic count;
+  always_ff @(posedge CLK, negedge nRST) begin
+      if(nRST == 1'b0)
+         count<= 1'b0;
+      else if((cache_state == Load_instruction0 | cache_state==Load_instruction1) & ccif.ramstate == ACCESS & ccif.iREN == 2'b11)
+        count <= !count;  
+   end
+
+
+    always_comb begin
+       cache_next_state=cache_state;
+       ccif.ccwait=2'b00;
+       ccif.ccinv=2'b00;
+       ccif.ccsnoopaddr=32'hdeadbeef;
+       
+      casez(cache_state)
+      Idle:begin
+         
+        ccif.ccwait=2'b00; 
+        ccif.ccinv=2'b00; 
+        ccif.ccsnoopaddr=32'hdeadbeef;
+        if(ccif.dWEN[1])
+        begin
+          cache_next_state = Replace1_0;
+        end
+        else if(ccif.dWEN[0])
+        begin
+          cache_next_state = Replace0_0;
+        end
+        else if(!ccif.cctrans[0] & ccif.ccwrite[0])
+        begin
+            cache_next_state = Invalidate1;
+        end
+        else if(!ccif.cctrans[1] & ccif.ccwrite[1])
+        begin
+            cache_next_state = Invalidate0;
+        end
+        else if(ccif.cctrans[1])
+        begin
+          cache_next_state= Snoop0;
+        end
+        else if (ccif.cctrans==2'b01)
+        begin
+          cache_next_state= Snoop1;
+        end
+        else if (ccif.iREN==2'b01|(ccif.iREN==3 & !count))
+        begin
+          cache_next_state= Load_instruction0;
+        end
+        else if (ccif.iREN==2'b10|(ccif.iREN==3 & count))
+        begin
+          cache_next_state= Load_instruction1;
+        end
+        else
+        begin
+        	cache_next_state=Idle;
+        end
+      end
+
+      
+
+      Load_instruction0:begin
+        if(ccif.iwait[0])
+        begin
+          cache_next_state=Load_instruction0;
+        end
+        else
+        begin
+          cache_next_state=Idle;
+        end
+      end
+      Load_instruction1:begin
+        if(ccif.iwait[1])
+        begin
+          cache_next_state=Load_instruction1;
+        end
+        else
+        begin
+          cache_next_state=Idle;
+        end
+      end
+
+      Snoop0:begin
+        ccif.ccwait[0]=1;
+        ccif.ccsnoopaddr[0]=ccif.daddr[1];
+        ccif.ccinv[0] = ccif.ccwrite[1]; 
+        if(!ccif.cctrans[0]&!ccif.ccwrite[0])
+          cache_next_state=Not_match1_0;
+        else if(!ccif.cctrans[0] & ccif.ccwrite[0])
+          cache_next_state=Transfer0;
+        else if(ccif.cctrans[0] & ccif.ccwrite[0])
+          cache_next_state=Write_back0_0;
+      end
+
+      Snoop1:begin
+        ccif.ccwait[1]=1;
+        ccif.ccsnoopaddr[1]=ccif.daddr[0];
+        ccif.ccinv[1] = ccif.ccwrite[0]; 
+        if(!ccif.cctrans[1]&!ccif.ccwrite[1])
+          cache_next_state=Not_match0_0;
+        else if(!ccif.cctrans[1] & ccif.ccwrite[1])
+          cache_next_state=Transfer1;
+        else if(ccif.cctrans[1] & ccif.ccwrite[1])
+          cache_next_state=Write_back1_0;
+      end
+
+      Write_back0_0:begin 
+        ccif.ccsnoopaddr[0]=ccif.daddr[1];
+        ccif.ccwait[0] = 1;
+        if(ccif.dwait[0])
+        begin
+          cache_next_state=Write_back0_0;
+        end
+        else
+        begin
+        cache_next_state=Write_back0_1;
+        end
+      end
+Invalidate0:begin
+        ccif.ccwait[0]=1;
+        ccif.ccsnoopaddr[0]=ccif.daddr[1];
+        ccif.ccinv[0] = ccif.ccwrite[1];
+        if(!ccif.cctrans[0]&!ccif.ccwrite[0])
+        begin
+          ccif.ccinv[1] = 1;
+          cache_next_state=Idle;
+        end
+        else if(!ccif.cctrans[0] & ccif.ccwrite[0])
+        begin
+          cache_next_state = No_transfer1;
+        end
+
+      end
+
+      Invalidate1:begin
+        ccif.ccwait[1]=1;
+        ccif.ccsnoopaddr[1]=ccif.daddr[0];
+        ccif.ccinv[1] = ccif.ccwrite[0];
+        if(!ccif.cctrans[1]&!ccif.ccwrite[1])
+        begin
+          ccif.ccinv[0] = 1;
+          cache_next_state=Idle;
+        end
+        else if(!ccif.cctrans[1] & ccif.ccwrite[1])
+        begin
+          cache_next_state = No_transfer0;
+        end
+      end
+
+      No_transfer0:begin
+        ccif.ccinv[1] = ccif.ccwrite[0];
+        ccif.ccsnoopaddr[1] = ccif.daddr[0];
+         ccif.ccwait[1] = 1'b1;
+         if(ccif.daddr[1][2]) begin
+            ccif.ccinv[0] = 1;
+            cache_next_state=Idle;
+         end
+      end
+
+      No_transfer1:begin
+        ccif.ccinv[0] = ccif.ccwrite[1];
+        ccif.ccsnoopaddr[0] = ccif.daddr[1];
+         ccif.ccwait[0] = 1'b1;
+         
+         if(ccif.daddr[0][2]) begin
+            cache_next_state=Idle;
+            ccif.ccinv[1] = 1;
+         end
+      end
+      Write_back0_1:begin
+        ccif.ccwait[0] = 1;
+        ccif.ccsnoopaddr[0]=ccif.daddr[1];
+        if(ccif.dwait[0])
+        begin
+          cache_next_state=Write_back0_1;
+        end
+        else
+        begin
+          cache_next_state=Idle;
+        end
+      end
+
+      Write_back1_0:begin
+        ccif.ccwait[1] = 1;
+        ccif.ccsnoopaddr[1]=ccif.daddr[0];
+        if(ccif.dwait[1])
+        begin
+          cache_next_state=Write_back1_0;
+        end
+        else
+        begin
+          cache_next_state=Write_back1_1;
+        end
+      end
+      Write_back1_1:begin 
+        ccif.ccwait[1] = 1;
+        ccif.ccsnoopaddr[1]=ccif.daddr[0];  
+        if(ccif.dwait[1])
+        begin
+          cache_next_state=Write_back1_1;
+        end
+        else
+        begin
+          cache_next_state=Idle;
+        end
+      end
+      Replace0_0:begin
+        if(ccif.dwait[0])
+        begin
+          cache_next_state = Replace0_0;
+        end
+        else
+        begin
+          cache_next_state = Replace0_1;
+        end
+      end
+      
+      Replace0_1:begin
+        if(ccif.dwait[0])
+        begin
+          cache_next_state = Replace0_1;
+        end
+        else
+        begin
+          cache_next_state = Idle;
+        end
+      end
+
+      Replace1_0:begin
+        if(ccif.dwait[1])
+        begin
+          cache_next_state = Replace1_0;
+        end
+        else
+        begin
+          cache_next_state = Replace1_1;
+        end
+      end
+
+      Replace1_1:begin
+        
+        if(ccif.dwait[1])
+        begin
+          cache_next_state = Replace1_1;
+        end
+        else
+        begin
+          cache_next_state = Idle;
+        end
+      end
+
+      Not_match0_0:begin
+        if(ccif.dwait[0])
+        begin
+          cache_next_state = Not_match0_0;
+        end
+        else
+        begin
+          cache_next_state = Not_match0_1;
+        end
+      end
+
+      Not_match0_1:begin
+        if(ccif.dwait[0])
+        begin
+          cache_next_state = Not_match0_1;
+        end
+        else
+        begin
+          cache_next_state = Idle;
+        end
+      end
+
+      Not_match1_0:begin
+        if(ccif.dwait[1])
+        begin
+          cache_next_state = Not_match1_0;
+        end
+        else
+        begin
+          cache_next_state = Not_match1_1;
+        end
+      end
+
+      Not_match1_1:begin
+        if(ccif.dwait[1])
+        begin
+          cache_next_state = Not_match1_1;
+        end
+        else
+        begin
+          cache_next_state = Idle;
+        end
+      end
+
+      Transfer0:begin
+        ccif.ccsnoopaddr[0]=ccif.daddr[1];
+        ccif.ccinv[0] = ccif.ccwrite[1]; 
+        ccif.ccwait[0] = 1;
+        if(ccif.daddr[1][2])
+        begin
+          cache_next_state = Idle;
+        end
+        else
+        begin
+          cache_next_state = Transfer0;
+        end
+      end
+
+      Transfer1:begin 
+        ccif.ccsnoopaddr[1]=ccif.daddr[0];
+        ccif.ccinv[1] = ccif.ccwrite[0]; 
+        ccif.ccwait[1] = 1;
+        if(ccif.daddr[0][2])
+        begin
+          cache_next_state = Idle;
+        end
+        else
+        begin
+          cache_next_state = Transfer1;
+        end
+      end
+    endcase
+  end
+
+
+	assign ccif.ramWEN = (cache_state==Replace0_0 | cache_state == Replace0_1) ? 1 : (cache_state==Replace1_0 | cache_state == Replace1_1) ? 1 : (cache_state == Write_back0_0 | cache_state == Write_back0_1)? 1 : (cache_state == Write_back1_0 | cache_state == Write_back1_1)? 1 : 0;
+	assign ccif.ramREN = (cache_state==Not_match0_0 | cache_state == Not_match0_1) ? 1 : (cache_state==Not_match1_0 | cache_state == Not_match1_1) ? 1 : (cache_state == Load_instruction0)? 1 : (cache_state == Load_instruction1)? 1 : 0;
+	assign ccif.ramstore = (cache_state==Replace0_0 | cache_state == Replace0_1) ? ccif.dstore[0] : (cache_state==Replace1_0 | cache_state == Replace1_1) ? ccif.dstore[1] : (cache_state == Write_back0_0 | cache_state == Write_back0_1)? ccif.dstore[0] : (cache_state == Write_back1_0 | cache_state == Write_back1_1)? ccif.dstore[1] : 32'hdeadbeef;
+	assign ccif.ramaddr = (cache_state==Replace0_0 | cache_state == Replace0_1) ? ccif.daddr[0] : (cache_state==Replace1_0 | cache_state == Replace1_1) ? ccif.daddr[1] : (cache_state==Not_match0_0 | cache_state == Not_match0_1) ? ccif.daddr[0] : (cache_state == Write_back0_0 | cache_state == Write_back0_1) ? ccif.daddr[1] : (cache_state==Not_match1_0 | cache_state == Not_match1_1) ? ccif.daddr[1] : (cache_state == Write_back1_0 | cache_state == Write_back1_1) ? ccif.daddr[0] : (cache_state == Load_instruction0) ? ccif.iaddr[0] : (cache_state == Load_instruction1) ? ccif.iaddr[1] : 32'hdeadbeef;
+	
+	assign ccif.dwait[0] = (cache_state==Replace0_0 | cache_state == Replace0_1 ) ? !(ccif.ramstate == ACCESS) : (cache_state == Invalidate0) ? 0 : (cache_state == No_transfer1)? 0 : (cache_state==Not_match0_0 | cache_state == Not_match0_1 )? !(ccif.ramstate == ACCESS) : (cache_state == Write_back0_0 | cache_state == Write_back0_1) ? !(ccif.ramstate == ACCESS) : (cache_state == Write_back1_0 | cache_state == Write_back1_1) ? !(ccif.ramstate == ACCESS) : (cache_state == Transfer0 | cache_state == Transfer1) ? 0 : 1;
+	assign ccif.dwait[1] = (cache_state==Replace1_0 | cache_state == Replace1_1 ) ? !(ccif.ramstate == ACCESS) : (cache_state == Invalidate1) ? 0 : (cache_state == No_transfer0)? 0 : (cache_state == Write_back0_0 | cache_state == Write_back0_1 )? !(ccif.ramstate == ACCESS) : (cache_state==Not_match1_0 | cache_state == Not_match1_1) ? !(ccif.ramstate == ACCESS) : (cache_state == Write_back1_0 | cache_state == Write_back1_1) ? !(ccif.ramstate == ACCESS) : (cache_state == Write_back1_0 | cache_state == Write_back1_1) ? !(ccif.ramstate == ACCESS) : (cache_state == Transfer0 | cache_state == Transfer1) ? 0 : 1;
+	assign ccif.iwait[0] =(cache_state == Load_instruction0)? !(ccif.ramstate == ACCESS):1;
+	assign ccif.iwait[1] =(cache_state == Load_instruction1)? !(ccif.ramstate == ACCESS):1;
+
+   
+endmodule

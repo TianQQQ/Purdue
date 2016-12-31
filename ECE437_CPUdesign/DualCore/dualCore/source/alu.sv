@@ -1,0 +1,89 @@
+/*
+  Yiyi Chen
+  chen1234@purdue.edu
+
+  alu sv file 
+*/
+
+// interface
+
+`include "alu_if.vh"
+`include "cpu_types_pkg.vh"
+import cpu_types_pkg::*;
+
+module alu(
+	alu_if.aluport aluio
+);
+
+
+   assign aluio.zero_f = (aluio.alu_out == 0);
+   assign aluio.neg_f = aluio.alu_out[31];
+
+
+   always_comb begin
+
+	   aluio.alu_out = '0;
+	   aluio.over_f = 0;
+      casez(aluio.aluop)
+
+
+        ALU_SLL:begin
+          aluio.alu_out = aluio.alu_in1 << aluio.alu_in2;
+        end
+        ALU_SRL:begin
+          aluio.alu_out = aluio.alu_in1 >> aluio.alu_in2;
+        end
+        ALU_ADD:begin
+	   if(aluio.alu_in1[31] == aluio.alu_in2[31])begin
+	      if(aluio.alu_out[31] != aluio.alu_in1[31])begin
+		 aluio.over_f = 1;
+	      end
+	      else begin
+		 aluio.over_f = 0;
+	      end
+	   end
+           aluio.alu_out = $signed(aluio.alu_in1) + $signed(aluio.alu_in2);
+        end
+        ALU_SUB:begin
+           if(aluio.alu_in1[31] == aluio.alu_in2[31])begin
+	      if(aluio.alu_out[31] != aluio.alu_in1[31])begin
+		 aluio.over_f = 1;
+	      end
+	      else begin
+		 aluio.over_f = 0;
+	      end
+	   end
+           aluio.alu_out = $signed(aluio.alu_in1) - $signed(aluio.alu_in2);
+        end
+        ALU_AND:begin
+           aluio.alu_out = aluio.alu_in1 & aluio.alu_in2;
+	   aluio.over_f = 0;
+        end
+        ALU_OR:begin
+           aluio.alu_out = aluio.alu_in1 | aluio.alu_in2;
+	   aluio.over_f = 0;
+        end
+        ALU_XOR:begin
+           aluio.alu_out = aluio.alu_in1 ^ aluio.alu_in2;
+	   aluio.over_f = 0;
+        end
+        ALU_NOR:begin
+           aluio.alu_out = ~(aluio.alu_in1 | aluio.alu_in2);
+	   aluio.over_f = 0;
+        end
+        ALU_SLT:begin
+           aluio.alu_out = $signed(aluio.alu_in1) < $signed(aluio.alu_in2);
+	   aluio.over_f = 0;
+        end
+        ALU_SLTU:begin
+           aluio.alu_out = aluio.alu_in1 < aluio.alu_in2;
+	   aluio.over_f = 0;
+        end
+	default: begin
+	   aluio.alu_out = '0;
+	   aluio.over_f = 0;
+	end
+      endcase 
+   end
+endmodule // alu
+      

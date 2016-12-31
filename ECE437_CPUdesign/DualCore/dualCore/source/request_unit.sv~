@@ -1,0 +1,24 @@
+// CPU
+
+`include "request_unit_if.vh"
+module request_unit(input logic CLK, nRST,
+                    request_unit_if ruif);
+   
+   always_ff @(posedge CLK, negedge nRST) begin:EN
+      if(nRST == 1'b0) begin
+         ruif.imemREN <= 1'b1;
+         ruif.dmemREN <= 1'b0;
+         ruif.dmemWEN <= 1'b0;
+      end
+      else if(ruif.dhit) begin
+         ruif.dmemWEN <= 1'b0;
+         ruif.dmemREN <= 1'b0;
+      end
+      else if(ruif.ihit)begin
+         ruif.imemREN <= 1'b1;
+         ruif.dmemWEN <= ruif.dWEN;
+         ruif.dmemREN <= ruif.dREN;
+      end
+   end // block: EN
+endmodule
+ 

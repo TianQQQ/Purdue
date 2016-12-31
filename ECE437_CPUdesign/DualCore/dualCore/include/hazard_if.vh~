@@ -1,0 +1,23 @@
+// CPU
+
+`ifndef HAZARD_IF_VH
+ `define HAZARD_IF_VH
+`include "cpu_types_pkg.vh"
+interface hazard_if;
+   import cpu_types_pkg::*;
+      
+   modport huif(input dmemREN, ifid_rt, idex_rt, ifid_rs, pcsrc,
+                output ifid_EN, pc_EN, idex_flush);
+
+   logic dmemREN;
+   logic ifid_EN;
+   logic  pc_EN;
+   logic  idex_flush;
+   logic [1:0] pcsrc;
+   regbits_t ifid_rt;
+   regbits_t idex_rt;
+   regbits_t ifid_rs;
+
+endinterface
+`endif
+

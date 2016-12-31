@@ -1,0 +1,38 @@
+/*
+  Eric Villasenor
+  evillase@gmail.com
+
+  holds datapath and cache interface signals
+*/
+`ifndef PC_IF_VH
+`define PC_IF_VH
+
+// types
+`include "cpu_types_pkg.vh"
+
+interface pc_if;
+
+   import cpu_types_pkg::*;
+
+   //signals
+   logic source1, source2, source3, ramfull;
+
+   logic [IMM_W-1:0] immediate;
+
+   logic [ADDR_W-1:0] j_addr;
+
+   word_t imemaddr, jregaddr, returnaddr;
+
+   modport pc (
+	       input  
+		      source1, source2, source3, ramfull,
+		      immediate, j_addr, jregaddr,
+
+	       output
+	       imemaddr, returnaddr
+	       
+	       );
+endinterface // request_unit_if
+`endif //  `ifndef REQUEST_UNIT_IF_VH
+
+   

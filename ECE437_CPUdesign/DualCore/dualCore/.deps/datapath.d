@@ -1,0 +1,1 @@
+datapath: alu.svo alu_if.vho bran_pred.svo bran_pred_if.vho control_unit.svo control_unit_if.vho cpu_types_pkg.vho datapath_cache_if.vho forward_unit.svo forward_unit_if.vho hazard.svo hazard_if.vho pipeline_reg_pkg.vho register_file.svo register_file_if.vho datapath.svo

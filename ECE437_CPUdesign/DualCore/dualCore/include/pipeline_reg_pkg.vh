@@ -1,0 +1,71 @@
+`ifndef PIPELINE_REG_PKG_VH
+ `define PIPELINE_REG_PKG_VH
+ `include "cpu_types_pkg.vh"
+
+package pipeline_reg_pkg;
+   
+   import cpu_types_pkg::*;
+   
+   
+   typedef struct packed{
+      word_t instr;
+      word_t pc_p4;
+      logic [29:0] addr;
+      logic        take;
+   }ifid_t;
+
+   typedef struct packed{
+      word_t rdat1;
+      word_t rdat2;
+      word_t pc_p4;
+      word_t immext;
+      aluop_t aluop;
+      regbits_t wsel;
+      logic [1:0] pcsrc;
+      logic [1:0] data_sel;
+      logic       bran;
+      logic       alusrc;
+      logic       regWEN;
+      logic       dmemREN;
+      logic       dmemWEN;
+      logic       halt;
+      logic       take;
+      logic       datomic;
+      logic [29:0] addr;
+      word_t instr;
+   }idex_t;
+   
+   typedef struct packed{
+      word_t pc_p4;
+      word_t aluout;
+      word_t rdat2;
+      word_t immext;
+      regbits_t           wsel;
+      logic [1:0] data_sel;
+      logic       dmemREN;
+      logic       dmemWEN;
+      logic       regWEN;
+      logic       datomic;
+      logic halt;
+      //debug
+       word_t instr;
+   }exmem_t;
+   
+   typedef struct packed{
+      word_t wdat;
+      regbits_t           wsel;
+      logic       regWEN;
+      logic       halt;
+       word_t instr;
+   }memwb_t;
+   typedef enum logic [1:0] {NS, NW, TW, TS} stateType;
+   
+   typedef struct packed {
+      logic       valid;
+      logic [27:0] tag;
+      logic [29:0] addr;
+      stateType predict_state;
+   }bran_t;      
+      
+endpackage    
+`endif

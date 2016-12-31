@@ -1,0 +1,49 @@
+/*
+  Yiyi Chen
+  chen1234@purdue.edu
+
+  alu sv file 
+*/
+
+// interface
+
+`ifndef ALU_IF_VH
+`define ALU_IF_VH
+
+// all types
+ `include "cpu_types_pkg.vh"
+
+interface alu_if;
+   // import types
+   import cpu_types_pkg::*;
+  
+
+   word_t alu_in1, alu_in2, alu_out;
+   logic neg_f, over_f, zero_f; 
+   aluop_t aluop;
+
+
+   // alu tb
+   modport tb (
+               input  alu_out, 
+               input  neg_f, 
+               input  over_f, 
+               input  zero_f,
+               output alu_in1, 
+               output alu_in2, 
+               output aluop );
+
+   // alu ports
+   modport aluport (
+               input  alu_in1, 
+               input  alu_in2, 
+               input  aluop,
+               output alu_out, 
+               output neg_f, 
+               output over_f, 
+               output zero_f );
+
+endinterface
+
+`endif 
+

@@ -1,0 +1,24 @@
+/*
+  Eric Villasenor
+  evillase@gmail.com
+
+  this block holds the i and d cache
+*/
+
+// interfaces
+`include "datapath_cache_if.vh"
+`include "caches_if.vh"
+
+// cpu types
+`include "cpu_types_pkg.vh"
+
+module caches (
+  input logic CLK, nRST,
+  datapath_cache_if dcif,
+  caches_if ccif
+);
+   
+  icaches ICACHES(CLK, nRST, dcif, ccif);
+  dcaches DCACHES(CLK, nRST, dcif, ccif);
+
+endmodule

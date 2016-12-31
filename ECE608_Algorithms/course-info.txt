@@ -1,0 +1,125 @@
+		      Course Information Handout
+	       EE608  Computational Models and Methods
+	    School of Electrical and Computer Engineering
+			  Purdue University
+			 Spring 2016 Semester
+
+
+Class meeting hours: Tues/Thur 3:00 - 4:15   Wang 2579
+
+Instructor: Professor Robert Givan 
+Office, Phone, Email: EE 313C, 49-49068, 532-8427(cell), givan@purdue.edu 
+Office Hours: See http://www.ece.purdue.edu/~givan/office-hours.html
+              for latest.  Let me know ahead if you plan to attend, 
+	      by email or text message.
+
+Teaching Assistant: See course web page.
+
+Web Site: http://engineering.purdue.edu/~ee608/ 
+
+All handouts will be made available on this web site to Purdue
+computer account holders.
+
+Email Helpline: ee608@ecn.purdue.edu, forwards to professor and TA.
+
+Please send all course content questions to this address. 
+
+Textbook: Introduction to Algorithms, THIRD EDITION by Cormen, 
+Leiserson, Rivest, and Stein. The MIT Press. 
+ISBN #0-26-203384-4 (2009).
+
+Exams: There will be one in-class 75-minute timed closed-book midterm
+exam, on March 1.  There will be a 2 hour final exam during exam week
+at the assigned time (to be announced).
+
+If for any reason you cannot make an exam, you must let me know
+immediately once the exam time is announced. 
+
+Grade Allocation: 40 % Midterm exam
+      		  60 % Final exam 
+
+
+1. Administrative Information. All current information about the
+course (e.g. office hours, exam dates, etc.) is subject to change at
+any time. Changes will be announced in class, as well as emailed to
+the class email list.   
+
+2. Homework/Projects. Homework will be assigned regularly, due at the
+beginning of class, BUT WILL NOT BE COLLECTED.  Solutions will be
+provided 24 hours after the due date.  
+
+3. Office Hours. Professor Givan will hold office hours each week as
+listed on the web site named above.  
+
+4. In the event of a major campus emergency, course requirements,
+deadlines and grading percentages are subject to changes that may be
+necessitated by a revised semester calendar or other
+circumstances. You may find updated information about the course on
+the course web page in such a circumstance.
+
+5. Regrade Requests. Exams may be submitted for regrading up to one
+week after they are returned to the class. To request a regrade, write
+an explanation of your request on the front of the exam and attach it
+to the assignment or exam, then give/send the assignment to the
+professor.
+
+6. Extra Credit. There will be no extra credit offered in this course.
+
+7. Cheating. We expect you to maintain the highest standard of
+academic honesty and integrity in your work in this class. Unambiguous
+cases of cheating will result in an F for the course as will repeated
+suspect work. Any suspect work may be given a zero. Allowing someone
+to cheat from your work is as serious a violation as cheating from
+someone else's work. We also expect you to hold both your solution and
+our solution to each homework and exam in confidence and not to share
+or distribute these solutions after the end of the course.  (It is OK
+to share these solutions with other students in the class this
+semester after the due date for study purposes.)
+
+Exams will be closed book and closed notes. You must solve the exam
+problems yourself, without any help (knowing or unknowing) from any
+other student. You must not seek any knowledge in advance of the
+specific test questions (beyond that given in class), and must report
+any violation of these rules by any student that you are aware of. You
+must not allow any other student access to your solutions during an
+exam. If the seating situation makes this difficult please inform the
+exam proctor.
+
+Written Homework: Discussion of and collaboration on homework problems
+is encouraged.  Each student is responsible to ensure that they
+understand/learn the material by whatever process works for
+them. Homework is not a direct part of the evaluation process in this
+course.  However, you must still write your own solution to the
+homework problem---collaboration does not include using or viewing the
+written solution of any other student.
+
+8. Feedback. Professor Givan actively solicits positive and negative
+feedback from students throughout the course. If you have a complaint
+about how the course is taught or organized, or constructive feedback
+on what would work better for you, please send e-mail feedback to
+givan@purdue.edu. Feedback will in no way negatively influence your
+grade—thoughtful feedback, both positive and negative, is much
+appreciated. Negative feedback is particularly valuable in helping
+improve the course.
+
+9. Course Outline. I intend to follow the textbook table of contents
+as a course outline. We plan to cover most of parts 1 to 4, 6, and
+chapter 34, along with the mathematical background in the appendices.
+Additional topics will be covered if time allows. Topically, these
+sections cover summations, sets, counting and probability, order of
+growth, recurrences, analysis of randomized algorithms, sorting
+algorithms (e.g., heapsort, quicksort, counting sort, radix sort, and
+bucket sort), data structures (e.g., hash tables and search trees,
+with stacks, queues, lists, and trees assumed as prerequisite
+training), dynamic programming, greedy algorithms, amortized analysis
+(if time allows), graph algorithms (depth-first and breadth-first
+search, minimum spanning trees, and shortest paths algorithms), and
+NP-completeness.
+
+10. Reading Assignments. You are expected to find the related reading
+in the text on your own. We expect all the sections listed above under
+Course Outline to be read by students as they are covered in class. We
+may test any material covered in these sections once the relevant
+topic has appeared in class lectures.  Please ask the professor if it
+is unclear whether a chapter or section has been covered, or which
+chapter or section is relevant to a topic covered in class.

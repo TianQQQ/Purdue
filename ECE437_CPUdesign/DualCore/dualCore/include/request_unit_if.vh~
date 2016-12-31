@@ -1,0 +1,18 @@
+`ifndef REQUEST_UNIT_IF_VH
+ `define REQUEST_UNIT_IF_VH
+
+
+interface request_unit_if;
+
+   logic dWEN, dREN, imemREN, dmemWEN, dmemREN, dhit, ihit;
+
+   modport ruif(
+                //from control unit
+                input  dREN, dWEN,
+                       //from cache
+                       dhit, ihit,
+                //to cache, do we need imemREN?
+                output imemREN, dmemWEN, dmemREN);
+endinterface
+
+`endif

@@ -1,0 +1,1 @@
+multicore: alu.svo alu_if.vho bran_pred.svo bran_pred_if.vho cache_control_if.vho caches.svo caches_if.vho control_unit.svo control_unit_if.vho cpu_types_pkg.vho datapath.svo datapath_cache_if.vho dcaches.svo forward_unit.svo forward_unit_if.vho hazard.svo hazard_if.vho icaches.svo memory_control.svo pipeline_reg_pkg.vho register_file.svo register_file_if.vho multicore.svo
