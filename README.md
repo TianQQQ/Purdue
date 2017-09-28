@@ -1,4 +1,4 @@
 # PurdueCourses
 
-Personal Notes
+[Personal Notes]
 ========================================================
