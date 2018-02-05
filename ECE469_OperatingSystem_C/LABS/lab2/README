@@ -1,0 +1,28 @@
+Kaiwen Yu && Tian Qiu
+yu356        qiu58
+
+HOW TO BUILD:
+cd \os
+make
+
+Q1:
+#Answer in .txt file
+
+Q2:
+cd \app\q2
+make
+make run 
+
+Q3:
+#Tested in q4 
+
+Q4:
+cd \app\q4
+make
+make run 
+
+Q5:
+cd \app\q5
+make
+make run 
+

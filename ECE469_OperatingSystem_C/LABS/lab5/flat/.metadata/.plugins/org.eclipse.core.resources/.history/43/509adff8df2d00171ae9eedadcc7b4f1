@@ -1,0 +1,63 @@
+#include "ostraps.h"
+#include "dlxos.h"
+#include "traps.h"
+#include "disk.h"
+#include "dfs.h"
+
+void RunOSTests() {
+	int fileHandle;
+	char *testFile1 = "test1";
+	int i;
+	char wData[20000];
+	char rData[20000];
+	int startByte, numBytes;
+	int errFlag;
+
+	// Init file system
+	if (DfsOpenFileSystem() == DFS_FAIL){
+		dbprintf('s', "RunOSTests: Fail to open file system\n");
+	}
+
+	// Test file create
+	// If "test1" file already exist, raise error
+	if (DfsInodeFilenameExists(testFile1) != DFS_FAIL){
+		dbprintf('s', "RunOSTests: test file test1 exists!\n");
+	}
+
+	// Create inode for testFile1
+	fileHandle = DfsInodeOpen(testFile1);
+	if (DfsInodeFilenameExists(testFile1) == DFS_FAIL){
+		dbprintf('s', "RunOSTests: test file test1 created but not found!\n");
+	}
+
+	// Write 300 bytes in to file1 with "0123456789012....56789"
+	startByte = 50;
+	numBytes = 300;
+
+	for (i = 0; i < numBytes;++i){
+		wData[i] = i % 10;
+	}
+
+
+	if (DfsInodeWriteBytes(fileHandle, wData, startBytes, numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: Writing to test1 failed!\n");
+	}
+
+
+	startByte = 0;
+	numBytes = 512;
+	// Read data from file
+	if (DfsInodeWriteBytes(fileHandle, rData, startBytes, numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: Reading test1 failed!\n");
+	}
+
+
+	for (i = 0; i < numBytes; ++i){
+		if (i < startByte){
+
+		}
+	}
+
+
+}
+

@@ -1,0 +1,70 @@
+#include "usertraps.h"
+#include "misc.h"
+#include "files_shared.h"
+
+
+
+void main (int argc, char *argv[])
+{
+	int handle;
+	int i;
+	char *filename = "ftest";
+	char *str = "ftest: hello!\n";
+	char buffer[50];
+
+	Printf("ftests.c: Creating file...\n");
+	handle = file_open(filename, "w");
+	if (handle == FILE_FAIL){
+		Printf("ftests.c: File creation FAILED!\n");
+		Exit();
+	}
+
+	Printf("ftests.c: Writing to file...\n");
+	i = file_write(handle, str, 14);
+	if (i != 14){
+		Printf("ftests.c: Writing to file FAILED!\n");
+		Exit();
+	}
+
+	Printf("ftests.c: Closing file...\n");
+	if (file_close == FILE_FAIL){
+		Printf("ftests.c: File close FAILED!\n");
+		Exit();
+	}
+
+	Printf("ftests.c: Opening file...\n");
+	handle = file_open(filename, "r");
+	if (handle == FILE_FAIL){
+		Printf("ftests.c: File open FAILED!\n");
+		Exit();
+	}
+
+	Printf("ftests.c: Reading file...\n");
+	i = file_read(handle, buffer, 14);
+	if (i != 14){
+		Printf("ftests.c: File read FAILED!\n");
+		Exit();
+	}
+	Printf("%s", buffer);
+
+	Printf("ftests.c: Seeking file...\n");
+	if (file_seek(handle, 1, FILE_SEEK_SET) == FILE_FAIL){
+		Printf("ftests.c: File seek FAILED!\n");
+		Exit();
+	}
+
+	Printf("ftests.c: Reading file...\n");
+	i = file_read(handle, buffer, 13);
+	if (i != 13){
+		Printf("ftests.c: File read FAILED!\n");
+		Exit();
+	}
+	Printf("%s", buffer);
+
+	Printf("ftests.c: Closing file...\n");
+	if (file_close == FILE_FAIL){
+		Printf("ftests.c: File close FAILED!\n");
+		Exit();
+	}
+
+}

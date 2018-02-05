@@ -1,0 +1,33 @@
+#include "ostraps.h"
+#include "dlxos.h"
+#include "traps.h"
+#include "disk.h"
+#include "dfs.h"
+
+void RunOSTests() {
+	int fileHandle;
+	char *testFile1 = "test1";
+	int i;
+
+	// Init file system
+	if (DfsOpenFileSystem() == DFS_FAIL){
+		dbprintf('s', "RunOSTests: Fail to open file system\n");
+	}
+
+	// Test file create
+	// If "test1" file already exist, raise error
+	if (DfsInodeFilenameExists(testFile1) != DFS_FAIL){
+		dbprintf('s', "RunOSTests: test file test1 exists!\n");
+	}
+
+	// Create inode for testFile1
+	fileHandle = DfsInodeOpen(testFile1);
+	if (DfsInodeFilenameExists(testFile1) == DFS_FAIL){
+		dbprintf('s', "RunOSTests: test file test1 created but not found!\n");
+	}
+
+
+
+
+}
+

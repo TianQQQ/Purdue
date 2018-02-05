@@ -1,0 +1,62 @@
+
+Q1 Q2
+/os
+	make
+
+/app/q2
+	make
+	make run
+
+Q3
+Check out.txt
+
+/os
+	make
+
+/app/q2
+	make
+	make run > out.txt
+	
+Q4
+The sequence of last C and makeprocs is not identical. See piazza discuss.
+
+/os
+	make
+
+/app/prio_text
+	make
+	make run > out.txt
+	diff -y expected_output out.txt
+
+
+
+Q5
+Check out.txt
+
+To show run queue and wait queue, uncomment line 406 in os/process.c
+
+in Q5
+
+Test auto wake up and its decay value
+spawn_me A will sleep for 10 sec after the 5th print
+
+Test yield
+spawn_me B will yield everytime it prints
+
+Test auto wake up when there is no other running processes.
+spawn_me C will sleep for 10 sec after printing the last element
+
+/os
+	make
+
+/app/prio_text
+	make
+	make run > out.txt
+
+we are using the equation below for sleeping decay.
+
+if (sleeptime >= 100 jiffies) {
+  int num_windows_asleep = sleeptime / (TIME_PER_CPU_WINDOW(10) * CPU_WINDOWS_BETWEEN_DECAYS(10));
+  estcpu = estcpu * [ (2*load)/(2*load+1) ] ^ (num_windows_asleep);
+}
+

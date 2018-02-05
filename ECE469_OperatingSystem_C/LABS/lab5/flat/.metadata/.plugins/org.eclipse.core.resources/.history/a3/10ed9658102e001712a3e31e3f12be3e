@@ -1,0 +1,25 @@
+#include "usertraps.h"
+#include "misc.h"
+#include "files_shared.h"
+
+
+
+void main (int argc, char *argv[])
+{
+	int handle;
+	int i;
+	char *filename = "ftest";
+	char *str = "ftest: hello!\n";
+
+	Printf("ftests.c: Creating file...\n");
+	handle = file_open(filename, "w");
+	if (handle != FILE_SUCCESS){
+		Printf("ftests.c: File creation FAILED!\n");
+		Exit();
+	}
+
+	Printf("ftests.c: Writing to file...\n");
+	i = file_read(handle, str, 14);
+
+
+}

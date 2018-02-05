@@ -1,0 +1,56 @@
+!SESSION 2017-04-09 19:18:49.768 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.7.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/shay/a/yu356/ee469/lab4/fork -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 4 0 2017-04-09 19:19:42.770
+!MESSAGE Error: Invalid project description.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description.
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:162)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1194)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1238)
+	at org.eclipse.cdt.core.CProjectNature.addNature(CProjectNature.java:78)
+	at org.eclipse.cdt.core.CProjectNature.addCNature(CProjectNature.java:44)
+	at org.eclipse.cdt.core.CCorePlugin$3.run(CCorePlugin.java:779)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.cdt.core.CCorePlugin.createCDTProject(CCorePlugin.java:758)
+	at org.eclipse.cdt.core.CCorePlugin.createCDTProject(CCorePlugin.java:748)
+	at org.eclipse.cdt.managedbuilder.ui.wizards.NewMakeProjFromExisting$1.execute(NewMakeProjFromExisting.java:83)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation$1.run(WorkspaceModifyOperation.java:106)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation.run(WorkspaceModifyOperation.java:118)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Contains: OK
+Contains: /home/shay/a/yu356/ee469/lab4/fork overlaps the workspace location: /home/shay/a/yu356/ee469/lab4/fork
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2017-04-09 19:19:42.773
+!MESSAGE Invalid project description.
+!SUBENTRY 2 unknown 0 0 2017-04-09 19:19:42.773
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2017-04-09 19:19:42.773
+!MESSAGE /home/shay/a/yu356/ee469/lab4/fork overlaps the workspace location: /home/shay/a/yu356/ee469/lab4/fork
+
+!ENTRY org.eclipse.cdt.core 4 0 2017-04-09 19:19:42.785
+!MESSAGE Error: Invalid project description.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description.
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:162)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1194)
+	at org.eclipse.core.internal.resources.Project.setDescription(Project.java:1238)
+	at org.eclipse.cdt.core.CProjectNature.addNature(CProjectNature.java:78)
+	at org.eclipse.cdt.core.CCProjectNature.addCCNature(CCProjectNature.java:29)
+	at org.eclipse.cdt.managedbuilder.ui.wizards.NewMakeProjFromExisting$1.execute(NewMakeProjFromExisting.java:87)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation$1.run(WorkspaceModifyOperation.java:106)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1975)
+	at org.eclipse.ui.actions.WorkspaceModifyOperation.run(WorkspaceModifyOperation.java:118)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+Contains: OK
+Contains: /home/shay/a/yu356/ee469/lab4/fork overlaps the workspace location: /home/shay/a/yu356/ee469/lab4/fork
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2017-04-09 19:19:42.785
+!MESSAGE Invalid project description.
+!SUBENTRY 2 unknown 0 0 2017-04-09 19:19:42.785
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2017-04-09 19:19:42.785
+!MESSAGE /home/shay/a/yu356/ee469/lab4/fork overlaps the workspace location: /home/shay/a/yu356/ee469/lab4/fork

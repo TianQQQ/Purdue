@@ -1,0 +1,91 @@
+#include "ostraps.h"
+#include "dlxos.h"
+#include "process.h"
+#include "dfs.h"
+#include "files.h"
+#include "synch.h"
+
+// You have already been told about the most likely places where you should use locks. You may use 
+// additional locks if it is really necessary.
+
+static file_discriptor fileDescriptors[DFS_INODE_MAX_NUM];
+static lock_t lock;
+
+
+// STUDENT: put your file-level functions here
+void FileInit(int handle){
+
+}
+
+int GetFileMode(char *mode){
+	if (mode[0] == 'r'){
+		if (mode[1] == 'w'){
+			return FILE_MODE_RW;
+		}
+		return FILE_MODE_R;
+	}
+	else if (mode[0] == 'w'){
+		return FILE_MODE_W;
+	}
+	return FILE_FAIL;
+}
+
+int GetInodeOwner(){
+	int i;
+	for (i = 0;i < DFS_INODE_MAX_NUM;++i){
+		if (dstrncmp(fileDescriptors[i].filename, filename, dstrlen(filename) == 0){
+			return fileDescriptors[i].pid;
+		}
+	}
+}
+
+int FileOpen(char *filename, char *mode){
+	int mode = GetFileMode(mode);
+	int inodeHandle;
+	int fileHandle;
+
+	if (mode == FILE_FAIL)
+		return FILE_FAIL;
+
+	// Check whether the file is already opened by other process
+	inodeHandle = DfsInodeFilenameExists(filename);
+
+	if (LockHandleAcquire(lock) != SYNC_SUCCESS){
+		dbprintf('s', "FILE: Lock handle acquire failed before FileOpen.\n");
+	}
+
+	if (mode != FILE_MODE_R){
+		DfsInodeDelete(inodeHandle);
+		inodeHandle = DfsInodeOpen(filename);
+	}
+
+	if (inodeHandle == DFS_FAIL){
+		if (LockHandleRelease(lock) != SYNC_SUCCESS){
+			dbprintf('s', "FILE: Lock handle release failed before FileOpen.\n");
+		}
+		return FILE_FAIL;
+	}
+
+
+
+	if (LockHandleRelease(lock) != SYNC_SUCCESS){
+		dbprintf('s', "FILE: Lock handle release failed before FileOpen.\n");
+	}
+
+	return 0;
+}
+int FileClose(int handle){
+	return 0;
+}
+int FileRead(int handle, void *mem, int num_bytes){
+	return 0;
+}
+int FileWrite(int handle, void *mem, int num_bytes){
+	return 0;
+}
+int FileSeek(int handle, int num_bytes, int from_where){
+	return 0;
+}
+int FileDelete(char *filename){
+	return 0;
+}

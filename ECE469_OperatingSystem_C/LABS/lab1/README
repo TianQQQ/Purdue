@@ -1,0 +1,9 @@
+README
+
+To Build:
+1. Type make in /os and /apps folder
+
+2. Type the following command:
+
+dlxsim -x os.dlx.obj -a -u ~/ee469/lab1/apps/work/userprog.dlx.obj
+

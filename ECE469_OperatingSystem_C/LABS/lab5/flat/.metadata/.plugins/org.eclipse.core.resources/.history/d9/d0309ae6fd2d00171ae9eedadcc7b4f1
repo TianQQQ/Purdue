@@ -1,0 +1,151 @@
+#include "ostraps.h"
+#include "dlxos.h"
+#include "process.h"
+#include "dfs.h"
+#include "files.h"
+#include "synch.h"
+
+// You have already been told about the most likely places where you should use locks. You may use 
+// additional locks if it is really necessary.
+
+static file_discriptor fileDescriptors[DFS_INODE_MAX_NUM];
+static lock_t lock;
+
+
+// STUDENT: put your file-level functions here
+void FileDescriptorDelete(int handle){
+	fileDescriptors[handle].filename = 0;
+	fileDescriptors[handle].inodeHandle = -1;
+	fileDescriptors[handle].currentPos = 0;
+	fileDescriptors[handle].eof = 0;
+	fileDescriptors[handle].mode = 0;
+	fileDescriptors[handle].pid = -1;
+}
+
+
+void FileModuleInit(){
+	int i;
+	for (i = 0;i < DFS_INODE_MAX_NUM;++i){
+		FileDescriptorDelete[i];
+	}
+}
+
+
+int GetFileMode(char *mode){
+	if (mode[0] == 'r'){
+		if (mode[1] == 'w'){
+			return FILE_MODE_RW;
+		}
+		return FILE_MODE_R;
+	}
+	else if (mode[0] == 'w'){
+		return FILE_MODE_W;
+	}
+	return FILE_FAIL;
+}
+
+int GetInodeFileDescriptor(int inodeHandle){
+	int i;
+	for (i = 0;i < DFS_INODE_MAX_NUM;++i){
+		if (fileDescriptors[i].inodeHandle == inodeHandle){
+			return i;
+		}
+	}
+	return FILE_FAIL;
+}
+
+int GetFreeFileDescriptor(){
+	int i;
+	for (i = 0;i < DFS_INODE_MAX_NUM;++i){
+		if (fileDescriptors[i].inodeHandle == -1){
+			return i;
+		}
+	}
+	return FILE_FAIL;
+}
+
+int FileOpen(char *filename, char *mode){
+	int mode = GetFileMode(mode);
+	int inodeHandle;
+	int fileHandle = -1;
+
+	if (mode == FILE_FAIL)
+		return FILE_FAIL;
+
+	// Check whether the file is already opened by other process
+	inodeHandle = DfsInodeFilenameExists(filename);
+	if (inodeHanlde != DFS_FAIL){
+		fileHandle = GetInodeFileDescriptor(inodeHandle);
+		if (fileHandle != FILE_FAIL && GetCurrentPid() != fileDescriptors[fileHandle].pid){
+			return FILE_FAIL;
+		}
+	}
+
+	if (LockHandleAcquire(lock) != SYNC_SUCCESS){
+		dbprintf('s', "FILE: Lock handle acquire failed before FileOpen.\n");
+	}
+
+	if (mode != FILE_MODE_R){
+		DfsInodeDelete(inodeHandle);
+		inodeHandle = DfsInodeOpen(filename);
+	}
+
+	if (inodeHandle == DFS_FAIL){
+		if (LockHandleRelease(lock) != SYNC_SUCCESS){
+			dbprintf('s', "FILE: Lock handle release failed after FileOpen.\n");
+		}
+		return FILE_FAIL;
+	}
+	// filehandle was got when cheking pid
+	if (fileHandle == FILE_FAIL){
+		fileHandle = GetFreeFileDescriptor();
+	}
+	dstrncpy(fileDescriptors[fileHandle].filename, filename, dstrlen(filename));
+	fileDescriptors[fileHandle].inodeHandle = inodehandle;
+	fileDescriptors[fileHandle].pid = GetCurrentPid();
+
+
+	if (LockHandleRelease(lock) != SYNC_SUCCESS){
+		dbprintf('s', "FILE: Lock handle release failed after FileOpen.\n");
+	}
+
+	return fileHandle;
+}
+
+int FileClose(int handle){
+
+	if (GetCurrentPid() != fileDescriptors[handle].pid){
+		return FILE_FAIL;
+	}
+
+	if (LockHandleAcquire(lock) != SYNC_SUCCESS){
+		dbprintf('s', "FILE: Lock handle acquire failed before FileClose.\n");
+	}
+
+	FileDescriptorDelete(handle);
+
+	if (LockHandleRelease(lock) != SYNC_SUCCESS){
+		dbprintf('s', "FILE: Lock handle release failed after FileClose.\n");
+	}
+	return FILE_SUCCESS;
+}
+
+int FileRead(int handle, void *mem, int num_bytes){
+	int bytesRead;
+
+	if (GetCurrentPid() != fileDescriptors[handle].pid){
+		return FILE_FAIL;
+	}
+
+	return 0;
+}
+
+int FileWrite(int handle, void *mem, int num_bytes){
+	return 0;
+}
+int FileSeek(int handle, int num_bytes, int from_where){
+	return 0;
+}
+int FileDelete(char *filename){
+	return 0;
+}

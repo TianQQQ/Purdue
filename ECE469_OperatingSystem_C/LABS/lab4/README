@@ -1,0 +1,46 @@
+Q1Q2
+/one-level/os
+	make
+Q2-1
+/one-level/example
+	make
+	make run
+Q2-2
+/one-level/q2
+	make
+	make run
+Q2-3
+/one-level/q3
+	make
+	make run
+Q2-4
+/one-level/q4
+	make
+	make run
+Q2-5
+/one-level/q5
+	make
+	make run
+Q2-6
+/one-level/q6
+	make
+	make run
+
+
+Q3Q4:
+/fork/os
+	make
+/fork/apps/q4
+	make
+	make run
+
+you can change to process number to create in
+	/q4/Makefile
+
+Q5:
+/heap-mgmt/os
+	make
+/heap-mgmt/apps/q5
+	make
+	make run
+

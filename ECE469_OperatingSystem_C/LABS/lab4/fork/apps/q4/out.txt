@@ -1,0 +1,47 @@
+cd ../../bin; dlxsim -x os.dlx.obj -a -u makeprocs.dlx.obj 1; ee469_fixterminal
+Stack=0x1fffc8, pc starting at 0x12f64
+Got 3 arguments.
+Available memory: 0x2b9c0 -> 0x200000.
+Argument count is 3.
+Argument 0 is -u.
+Argument 1 is makeprocs.dlx.obj.
+Argument 2 is 1.
+makeprocs (31): Forking processes
+makeprocs (31): Forking  #0
+New Process after Fork
+virPage: 0, phypage: 2d005
+virPage: 1, phypage: 2e005
+virPage: 2, phypage: 2f005
+virPage: 3, phypage: 30005
+virPage: ff, phypage: 2c007
+old Process after Fork
+virPage: 0, phypage: 2d005
+virPage: 1, phypage: 2e005
+virPage: 2, phypage: 2f005
+virPage: 3, phypage: 30005
+virPage: ff, phypage: 2c007
+Cpu: writing a read-only page, vaddr=0xff000
+Process after readonly handler
+virPage: 0, phypage: 2d005
+virPage: 1, phypage: 2e005
+virPage: 2, phypage: 2f005
+virPage: 3, phypage: 30005
+virPage: ff, phypage: 32001
+this is the parent process, with id 31
+the #0 child's process ID is 30
+makeprocs (31): Forking completed, exiting main process.
+Cpu: writing a read-only page, vaddr=0xff000
+Process after readonly handler
+virPage: 0, phypage: 2d005
+virPage: 1, phypage: 2e005
+virPage: 2, phypage: 2f005
+virPage: 3, phypage: 30005
+virPage: ff, phypage: 2c003
+this is the child process #0, with id 30
+makeprocs (30): Forking completed, exiting main process.
+No runnable processes - exiting!
+Exiting at program request.
+Instructions executed: 3947545
+Time simulated: 3.948 secs
+Real time elapsed: 0.434 secs
+Execution rate: 9.09M simulated instructions per real second.

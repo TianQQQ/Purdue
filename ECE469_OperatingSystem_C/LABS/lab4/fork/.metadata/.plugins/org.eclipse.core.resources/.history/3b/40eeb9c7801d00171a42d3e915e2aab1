@@ -1,0 +1,35 @@
+#include "usertraps.h"
+#include "misc.h"
+
+#define HELLO_WORLD "hello_world.dlx.obj"
+
+void main (int argc, char *argv[])
+{
+	int numForks = 0;             // Used to store number of processes to create
+	int i;                               // Loop index variable
+	int child_pid;
+
+	if (argc != 2) {
+		Printf("Usage: %s <number of forks to create>\n", argv[0]);
+		Exit();
+	}
+
+	// Convert string from ascii command line argument to integer number
+	numForks = dstrtol(argv[1], NULL, 10); // the "10" means base 10
+	Printf("makeprocs (%d): Forking processes\n", getpid(), numForks);
+
+	//  for(i=0; i<numForks; i++) {
+	Printf("makeprocs (%d): Forking  #%d\n", getpid(), i);
+
+	child_pid = fork();
+	Printf("makeprocs (%d): Forking  #%d\n", getpid(), i);
+	if (child_pid != 0) {
+		Printf ("this is the parent process, with id %d\n", (int) getpid ());
+		Printf ("the #%d child's process ID is %d\n", i, child_pid);
+	} else {
+		Printf ("this is the child process #%d, with id %d\n", i ,(int) getpid ());
+	}
+	//  }
+	Printf("makeprocs (%d): Forking completed, exiting main process.\n", getpid());
+
+}

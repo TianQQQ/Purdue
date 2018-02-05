@@ -1,0 +1,30 @@
+#include "usertraps.h"
+#include "misc.h"
+
+#define HELLO_WORLD "hello_world.dlx.obj"
+
+void main (int argc, char *argv[])
+{
+	int *a,*b,*c,*d, *e;
+
+	if (argc != 1) {
+		Printf("Usage: \n");
+		Exit();
+	}
+	/*malloc(32);
+	malloc(33);
+	malloc(64);
+	malloc(65);*/
+	a = malloc(12);
+	b = malloc(64);
+	c = malloc(12);
+	d = malloc(64);
+	e = malloc(3500);
+	Printf("%d\n", (int)e);
+	mfree(b);
+	mfree(d);
+	mfree(a);
+	mfree(c);
+	Printf("makeprocs (%d): Forking completed, exiting main process.\n", getpid());
+
+}

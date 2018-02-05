@@ -1,0 +1,2 @@
+work/ftests.o: ftests.c ../../../include/usertraps.h \
+ ../../../include/misc.h ../../../include/files_shared.h

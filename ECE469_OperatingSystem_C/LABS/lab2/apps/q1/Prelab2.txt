@@ -1,0 +1,24 @@
+Read queue.c, queue.h, synch.h, synch.c and answer the following questions. Please write your answers in apps/q1/Prelab2.txt.
+
+     (2 points) How many semaphores are available in DLXOS?
+	32 semaphores
+
+     (2 points) How many locks are available in DLXOS?
+	64 locks
+
+     (2 points) How is a semaphore created in DLXOS?
+	sem = sem_create(int count);
+
+     (2 points) Explain how sem_signal and sem_wait work.
+	retval = sem_signal(sem);
+	sem_signal will increase semaphore count by 1 if sem is valid
+	
+	retval = sem_wait(sem);
+	sem_wait will decrease semaphore count by 1 if the count value is larger than 0. If semaphore count is less than or equal to 0, it will wait until the count increases and then decreases the value and return.
+
+     (2 points) What is a handle and how is it used to access semaphores in DLXOS?
+	A handle is an integer. A semaphore handle is the index of a semaphore instance inside the os semaphore pool. To access semaphore, use the functions below:
+	SemHandleWait(sem_t sem); SemHandleSignal(sem_t sem); 
+	(inside those functions, sems[semHandle] is used to get the handle)
+
+

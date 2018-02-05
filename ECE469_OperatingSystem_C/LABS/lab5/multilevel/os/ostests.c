@@ -1,0 +1,215 @@
+#include "ostraps.h"
+#include "dlxos.h"
+#include "traps.h"
+#include "disk.h"
+#include "dfs.h"
+
+void RunOSTests() {
+	int fileHandle;
+	int fileHandle2;
+	char *testFile1 = "test1";
+	char *testFile2 = "test2";
+	int i;
+	char wData[20000] = "";
+	char rData[20000];
+	int startByte, numBytes;
+	int error;
+
+	// Init file system
+	if (DfsOpenFileSystem() == DFS_FAIL){
+		dbprintf('s', "RunOSTests: Fail to open file system\n");
+	}
+
+	// Test file create
+	// If "test1" file already exist, raise error
+	if (DfsInodeFilenameExists(testFile1) != DFS_FAIL){
+		dbprintf('s', "RunOSTests: test file test1 exists!\n");
+	}
+
+	// Create inode for testFile1
+	fileHandle = DfsInodeOpen(testFile1);
+	if (DfsInodeFilenameExists(testFile1) == DFS_FAIL){
+		dbprintf('s', "RunOSTests: test file test1 created but not found!\n");
+	}
+
+	// Create inode for testFile2
+	fileHandle2 = DfsInodeOpen(testFile2);
+	if (DfsInodeFilenameExists(testFile2) == DFS_FAIL){
+		dbprintf('s', "RunOSTests: test file test2 created but not found!\n");
+	}
+
+
+	// Write 300 bytes in to file1 with "0123456789012....56789"
+	startByte = 50;
+	numBytes = 300;
+
+	for (i = 0; i < numBytes;++i){
+		wData[i] = i % 10;
+	}
+
+
+	if (DfsInodeWriteBytes(fileHandle, wData, startByte, numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: test 1 Writing to test1 failed!\n");
+	}
+
+
+	// Read data from file
+	if (DfsInodeReadBytes(fileHandle, rData, 0, startByte + numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: test 1 Reading test1 failed!\n");
+	}
+
+	error = 0;
+	for (i = 0; i < 1024; ++i){
+		// Check empty before start byte
+		if (i < 50){
+			if (rData[i] != 0){
+				error = 1;
+				printf("error at %d\n", i);
+			}
+		}
+		// Check data written in file
+		else if (i < 350){
+			if (rData[i] != (i - 50) % 10){
+				error = 1;
+				printf("error at %d\n", i);
+			}
+		}
+		// Check empty after file ends
+		else{
+			if (rData[i] != 0){
+				error = 1;
+				printf("error at %d\n", i);
+			}
+		}
+	}
+
+	startByte = 200;
+	numBytes = 1800;
+	// 0-49 empty 50-199 01234.. 200-1999 333....
+	for (i = 0; i < numBytes;++i){
+		wData[i] = 3;
+	}
+
+	if (DfsInodeWriteBytes(fileHandle, wData, startByte, numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: test 2 Writing to test1 failed!\n");
+	}
+
+
+	// Read data from file
+	if (DfsInodeReadBytes(fileHandle, rData, 0, startByte + numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: test 2 Reading test1 failed!\n");
+	}
+
+	error = 0;
+	for (i = 0; i < 2048; ++i){
+		// Check empty before start byte
+		if (i < 50){
+			if (rData[i] != 0){
+				error = 1;
+				printf("error at %d\n", i);
+			}
+		}
+		// Check data written in file
+		else if (i < 200){
+			if (rData[i] != (i - 50) % 10){
+				error = 1;
+				printf("error at %d\n", i);
+			}
+		}
+		else if (i < 2000){
+			if (rData[i] != 3){
+				error = 1;
+				printf("error at %d\n", i);
+			}
+		}
+		// Check empty after file ends
+		else{
+			if (rData[i] != 0){
+				error = 1;
+				printf("error at %d\n", i);
+			}
+		}
+	}
+
+
+	// Write 12000 bytes in to file1 with "11111..."
+	startByte = 0;
+	numBytes = 12000;
+
+	for (i = 0; i < numBytes;++i){
+		wData[i] = 1;
+	}
+
+
+	if (DfsInodeWriteBytes(fileHandle, wData, startByte, numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: test 1 Writing to test1 failed!\n");
+	}
+
+
+	// Read data from file
+	if (DfsInodeReadBytes(fileHandle, rData, 0, 12000) != numBytes){
+		dbprintf('s', "RunOSTests: test 1 Reading test1 failed!\n");
+	}
+
+	error = 0;
+	for (i = 0; i < 12288; ++i){
+		// Check empty before start byte
+		if (i < 12000){
+			if (rData[i] != 1){
+				error = 1;
+			}
+		}
+
+		// Check empty after file ends
+		else{
+			if (rData[i] != 0){
+				error = 1;
+			}
+		}
+	}
+
+	if (error)
+		printf("RunOSTests: test 3 File data incorrect after write then read!\n");
+
+	// Write 12000 bytes in to file2 with "11111..."
+	startByte = 0;
+	numBytes = 12000;
+
+	for (i = 0; i < numBytes;++i){
+		wData[i] = 1;
+	}
+
+
+	if (DfsInodeWriteBytes(fileHandle2, wData, startByte, numBytes) != numBytes){
+		dbprintf('s', "RunOSTests: test 1 Writing to test1 failed!\n");
+	}
+
+
+	// Read data from file
+	if (DfsInodeReadBytes(fileHandle2, rData, 0, 12000) != numBytes){
+		dbprintf('s', "RunOSTests: test 1 Reading test1 failed!\n");
+	}
+
+	error = 0;
+	for (i = 0; i < 12288; ++i){
+		// Check empty before start byte
+		if (i < 12000){
+			if (rData[i] != 1){
+				error = 1;
+			}
+		}
+
+		// Check empty after file ends
+		else{
+			if (rData[i] != 0){
+				error = 1;
+			}
+		}
+	}
+
+	if (error)
+		printf("RunOSTests: test 4 File data incorrect after write then read!\n");
+
+
+}
+

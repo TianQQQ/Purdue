@@ -1,0 +1,51 @@
+#include "ostraps.h"
+#include "dlxos.h"
+#include "process.h"
+#include "dfs.h"
+#include "files.h"
+#include "synch.h"
+
+// You have already been told about the most likely places where you should use locks. You may use 
+// additional locks if it is really necessary.
+
+static file_discriptor fileDescriptors[DFS_INODE_MAX_NUM];
+static lock_t lock;
+
+
+// STUDENT: put your file-level functions here
+void FileInit(int handle){
+
+}
+
+int GetFileMode(char *mode){
+	if (mode[0] == 'r'){
+		if (mode[1] == 'w'){
+			return FILE_MODE_RW;
+		}
+		return FILE_MODE_R;
+	}
+	else if (mode[0] == 'w'){
+		return FILE_MODE_W;
+	}
+	return FILE_FAIL;
+}
+
+int FileOpen(char *filename, char *mode){
+
+	return 0;
+}
+int FileClose(int handle){
+	return 0;
+}
+int FileRead(int handle, void *mem, int num_bytes){
+	return 0;
+}
+int FileWrite(int handle, void *mem, int num_bytes){
+	return 0;
+}
+int FileSeek(int handle, int num_bytes, int from_where){
+	return 0;
+}
+int FileDelete(char *filename){
+	return 0;
+}

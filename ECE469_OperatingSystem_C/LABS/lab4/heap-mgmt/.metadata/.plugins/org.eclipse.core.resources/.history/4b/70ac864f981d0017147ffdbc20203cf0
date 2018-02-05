@@ -1,0 +1,22 @@
+#include "usertraps.h"
+#include "misc.h"
+
+#define HELLO_WORLD "hello_world.dlx.obj"
+
+void main (int argc, char *argv[])
+{
+	int i;                               // Loop index variable
+	int child_pid;
+
+	if (argc != 1) {
+		Printf("Usage: \n", argv[0]);
+		Exit();
+	}
+
+	malloc(12);
+
+	Printf("makeprocs (%d): Forking processes\n", getpid(), numForks);
+
+	Printf("makeprocs (%d): Forking completed, exiting main process.\n", getpid());
+
+}

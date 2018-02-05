@@ -1,0 +1,24 @@
+items: 1 2 3 4 for each producer
+r - running
+s - signaling
+w - waiting
+end
+
+p1  1r 2r 3w  4end
+p2  1r 2w
+p3  1r 2w
+c1  1r     2s     3w
+c2  1r     2r     4w
+c3  1r     2r
+
+when p1 create 3, p2 and p3 create 2
+buffer is full
+c1 consumes one of 2 in the buffer, buffer goes from full to not full.
+Thus signaling after consumption.
+p1 is waken and it creates 4
+c2 c3 consumes other 2s before p1 waking up and buffer will never get full again.
+If buffer never goes full, it will never wake p2 and p3 up to continue their creation. 
+
+Using broadcast will eliminate this case.
+For producer, when the buffer goes from full to not full, most likely there are more than one consumer is working. Therefore, broadcast the producer can make more producer and consumer concurrently working instead of making most of the process sleeping. 
+

@@ -1,0 +1,96 @@
+cd makeprocs; make
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/makeprocs'
+gcc-dlx -I../include -I../../../include -MM makeprocs.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/makeprocs'
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/makeprocs'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/makeprocs.o makeprocs.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/makeprocs.dlx work/makeprocs.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/makeprocs.lst work/makeprocs.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x2918
+Last data address: 0x32a6
+cp work/makeprocs.dlx.obj ../../../bin/makeprocs.dlx.obj
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/makeprocs'
+cd injectionS2; make
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionS2'
+gcc-dlx -I../include -I../../../include -MM injectionS2.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionS2'
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionS2'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/injectionS2.o injectionS2.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/injectionS2.dlx work/injectionS2.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/injectionS2.lst work/injectionS2.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x2278
+Last data address: 0x3139
+cp work/injectionS2.dlx.obj ../../../bin/injectionS2.dlx.obj
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionS2'
+cd injectionCO; make
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionCO'
+gcc-dlx -I../include -I../../../include -MM injectionCO.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionCO'
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionCO'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/injectionCO.o injectionCO.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/injectionCO.dlx work/injectionCO.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/injectionCO.lst work/injectionCO.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x2278
+Last data address: 0x3139
+cp work/injectionCO.dlx.obj ../../../bin/injectionCO.dlx.obj
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/injectionCO'
+cd reaction1; make
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction1'
+gcc-dlx -I../include -I../../../include -MM reaction1.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction1'
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction1'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/reaction1.o reaction1.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/reaction1.dlx work/reaction1.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/reaction1.lst work/reaction1.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x2408
+Last data address: 0x316e
+cp work/reaction1.dlx.obj ../../../bin/reaction1.dlx.obj
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction1'
+cd reaction2; make
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction2'
+gcc-dlx -I../include -I../../../include -MM reaction2.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction2'
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction2'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/reaction2.o reaction2.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/reaction2.dlx work/reaction2.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/reaction2.lst work/reaction2.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x26e8
+Last data address: 0x3179
+cp work/reaction2.dlx.obj ../../../bin/reaction2.dlx.obj
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction2'
+cd reaction3; make
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction3'
+gcc-dlx -I../include -I../../../include -MM reaction3.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction3'
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction3'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/reaction3.o reaction3.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/reaction3.dlx work/reaction3.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/reaction3.lst work/reaction3.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x2500
+Last data address: 0x3171
+cp work/reaction3.dlx.obj ../../../bin/reaction3.dlx.obj
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab3/apps/q2/reaction3'

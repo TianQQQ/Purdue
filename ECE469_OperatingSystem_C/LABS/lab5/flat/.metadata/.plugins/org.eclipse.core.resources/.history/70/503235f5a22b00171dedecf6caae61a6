@@ -1,0 +1,24 @@
+#ifndef __DFS_H__
+#define __DFS_H__
+
+#include "dfs_shared.h"
+
+void DfsModuleInit();
+void DfsInvalidate();
+int DfsOpenFileSystem();
+int DfsCloseFileSystem();
+uint32 DfsAllocateBlock();
+int DfsFreeBlock(uint32 blocknum);
+int DfsReadBlock(uint32 blocknum, dfs_block *b);
+uint32 DfsInodeFilenameExists(char *filename);
+uint32 DfsInodeOpen(char *filename);
+int DfsInodeDelete(uint32 handle);
+int DfsInodeReadBytes(uint32 handle, void *mem, int start_byte, int num_bytes);
+int DfsInodeWriteBytes(uint32 handle, void *mem, int start_byte, int num_bytes);
+
+#define DFS_INODE_MAX_NUM 192
+#define DFS_FBV_MAX_NUM_WORDS 512 //2 dfs block for fbv, so 2048 bytes / 4 bytes
+
+
+
+#endif

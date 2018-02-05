@@ -1,0 +1,16 @@
+cd ../../bin; dlxsim -x os.dlx.obj -a -D F -u ostests.dlx.obj; ee469_fixterminal
+Stack=0x1fffc4, pc starting at 0x15ad8
+Got 4 arguments.
+Available memory: 0x28c10 -> 0x200000.
+Argument count is 4.
+Argument 0 is -D.
+Argument 1 is F.
+Argument 2 is -u.
+Argument 3 is ostests.dlx.obj.
+No runnable processes - exiting!
+GracefulExit: closing filesystem and exiting simulator
+Exiting at program request.
+Instructions executed: 6802244
+Time simulated: 6.802 secs
+Real time elapsed: 0.591 secs
+Execution rate: 11.51M simulated instructions per real second.

@@ -1,0 +1,73 @@
+gcc-dlx -I../include -I../include/os -MM filesys.c memory.c misc.c process.c queue.c synch.c traps.c sysproc.c clock.c osend.s trap_random.s dlxos.s | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+cd ../apps/example; make && make run
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example'
+cd makeprocs; make
+make[2]: Entering directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/makeprocs'
+gcc-dlx -I../include -I../../../include -MM makeprocs.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[2]: Leaving directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/makeprocs'
+make[2]: Entering directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/makeprocs'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/makeprocs.o makeprocs.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/makeprocs.dlx work/makeprocs.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/makeprocs.lst work/makeprocs.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x2238
+Last data address: 0x31ea
+cp work/makeprocs.dlx.obj ../../../bin/makeprocs.dlx.obj
+make[2]: Leaving directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/makeprocs'
+cd hello_world; make
+make[2]: Entering directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/hello_world'
+gcc-dlx -I../include -I../../../include -MM hello_world.c  | sed "s/^\(.*\):/work\/\1:/" > Makefile.depend
+usleep 50000
+make[2]: Leaving directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/hello_world'
+make[2]: Entering directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/hello_world'
+mkdir -p work
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -c -o work/hello_world.o hello_world.c
+gcc-dlx -mtraps -O3 -Wall -I../include -I../../../include -o work/hello_world.dlx work/hello_world.o  ../../../lib/usertraps.aso ../../../lib/misc.o
+dlxasm  -l work/hello_world.lst work/hello_world.dlx
+Starting pass 1.
+Starting pass 2.
+Last text address: 0x2108
+Last data address: 0x30a9
+cp work/hello_world.dlx.obj ../../../bin/hello_world.dlx.obj
+make[2]: Leaving directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example/hello_world'
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example'
+make[1]: Entering directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example'
+cd ../../bin; dlxsim -x os.dlx.obj -a -u makeprocs.dlx.obj 5; ee469_fixterminal
+Stack=0x1fffc8, pc starting at 0x13520
+Got 3 arguments.
+Available memory: 0x2cb70 -> 0x200000.
+Argument count is 3.
+Argument 0 is -u.
+Argument 1 is makeprocs.dlx.obj.
+Argument 2 is 5.
+makeprocs (31): Creating 5 hello_world processes
+-------------------------------------------------------------------------------------
+makeprocs (31): Creating 5 hello world's in a row, but only one runs at a time
+makeprocs (31): Creating hello world #0
+hello_world (30): Hello world!
+hello_world (30): Done!
+makeprocs (31): Creating hello world #1
+hello_world (29): Hello world!
+hello_world (29): Done!
+makeprocs (31): Creating hello world #2
+hello_world (28): Hello world!
+hello_world (28): Done!
+makeprocs (31): Creating hello world #3
+hello_world (27): Hello world!
+hello_world (27): Done!
+makeprocs (31): Creating hello world #4
+hello_world (26): Hello world!
+hello_world (26): Done!
+-------------------------------------------------------------------------------------
+makeprocs (31): All other processes completed, exiting main process.
+No runnable processes - exiting!
+Exiting at program request.
+Instructions executed: 18545954
+Time simulated: 18.546 secs
+Real time elapsed: 0.981 secs
+Execution rate: 18.91M simulated instructions per real second.
+make[1]: Leaving directory `/home/shay/a/yu356/ee469/lab4/heap-mgmt/apps/example'
