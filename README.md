@@ -1,3 +1,3 @@
 # PurdueCourses
 
-Personal Notes for Two Purdue Bachelor's Degrees, Computer Engineering and Mathematics.
+Personal Notes for B.E. in Computer Engineering and B.S. in Mathematics at Purdue University.
